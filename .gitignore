@@ -9,3 +9,12 @@ PUMPL.xcodeproj/
 
 *.mode1v3
 *.mode2v3
+
+three20src/Three20/Three20.xcodeproj/xcuserdata/
+three20src/Three20/Three20.xcodeproj/xcuserdata/
+three20src/Three20Core/Three20Core.xcodeproj/xcuserdata/
+three20src/Three20Network/Three20Network.xcodeproj/xcuserdata/
+three20src/Three20Style/Three20Style.xcodeproj/xcuserdata/
+three20src/Three20UI/Three20UI.xcodeproj/xcuserdata/
+three20src/Three20UICommon/Three20UICommon.xcodeproj/xcuserdata/
+three20src/Three20UINavigator/Three20UINavigator.xcodeproj/xcuserdata/
