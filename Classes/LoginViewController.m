@@ -94,6 +94,7 @@
 	
 	mActivityIndicator.hidden = YES;
 	mTableView.backgroundColor = [UIColor clearColor];
+	mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 
