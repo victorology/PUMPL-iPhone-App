@@ -88,7 +88,7 @@
 
 - (void)configureTheView
 {
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"SignUp" style:UIBarButtonItemStyleBordered target:self action:@selector(signUp:)] autorelease];
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Sign up" style:UIBarButtonItemStyleBordered target:self action:@selector(signUp:)] autorelease];
 	
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;

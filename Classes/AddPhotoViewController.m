@@ -167,7 +167,7 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-	
+	/*
 	//UIImage *imagePicked = [UIImage imageNamed:@"vertical.jpg"];
 	UIImage *imagePicked = [UIImage imageNamed:@"horizontal.jpg"];
 	UIImageWriteToSavedPhotosAlbum(imagePicked, nil, nil, nil);
@@ -189,7 +189,7 @@
 		
 	}
 	
-	
+	*/
 	
 	[picker dismissModalViewControllerAnimated:YES];
 }
