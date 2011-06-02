@@ -15,7 +15,7 @@
 #import "UIImage+Monochrome.h"
 
 
-#define kFilterLabelWidth 90
+#define kFilterLabelWidth 80
 #define kFilterLabelHeight 16
 #define kPaddingBetweenFilterButtons 3
 #define kFilterButtonSide 60
@@ -125,7 +125,7 @@
 																	 kFilterLabelWidth,
 																	 kFilterLabelHeight)];
 	normalLabel.text = @"Normal";
-	normalLabel.font = [UIFont boldSystemFontOfSize:13];
+	normalLabel.font = [UIFont boldSystemFontOfSize:11];
 	normalLabel.textAlignment = UITextAlignmentCenter;
 	normalLabel.textColor = [UIColor whiteColor];
 	normalLabel.backgroundColor = [UIColor clearColor];
@@ -139,7 +139,7 @@
 	normalButton.tag = kFilterTagNormal;
 	[normalButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	normalButton.imageView.layer.masksToBounds = YES;
-	normalButton.imageView.layer.cornerRadius = 5.0;
+	normalButton.imageView.layer.cornerRadius = 7.5;
 	
 	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
 													 mFilterButtonScrollView.contentSize.height);
@@ -164,7 +164,7 @@
 																	 kFilterLabelWidth,
 																	 kFilterLabelHeight)];
 	xProLabel.text = @"XPro";
-	xProLabel.font = [UIFont boldSystemFontOfSize:13];
+	xProLabel.font = [UIFont boldSystemFontOfSize:11];
 	xProLabel.textAlignment = UITextAlignmentCenter;
 	xProLabel.textColor = [UIColor whiteColor];
 	xProLabel.backgroundColor = [UIColor clearColor];
@@ -177,7 +177,7 @@
 	xProButton.tag = kFilterTagXPro;
 	[xProButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	xProButton.imageView.layer.masksToBounds = YES;
-	xProButton.imageView.layer.cornerRadius = 5.0;
+	xProButton.imageView.layer.cornerRadius = 7.5;
 	
 	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
 													 mFilterButtonScrollView.contentSize.height);
@@ -202,7 +202,7 @@
 																   kFilterLabelWidth,
 																   kFilterLabelHeight)];
 	vintageLabel.text = @"Vintage";
-	vintageLabel.font = [UIFont boldSystemFontOfSize:13];
+	vintageLabel.font = [UIFont boldSystemFontOfSize:11];
 	vintageLabel.textAlignment = UITextAlignmentCenter;
 	vintageLabel.textColor = [UIColor whiteColor];
 	vintageLabel.backgroundColor = [UIColor clearColor];
@@ -215,7 +215,7 @@
 	vintageButton.tag = kFilterTagVintage;
 	[vintageButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	vintageButton.imageView.layer.masksToBounds = YES;
-	vintageButton.imageView.layer.cornerRadius = 10.0;
+	vintageButton.imageView.layer.cornerRadius = 7.5;
 	
 	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
 													 mFilterButtonScrollView.contentSize.height);
@@ -240,7 +240,7 @@
 																	  kFilterLabelWidth,
 																	  kFilterLabelHeight)];
 	lomoLabel.text = @"Lomo";
-	lomoLabel.font = [UIFont boldSystemFontOfSize:13];
+	lomoLabel.font = [UIFont boldSystemFontOfSize:11];
 	lomoLabel.textAlignment = UITextAlignmentCenter;
 	lomoLabel.textColor = [UIColor whiteColor];
 	lomoLabel.backgroundColor = [UIColor clearColor];
@@ -252,6 +252,8 @@
 	[lomoButton setImage:[UIImage imageNamed:@"lomo.jpg"] forState:UIControlStateNormal];
 	lomoButton.tag = kFilterTagLomo;
 	[lomoButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
+	lomoButton.imageView.layer.masksToBounds = YES;
+	lomoButton.imageView.layer.cornerRadius = 7.5;
 	
 	
 	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
@@ -279,7 +281,7 @@
 																   kFilterLabelWidth,
 																   kFilterLabelHeight)];
 	photochromeLabel.text = @"Photochrom";
-	photochromeLabel.font = [UIFont boldSystemFontOfSize:13];
+	photochromeLabel.font = [UIFont boldSystemFontOfSize:11];
 	photochromeLabel.textAlignment = UITextAlignmentCenter;
 	photochromeLabel.textColor = [UIColor whiteColor];
 	photochromeLabel.backgroundColor = [UIColor clearColor];
@@ -292,6 +294,8 @@
 	[photochromeButton setImage:[UIImage imageNamed:@"photochrom.jpg"] forState:UIControlStateNormal];
 	photochromeButton.tag = kFilterTagPhotochrome;
 	[photochromeButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
+	photochromeButton.imageView.layer.masksToBounds = YES;
+	photochromeButton.imageView.layer.cornerRadius = 7.5;
 	
 	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
 													 mFilterButtonScrollView.contentSize.height);
@@ -317,7 +321,7 @@
 																		  kFilterLabelWidth,
 																		  kFilterLabelHeight)];
 	monochromeLabel.text = @"Monochrome";
-	monochromeLabel.font = [UIFont boldSystemFontOfSize:13];
+	monochromeLabel.font = [UIFont boldSystemFontOfSize:11];
 	monochromeLabel.textAlignment = UITextAlignmentCenter;
 	monochromeLabel.textColor = [UIColor whiteColor];
 	monochromeLabel.backgroundColor = [UIColor clearColor];
@@ -329,6 +333,8 @@
 	[monochromeButton setImage:[UIImage imageNamed:@"monochrome.jpg"] forState:UIControlStateNormal];
 	monochromeButton.tag = kFilterTagMonochrome;
 	[monochromeButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
+	monochromeButton.imageView.layer.masksToBounds = YES;
+	monochromeButton.imageView.layer.cornerRadius = 7.5;
 	
 	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
 													 mFilterButtonScrollView.contentSize.height);

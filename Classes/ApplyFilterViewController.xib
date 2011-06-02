@@ -45,7 +45,7 @@
 					<object class="IBUIScrollView" id="1038208537">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{20, 320}, {280, 96}}</string>
+						<string key="NSFrame">{{10, 320}, {300, 96}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
