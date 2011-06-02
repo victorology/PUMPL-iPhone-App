@@ -1,0 +1,305 @@
+// !$*UTF8*$!
+{
+	0BD2FCC4137641BF00F84AE9 /* Source Control */ = {
+		isa = PBXSourceControlManager;
+		fallbackIsa = XCSourceControlManager;
+		isSCMEnabled = 0;
+		scmConfiguration = {
+			repositoryNamesForRoots = {
+				"" = "";
+			};
+		};
+	};
+	0BD2FCC5137641BF00F84AE9 /* Code sense */ = {
+		isa = PBXCodeSenseManager;
+		indexTemplatePath = "";
+	};
+	0BD2FCF6137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E6456591184D4DA00F08CB1 /* TTTableViewController.m */;
+		name = "TTTableViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 2144;
+		vrLoc = 1579;
+	};
+	0BD2FCF7137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E6455581184D4C500F08CB1 /* UITableViewAdditions.h */;
+		name = "UITableViewAdditions.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1385;
+		vrLoc = 0;
+	};
+	0BD2FCF8137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E64561A1184D4DA00F08CB1 /* TTModelViewController.m */;
+		name = "TTModelViewController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1773;
+		vrLoc = 0;
+	};
+	0BD2FCF9137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E6454E01184D4C500F08CB1 /* TTModelViewController.h */;
+		name = "TTModelViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1737;
+		vrLoc = 4169;
+	};
+	0BD2FCFA137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E6455291184D4C500F08CB1 /* TTTableViewController.h */;
+		name = "TTTableViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1443;
+		vrLoc = 2721;
+	};
+	0BD2FCFB137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E64553C1184D4C500F08CB1 /* TTThumbsViewController.h */;
+		name = "TTThumbsViewController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1400;
+		vrLoc = 0;
+	};
+	0BD2FCFC137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E6455301184D4C500F08CB1 /* TTTableViewPlainVarHeightDelegate.h */;
+		name = "TTTableViewPlainVarHeightDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 741;
+		vrLoc = 0;
+	};
+	0BD2FCFD137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E6455311184D4C500F08CB1 /* TTTableViewVarHeightDelegate.h */;
+		name = "TTTableViewVarHeightDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 797;
+		vrLoc = 0;
+	};
+	0BD2FCFE137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E64565B1184D4DA00F08CB1 /* TTTableViewDelegate.m */;
+		name = "TTTableViewDelegate.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1788;
+		vrLoc = 6762;
+	};
+	0BD2FCFF137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E64552B1184D4C500F08CB1 /* TTTableViewDelegate.h */;
+		name = "TTTableViewDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1808;
+		vrLoc = 0;
+	};
+	0BD2FD00137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E64552C1184D4C500F08CB1 /* TTTableViewDragRefreshDelegate.h */;
+		name = "TTTableViewDragRefreshDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1722;
+		vrLoc = 0;
+	};
+	0BD2FD01137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E64565C1184D4DA00F08CB1 /* TTTableViewDragRefreshDelegate.m */;
+		name = "TTTableViewDragRefreshDelegate.m: 60";
+		rLen = 0;
+		rLoc = 2408;
+		rType = 0;
+		vrLen = 2420;
+		vrLoc = 1697;
+	};
+	0BD2FD02137645EB00F84AE9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 6E64565C1184D4DA00F08CB1 /* TTTableViewDragRefreshDelegate.m */;
+		name = "TTTableViewDragRefreshDelegate.m: 60";
+		rLen = 0;
+		rLoc = 2408;
+		rType = 0;
+		vrLen = 2132;
+		vrLoc = 6194;
+	};
+	29B97313FDCFA39411CA2CEA /* Project object */ = {
+		activeBuildConfigurationName = Debug;
+		activeTarget = BEF31F390F352DF5000DE5D2 /* Three20UI */;
+		codeSenseManager = 0BD2FCC5137641BF00F84AE9 /* Code sense */;
+		perUserDictionary = {
+			PBXConfiguration.PBXFileTableDataSource3.PBXFileTableDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					20,
+					10,
+					20,
+					48.16259765625,
+					43,
+					43,
+					20,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFileDataSource_FiletypeID,
+					PBXFileDataSource_Filename_ColumnID,
+					PBXFileDataSource_Built_ColumnID,
+					PBXFileDataSource_ObjectSize_ColumnID,
+					PBXFileDataSource_Errors_ColumnID,
+					PBXFileDataSource_Warnings_ColumnID,
+					PBXFileDataSource_Target_ColumnID,
+				);
+			};
+			PBXPerProjectTemplateStateSaveDate = 326517128;
+			PBXWorkspaceStateSaveDate = 326517128;
+		};
+		perUserProjectItems = {
+			0BD2FCF6137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FCF6137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FCF7137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FCF7137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FCF8137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FCF8137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FCF9137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FCF9137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FCFA137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FCFA137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FCFB137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FCFB137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FCFC137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FCFC137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FCFD137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FCFD137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FCFE137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FCFE137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FCFF137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FCFF137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FD00137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FD00137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FD01137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FD01137645EB00F84AE9 /* PBXTextBookmark */;
+			0BD2FD02137645EB00F84AE9 /* PBXTextBookmark */ = 0BD2FD02137645EB00F84AE9 /* PBXTextBookmark */;
+		};
+		sourceControlManager = 0BD2FCC4137641BF00F84AE9 /* Source Control */;
+		userBuildSettings = {
+		};
+	};
+	66FC2AB51264E3A400F56B19 /* Three20UI-Xcode3.2.5 */ = {
+		activeExec = 0;
+	};
+	66FC2BC91264E3A500F56B19 /* Three20UIUnitTests-Xcode3.2.5 */ = {
+		activeExec = 0;
+	};
+	66FE8CCB1264E960001E0674 /* Three20UI-Xcode3.2.2 */ = {
+		activeExec = 0;
+	};
+	66FE8DDF1264E960001E0674 /* Three20UIUnitTests-Xcode3.2.2 */ = {
+		activeExec = 0;
+	};
+	6E6454E01184D4C500F08CB1 /* TTModelViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {991, 2769}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{4169, 1737}";
+		};
+	};
+	6E6455291184D4C500F08CB1 /* TTTableViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {991, 1976}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{2721, 1443}";
+		};
+	};
+	6E64552B1184D4C500F08CB1 /* TTTableViewDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {868, 745}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1808}";
+		};
+	};
+	6E64552C1184D4C500F08CB1 /* TTTableViewDragRefreshDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {868, 745}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1722}";
+		};
+	};
+	6E6455301184D4C500F08CB1 /* TTTableViewPlainVarHeightDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {868, 745}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 741}";
+		};
+	};
+	6E6455311184D4C500F08CB1 /* TTTableViewVarHeightDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {868, 745}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 797}";
+		};
+	};
+	6E64553C1184D4C500F08CB1 /* TTThumbsViewController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {991, 745}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1400}";
+		};
+	};
+	6E6455581184D4C500F08CB1 /* UITableViewAdditions.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {991, 745}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1385}";
+		};
+	};
+	6E64561A1184D4DA00F08CB1 /* TTModelViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {991, 6760}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1773}";
+		};
+	};
+	6E6456591184D4DA00F08CB1 /* TTTableViewController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1111, 11804}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{1579, 2144}";
+		};
+	};
+	6E64565B1184D4DA00F08CB1 /* TTTableViewDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {868, 3107}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{6762, 1788}";
+		};
+	};
+	6E64565C1184D4DA00F08CB1 /* TTTableViewDragRefreshDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {868, 2821}}";
+			sepNavSelRange = "{2408, 0}";
+			sepNavVisRange = "{6194, 2132}";
+		};
+	};
+	6E6456611184D4DA00F08CB1 /* TTTableViewVarHeightDelegate.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1318, 533}}";
+			sepNavSelRange = "{1416, 0}";
+			sepNavVisRange = "{783, 855}";
+		};
+	};
+	BEF31F390F352DF5000DE5D2 /* Three20UI */ = {
+		activeExec = 0;
+	};
+	EB9E6C6110B6A8F800DE563C /* Three20UIUnitTests */ = {
+		activeExec = 0;
+	};
+}
