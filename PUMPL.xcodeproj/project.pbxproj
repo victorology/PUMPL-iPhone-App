@@ -113,6 +113,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		571F04F4139BB13D007408EE /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 571F04F3139BB13D007408EE /* Entitlements.plist */; };
 		C30692511308604A0062BA61 /* EditScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C306924F1308604A0062BA61 /* EditScrollViewController.m */; };
 		C30692521308604A0062BA61 /* EditScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30692501308604A0062BA61 /* EditScrollViewController.xib */; };
 		C37E330A1318F8A400B812A1 /* img-tab-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33041318F8A400B812A1 /* img-tab-photo.png */; };
@@ -636,6 +637,7 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PUMPL_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUMPL_Prefix.pch; sourceTree = "<group>"; };
+		571F04F3139BB13D007408EE /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PUMPL-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PUMPL-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C306924E1308604A0062BA61 /* EditScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditScrollViewController.h; sourceTree = "<group>"; };
 		C306924F1308604A0062BA61 /* EditScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditScrollViewController.m; sourceTree = "<group>"; };
@@ -1061,6 +1063,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				571F04F3139BB13D007408EE /* Entitlements.plist */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1540,6 +1543,7 @@
 				0BFBBB7F13973BC100A3A0E4 /* photochrom.jpg in Resources */,
 				0BFBBB8013973BC100A3A0E4 /* vintage.jpg in Resources */,
 				0BFBBB8113973BC100A3A0E4 /* xpro.jpg in Resources */,
+				571F04F4139BB13D007408EE /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1695,6 +1699,52 @@
 			};
 			name = Release;
 		};
+		571F04F1139BB0EF007408EE /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/Classes/Build/Products/three20,
+					"\"$(BUILT_PRODUCTS_DIR)/../three20\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../three20\"",
+				);
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PREBINDING = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
+				SDKROOT = iphoneos;
+			};
+			name = "Ad Hoc";
+		};
+		571F04F2139BB0EF007408EE /* Ad Hoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = entitlements.plist;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = PUMPL_Prefix.pch;
+				HEADER_SEARCH_PATHS = (
+					"\"$(BUILT_PRODUCTS_DIR)/../../three20\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../three20\"",
+					Build/Products/three20,
+				);
+				INFOPLIST_FILE = "PUMPL-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
+				PRODUCT_NAME = PUMPL;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Ad Hoc";
+		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1703,7 +1753,11 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /Classes/Build/Products/three20;
+				HEADER_SEARCH_PATHS = (
+					/Classes/Build/Products/three20,
+					"\"$(BUILT_PRODUCTS_DIR)/../three20\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../three20\"",
+				);
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
 				SDKROOT = iphoneos;
@@ -1718,7 +1772,11 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = /Classes/Build/Products/three20;
+				HEADER_SEARCH_PATHS = (
+					/Classes/Build/Products/three20,
+					"\"$(BUILT_PRODUCTS_DIR)/../three20\"",
+					"\"$(BUILT_PRODUCTS_DIR)/../../three20\"",
+				);
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
@@ -1734,6 +1792,7 @@
 			buildConfigurations = (
 				1D6058940D05DD3E006BFB54 /* Debug */,
 				1D6058950D05DD3E006BFB54 /* Release */,
+				571F04F2139BB0EF007408EE /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1743,6 +1802,7 @@
 			buildConfigurations = (
 				C01FCF4F08A954540054247B /* Debug */,
 				C01FCF5008A954540054247B /* Release */,
+				571F04F1139BB0EF007408EE /* Ad Hoc */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

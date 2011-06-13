@@ -1887,6 +1887,7 @@
 				PRODUCT_NAME = "$(BASE_PRODUCT_NAME)";
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos4.1;
+				SKIP_INSTALL = YES;
 			};
 			name = Internal;
 		};
@@ -1920,6 +1921,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(BASE_PRODUCT_NAME)";
 				SDKROOT = iphoneos4.1;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -1933,6 +1935,7 @@
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(BASE_PRODUCT_NAME)";
 				SDKROOT = iphoneos4.1;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;

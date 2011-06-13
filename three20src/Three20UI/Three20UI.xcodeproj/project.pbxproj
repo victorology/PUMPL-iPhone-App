@@ -4311,6 +4311,7 @@
 				PREBINDING = NO;
 				RUN_CLANG_STATIC_ANALYZER = YES;
 				SDKROOT = iphoneos4.1;
+				SKIP_INSTALL = YES;
 			};
 			name = Internal;
 		};
@@ -4342,6 +4343,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.1;
+				SKIP_INSTALL = YES;
 			};
 			name = Debug;
 		};
@@ -4354,6 +4356,7 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				PREBINDING = NO;
 				SDKROOT = iphoneos4.1;
+				SKIP_INSTALL = YES;
 				ZERO_LINK = NO;
 			};
 			name = Release;
