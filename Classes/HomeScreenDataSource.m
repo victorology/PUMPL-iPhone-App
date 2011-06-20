@@ -118,7 +118,7 @@
 
 - (CGSize)thumbSize
 {
-	return CGSizeMake(100, 100);
+	return CGSizeMake(90, 120);
 }
 
 
@@ -129,7 +129,7 @@
 
 - (BOOL)thumbsHaveBorder
 {
-	return YES;
+	return NO;
 }
 
 

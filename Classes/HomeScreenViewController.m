@@ -54,6 +54,7 @@
 	
 	[super viewDidAppear:animated];
 	
+	[[UIApplication sharedApplication] setStatusBarHidden:NO];
 	//self.navigationController.navigationBar.translucent = NO;
 }
 

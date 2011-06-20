@@ -477,9 +477,7 @@
 	NSMutableArray *array = [NSMutableArray array];
 	
 	
-	
-	
-	
+
 	
 	NSMutableArray *section1 = [NSMutableArray array];
 	
