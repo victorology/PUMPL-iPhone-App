@@ -15,6 +15,9 @@
 #import "UIImage+Photochrom.h"
 #import "UIImage+Vintage.h"
 #import "UIImage+Lomo.h"
+#import "UIImage+PlasticEye.h"
+#import "UIImage+Polaroid.h"
+#import "UIImage+Redscale.h"
 
 
 @implementation PUMPLAppDelegate
@@ -34,7 +37,9 @@
     [UIImage loadVintageCurves];
     [UIImage loadPhotochromCurves];
     [UIImage loadLomoCurves];
-	
+    [UIImage loadPlasticEyeCurves];
+    [UIImage loadPolaroidCurves];
+    [UIImage loadRedscaleCurves];
 	
 	
 	

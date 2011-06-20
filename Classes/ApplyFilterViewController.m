@@ -13,6 +13,9 @@
 #import "UIImage+Vintage.h"
 #import "UIImage+Lomo.h"
 #import "UIImage+Monochrome.h"
+#import "UIImage+PlasticEye.h"
+#import "UIImage+Polaroid.h"
+#import "UIImage+Redscale.h"
 #import "UIImage+Resize.h"
 
 
@@ -28,6 +31,9 @@
 #define kFilterTagLomo 4
 #define kFilterTagPhotochrome 5
 #define kFilterTagMonochrome 6
+#define kFilterTagPlasticEye 7
+#define kFilterTagPolaroid 8
+#define kFilterTagRedscale 9
 
 
 #define kCropButtonDuringFull 0
@@ -374,13 +380,119 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
 													 mFilterButtonScrollView.contentSize.height);
 	
-	
-	
-	[mFilterButtonScrollView addSubview:monochromeLabel];
+    [mFilterButtonScrollView addSubview:monochromeLabel];
 	[mFilterButtonScrollView addSubview:monochromeButton];
 	[monochromeLabel release];
 	[monochromeButton release];
+
+	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kPaddingBetweenFilterButtons,
+													 mFilterButtonScrollView.contentSize.height);												 
+    
+    
+    
+    //////////
+    
+	//Redscale Filter
 	
+	UILabel *redscaleLabel = [[UILabel alloc] initWithFrame:CGRectMake((6 * (kPaddingBetweenFilterButtons + kFilterLabelWidth)),
+                                                                         lableYCoordinate,
+                                                                         kFilterLabelWidth,
+                                                                         kFilterLabelHeight)];
+	redscaleLabel.text = @"Redscale";
+	redscaleLabel.font = [UIFont boldSystemFontOfSize:11];
+	redscaleLabel.textAlignment = UITextAlignmentCenter;
+	redscaleLabel.textColor = [UIColor whiteColor];
+	redscaleLabel.backgroundColor = [UIColor clearColor];
+	
+	UIButton *redscaleButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonXCoordinate + redscaleLabel.frame.origin.x,
+                                                                            buttonYCoordinate,
+                                                                            kFilterButtonSide,
+                                                                            kFilterButtonSide)];
+	[redscaleButton setImage:[UIImage imageNamed:@"Icon.png"] forState:UIControlStateNormal];
+	redscaleButton.tag = kFilterTagRedscale;
+	[redscaleButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
+	redscaleButton.imageView.layer.masksToBounds = YES;
+	redscaleButton.imageView.layer.cornerRadius = 7.5;
+	
+	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
+													 mFilterButtonScrollView.contentSize.height);
+        
+    [mFilterButtonScrollView addSubview:redscaleLabel];
+	[mFilterButtonScrollView addSubview:redscaleButton];
+	[redscaleLabel release];
+	[redscaleButton release];
+
+	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kPaddingBetweenFilterButtons,
+													 mFilterButtonScrollView.contentSize.height);												 
+    
+    
+	//PlasticEye Filter
+	
+	UILabel *plasticEyeLabel = [[UILabel alloc] initWithFrame:CGRectMake((7 * (kPaddingBetweenFilterButtons + kFilterLabelWidth)),
+                                                                  lableYCoordinate,
+                                                                  kFilterLabelWidth,
+                                                                  kFilterLabelHeight)];
+	plasticEyeLabel.text = @"PlasticEye";
+	plasticEyeLabel.font = [UIFont boldSystemFontOfSize:11];
+	plasticEyeLabel.textAlignment = UITextAlignmentCenter;
+	plasticEyeLabel.textColor = [UIColor whiteColor];
+	plasticEyeLabel.backgroundColor = [UIColor clearColor];
+	
+	UIButton *plasticEyeButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonXCoordinate + plasticEyeLabel.frame.origin.x,
+                                                                     buttonYCoordinate,
+                                                                     kFilterButtonSide,
+                                                                     kFilterButtonSide)];
+	[plasticEyeButton setImage:[UIImage imageNamed:@"Icon.png"] forState:UIControlStateNormal];
+	plasticEyeButton.tag = kFilterTagPlasticEye;
+	[plasticEyeButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
+	plasticEyeButton.imageView.layer.masksToBounds = YES;
+	plasticEyeButton.imageView.layer.cornerRadius = 7.5;
+	
+	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
+													 mFilterButtonScrollView.contentSize.height);
+    
+    [mFilterButtonScrollView addSubview:plasticEyeLabel];
+	[mFilterButtonScrollView addSubview:plasticEyeButton];
+	[plasticEyeLabel release];
+	[plasticEyeButton release];
+    
+	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kPaddingBetweenFilterButtons,
+													 mFilterButtonScrollView.contentSize.height);												 
+    
+    
+ 	//Polaroid Filter
+	
+	UILabel *polaroidLabel = [[UILabel alloc] initWithFrame:CGRectMake((8 * (kPaddingBetweenFilterButtons + kFilterLabelWidth)),
+                                                                  lableYCoordinate,
+                                                                  kFilterLabelWidth,
+                                                                  kFilterLabelHeight)];
+	polaroidLabel.text = @"Polaroid";
+	polaroidLabel.font = [UIFont boldSystemFontOfSize:11];
+	polaroidLabel.textAlignment = UITextAlignmentCenter;
+	polaroidLabel.textColor = [UIColor whiteColor];
+	polaroidLabel.backgroundColor = [UIColor clearColor];
+	
+	UIButton *polaroidButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonXCoordinate + polaroidLabel.frame.origin.x,
+                                                                     buttonYCoordinate,
+                                                                     kFilterButtonSide,
+                                                                     kFilterButtonSide)];
+	[polaroidButton setImage:[UIImage imageNamed:@"Icon.png"] forState:UIControlStateNormal];
+	polaroidButton.tag = kFilterTagPolaroid;
+	[polaroidButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
+	polaroidButton.imageView.layer.masksToBounds = YES;
+	polaroidButton.imageView.layer.cornerRadius = 7.5;
+	
+	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
+													 mFilterButtonScrollView.contentSize.height);
+    
+    [mFilterButtonScrollView addSubview:polaroidLabel];
+	[mFilterButtonScrollView addSubview:polaroidButton];
+	[polaroidLabel release];
+	[polaroidButton release];
+
+	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kPaddingBetweenFilterButtons,
+													 mFilterButtonScrollView.contentSize.height);												 
+    
 }
 
 
@@ -529,7 +641,28 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 			_wasFilterSelected = YES;
 			break;
 		}
-			
+
+		case kFilterTagPlasticEye:
+		{
+			self.finalImage = [selectedImage imageByApplyingPlasticEyeFilter];
+			_wasFilterSelected = YES;
+			break;
+		}
+
+		case kFilterTagPolaroid:
+		{
+			self.finalImage = [selectedImage imageByApplyingPolaroidFilter];
+			_wasFilterSelected = YES;
+			break;
+		}
+
+		case kFilterTagRedscale:
+		{
+			self.finalImage = [selectedImage imageByApplyingRedscaleFilter];
+			_wasFilterSelected = YES;
+			break;
+		}
+            
 		default:
 			break;
 	}
