@@ -120,6 +120,12 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		92AF862813AFDA9A00C8F775 /* UIImage+PlasticEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862313AFDA9700C8F775 /* UIImage+PlasticEye.m */; };
+		92AF862913AFDA9A00C8F775 /* UIImage+Polaroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862513AFDA9800C8F775 /* UIImage+Polaroid.m */; };
+		92AF862A13AFDA9A00C8F775 /* UIImage+Redscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862713AFDA9900C8F775 /* UIImage+Redscale.m */; };
+		92AF862F13AFDAC200C8F775 /* PlasticEye.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862C13AFDAC200C8F775 /* PlasticEye.c3d */; };
+		92AF863013AFDAC200C8F775 /* polaroid.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862D13AFDAC200C8F775 /* polaroid.c3d */; };
+		92AF863113AFDAC200C8F775 /* redscale.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862E13AFDAC200C8F775 /* redscale.c3d */; };
 		C30692511308604A0062BA61 /* EditScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C306924F1308604A0062BA61 /* EditScrollViewController.m */; };
 		C30692521308604A0062BA61 /* EditScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C30692501308604A0062BA61 /* EditScrollViewController.xib */; };
 		C37E330A1318F8A400B812A1 /* img-tab-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33041318F8A400B812A1 /* img-tab-photo.png */; };
@@ -324,6 +330,15 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PUMPL_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUMPL_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PUMPL-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PUMPL-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		92AF862213AFDA9600C8F775 /* UIImage+PlasticEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PlasticEye.h"; sourceTree = "<group>"; };
+		92AF862313AFDA9700C8F775 /* UIImage+PlasticEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PlasticEye.m"; sourceTree = "<group>"; };
+		92AF862413AFDA9700C8F775 /* UIImage+Polaroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Polaroid.h"; sourceTree = "<group>"; };
+		92AF862513AFDA9800C8F775 /* UIImage+Polaroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Polaroid.m"; sourceTree = "<group>"; };
+		92AF862613AFDA9800C8F775 /* UIImage+Redscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Redscale.h"; sourceTree = "<group>"; };
+		92AF862713AFDA9900C8F775 /* UIImage+Redscale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Redscale.m"; sourceTree = "<group>"; };
+		92AF862C13AFDAC200C8F775 /* PlasticEye.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlasticEye.c3d; sourceTree = "<group>"; };
+		92AF862D13AFDAC200C8F775 /* polaroid.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = polaroid.c3d; sourceTree = "<group>"; };
+		92AF862E13AFDAC200C8F775 /* redscale.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = redscale.c3d; sourceTree = "<group>"; };
 		C306924E1308604A0062BA61 /* EditScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditScrollViewController.h; sourceTree = "<group>"; };
 		C306924F1308604A0062BA61 /* EditScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditScrollViewController.m; sourceTree = "<group>"; };
 		C30692501308604A0062BA61 /* EditScrollViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditScrollViewController.xib; sourceTree = "<group>"; };
@@ -643,6 +658,12 @@
 		0BFFC34B136EF5E2006AD565 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
+				92AF862213AFDA9600C8F775 /* UIImage+PlasticEye.h */,
+				92AF862313AFDA9700C8F775 /* UIImage+PlasticEye.m */,
+				92AF862413AFDA9700C8F775 /* UIImage+Polaroid.h */,
+				92AF862513AFDA9800C8F775 /* UIImage+Polaroid.m */,
+				92AF862613AFDA9800C8F775 /* UIImage+Redscale.h */,
+				92AF862713AFDA9900C8F775 /* UIImage+Redscale.m */,
 				0BFFC394136EF902006AD565 /* filter resources */,
 				0BFFC34C136EF5E2006AD565 /* UIImage+Photochrom.h */,
 				0BFFC34D136EF5E2006AD565 /* UIImage+Photochrom.m */,
@@ -667,6 +688,9 @@
 		0BFFC394136EF902006AD565 /* filter resources */ = {
 			isa = PBXGroup;
 			children = (
+				92AF862C13AFDAC200C8F775 /* PlasticEye.c3d */,
+				92AF862D13AFDAC200C8F775 /* polaroid.c3d */,
+				92AF862E13AFDAC200C8F775 /* redscale.c3d */,
 				0BFFC380136EF8EF006AD565 /* vintage.c3d */,
 				0BFFC381136EF8EF006AD565 /* photochrom.c3d */,
 				0BFFC382136EF8EF006AD565 /* cp_red_curve.txt */,
@@ -841,6 +865,9 @@
 				0B8EFBD513A9E1B300F5F517 /* LICENSE in Resources */,
 				0B8EFBD613A9E1B300F5F517 /* README.md in Resources */,
 				0B8EFBE313A9E2FA00F5F517 /* photoDefault.png in Resources */,
+				92AF862F13AFDAC200C8F775 /* PlasticEye.c3d in Resources */,
+				92AF863013AFDAC200C8F775 /* polaroid.c3d in Resources */,
+				92AF863113AFDAC200C8F775 /* redscale.c3d in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,6 +938,9 @@
 				0B8EFBDB13A9E1B300F5F517 /* KTPhotoView+SDWebImage.m in Sources */,
 				0B8EFBDC13A9E1B300F5F517 /* KTThumbView+SDWebImage.m in Sources */,
 				0B8EFBE113A9E25C00F5F517 /* HomeScreenViewController.m in Sources */,
+				92AF862813AFDA9A00C8F775 /* UIImage+PlasticEye.m in Sources */,
+				92AF862913AFDA9A00C8F775 /* UIImage+Polaroid.m in Sources */,
+				92AF862A13AFDA9A00C8F775 /* UIImage+Redscale.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
