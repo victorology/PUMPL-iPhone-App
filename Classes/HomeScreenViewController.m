@@ -192,8 +192,27 @@
 		
 		for(NSDictionary *photoDic in photos)
 		{
+			BOOL retina = NO;
+
+			if([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
+				retina = [[UIScreen mainScreen] scale] == 2.0 ? YES : NO;
+			
+			
+			
+			NSString *smallUrl = nil;
+			
+			if(retina)
+			{
+				smallUrl = [photoDic valueForKey:@"thumbnail_url_retina"];
+			}
+			else 
+			{
+				smallUrl = [photoDic valueForKey:@"thumbnail_url"];
+			}
+
+
+	
 			NSString *bigUrl = [photoDic valueForKey:@"original_url"];
-			NSString *smallUrl = [photoDic valueForKey:@"thumbnail_url"];
 			NSString *titleString = [photoDic valueForKey:@"title"];
 			
 			NSInteger imageHeight;

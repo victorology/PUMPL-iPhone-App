@@ -176,7 +176,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 																		buttonYCoordinate,
 																		kFilterButtonSide,
 																		kFilterButtonSide)];
-	[normalButton setImage:[UIImage imageNamed:@"normal.jpg"] forState:UIControlStateNormal];
+	[normalButton setImage:[UIImage imageNamed:@"Normal.jpeg"] forState:UIControlStateNormal];
 	normalButton.tag = kFilterTagNormal;
 	[normalButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	normalButton.imageView.layer.masksToBounds = YES;
@@ -214,7 +214,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 																		buttonYCoordinate,
 																		kFilterButtonSide,
 																		kFilterButtonSide)];
-	[xProButton setImage:[UIImage imageNamed:@"xpro.jpg"] forState:UIControlStateNormal];
+	[xProButton setImage:[UIImage imageNamed:@"Xpro.jpeg"] forState:UIControlStateNormal];
 	xProButton.tag = kFilterTagXPro;
 	[xProButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	xProButton.imageView.layer.masksToBounds = YES;
@@ -252,7 +252,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 																	  buttonYCoordinate,
 																	  kFilterButtonSide,
 																	  kFilterButtonSide)];
-	[vintageButton setImage:[UIImage imageNamed:@"vintage.jpg"] forState:UIControlStateNormal];
+	[vintageButton setImage:[UIImage imageNamed:@"Vintage.jpeg"] forState:UIControlStateNormal];
 	vintageButton.tag = kFilterTagVintage;
 	[vintageButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	vintageButton.imageView.layer.masksToBounds = YES;
@@ -290,7 +290,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 																		 buttonYCoordinate,
 																		 kFilterButtonSide,
 																		 kFilterButtonSide)];
-	[lomoButton setImage:[UIImage imageNamed:@"lomo.jpg"] forState:UIControlStateNormal];
+	[lomoButton setImage:[UIImage imageNamed:@"Lomo.jpeg"] forState:UIControlStateNormal];
 	lomoButton.tag = kFilterTagLomo;
 	[lomoButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	lomoButton.imageView.layer.masksToBounds = YES;
@@ -332,7 +332,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 																	  kFilterButtonSide,
 																	  kFilterButtonSide)];
 	
-	[photochromeButton setImage:[UIImage imageNamed:@"photochrom.jpg"] forState:UIControlStateNormal];
+	[photochromeButton setImage:[UIImage imageNamed:@"Photochrom.jpeg"] forState:UIControlStateNormal];
 	photochromeButton.tag = kFilterTagPhotochrome;
 	[photochromeButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	photochromeButton.imageView.layer.masksToBounds = YES;
@@ -371,7 +371,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 																			 buttonYCoordinate,
 																			 kFilterButtonSide,
 																			 kFilterButtonSide)];
-	[monochromeButton setImage:[UIImage imageNamed:@"monochrome.jpg"] forState:UIControlStateNormal];
+	[monochromeButton setImage:[UIImage imageNamed:@"Monochrome.jpeg"] forState:UIControlStateNormal];
 	monochromeButton.tag = kFilterTagMonochrome;
 	[monochromeButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	monochromeButton.imageView.layer.masksToBounds = YES;
@@ -408,7 +408,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
                                                                             buttonYCoordinate,
                                                                             kFilterButtonSide,
                                                                             kFilterButtonSide)];
-	[redscaleButton setImage:[UIImage imageNamed:@"Icon.png"] forState:UIControlStateNormal];
+	[redscaleButton setImage:[UIImage imageNamed:@"Redscale.jpeg"] forState:UIControlStateNormal];
 	redscaleButton.tag = kFilterTagRedscale;
 	[redscaleButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	redscaleButton.imageView.layer.masksToBounds = YES;
@@ -442,7 +442,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
                                                                      buttonYCoordinate,
                                                                      kFilterButtonSide,
                                                                      kFilterButtonSide)];
-	[plasticEyeButton setImage:[UIImage imageNamed:@"Icon.png"] forState:UIControlStateNormal];
+	[plasticEyeButton setImage:[UIImage imageNamed:@"Plastic Eye.jpeg"] forState:UIControlStateNormal];
 	plasticEyeButton.tag = kFilterTagPlasticEye;
 	[plasticEyeButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	plasticEyeButton.imageView.layer.masksToBounds = YES;
@@ -476,7 +476,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
                                                                      buttonYCoordinate,
                                                                      kFilterButtonSide,
                                                                      kFilterButtonSide)];
-	[polaroidButton setImage:[UIImage imageNamed:@"Icon.png"] forState:UIControlStateNormal];
+	[polaroidButton setImage:[UIImage imageNamed:@"Roid.jpeg"] forState:UIControlStateNormal];
 	polaroidButton.tag = kFilterTagPolaroid;
 	[polaroidButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
 	polaroidButton.imageView.layer.masksToBounds = YES;
@@ -855,34 +855,58 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 +(UIImage*)cropImage:(UIImage*)originalImage toRect:(CGRect)rect{
 	
+	CGRect newModifiedRect;
+	
+	if (originalImage.imageOrientation == UIImageOrientationLeft) {
+        
+		
+		
+    } 
+	else if (originalImage.imageOrientation == UIImageOrientationRight) 
+	{
+		newModifiedRect = CGRectMake(rect.origin.x, (rect.origin.y + 100), rect.size.width, rect.size.height);
+
+    } 
+	else if (originalImage.imageOrientation == UIImageOrientationUp) 
+	{
+       
+    } 
+	else if (originalImage.imageOrientation == UIImageOrientationDown) 
+	{
+        
+    }
 	
 	
-    CGImageRef imageRef = CGImageCreateWithImageInRect([originalImage CGImage], rect);
+	
+    CGImageRef imageRef = CGImageCreateWithImageInRect([originalImage CGImage], newModifiedRect);
 	
     CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
     CGColorSpaceRef colorSpaceInfo = CGImageGetColorSpace(imageRef);
-    CGContextRef bitmap = CGBitmapContextCreate(NULL, rect.size.width, rect.size.height, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
+    CGContextRef bitmap = CGBitmapContextCreate(NULL, newModifiedRect.size.width, newModifiedRect.size.height, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
 	
     if (originalImage.imageOrientation == UIImageOrientationLeft) {
         
+
 		CGContextRotateCTM (bitmap, radians(90));
-		CGContextTranslateCTM (bitmap, 0, -rect.size.height);
+		CGContextTranslateCTM (bitmap, 0, -newModifiedRect.size.height);
+		
+		
         
 		
     } else if (originalImage.imageOrientation == UIImageOrientationRight) {
 		
 		CGContextRotateCTM (bitmap, radians(-90));
-		CGContextTranslateCTM (bitmap, -rect.size.width, 0);
-        
+		CGContextTranslateCTM (bitmap, -newModifiedRect.size.width, 0);
+	
 		
     } else if (originalImage.imageOrientation == UIImageOrientationUp) {
         // NOTHING
     } else if (originalImage.imageOrientation == UIImageOrientationDown) {
-        CGContextTranslateCTM (bitmap, rect.size.width, rect.size.height);
+        CGContextTranslateCTM (bitmap, newModifiedRect.size.width, newModifiedRect.size.height);
         CGContextRotateCTM (bitmap, radians(-180.));
     }
 	
-    CGContextDrawImage(bitmap, CGRectMake(0, 0, rect.size.width, rect.size.height), imageRef);
+    CGContextDrawImage(bitmap, CGRectMake(0, 0, newModifiedRect.size.width, newModifiedRect.size.height), imageRef);
     CGImageRef ref = CGBitmapContextCreateImage(bitmap);
 	
     UIImage *resultImage=[UIImage imageWithCGImage:ref];

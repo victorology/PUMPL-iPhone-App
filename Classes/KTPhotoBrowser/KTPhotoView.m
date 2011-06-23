@@ -30,20 +30,36 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-   self = [super initWithFrame:frame];
+	
+	
+	
+   CGRect newFrame = CGRectMake(frame.origin.x,
+								 frame.origin.y,
+								 frame.size.width,
+								 480);
+	
+	
+   //Harman
+   //self = [super initWithFrame:frame];
+   self = [super initWithFrame:newFrame];
    if (self) {
       [self setDelegate:self];
       [self setMaximumZoomScale:5.0];
       [self setShowsHorizontalScrollIndicator:NO];
       [self setShowsVerticalScrollIndicator:NO];
-      [self loadSubviewsWithFrame:frame];
+      //Harman
+	  //[self loadSubviewsWithFrame:frame];
+	  [self loadSubviewsWithFrame:newFrame];
    }
    return self;
 }
 
 - (void)loadSubviewsWithFrame:(CGRect)frame
 {
+	
    imageView_ = [[UIImageView alloc] initWithFrame:frame];
+	
+	
    [imageView_ setContentMode:UIViewContentModeScaleAspectFit];
    [self addSubview:imageView_];
 	
@@ -58,7 +74,8 @@
 {
    [super layoutSubviews];
 
-   if ([self isZoomed] == NO && CGRectEqualToRect([self bounds], [imageView_ frame]) == NO) {
+   if ([self isZoomed] == NO && CGRectEqualToRect([self bounds], [imageView_ frame]) == NO) 
+   {
       [imageView_ setFrame:[self bounds]];
    }
 	

@@ -10,6 +10,7 @@
 #import "KTPhotoBrowserDataSource.h"
 #import "KTPhotoBrowserGlobal.h"
 #import "KTPhotoView.h"
+#import "TempScrollView.h"
 
 const CGFloat ktkDefaultPortraitToolbarHeight   = 44;
 const CGFloat ktkDefaultLandscapeToolbarHeight  = 33;
@@ -85,7 +86,7 @@ const CGFloat ktkDefaultToolbarHeight = 44;
    [super loadView];
    
    CGRect scrollFrame = [self frameForPagingScrollView];
-   UIScrollView *newView = [[UIScrollView alloc] initWithFrame:scrollFrame];
+   UIScrollView *newView = [[TempScrollView alloc] initWithFrame:scrollFrame];
    [newView setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
    [newView setDelegate:self];
    
@@ -250,6 +251,7 @@ const CGFloat ktkDefaultToolbarHeight = 44;
    [self setTitleWithCurrentPhotoIndex];
    [self toggleNavButtons];
    [self startChromeDisplayTimer];
+	
 }
 
 - (void)viewWillDisappear:(BOOL)animated 
@@ -259,12 +261,16 @@ const CGFloat ktkDefaultToolbarHeight = 44;
   [navbar setTranslucent:navbarWasTranslucent_];
   [[UIApplication sharedApplication] setStatusBarStyle:statusBarStyle_ animated:YES];
   [super viewWillDisappear:animated];
+	
+	
 }
 
 - (void)viewDidDisappear:(BOOL)animated 
 {
    [self cancelChromeDisplayTimer];
    [super viewDidDisappear:animated];
+
+	
 }
 
 - (void)deleteCurrentPhoto 
@@ -316,6 +322,8 @@ const CGFloat ktkDefaultToolbarHeight = 44;
    // landscape orientation, the frame will still be in portrait because the pagingScrollView is the root view controller's
    // view, so its frame is in window coordinate space, which is never rotated. Its bounds, however, will be in landscape
    // because it has a rotation transform applied.
+   
+
    CGRect bounds = [scrollView_ bounds];
    CGRect pageFrame = bounds;
    pageFrame.size.width -= (2 * PADDING);
@@ -636,8 +644,10 @@ const CGFloat ktkDefaultToolbarHeight = 44;
 		
 		CGSize photoTitleSize = [photoTitle sizeWithFont:[UIFont boldSystemFontOfSize:kTitleLabelFontSize] constrainedToSize:CGSizeMake(300, 9999) lineBreakMode:UILineBreakModeWordWrap];
 		
-		CGFloat yCoordinateOfTitleLabel = self.view.frame.size.height - (ktkDefaultToolbarHeight + photoTitleSize.height + kPaddingBetweenTitleAndToolbar);
-		titleLabel_.frame = CGRectMake(0, yCoordinateOfTitleLabel, 300, photoTitleSize.height);
+		
+		CGFloat yCoordinateOfTitleLabel = 480 - (ktkDefaultToolbarHeight + photoTitleSize.height + kPaddingBetweenTitleAndToolbar);
+
+		titleLabel_.frame = CGRectMake(0, yCoordinateOfTitleLabel, 300, photoTitleSize.height);		
 		titleLabel_.text = photoTitle;
 	}
 }

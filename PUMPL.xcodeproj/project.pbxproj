@@ -11,6 +11,16 @@
 		0B08F45912DCCDAB0097EDE8 /* img-bar-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B08F45712DCCDAB0097EDE8 /* img-bar-logo@2x.png */; };
 		0B08F50F12DCD5B90097EDE8 /* SelectedPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B08F50D12DCD5B90097EDE8 /* SelectedPhotoViewController.m */; };
 		0B08F51012DCD5B90097EDE8 /* SelectedPhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B08F50E12DCD5B90097EDE8 /* SelectedPhotoViewController.xib */; };
+		0B10378413B3000E00DD5017 /* Lomo.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10377B13B3000D00DD5017 /* Lomo.jpeg */; };
+		0B10378513B3000E00DD5017 /* Monochrome.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10377C13B3000D00DD5017 /* Monochrome.jpeg */; };
+		0B10378613B3000E00DD5017 /* Normal.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10377D13B3000E00DD5017 /* Normal.jpeg */; };
+		0B10378713B3000E00DD5017 /* Photochrom.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10377E13B3000E00DD5017 /* Photochrom.jpeg */; };
+		0B10378813B3000E00DD5017 /* Plastic Eye.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10377F13B3000E00DD5017 /* Plastic Eye.jpeg */; };
+		0B10378913B3000E00DD5017 /* Redscale.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10378013B3000E00DD5017 /* Redscale.jpeg */; };
+		0B10378A13B3000E00DD5017 /* Roid.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10378113B3000E00DD5017 /* Roid.jpeg */; };
+		0B10378B13B3000E00DD5017 /* Vintage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10378213B3000E00DD5017 /* Vintage.jpeg */; };
+		0B10378C13B3000E00DD5017 /* Xpro.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10378313B3000E00DD5017 /* Xpro.jpeg */; };
+		0B10381413B31ECE00DD5017 /* TempScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B10381313B31ECE00DD5017 /* TempScrollView.m */; };
 		0B43169B1377A44600B88C5D /* DDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43169A1377A44600B88C5D /* DDProgressView.m */; };
 		0B4318D31378B81800B88C5D /* TumblrLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4318D11378B81800B88C5D /* TumblrLoginViewController.m */; };
 		0B4318D41378B81800B88C5D /* TumblrLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4318D21378B81800B88C5D /* TumblrLoginViewController.xib */; };
@@ -87,12 +97,6 @@
 		0BE9F5C0139F391F002C1D3A /* takePictureButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE9F5BF139F391F002C1D3A /* takePictureButton.png */; };
 		0BE9F5C3139F39E9002C1D3A /* cameraOverlayBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE9F5C2139F39E9002C1D3A /* cameraOverlayBar.png */; };
 		0BE9F5CA139F3CBD002C1D3A /* cancelImagePicker.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE9F5C9139F3CBD002C1D3A /* cancelImagePicker.png */; };
-		0BFBBB7C13973BC100A3A0E4 /* lomo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0BFBBB7613973BC100A3A0E4 /* lomo.jpg */; };
-		0BFBBB7D13973BC100A3A0E4 /* monochrome.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0BFBBB7713973BC100A3A0E4 /* monochrome.jpg */; };
-		0BFBBB7E13973BC100A3A0E4 /* normal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0BFBBB7813973BC100A3A0E4 /* normal.jpg */; };
-		0BFBBB7F13973BC100A3A0E4 /* photochrom.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0BFBBB7913973BC100A3A0E4 /* photochrom.jpg */; };
-		0BFBBB8013973BC100A3A0E4 /* vintage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0BFBBB7A13973BC100A3A0E4 /* vintage.jpg */; };
-		0BFBBB8113973BC100A3A0E4 /* xpro.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 0BFBBB7B13973BC100A3A0E4 /* xpro.jpg */; };
 		0BFFC25F136ED5FB006AD565 /* ApplyFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFFC25D136ED5FB006AD565 /* ApplyFilterViewController.m */; };
 		0BFFC260136ED5FB006AD565 /* ApplyFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFFC25E136ED5FB006AD565 /* ApplyFilterViewController.xib */; };
 		0BFFC35C136EF5E2006AD565 /* UIImage+Photochrom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFFC34D136EF5E2006AD565 /* UIImage+Photochrom.m */; };
@@ -146,6 +150,17 @@
 		0B08F50C12DCD5B90097EDE8 /* SelectedPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectedPhotoViewController.h; sourceTree = "<group>"; };
 		0B08F50D12DCD5B90097EDE8 /* SelectedPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectedPhotoViewController.m; sourceTree = "<group>"; };
 		0B08F50E12DCD5B90097EDE8 /* SelectedPhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedPhotoViewController.xib; sourceTree = "<group>"; };
+		0B10377B13B3000D00DD5017 /* Lomo.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Lomo.jpeg; sourceTree = "<group>"; };
+		0B10377C13B3000D00DD5017 /* Monochrome.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Monochrome.jpeg; sourceTree = "<group>"; };
+		0B10377D13B3000E00DD5017 /* Normal.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Normal.jpeg; sourceTree = "<group>"; };
+		0B10377E13B3000E00DD5017 /* Photochrom.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Photochrom.jpeg; sourceTree = "<group>"; };
+		0B10377F13B3000E00DD5017 /* Plastic Eye.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Plastic Eye.jpeg"; sourceTree = "<group>"; };
+		0B10378013B3000E00DD5017 /* Redscale.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Redscale.jpeg; sourceTree = "<group>"; };
+		0B10378113B3000E00DD5017 /* Roid.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Roid.jpeg; sourceTree = "<group>"; };
+		0B10378213B3000E00DD5017 /* Vintage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Vintage.jpeg; sourceTree = "<group>"; };
+		0B10378313B3000E00DD5017 /* Xpro.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Xpro.jpeg; sourceTree = "<group>"; };
+		0B10381213B31ECE00DD5017 /* TempScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempScrollView.h; sourceTree = "<group>"; };
+		0B10381313B31ECE00DD5017 /* TempScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempScrollView.m; sourceTree = "<group>"; };
 		0B4316991377A44600B88C5D /* DDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDProgressView.h; sourceTree = "<group>"; };
 		0B43169A1377A44600B88C5D /* DDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDProgressView.m; sourceTree = "<group>"; };
 		0B4318D01378B81800B88C5D /* TumblrLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrLoginViewController.h; sourceTree = "<group>"; };
@@ -280,12 +295,6 @@
 		0BE9F5BF139F391F002C1D3A /* takePictureButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takePictureButton.png; sourceTree = "<group>"; };
 		0BE9F5C2139F39E9002C1D3A /* cameraOverlayBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraOverlayBar.png; sourceTree = "<group>"; };
 		0BE9F5C9139F3CBD002C1D3A /* cancelImagePicker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancelImagePicker.png; sourceTree = "<group>"; };
-		0BFBBB7613973BC100A3A0E4 /* lomo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lomo.jpg; sourceTree = "<group>"; };
-		0BFBBB7713973BC100A3A0E4 /* monochrome.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = monochrome.jpg; sourceTree = "<group>"; };
-		0BFBBB7813973BC100A3A0E4 /* normal.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = normal.jpg; sourceTree = "<group>"; };
-		0BFBBB7913973BC100A3A0E4 /* photochrom.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photochrom.jpg; sourceTree = "<group>"; };
-		0BFBBB7A13973BC100A3A0E4 /* vintage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vintage.jpg; sourceTree = "<group>"; };
-		0BFBBB7B13973BC100A3A0E4 /* xpro.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xpro.jpg; sourceTree = "<group>"; };
 		0BFFC230136ED480006AD565 /* horizontal.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = horizontal.JPG; sourceTree = "<group>"; };
 		0BFFC231136ED480006AD565 /* vertical.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vertical.JPG; sourceTree = "<group>"; };
 		0BFFC25C136ED5FB006AD565 /* ApplyFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyFilterViewController.h; sourceTree = "<group>"; };
@@ -480,6 +489,8 @@
 				0B8EFBA613A9900900F5F517 /* KTThumbsViewController.m */,
 				0B8EFBA713A9900900F5F517 /* KTThumbView.h */,
 				0B8EFBA813A9900900F5F517 /* KTThumbView.m */,
+				0B10381213B31ECE00DD5017 /* TempScrollView.h */,
+				0B10381313B31ECE00DD5017 /* TempScrollView.m */,
 			);
 			path = KTPhotoBrowser;
 			sourceTree = "<group>";
@@ -635,12 +646,15 @@
 		0BFBBB7213973B3D00A3A0E4 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				0BFBBB7613973BC100A3A0E4 /* lomo.jpg */,
-				0BFBBB7713973BC100A3A0E4 /* monochrome.jpg */,
-				0BFBBB7813973BC100A3A0E4 /* normal.jpg */,
-				0BFBBB7913973BC100A3A0E4 /* photochrom.jpg */,
-				0BFBBB7A13973BC100A3A0E4 /* vintage.jpg */,
-				0BFBBB7B13973BC100A3A0E4 /* xpro.jpg */,
+				0B10377B13B3000D00DD5017 /* Lomo.jpeg */,
+				0B10377C13B3000D00DD5017 /* Monochrome.jpeg */,
+				0B10377D13B3000E00DD5017 /* Normal.jpeg */,
+				0B10377E13B3000E00DD5017 /* Photochrom.jpeg */,
+				0B10377F13B3000E00DD5017 /* Plastic Eye.jpeg */,
+				0B10378013B3000E00DD5017 /* Redscale.jpeg */,
+				0B10378113B3000E00DD5017 /* Roid.jpeg */,
+				0B10378213B3000E00DD5017 /* Vintage.jpeg */,
+				0B10378313B3000E00DD5017 /* Xpro.jpeg */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -849,12 +863,6 @@
 				0BCEF466136FC6F300D32532 /* TwitterLoginViewController.xib in Resources */,
 				0BCDAF361372D25F005C3CB6 /* FacebookConnectionWebViewController.xib in Resources */,
 				0B4318D41378B81800B88C5D /* TumblrLoginViewController.xib in Resources */,
-				0BFBBB7C13973BC100A3A0E4 /* lomo.jpg in Resources */,
-				0BFBBB7D13973BC100A3A0E4 /* monochrome.jpg in Resources */,
-				0BFBBB7E13973BC100A3A0E4 /* normal.jpg in Resources */,
-				0BFBBB7F13973BC100A3A0E4 /* photochrom.jpg in Resources */,
-				0BFBBB8013973BC100A3A0E4 /* vintage.jpg in Resources */,
-				0BFBBB8113973BC100A3A0E4 /* xpro.jpg in Resources */,
 				0BE9F54A139F3091002C1D3A /* Default.png in Resources */,
 				0BE9F54B139F3091002C1D3A /* Default@2x.png in Resources */,
 				0BE9F5C0139F391F002C1D3A /* takePictureButton.png in Resources */,
@@ -868,6 +876,15 @@
 				92AF862F13AFDAC200C8F775 /* PlasticEye.c3d in Resources */,
 				92AF863013AFDAC200C8F775 /* polaroid.c3d in Resources */,
 				92AF863113AFDAC200C8F775 /* redscale.c3d in Resources */,
+				0B10378413B3000E00DD5017 /* Lomo.jpeg in Resources */,
+				0B10378513B3000E00DD5017 /* Monochrome.jpeg in Resources */,
+				0B10378613B3000E00DD5017 /* Normal.jpeg in Resources */,
+				0B10378713B3000E00DD5017 /* Photochrom.jpeg in Resources */,
+				0B10378813B3000E00DD5017 /* Plastic Eye.jpeg in Resources */,
+				0B10378913B3000E00DD5017 /* Redscale.jpeg in Resources */,
+				0B10378A13B3000E00DD5017 /* Roid.jpeg in Resources */,
+				0B10378B13B3000E00DD5017 /* Vintage.jpeg in Resources */,
+				0B10378C13B3000E00DD5017 /* Xpro.jpeg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -941,6 +958,7 @@
 				92AF862813AFDA9A00C8F775 /* UIImage+PlasticEye.m in Sources */,
 				92AF862913AFDA9A00C8F775 /* UIImage+Polaroid.m in Sources */,
 				92AF862A13AFDA9A00C8F775 /* UIImage+Redscale.m in Sources */,
+				0B10381413B31ECE00DD5017 /* TempScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -967,7 +985,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harmandeep Singh (7R2J5T5A4M)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PUMPL_Prefix.pch;
@@ -979,7 +997,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "095C0416-9E99-480D-AE53-19F96C376F75";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = "Ad Hoc";
@@ -988,7 +1006,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harmandeep Singh (7R2J5T5A4M)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1002,7 +1020,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "095C0416-9E99-480D-AE53-19F96C376F75";
 			};
 			name = Debug;
 		};

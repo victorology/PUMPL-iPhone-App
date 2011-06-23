@@ -118,7 +118,7 @@
 
 - (CGSize)thumbSize
 {
-	return CGSizeMake(90, 120);
+	return CGSizeMake(100, 100);
 }
 
 

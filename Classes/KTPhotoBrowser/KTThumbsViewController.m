@@ -78,14 +78,19 @@
     navbarWasTranslucent_ = [navbar isTranslucent];
   }
   // Then ensure translucency to match the look of Apple's Photos app.
-  [navbar setTranslucent:YES];
+  
+  //Harman
+  //[navbar setTranslucent:YES];
   [super viewWillAppear:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
   // Restore old translucency when we pop this controller.
-  UINavigationBar *navbar = [[self navigationController] navigationBar];
-  [navbar setTranslucent:navbarWasTranslucent_];
+  
+	
+  //Harman
+  //UINavigationBar *navbar = [[self navigationController] navigationBar];
+  //[navbar setTranslucent:navbarWasTranslucent_];
   [super viewWillDisappear:animated];
 }
 
