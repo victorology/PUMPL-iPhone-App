@@ -239,32 +239,27 @@
 {
 	
 	/*
-	//UIImage *imagePicked = [UIImage imageNamed:@"vertical.jpg"];
-	UIImage *imagePicked = [UIImage imageNamed:@"horizontal.jpg"];
+	UIImage *imagePicked = [UIImage imageNamed:@"vertical.jpg"];
+	//UIImage *imagePicked = [UIImage imageNamed:@"horizontal.jpg"];
 	UIImageWriteToSavedPhotosAlbum(imagePicked, nil, nil, nil);
 	
 	
 	
 	if(imagePicked)
 	{
-		NSInteger selectedImageQuality = [[DataManager sharedDataManager] imageQualitySetting];
+		//NSInteger selectedImageQuality = [[DataManager sharedDataManager] imageQualitySetting];
 		
-		
-		
-		UIImage *modifiedImage = [self resizeImage:imagePicked forImageQuality:selectedImageQuality];
-		UIImage *squareImage = [self croppedImageToSize:CGSizeMake(600, 600) fromFullImage:imagePicked];
 		
 		ApplyFilterViewController *viewController = [[ApplyFilterViewController alloc] initWithNibName:@"ApplyFilterViewController" bundle:nil];
 		viewController.hidesBottomBarWhenPushed = YES;
-		viewController.fullImageForBackUp = modifiedImage;
-		viewController.squareImageForBackUp = squareImage;
+		viewController.originalImage = imagePicked;
 		viewController.imageClickedInSquareMode = NO;
 		[self.navigationController pushViewController:viewController animated:NO];
 		[viewController release];
 		
 	}
-	
-	 */
+	*/
+	 
 	
 	[picker dismissModalViewControllerAnimated:YES];
 }
