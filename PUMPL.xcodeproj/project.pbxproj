@@ -993,14 +993,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Classes/Build/Products/three20;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
 				SDKROOT = iphoneos;
 			};
 			name = "Ad Hoc";
@@ -1073,13 +1073,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Classes/Build/Products/three20;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1088,14 +1088,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Classes/Build/Products/three20;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
