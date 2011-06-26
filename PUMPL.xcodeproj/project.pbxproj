@@ -21,6 +21,9 @@
 		0B10378B13B3000E00DD5017 /* Vintage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10378213B3000E00DD5017 /* Vintage.jpeg */; };
 		0B10378C13B3000E00DD5017 /* Xpro.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10378313B3000E00DD5017 /* Xpro.jpeg */; };
 		0B10381413B31ECE00DD5017 /* TempScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B10381313B31ECE00DD5017 /* TempScrollView.m */; };
+		0B10392413B49B3C00DD5017 /* vertical.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0BFFC231136ED480006AD565 /* vertical.JPG */; };
+		0B1039AE13B4A63D00DD5017 /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1039AD13B4A63D00DD5017 /* UIImage-Extensions.m */; };
+		0B103A2113B4B2FA00DD5017 /* horizontal.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0BFFC230136ED480006AD565 /* horizontal.JPG */; };
 		0B43169B1377A44600B88C5D /* DDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43169A1377A44600B88C5D /* DDProgressView.m */; };
 		0B4318D31378B81800B88C5D /* TumblrLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4318D11378B81800B88C5D /* TumblrLoginViewController.m */; };
 		0B4318D41378B81800B88C5D /* TumblrLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4318D21378B81800B88C5D /* TumblrLoginViewController.xib */; };
@@ -161,6 +164,8 @@
 		0B10378313B3000E00DD5017 /* Xpro.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Xpro.jpeg; sourceTree = "<group>"; };
 		0B10381213B31ECE00DD5017 /* TempScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempScrollView.h; sourceTree = "<group>"; };
 		0B10381313B31ECE00DD5017 /* TempScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempScrollView.m; sourceTree = "<group>"; };
+		0B1039AC13B4A63D00DD5017 /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
+		0B1039AD13B4A63D00DD5017 /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
 		0B4316991377A44600B88C5D /* DDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDProgressView.h; sourceTree = "<group>"; };
 		0B43169A1377A44600B88C5D /* DDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDProgressView.m; sourceTree = "<group>"; };
 		0B4318D01378B81800B88C5D /* TumblrLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrLoginViewController.h; sourceTree = "<group>"; };
@@ -561,6 +566,8 @@
 				0BD31A4512EE6CE900C7228F /* UIImage+Resize.m */,
 				0BD31A4612EE6CE900C7228F /* UIImage+RoundedCorner.h */,
 				0BD31A4712EE6CE900C7228F /* UIImage+RoundedCorner.m */,
+				0B1039AC13B4A63D00DD5017 /* UIImage-Extensions.h */,
+				0B1039AD13B4A63D00DD5017 /* UIImage-Extensions.m */,
 			);
 			path = "UIImage-categories";
 			sourceTree = "<group>";
@@ -885,6 +892,8 @@
 				0B10378A13B3000E00DD5017 /* Roid.jpeg in Resources */,
 				0B10378B13B3000E00DD5017 /* Vintage.jpeg in Resources */,
 				0B10378C13B3000E00DD5017 /* Xpro.jpeg in Resources */,
+				0B10392413B49B3C00DD5017 /* vertical.JPG in Resources */,
+				0B103A2113B4B2FA00DD5017 /* horizontal.JPG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -959,6 +968,7 @@
 				92AF862913AFDA9A00C8F775 /* UIImage+Polaroid.m in Sources */,
 				92AF862A13AFDA9A00C8F775 /* UIImage+Redscale.m in Sources */,
 				0B10381413B31ECE00DD5017 /* TempScrollView.m in Sources */,
+				0B1039AE13B4A63D00DD5017 /* UIImage-Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

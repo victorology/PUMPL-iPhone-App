@@ -17,6 +17,7 @@
 #import "UIImage+Polaroid.h"
 #import "UIImage+Redscale.h"
 #import "UIImage+Resize.h"
+#import "UIImage-Extensions.h"
 
 
 #define kFilterLabelWidth 80
@@ -54,7 +55,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 - (void)configureForSquareAndFull;
 + (UIImage *)resizeImage:(UIImage *)image forImageQuality:(NSInteger)imageQuality;
 + (UIImage *)croppedImageToSize:(CGSize)croppedSize fromFullImage:(UIImage *)fullImage;
-+ (UIImage*)cropImage:(UIImage*)originalImage toRect:(CGRect)rect;
++ (UIImage *)cropImage:(UIImage*)sourceImage;
 
 
 @end
@@ -501,10 +502,10 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	NSInteger selectedImageQuality = [[DataManager sharedDataManager] imageQualitySetting];
 	
 	
+
 	
 	if(imageClickedInSquareMode)
 	{
-
 		self.squareImageForBackUp = [ApplyFilterViewController croppedImageToSize:CGSizeMake(600, 600) fromFullImage:originalImage];
 		
 		_cropButton.hidden = YES;
@@ -515,8 +516,6 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	}
 	else 
 	{
-		
-		
 		self.fullImageForBackUp = [ApplyFilterViewController resizeImage:originalImage forImageQuality:selectedImageQuality];
 		self.squareImageForBackUp = [ApplyFilterViewController croppedImageToSize:CGSizeMake(600, 600) fromFullImage:originalImage];
 		
@@ -529,7 +528,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 		_cropButton.tag = kCropButtonDuringFull;
 		_contentModeToBeApplied = UIViewContentModeScaleAspectFit;
 	}
-	
+	 
 	
 	self.originalImage = nil;
 	
@@ -560,13 +559,15 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 
 - (void)next:(id)sender
-{
+{	
 	SelectedPhotoViewController *viewController = [[SelectedPhotoViewController alloc] initWithNibName:@"SelectedPhotoViewController" bundle:nil];
 	viewController.mSelectedImage = finalImage;
 	viewController.wasFilterSelected = _wasFilterSelected;
 	[self.navigationController pushViewController:viewController animated:YES];
-	[viewController release];
+	[viewController release];	
 }
+
+
 
 - (void)filterClicked:(id)sender
 {
@@ -807,43 +808,8 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	//Crop Image Code
 	UIImage *resizedCroppedImage = nil;
 	
-	
-	CGSize sizeOfOriginalImage = [fullImage size];
-	
-	CGFloat widthOfOriginalImage = sizeOfOriginalImage.width;
-	CGFloat heightOfOriginalImage = sizeOfOriginalImage.height;
-	
-	if(heightOfOriginalImage >= widthOfOriginalImage)
-	{
-		CGFloat reducedSide = (kPercentageWidthRetainedWhileCroppingToSquare / 100) * widthOfOriginalImage;
-		
-		CGFloat croppedImageXCoordinates = (widthOfOriginalImage - reducedSide) / 2;
-		CGFloat croppedImageYCoordinates = (heightOfOriginalImage - reducedSide) / 2;
-		
-		CGRect rect = CGRectMake(croppedImageXCoordinates, croppedImageYCoordinates, reducedSide, reducedSide);
-		
-		// Create bitmap image from original image data,
-		// using rectangle to specify desired crop area
-		
-		UIImage *croppedImage = [ApplyFilterViewController cropImage:fullImage toRect:rect];
-		resizedCroppedImage = [croppedImage resizedImage:croppedSize interpolationQuality:kCGInterpolationHigh];
-	}
-	else 
-	{
-		CGFloat reducedSide = (kPercentageWidthRetainedWhileCroppingToSquare / 100) * heightOfOriginalImage;
-		
-		CGFloat croppedImageXCoordinates = (widthOfOriginalImage - reducedSide) / 2;
-		CGFloat croppedImageYCoordinates = (heightOfOriginalImage - reducedSide) / 2;
-		
-		CGRect rect = CGRectMake(croppedImageXCoordinates, croppedImageYCoordinates, reducedSide, reducedSide);
-		
-		// Create bitmap image from original image data,
-		// using rectangle to specify desired crop area
-		
-		UIImage *croppedImage = [ApplyFilterViewController cropImage:fullImage toRect:rect];
-		resizedCroppedImage = [croppedImage resizedImage:croppedSize interpolationQuality:kCGInterpolationHigh];
-	}
-	
+	UIImage *croppedImage = [ApplyFilterViewController cropImage:fullImage];
+	resizedCroppedImage = [croppedImage resizedImage:croppedSize interpolationQuality:kCGInterpolationHigh];
 	
 	return resizedCroppedImage;
 }
@@ -853,60 +819,84 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 
 
-+(UIImage*)cropImage:(UIImage*)originalImage toRect:(CGRect)rect{
++(UIImage*)cropImage:(UIImage*)sourceImage {
 	
-	CGRect newModifiedRect;
+	UIImage *imageToBeCropped = nil;
+	BOOL needsOrientationChangeInTheEnd = NO;
+	UIImageOrientation originalImageOrientation = sourceImage.imageOrientation;
 	
-	if (originalImage.imageOrientation == UIImageOrientationLeft) {
-        
-		
-		
-    } 
-	else if (originalImage.imageOrientation == UIImageOrientationRight) 
-	{
-		newModifiedRect = CGRectMake(rect.origin.x, (rect.origin.y + 100), rect.size.width, rect.size.height);
 
-    } 
-	else if (originalImage.imageOrientation == UIImageOrientationUp) 
+	
+	if(sourceImage.imageOrientation == UIImageOrientationLeft) 
 	{
-       
+		imageToBeCropped = [UIImage imageWithCGImage:[sourceImage CGImage] scale:1.0 orientation:UIImageOrientationUp];
+		needsOrientationChangeInTheEnd = YES;
     } 
-	else if (originalImage.imageOrientation == UIImageOrientationDown) 
+	else if(sourceImage.imageOrientation == UIImageOrientationRight) 
 	{
-        
+		imageToBeCropped = [UIImage imageWithCGImage:[sourceImage CGImage] scale:1.0 orientation:UIImageOrientationUp];
+		needsOrientationChangeInTheEnd = YES;
+    } 
+	else if(sourceImage.imageOrientation == UIImageOrientationUp) 
+	{
+		imageToBeCropped = sourceImage;
+    } 
+	else if(sourceImage.imageOrientation == UIImageOrientationDown) 
+	{
+		imageToBeCropped = sourceImage;
     }
 	
 	
+	CGSize sizeOfOriginalImage = [imageToBeCropped size];
 	
-    CGImageRef imageRef = CGImageCreateWithImageInRect([originalImage CGImage], newModifiedRect);
+	CGFloat widthOfOriginalImage = sizeOfOriginalImage.width;
+	CGFloat heightOfOriginalImage = sizeOfOriginalImage.height;
+	
+	CGFloat reducedSide;
+	if(widthOfOriginalImage <= heightOfOriginalImage)
+	{
+		reducedSide = (kPercentageWidthRetainedWhileCroppingToSquare / 100) * widthOfOriginalImage;
+	}
+	else 
+	{
+		reducedSide = (kPercentageWidthRetainedWhileCroppingToSquare / 100) * heightOfOriginalImage;
+	}
+
+	
+	
+	
+	CGFloat croppedImageXCoordinates = (widthOfOriginalImage - reducedSide) / 2;
+	CGFloat croppedImageYCoordinates = (heightOfOriginalImage - reducedSide) / 2;
+	
+	CGRect rect = CGRectMake(croppedImageXCoordinates, croppedImageYCoordinates, reducedSide, reducedSide);
+	
+	
+	
+    CGImageRef imageRef = CGImageCreateWithImageInRect([imageToBeCropped CGImage], rect);
 	
     CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
     CGColorSpaceRef colorSpaceInfo = CGImageGetColorSpace(imageRef);
-    CGContextRef bitmap = CGBitmapContextCreate(NULL, newModifiedRect.size.width, newModifiedRect.size.height, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
+    CGContextRef bitmap = CGBitmapContextCreate(NULL, rect.size.width, rect.size.height, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
 	
-    if (originalImage.imageOrientation == UIImageOrientationLeft) {
+    if (imageToBeCropped.imageOrientation == UIImageOrientationLeft) {
         
-
 		CGContextRotateCTM (bitmap, radians(90));
-		CGContextTranslateCTM (bitmap, 0, -newModifiedRect.size.height);
+		CGContextTranslateCTM (bitmap, 0, -rect.size.height);
 		
-		
-        
-		
-    } else if (originalImage.imageOrientation == UIImageOrientationRight) {
+    } else if (imageToBeCropped.imageOrientation == UIImageOrientationRight) {
 		
 		CGContextRotateCTM (bitmap, radians(-90));
-		CGContextTranslateCTM (bitmap, -newModifiedRect.size.width, 0);
+		CGContextTranslateCTM (bitmap, -rect.size.width, 0);
 	
 		
-    } else if (originalImage.imageOrientation == UIImageOrientationUp) {
+    } else if (imageToBeCropped.imageOrientation == UIImageOrientationUp) {
         // NOTHING
-    } else if (originalImage.imageOrientation == UIImageOrientationDown) {
-        CGContextTranslateCTM (bitmap, newModifiedRect.size.width, newModifiedRect.size.height);
+    } else if (imageToBeCropped.imageOrientation == UIImageOrientationDown) {
+        CGContextTranslateCTM (bitmap, rect.size.width, rect.size.height);
         CGContextRotateCTM (bitmap, radians(-180.));
     }
 	
-    CGContextDrawImage(bitmap, CGRectMake(0, 0, newModifiedRect.size.width, newModifiedRect.size.height), imageRef);
+    CGContextDrawImage(bitmap, CGRectMake(0, 0, rect.size.width, rect.size.height), imageRef);
     CGImageRef ref = CGBitmapContextCreateImage(bitmap);
 	
     UIImage *resultImage=[UIImage imageWithCGImage:ref];
@@ -914,9 +904,24 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     CGContextRelease(bitmap);
     CGImageRelease(ref);
 	
-    return resultImage;
 	
+	
+	UIImage *resultFinallyRotatedImage = nil;
+	
+	if(needsOrientationChangeInTheEnd)
+	{
+		resultFinallyRotatedImage = [UIImage imageWithCGImage:[resultImage CGImage] scale:1.0 orientation:originalImageOrientation];
+	}
+	else
+	{
+		resultFinallyRotatedImage = resultImage;
+	}
+	
+	
+    return resultFinallyRotatedImage;	
 }
+
+
 
 
 
