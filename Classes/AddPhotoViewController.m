@@ -11,7 +11,6 @@
 #import "SelectedPhotoViewController.h"
 #import "EditScrollViewController.h"
 #import "ApplyFilterViewController.h"
-#import "PLImagePickerController.h"
 
 
 #define kCropButtonDuringFull 0
@@ -140,7 +139,7 @@
 			
 		
 			
-			UIImagePickerController *pickerController = [[PLImagePickerController alloc] init];
+			UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
 			self._imagePickerController = pickerController;
 			[pickerController release];
 			
@@ -153,9 +152,9 @@
 			[_cropButton setTitle:@"Square" forState:UIControlStateNormal];
 			_cropImageView.hidden = YES;
 			
-			//pickerController.showsCameraControls = NO;
-			//_imagePickerOverLayView.frame = CGRectMake(0, 0, 320, 480);
-			//pickerController.cameraOverlayView = _imagePickerOverLayView;
+			pickerController.showsCameraControls = NO;
+			_imagePickerOverLayView.frame = CGRectMake(0, 0, 320, 480);
+			pickerController.cameraOverlayView = _imagePickerOverLayView;
 			
 			[self presentModalViewController:pickerController animated:YES];
 			
