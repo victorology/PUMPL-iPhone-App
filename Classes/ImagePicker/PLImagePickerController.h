@@ -2,7 +2,7 @@
 //  PLImagePickerController.h
 //  
 //
-//  Created by Sergey Nikitenko on 6/25/11.
+//  Created by Sergey Nikitenko on 5/8/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 

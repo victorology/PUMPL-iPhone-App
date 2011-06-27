@@ -127,15 +127,10 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
-		920DD41613B7BE710046A236 /* Square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD41213B7BE710046A236 /* Square@2x.png */; };
-		920DD41713B7BE710046A236 /* Full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD41313B7BE710046A236 /* Full@2x.png */; };
-		920DD41813B7BE710046A236 /* Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD41413B7BE710046A236 /* Close@2x.png */; };
-		920DD41913B7BE710046A236 /* SquareView@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 920DD41513B7BE710046A236 /* SquareView@2x.png */; };
+<<<<<<< HEAD
+=======
 		9279D6E313B735F500A29A5A /* PLImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9279D6E213B735F500A29A5A /* PLImagePickerController.m */; };
-		9279D70913B7B23300A29A5A /* Full.png in Resources */ = {isa = PBXBuildFile; fileRef = 9279D70613B7B23300A29A5A /* Full.png */; };
-		9279D70A13B7B23300A29A5A /* Close.png in Resources */ = {isa = PBXBuildFile; fileRef = 9279D70713B7B23300A29A5A /* Close.png */; };
-		9279D70B13B7B23300A29A5A /* Square.png in Resources */ = {isa = PBXBuildFile; fileRef = 9279D70813B7B23300A29A5A /* Square.png */; };
-		9279D70D13B7B7C500A29A5A /* SquareView.png in Resources */ = {isa = PBXBuildFile; fileRef = 9279D70C13B7B7C400A29A5A /* SquareView.png */; };
+>>>>>>> parent of 7e1b3f9... Updatin ImagePicker: adding semitransparent button and setting X image to close button
 		92AF862813AFDA9A00C8F775 /* UIImage+PlasticEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862313AFDA9700C8F775 /* UIImage+PlasticEye.m */; };
 		92AF862913AFDA9A00C8F775 /* UIImage+Polaroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862513AFDA9800C8F775 /* UIImage+Polaroid.m */; };
 		92AF862A13AFDA9A00C8F775 /* UIImage+Redscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862713AFDA9900C8F775 /* UIImage+Redscale.m */; };
@@ -353,16 +348,11 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PUMPL_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUMPL_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PUMPL-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PUMPL-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		920DD41213B7BE710046A236 /* Square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Square@2x.png"; sourceTree = "<group>"; };
-		920DD41313B7BE710046A236 /* Full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Full@2x.png"; sourceTree = "<group>"; };
-		920DD41413B7BE710046A236 /* Close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close@2x.png"; sourceTree = "<group>"; };
-		920DD41513B7BE710046A236 /* SquareView@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SquareView@2x.png"; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
 		9279D6E113B735F500A29A5A /* PLImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PLImagePickerController.h; sourceTree = "<group>"; };
 		9279D6E213B735F500A29A5A /* PLImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PLImagePickerController.m; sourceTree = "<group>"; };
-		9279D70613B7B23300A29A5A /* Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Full.png; sourceTree = "<group>"; };
-		9279D70713B7B23300A29A5A /* Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close.png; sourceTree = "<group>"; };
-		9279D70813B7B23300A29A5A /* Square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Square.png; sourceTree = "<group>"; };
-		9279D70C13B7B7C400A29A5A /* SquareView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SquareView.png; sourceTree = "<group>"; };
+>>>>>>> parent of 7e1b3f9... Updatin ImagePicker: adding semitransparent button and setting X image to close button
 		92AF862213AFDA9600C8F775 /* UIImage+PlasticEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PlasticEye.h"; sourceTree = "<group>"; };
 		92AF862313AFDA9700C8F775 /* UIImage+PlasticEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PlasticEye.m"; sourceTree = "<group>"; };
 		92AF862413AFDA9700C8F775 /* UIImage+Polaroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Polaroid.h"; sourceTree = "<group>"; };
@@ -409,7 +399,6 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				9279D6E013B735F500A29A5A /* ImagePicker */,
 				0B8EFB9A13A9900900F5F517 /* KTPhotoBrowser */,
 				0B431A4D1378C56A00B88C5D /* Appirater.h */,
 				0B431A4E1378C56A00B88C5D /* Appirater.m */,
@@ -551,15 +540,7 @@
 		0BC6938912D45370008285B2 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				920DD41213B7BE710046A236 /* Square@2x.png */,
-				920DD41313B7BE710046A236 /* Full@2x.png */,
-				920DD41413B7BE710046A236 /* Close@2x.png */,
-				920DD41513B7BE710046A236 /* SquareView@2x.png */,
-				9279D70613B7B23300A29A5A /* Full.png */,
-				9279D70713B7B23300A29A5A /* Close.png */,
-				9279D70813B7B23300A29A5A /* Square.png */,
 				0B8EFA7513A8DF5E00F5F517 /* croppedCameraOverlay.png */,
-				9279D70C13B7B7C400A29A5A /* SquareView.png */,
 				0BE9F5C9139F3CBD002C1D3A /* cancelImagePicker.png */,
 				0BE9F5C2139F39E9002C1D3A /* cameraOverlayBar.png */,
 				0BE9F5BF139F391F002C1D3A /* takePictureButton.png */,
@@ -808,15 +789,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		9279D6E013B735F500A29A5A /* ImagePicker */ = {
-			isa = PBXGroup;
-			children = (
-				9279D6E113B735F500A29A5A /* PLImagePickerController.h */,
-				9279D6E213B735F500A29A5A /* PLImagePickerController.m */,
-			);
-			path = ImagePicker;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -931,14 +903,6 @@
 				0B10378C13B3000E00DD5017 /* Xpro.jpeg in Resources */,
 				0B10392413B49B3C00DD5017 /* vertical.JPG in Resources */,
 				0B103A2113B4B2FA00DD5017 /* horizontal.JPG in Resources */,
-				9279D70913B7B23300A29A5A /* Full.png in Resources */,
-				9279D70A13B7B23300A29A5A /* Close.png in Resources */,
-				9279D70B13B7B23300A29A5A /* Square.png in Resources */,
-				9279D70D13B7B7C500A29A5A /* SquareView.png in Resources */,
-				920DD41613B7BE710046A236 /* Square@2x.png in Resources */,
-				920DD41713B7BE710046A236 /* Full@2x.png in Resources */,
-				920DD41813B7BE710046A236 /* Close@2x.png in Resources */,
-				920DD41913B7BE710046A236 /* SquareView@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,7 +978,6 @@
 				92AF862A13AFDA9A00C8F775 /* UIImage+Redscale.m in Sources */,
 				0B10381413B31ECE00DD5017 /* TempScrollView.m in Sources */,
 				0B1039AE13B4A63D00DD5017 /* UIImage-Extensions.m in Sources */,
-				9279D6E313B735F500A29A5A /* PLImagePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1025,14 +988,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Classes/Build/Products/three20;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
 				SDKROOT = iphoneos;
 			};
 			name = "Ad Hoc";
@@ -1041,7 +1004,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PUMPL_Prefix.pch;
@@ -1053,7 +1016,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = "Ad Hoc";
@@ -1062,7 +1025,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1076,7 +1039,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
 			};
 			name = Debug;
 		};
@@ -1084,7 +1047,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PUMPL_Prefix.pch;
@@ -1096,7 +1059,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1105,13 +1068,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Classes/Build/Products/three20;
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1120,14 +1083,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Classes/Build/Products/three20;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
