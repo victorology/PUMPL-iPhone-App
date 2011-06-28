@@ -113,13 +113,13 @@
 	if(button.tag == kCropButtonDuringFull)
 	{
 		button.tag = kCropButtonDuringSquare;
-		[button setTitle:@"Full" forState:UIControlStateNormal];
+		[button setImage:[UIImage imageNamed:@"Full.png"] forState:UIControlStateNormal];
 		_cropImageView.hidden = NO;
 	}
 	else if(button.tag == kCropButtonDuringSquare)
 	{
 		button.tag = kCropButtonDuringFull;
-		[button setTitle:@"Square" forState:UIControlStateNormal];
+		[button setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
 		_cropImageView.hidden = YES;
 	}
 }
@@ -149,7 +149,7 @@
 			
 			
 			_cropButton.tag = kCropButtonDuringFull;
-			[_cropButton setTitle:@"Square" forState:UIControlStateNormal];
+			[_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
 			_cropImageView.hidden = YES;
 			
 			pickerController.showsCameraControls = NO;
@@ -178,7 +178,7 @@
 			[pickerController release];
 			
 			_cropButton.tag = kCropButtonDuringFull;
-			[_cropButton setTitle:@"Square" forState:UIControlStateNormal];
+			[_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
 			_cropImageView.hidden = YES;
 			
 			pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;

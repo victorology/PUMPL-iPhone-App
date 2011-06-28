@@ -168,7 +168,7 @@
 	
 	UITextField *inputTextField = (UITextField *)[cell.contentView viewWithTag:kViewTagInputTextField];
     inputTextField.placeholder = @"Required";
-	inputTextField.returnKeyType = UIReturnKeyNext;
+	inputTextField.returnKeyType = [[rowDic valueForKey:@"keyboardReturnKey"] integerValue];
 	inputTextField.keyboardType = [[rowDic valueForKey:@"keyboardType"] integerValue];
 	inputTextField.secureTextEntry = [[rowDic valueForKey:@"secureTextEntry"] boolValue];
     
@@ -189,11 +189,13 @@
 	NSDictionary *row1 = [NSMutableDictionary dictionary];
 	[row1 setValue:@"Email" forKey:@"inputName"];
 	[row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeEmailAddress] forKey:@"keyboardType"];
+	[row1 setValue:[NSNumber numberWithInt:UIReturnKeyNext] forKey:@"keyboardReturnKey"];
 	[row1 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
 	[array addObject:row1];
 	
 	NSDictionary *row2 = [NSMutableDictionary dictionary];
 	[row2 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
+	[row2 setValue:[NSNumber numberWithInt:UIReturnKeyGo] forKey:@"keyboardReturnKey"];
 	[row2 setValue:@"Password" forKey:@"inputName"];
 	[row2 setValue:[NSNumber numberWithBool:YES] forKey:@"secureTextEntry"];
 	[array addObject:row2];

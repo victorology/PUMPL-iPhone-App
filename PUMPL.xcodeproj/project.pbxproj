@@ -21,9 +21,7 @@
 		0B10378B13B3000E00DD5017 /* Vintage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10378213B3000E00DD5017 /* Vintage.jpeg */; };
 		0B10378C13B3000E00DD5017 /* Xpro.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10378313B3000E00DD5017 /* Xpro.jpeg */; };
 		0B10381413B31ECE00DD5017 /* TempScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B10381313B31ECE00DD5017 /* TempScrollView.m */; };
-		0B10392413B49B3C00DD5017 /* vertical.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0BFFC231136ED480006AD565 /* vertical.JPG */; };
 		0B1039AE13B4A63D00DD5017 /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1039AD13B4A63D00DD5017 /* UIImage-Extensions.m */; };
-		0B103A2113B4B2FA00DD5017 /* horizontal.JPG in Resources */ = {isa = PBXBuildFile; fileRef = 0BFFC230136ED480006AD565 /* horizontal.JPG */; };
 		0B43169B1377A44600B88C5D /* DDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B43169A1377A44600B88C5D /* DDProgressView.m */; };
 		0B4318D31378B81800B88C5D /* TumblrLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B4318D11378B81800B88C5D /* TumblrLoginViewController.m */; };
 		0B4318D41378B81800B88C5D /* TumblrLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4318D21378B81800B88C5D /* TumblrLoginViewController.xib */; };
@@ -97,9 +95,18 @@
 		0BE3FFF512E9731D004453A1 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE3FFF412E9731D004453A1 /* PhotoUploader.m */; };
 		0BE9F54A139F3091002C1D3A /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE9F548139F3091002C1D3A /* Default.png */; };
 		0BE9F54B139F3091002C1D3A /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE9F549139F3091002C1D3A /* Default@2x.png */; };
-		0BE9F5C0139F391F002C1D3A /* takePictureButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE9F5BF139F391F002C1D3A /* takePictureButton.png */; };
-		0BE9F5C3139F39E9002C1D3A /* cameraOverlayBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE9F5C2139F39E9002C1D3A /* cameraOverlayBar.png */; };
-		0BE9F5CA139F3CBD002C1D3A /* cancelImagePicker.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE9F5C9139F3CBD002C1D3A /* cancelImagePicker.png */; };
+		0BFA8A9F13B9AF0B00562D8F /* CameraBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8A9513B9AF0B00562D8F /* CameraBG.png */; };
+		0BFA8AA013B9AF0B00562D8F /* CameraBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8A9613B9AF0B00562D8F /* CameraBG@2x.png */; };
+		0BFA8AA113B9AF0B00562D8F /* CameraButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8A9713B9AF0B00562D8F /* CameraButton.png */; };
+		0BFA8AA213B9AF0B00562D8F /* CameraButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8A9813B9AF0B00562D8F /* CameraButton@2x.png */; };
+		0BFA8AA313B9AF0B00562D8F /* Close.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8A9913B9AF0B00562D8F /* Close.png */; };
+		0BFA8AA413B9AF0B00562D8F /* Close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8A9A13B9AF0B00562D8F /* Close@2x.png */; };
+		0BFA8AA513B9AF0B00562D8F /* Full.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8A9B13B9AF0B00562D8F /* Full.png */; };
+		0BFA8AA613B9AF0B00562D8F /* Full@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8A9C13B9AF0B00562D8F /* Full@2x.png */; };
+		0BFA8AA713B9AF0B00562D8F /* Square.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8A9D13B9AF0B00562D8F /* Square.png */; };
+		0BFA8AA813B9AF0B00562D8F /* Square@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8A9E13B9AF0B00562D8F /* Square@2x.png */; };
+		0BFA8B1D13B9B71900562D8F /* PasswordLostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFA8B1B13B9B71900562D8F /* PasswordLostViewController.m */; };
+		0BFA8B1E13B9B71900562D8F /* PasswordLostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFA8B1C13B9B71900562D8F /* PasswordLostViewController.xib */; };
 		0BFFC25F136ED5FB006AD565 /* ApplyFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFFC25D136ED5FB006AD565 /* ApplyFilterViewController.m */; };
 		0BFFC260136ED5FB006AD565 /* ApplyFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BFFC25E136ED5FB006AD565 /* ApplyFilterViewController.xib */; };
 		0BFFC35C136EF5E2006AD565 /* UIImage+Photochrom.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BFFC34D136EF5E2006AD565 /* UIImage+Photochrom.m */; };
@@ -297,9 +304,19 @@
 		0BE3FFF412E9731D004453A1 /* PhotoUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoUploader.m; sourceTree = "<group>"; };
 		0BE9F548139F3091002C1D3A /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0BE9F549139F3091002C1D3A /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		0BE9F5BF139F391F002C1D3A /* takePictureButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = takePictureButton.png; sourceTree = "<group>"; };
-		0BE9F5C2139F39E9002C1D3A /* cameraOverlayBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cameraOverlayBar.png; sourceTree = "<group>"; };
-		0BE9F5C9139F3CBD002C1D3A /* cancelImagePicker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancelImagePicker.png; sourceTree = "<group>"; };
+		0BFA8A9513B9AF0B00562D8F /* CameraBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraBG.png; sourceTree = "<group>"; };
+		0BFA8A9613B9AF0B00562D8F /* CameraBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraBG@2x.png"; sourceTree = "<group>"; };
+		0BFA8A9713B9AF0B00562D8F /* CameraButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraButton.png; sourceTree = "<group>"; };
+		0BFA8A9813B9AF0B00562D8F /* CameraButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraButton@2x.png"; sourceTree = "<group>"; };
+		0BFA8A9913B9AF0B00562D8F /* Close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Close.png; sourceTree = "<group>"; };
+		0BFA8A9A13B9AF0B00562D8F /* Close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close@2x.png"; sourceTree = "<group>"; };
+		0BFA8A9B13B9AF0B00562D8F /* Full.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Full.png; sourceTree = "<group>"; };
+		0BFA8A9C13B9AF0B00562D8F /* Full@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Full@2x.png"; sourceTree = "<group>"; };
+		0BFA8A9D13B9AF0B00562D8F /* Square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Square.png; sourceTree = "<group>"; };
+		0BFA8A9E13B9AF0B00562D8F /* Square@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Square@2x.png"; sourceTree = "<group>"; };
+		0BFA8B1A13B9B71900562D8F /* PasswordLostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PasswordLostViewController.h; sourceTree = "<group>"; };
+		0BFA8B1B13B9B71900562D8F /* PasswordLostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PasswordLostViewController.m; sourceTree = "<group>"; };
+		0BFA8B1C13B9B71900562D8F /* PasswordLostViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordLostViewController.xib; sourceTree = "<group>"; };
 		0BFFC230136ED480006AD565 /* horizontal.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = horizontal.JPG; sourceTree = "<group>"; };
 		0BFFC231136ED480006AD565 /* vertical.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = vertical.JPG; sourceTree = "<group>"; };
 		0BFFC25C136ED5FB006AD565 /* ApplyFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyFilterViewController.h; sourceTree = "<group>"; };
@@ -411,6 +428,9 @@
 				0BC693A712D459F4008285B2 /* SignupViewController.h */,
 				0BC693A812D459F4008285B2 /* SignupViewController.m */,
 				0BC693A912D459F4008285B2 /* SignupViewController.xib */,
+				0BFA8B1A13B9B71900562D8F /* PasswordLostViewController.h */,
+				0BFA8B1B13B9B71900562D8F /* PasswordLostViewController.m */,
+				0BFA8B1C13B9B71900562D8F /* PasswordLostViewController.xib */,
 				0BC693B212D45C4E008285B2 /* DataManager.h */,
 				0BC693B312D45C4E008285B2 /* DataManager.m */,
 				0BD3347B12DB53B8006A02EB /* Constants.h */,
@@ -532,9 +552,6 @@
 			isa = PBXGroup;
 			children = (
 				0B8EFA7513A8DF5E00F5F517 /* croppedCameraOverlay.png */,
-				0BE9F5C9139F3CBD002C1D3A /* cancelImagePicker.png */,
-				0BE9F5C2139F39E9002C1D3A /* cameraOverlayBar.png */,
-				0BE9F5BF139F391F002C1D3A /* takePictureButton.png */,
 				0BE9F548139F3091002C1D3A /* Default.png */,
 				0BE9F549139F3091002C1D3A /* Default@2x.png */,
 				0BFFC22F136ED46B006AD565 /* temp */,
@@ -653,6 +670,16 @@
 		0BFBBB7213973B3D00A3A0E4 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0BFA8A9513B9AF0B00562D8F /* CameraBG.png */,
+				0BFA8A9613B9AF0B00562D8F /* CameraBG@2x.png */,
+				0BFA8A9713B9AF0B00562D8F /* CameraButton.png */,
+				0BFA8A9813B9AF0B00562D8F /* CameraButton@2x.png */,
+				0BFA8A9913B9AF0B00562D8F /* Close.png */,
+				0BFA8A9A13B9AF0B00562D8F /* Close@2x.png */,
+				0BFA8A9B13B9AF0B00562D8F /* Full.png */,
+				0BFA8A9C13B9AF0B00562D8F /* Full@2x.png */,
+				0BFA8A9D13B9AF0B00562D8F /* Square.png */,
+				0BFA8A9E13B9AF0B00562D8F /* Square@2x.png */,
 				0B10377B13B3000D00DD5017 /* Lomo.jpeg */,
 				0B10377C13B3000D00DD5017 /* Monochrome.jpeg */,
 				0B10377D13B3000E00DD5017 /* Normal.jpeg */,
@@ -872,9 +899,6 @@
 				0B4318D41378B81800B88C5D /* TumblrLoginViewController.xib in Resources */,
 				0BE9F54A139F3091002C1D3A /* Default.png in Resources */,
 				0BE9F54B139F3091002C1D3A /* Default@2x.png in Resources */,
-				0BE9F5C0139F391F002C1D3A /* takePictureButton.png in Resources */,
-				0BE9F5C3139F39E9002C1D3A /* cameraOverlayBar.png in Resources */,
-				0BE9F5CA139F3CBD002C1D3A /* cancelImagePicker.png in Resources */,
 				0B8EFA7613A8DF5E00F5F517 /* croppedCameraOverlay.png in Resources */,
 				0B8EFBA913A9900900F5F517 /* KTPhotoBrowser.bundle in Resources */,
 				0B8EFBD513A9E1B300F5F517 /* LICENSE in Resources */,
@@ -892,8 +916,17 @@
 				0B10378A13B3000E00DD5017 /* Roid.jpeg in Resources */,
 				0B10378B13B3000E00DD5017 /* Vintage.jpeg in Resources */,
 				0B10378C13B3000E00DD5017 /* Xpro.jpeg in Resources */,
-				0B10392413B49B3C00DD5017 /* vertical.JPG in Resources */,
-				0B103A2113B4B2FA00DD5017 /* horizontal.JPG in Resources */,
+				0BFA8A9F13B9AF0B00562D8F /* CameraBG.png in Resources */,
+				0BFA8AA013B9AF0B00562D8F /* CameraBG@2x.png in Resources */,
+				0BFA8AA113B9AF0B00562D8F /* CameraButton.png in Resources */,
+				0BFA8AA213B9AF0B00562D8F /* CameraButton@2x.png in Resources */,
+				0BFA8AA313B9AF0B00562D8F /* Close.png in Resources */,
+				0BFA8AA413B9AF0B00562D8F /* Close@2x.png in Resources */,
+				0BFA8AA513B9AF0B00562D8F /* Full.png in Resources */,
+				0BFA8AA613B9AF0B00562D8F /* Full@2x.png in Resources */,
+				0BFA8AA713B9AF0B00562D8F /* Square.png in Resources */,
+				0BFA8AA813B9AF0B00562D8F /* Square@2x.png in Resources */,
+				0BFA8B1E13B9B71900562D8F /* PasswordLostViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -969,6 +1002,7 @@
 				92AF862A13AFDA9A00C8F775 /* UIImage+Redscale.m in Sources */,
 				0B10381413B31ECE00DD5017 /* TempScrollView.m in Sources */,
 				0B1039AE13B4A63D00DD5017 /* UIImage-Extensions.m in Sources */,
+				0BFA8B1D13B9B71900562D8F /* PasswordLostViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1016,7 +1050,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Harmandeep Singh (7R2J5T5A4M)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1030,7 +1064,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "095C0416-9E99-480D-AE53-19F96C376F75";
 			};
 			name = Debug;
 		};

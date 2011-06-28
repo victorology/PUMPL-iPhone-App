@@ -57,7 +57,7 @@
 					<object class="IBUIButton" id="371673740">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{21, 369}, {278, 45}}</string>
+						<string key="NSFrame">{{21, 340}, {278, 45}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -88,7 +88,7 @@
 					<object class="IBUIButton" id="784380057">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{21, 310}, {278, 45}}</string>
+						<string key="NSFrame">{{21, 281}, {278, 45}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -105,6 +105,25 @@
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">btn-launch-signup.png</string>
 						</object>
+					</object>
+					<object class="IBUIButton" id="743565836">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{21, 393}, {278, 37}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIFont" ref="940923721"/>
+						<int key="IBUIButtonType">1</int>
+						<string key="IBUINormalTitle">Lost Password</string>
+						<reference key="IBUIHighlightedTitleColor" ref="162734964"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="309867557"/>
 					</object>
 				</object>
 				<string key="NSFrameSize">{320, 460}</string>
@@ -323,6 +342,15 @@
 					</object>
 					<int key="connectionID">42</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">lostPassword:</string>
+						<reference key="source" ref="743565836"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">44</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -339,8 +367,9 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="371673740"/>
-							<reference ref="784380057"/>
 							<reference ref="839546050"/>
+							<reference ref="784380057"/>
+							<reference ref="743565836"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -501,6 +530,11 @@
 						<reference key="object" ref="101550373"/>
 						<reference key="parent" ref="331092072"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">43</int>
+						<reference key="object" ref="743565836"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -517,6 +551,8 @@
 					<string>25.CustomClassName</string>
 					<string>30.CustomClassName</string>
 					<string>37.CustomClassName</string>
+					<string>43.IBPluginDependency</string>
+					<string>43.IBViewBoundsToFrameTransform</string>
 					<string>5.IBPluginDependency</string>
 					<string>5.IBViewBoundsToFrameTransform</string>
 					<string>6.IBPluginDependency</string>
@@ -538,6 +574,10 @@
 					<string>HomeScreenViewController</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">P4AAAL+AAABCoAAAw+IAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">P4AAAL+AAAAAAAAAw+UAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -546,7 +586,7 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
-						<bytes key="NSTransformStruct">P4AAAL+AAABBqAAAw5YAAA</bytes>
+						<bytes key="NSTransformStruct">P4AAAL+AAABBqAAAw7CAAA</bytes>
 					</object>
 				</object>
 			</object>
@@ -566,7 +606,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">42</int>
+			<int key="maxID">44</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -692,10 +732,12 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>login:</string>
+							<string>lostPassword:</string>
 							<string>signUp:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 						</object>
@@ -705,12 +747,17 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>login:</string>
+							<string>lostPassword:</string>
 							<string>signUp:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBActionInfo">
 								<string key="name">login:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">lostPassword:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

@@ -22,5 +22,6 @@
 
 - (IBAction)signUp:(id)sender;
 - (IBAction)login:(id)sender;
+- (IBAction)lostPassword:(id)sender;
 
 @end

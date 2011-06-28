@@ -9,6 +9,7 @@
 #import "LaunchViewController.h"
 #import "SignupViewController.h"
 #import "LoginViewController.h"
+#import "PasswordLostViewController.h"
 
 
 @implementation LaunchViewController
@@ -95,6 +96,12 @@
 	[viewController release];
 }
 
+- (IBAction)lostPassword:(id)sender
+{
+	PasswordLostViewController *viewController = [[PasswordLostViewController alloc] initWithNibName:@"PasswordLostViewController" bundle:nil];
+	[self.navigationController pushViewController:viewController animated:YES];
+	[viewController release];
+}
 
 
 #pragma mark -

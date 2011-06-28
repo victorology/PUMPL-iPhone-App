@@ -1,12 +1,12 @@
 //
-//  SignupViewController.m
+//  PasswordLostViewController.m
 //  PUMPL
 //
-//  Created by Harmandeep Singh on 05/01/11.
+//  Created by Harmandeep Singh on 28/06/11.
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
-#import "SignupViewController.h"
+#import "PasswordLostViewController.h"
 #import "JSON.h"
 #import "ASIFormDataRequest.h"
 #import "LaunchViewController.h"
@@ -14,7 +14,7 @@
 #define kViewTagInputNameLabel 1
 #define kViewTagInputTextField 2
 
-@implementation SignupViewController
+@implementation PasswordLostViewController
 
 @synthesize mTableView;
 @synthesize mActivityIndicator;
@@ -41,6 +41,7 @@
 	[self buildTableData];
 }
 
+
 - (void)viewDidAppear:(BOOL)animated
 {
 	[super viewDidAppear:animated];
@@ -48,7 +49,6 @@
 	UITextField *firstTextField = [self getTextFieldForRowIndex:0];
 	[firstTextField becomeFirstResponder];
 }
-
 
 /*
 // Override to allow orientations other than the default portrait orientation.
@@ -88,7 +88,7 @@
 
 - (void)configureTheView
 {
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Sign up" style:UIBarButtonItemStyleBordered target:self action:@selector(signUp:)] autorelease];
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Go" style:UIBarButtonItemStyleBordered target:self action:@selector(lostPassword:)] autorelease];
 	
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;
@@ -189,23 +189,11 @@
 	NSDictionary *row1 = [NSMutableDictionary dictionary];
 	[row1 setValue:@"Email" forKey:@"inputName"];
 	[row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeEmailAddress] forKey:@"keyboardType"];
-	[row1 setValue:[NSNumber numberWithInt:UIReturnKeyNext] forKey:@"keyboardReturnKey"];
+	[row1 setValue:[NSNumber numberWithInt:UIReturnKeyGo] forKey:@"keyboardReturnKey"];
 	[row1 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
 	[array addObject:row1];
 	
-	NSDictionary *row2 = [NSMutableDictionary dictionary];
-	[row2 setValue:@"Username" forKey:@"inputName"];
-	[row2 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
-	[row2 setValue:[NSNumber numberWithInt:UIReturnKeyNext] forKey:@"keyboardReturnKey"];
-	[row2 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
-	[array addObject:row2];
-	
-	NSDictionary *row3 = [NSMutableDictionary dictionary];
-	[row3 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
-	[row3 setValue:[NSNumber numberWithInt:UIReturnKeyGo] forKey:@"keyboardReturnKey"];
-	[row3 setValue:@"Password" forKey:@"inputName"];
-	[row3 setValue:[NSNumber numberWithBool:YES] forKey:@"secureTextEntry"];
-	[array addObject:row3];
+
 	
 	self.mTableData = array;
 }
@@ -217,7 +205,7 @@
 #pragma mark -
 #pragma mark Action Methods
 
-- (void)signUp:(id)sender
+- (void)lostPassword:(id)sender
 {
 	if([mActivityIndicator isAnimating])
 	{
@@ -233,39 +221,12 @@
 		return;
 	}
 	
-	NSString *username = [[[self getTextFieldForRowIndex:1] text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-	if([username isEqualToString:@""])
-	{
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You cannot leave username blank" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[alertView show];
-		[alertView release];
-		return;
-	}
 	
 	
-	NSString *password = [[self getTextFieldForRowIndex:2] text];
-	if([password isEqualToString:@""])
-	{
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You cannot leave password blank" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[alertView show];
-		[alertView release];
-		return;
-	}
-	
-	if([password length] < 4)
-	{
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Password should be minimum 4 character long" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-		[alertView show];
-		[alertView release];
-		return;
-	}
-	
-	ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:kURLForRegistrationRequest]];
+	ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:kURLForLostPassword]];
 	request.delegate = self;
 	request.requestMethod = @"POST";
-	[request setPostValue:email forKey:@"user[email]"];
-	[request setPostValue:username forKey:@"user[nickname]"];
-	[request setPostValue:password forKey:@"user[password]"];
+	[request setPostValue:email forKey:@"users[email]"];
 	[request startAsynchronous];
 	[request release];
 	
@@ -305,9 +266,9 @@
 	}
 	else 
 	{
-		[self signUp:nil];
+		[self lostPassword:nil];
 	}
-
+	
 	
 	return YES;
 }
@@ -325,19 +286,28 @@
 	NSDictionary *responseDic = [responseString JSONValue];
 	
 	
+	
 	NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
 	if(responseDic)
 	{
 		if(code == 0)
 		{
-			NSDictionary *userInfo = [[responseDic objectForKey:@"value"] objectForKey:@"registered_user"];
-			[[DataManager sharedDataManager] setUserAsLoggedInWithProfileData:userInfo]; 
-		
+			BOOL success = [[[responseDic objectForKey:@"value"] objectForKey:@"send_reset_link"] boolValue];
 			
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:@"You have successfully registered yourself." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-			alertView.tag = 1;
-			[alertView show];
-			[alertView release];
+			if(success)
+			{
+				UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done" message:@"Your password has been reset and sent to your email address" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+				alertView.tag = 1;
+				[alertView show];
+				[alertView release];
+			}
+			else 
+			{
+				UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error in reseting the password" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+				[alertView show];
+				[alertView release];
+			}
+
 			
 		}
 		else 
@@ -354,9 +324,9 @@
 		[alertView show];
 		[alertView release];
 	}
-
 	
-
+	
+	
 	[self hideActivity];
 }
 
@@ -380,12 +350,10 @@
 {
 	if(alertView.tag == 1)
 	{
-		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationPUMPLUserDidLogin object:nil]];
-		
-		[(LaunchViewController *)[[self.navigationController viewControllers] objectAtIndex:0] launchTabBarControllerAnimated:YES withSelectedTabIndex:2];
 		[self.navigationController popViewControllerAnimated:YES];
 	}
 }
+
 
 
 @end

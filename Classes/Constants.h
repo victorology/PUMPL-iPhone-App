@@ -14,6 +14,7 @@
 
 #define kURLForRegistrationRequest @"http://www.pumpl.com/personalization/user_creation.json"
 #define kURLForLoginRequest @"http://www.pumpl.com/check_sign_in.json"
+#define kURLForLostPassword @"http://www.pumpl.com/users/password.json"
 #define kURLForPhotoUpload @"http://www.pumpl.com/photos.json"
 #define kURLForFetchPhotos @"http://www.pumpl.com/photos/mine.json"
 #define kURLForConnectedServices @"http://www.pumpl.com/connections.json"

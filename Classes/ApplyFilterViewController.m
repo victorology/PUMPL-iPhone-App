@@ -524,7 +524,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 		self.selectedImage = fullImageForBackUp;
 		mSelectedImageView.contentMode = UIViewContentModeScaleAspectFit;
 		
-		[_cropButton setTitle:@"Square" forState:UIControlStateNormal];
+		[_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
 		_cropButton.tag = kCropButtonDuringFull;
 		_contentModeToBeApplied = UIViewContentModeScaleAspectFit;
 	}
@@ -673,11 +673,11 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	
 	if(_contentModeToBeApplied == UIViewContentModeScaleToFill)
 	{
-		[_cropButton setTitle:@"Full" forState:UIControlStateNormal];
+		[_cropButton setImage:[UIImage imageNamed:@"Full.png"] forState:UIControlStateNormal];
 	}
 	else 
 	{
-		[_cropButton setTitle:@"Square" forState:UIControlStateNormal];
+		[_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
 	}
 
 	

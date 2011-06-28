@@ -63,7 +63,7 @@
 					<object class="IBUIButton" id="784221002">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{19, 268}, {75, 37}}</string>
+						<string key="NSFrame">{{15, 269}, {83, 35}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -74,8 +74,6 @@
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
 						</object>
-						<int key="IBUIButtonType">1</int>
-						<string key="IBUINormalTitle">Square</string>
 						<object class="NSColor" key="IBUIHighlightedTitleColor" id="1023993523">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -87,6 +85,10 @@
 						<object class="NSColor" key="IBUINormalTitleShadowColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
+						</object>
+						<object class="NSCustomResource" key="IBUINormalImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">Square.png</string>
 						</object>
 					</object>
 				</object>
@@ -654,6 +656,10 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<string key="IBDocument.LastKnownRelativeProjectPath">../PUMPL.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">Square.png</string>
+			<string key="NS.object.0">{83, 35}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">132</string>
 	</data>
 </archive>
