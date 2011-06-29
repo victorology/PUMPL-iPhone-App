@@ -27,7 +27,7 @@
 	return nil;
 }
 
-- (id)initWithImage:(UIImage *)image andTitle:(NSString *)title andServices:(NSMutableArray *)services
+- (id)initWithImage:(UIImage *)image andTitle:(NSString *)title andServices:(NSMutableArray *)services andFilter:(NSInteger)appliedFilter
 {
 	if(image == nil)
 		return nil;
@@ -37,6 +37,7 @@
 		_image = [image retain];
 		_title = [title copy];
 		_services = [services retain];
+		_filterApplied = appliedFilter;
 	}
 		
 	return self;
@@ -101,6 +102,76 @@
 	}
 	
 	
+	NSString *filterString = nil;
+	switch (_filterApplied) 
+	{
+		case kFilterTag:
+		{
+			filterString = @"Normal";
+			break;
+		}
+			
+		case kFilterTagNormal:
+		{
+			filterString = @"Normal";
+			break;
+		}
+			
+		case kFilterTagXPro:
+		{
+			filterString = @"XPro";
+			break;
+		}
+			
+		case kFilterTagVintage:
+		{
+			filterString = @"Vintage";
+			break;
+		}
+			
+		case kFilterTagLomo:
+		{
+			filterString = @"Lomo";
+			break;
+		}
+			
+		case kFilterTagPhotochrome:
+		{
+			filterString = @"Photochrom";
+			break;
+		}
+			
+		case kFilterTagMonochrome:
+		{
+			filterString = @"Monochrome";
+			break;
+		}
+			
+		case kFilterTagRedscale:
+		{
+			filterString = @"Redscale";
+			break;
+		}
+			
+		case kFilterTagPolaroid:
+		{
+			filterString = @"Polaroid";
+			break;
+		}
+			
+		case kFilterTagPlasticEye:
+		{
+			filterString = @"PlasticEye";
+			break;
+		}
+			
+			
+		default:
+			break;
+	}
+	
+	
+	
 	if(imageData)
 	{
 		_request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:kURLForPhotoUpload]];
@@ -111,6 +182,7 @@
 		[_request setPostValue:shouldUploadToFacebook forKey:@"photo[post_to_facebook]"];
 		[_request setPostValue:shouldUploadToTwitter forKey:@"photo[post_to_twitter]"];
 		[_request setPostValue:shouldUploadToTumblr forKey:@"photo[post_to_tumblr]"];
+		[_request setPostValue:filterString forKey:@"filter"];
 		[_request setUploadProgressDelegate:self];
 		_request.timeOutSeconds = 60;
 		

@@ -50,3 +50,16 @@
 #define kSettingsImageQualitySmall 0
 #define kSettingsImageQualityMedium 1
 #define kSettingsImageQualityFull 2
+
+
+
+#define kFilterTag 0
+#define kFilterTagNormal 1
+#define kFilterTagXPro 2
+#define kFilterTagVintage 3
+#define kFilterTagLomo 4
+#define kFilterTagPhotochrome 5
+#define kFilterTagMonochrome 6
+#define kFilterTagPlasticEye 7
+#define kFilterTagPolaroid 8
+#define kFilterTagRedscale 9

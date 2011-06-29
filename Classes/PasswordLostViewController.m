@@ -226,7 +226,7 @@
 	ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:kURLForLostPassword]];
 	request.delegate = self;
 	request.requestMethod = @"POST";
-	[request setPostValue:email forKey:@"users[email]"];
+	[request setPostValue:email forKey:@"users[:email]"];
 	[request startAsynchronous];
 	[request release];
 	
@@ -296,7 +296,7 @@
 			
 			if(success)
 			{
-				UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done" message:@"Your password has been reset and sent to your email address" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+				UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Done" message:@"Please check your email for password details" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
 				alertView.tag = 1;
 				[alertView show];
 				[alertView release];

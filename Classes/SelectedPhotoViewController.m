@@ -48,6 +48,7 @@
 @synthesize mTableData;
 @synthesize mPhotoUploader;
 @synthesize wasFilterSelected;
+@synthesize filterApplied;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -302,7 +303,7 @@
 	}
 								
 	
-	self.mPhotoUploader = [[[PhotoUploader alloc] initWithImage:mSelectedImage andTitle:titleString andServices:array] autorelease];
+	self.mPhotoUploader = [[[PhotoUploader alloc] initWithImage:mSelectedImage andTitle:titleString andServices:array andFilter:filterApplied] autorelease];
 	if(mPhotoUploader)
 	{
 		mPhotoUploader.delegate = self;
