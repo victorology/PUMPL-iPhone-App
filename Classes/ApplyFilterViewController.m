@@ -25,16 +25,7 @@
 #define kPaddingBetweenFilterButtons 3
 #define kFilterButtonSide 60
 
-#define kFilterTag 0
-#define kFilterTagNormal 1
-#define kFilterTagXPro 2
-#define kFilterTagVintage 3
-#define kFilterTagLomo 4
-#define kFilterTagPhotochrome 5
-#define kFilterTagMonochrome 6
-#define kFilterTagPlasticEye 7
-#define kFilterTagPolaroid 8
-#define kFilterTagRedscale 9
+
 
 
 #define kCropButtonDuringFull 0
@@ -563,6 +554,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	SelectedPhotoViewController *viewController = [[SelectedPhotoViewController alloc] initWithNibName:@"SelectedPhotoViewController" bundle:nil];
 	viewController.mSelectedImage = finalImage;
 	viewController.wasFilterSelected = _wasFilterSelected;
+	viewController.filterApplied = _filterApplied;
 	[self.navigationController pushViewController:viewController animated:YES];
 	[viewController release];	
 }

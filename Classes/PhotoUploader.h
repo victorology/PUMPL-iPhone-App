@@ -31,6 +31,7 @@
 	UIImage *_image;
 	NSMutableArray *_services;
 	NSString *_title;
+	NSInteger _filterApplied;
 
 	ASIFormDataRequest *_request;
 	
@@ -39,7 +40,7 @@
 
 @property (nonatomic, assign) id <PhotoUploaderDelegate> delegate;
 
-- (id)initWithImage:(UIImage *)image andTitle:(NSString *)title andServices:(NSMutableArray *)services;
+- (id)initWithImage:(UIImage *)image andTitle:(NSString *)title andServices:(NSMutableArray *)services andFilter:(NSInteger)appliedFilter;
 
 - (void)startUploading;
 

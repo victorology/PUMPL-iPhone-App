@@ -21,6 +21,7 @@
 	
 	UIImage *mSelectedImage;
 	BOOL wasFilterSelected;
+	NSInteger filterApplied;
 	
 	NSMutableArray *mTableData;
 	PhotoUploader *mPhotoUploader;
@@ -36,7 +37,7 @@
 @property (nonatomic, retain) NSMutableArray *mTableData;
 @property (nonatomic, retain) PhotoUploader *mPhotoUploader;
 @property (nonatomic, assign) BOOL wasFilterSelected;
-
+@property (nonatomic, assign) NSInteger filterApplied;
 
 - (void)buildTableData;
 - (void)configureTheView;
