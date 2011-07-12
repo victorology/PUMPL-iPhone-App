@@ -10,9 +10,13 @@
 #import "JSON.h"
 #import "ASIFormDataRequest.h"
 #import "LaunchViewController.h"
+#import "PasswordLostViewController.h"
 
 #define kViewTagInputNameLabel 1
 #define kViewTagInputTextField 2
+
+#define kCellTypeTextField 1
+#define kCellTypeOnlyLabel 2
 
 @implementation LoginViewController
 
@@ -118,65 +122,102 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return [mTableData count];
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [mTableData count];
+    return [[mTableData objectAtIndex:section] count];
 }
 
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = nil;
+    NSDictionary *rowDic = [[mTableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSInteger cellType = [[rowDic valueForKey:@"cellType"] integerValue];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-		
-		UILabel *inputNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 90, 43)];
-		inputNameLabel.tag = kViewTagInputNameLabel;
-		inputNameLabel.backgroundColor = [UIColor clearColor];
-		inputNameLabel.textColor = [UIColor blackColor];
-		inputNameLabel.font = [UIFont boldSystemFontOfSize:18];
-		[cell.contentView addSubview:inputNameLabel];
-		[inputNameLabel release];
-		
-		UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 180, 31)];
-		inputTextField.tag = kViewTagInputTextField;
-		inputTextField.backgroundColor = [UIColor clearColor];
-		inputTextField.borderStyle = UITextBorderStyleNone;
-		inputTextField.clearButtonMode = UITextFieldViewModeAlways;
-		inputTextField.delegate = self;
-		inputTextField.autocorrectionType = UITextAutocorrectionTypeNo;
-		inputTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-		[cell.contentView addSubview:inputTextField];
-		[inputTextField release];
-		
-		cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if(cellType == kCellTypeTextField)
+    {
+        static NSString *CellIdentifier = @"Cell1";
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+            
+            UILabel *inputNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 90, 43)];
+            inputNameLabel.tag = kViewTagInputNameLabel;
+            inputNameLabel.backgroundColor = [UIColor clearColor];
+            inputNameLabel.textColor = [UIColor blackColor];
+            inputNameLabel.font = [UIFont boldSystemFontOfSize:18];
+            [cell.contentView addSubview:inputNameLabel];
+            [inputNameLabel release];
+            
+            UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 180, 31)];
+            inputTextField.tag = kViewTagInputTextField;
+            inputTextField.backgroundColor = [UIColor clearColor];
+            inputTextField.borderStyle = UITextBorderStyleNone;
+            inputTextField.clearButtonMode = UITextFieldViewModeAlways;
+            inputTextField.delegate = self;
+            inputTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+            inputTextField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+            [cell.contentView addSubview:inputTextField];
+            [inputTextField release];
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+        // Configure the cell...
+        
+        
+        
+        UILabel *inputNameLabel = (UILabel *)[cell.contentView viewWithTag:kViewTagInputNameLabel];
+        inputNameLabel.text = [rowDic valueForKey:@"inputName"];
+        
+        UITextField *inputTextField = (UITextField *)[cell.contentView viewWithTag:kViewTagInputTextField];
+        inputTextField.placeholder = @"Required";
+        inputTextField.returnKeyType = [[rowDic valueForKey:@"keyboardReturnKey"] integerValue];
+        inputTextField.keyboardType = [[rowDic valueForKey:@"keyboardType"] integerValue];
+        inputTextField.secureTextEntry = [[rowDic valueForKey:@"secureTextEntry"] boolValue];
     }
-	
-	// Configure the cell...
-	
-	NSDictionary *rowDic = [mTableData objectAtIndex:indexPath.row];
-	
-	UILabel *inputNameLabel = (UILabel *)[cell.contentView viewWithTag:kViewTagInputNameLabel];
-	inputNameLabel.text = [rowDic valueForKey:@"inputName"];
-	
-	UITextField *inputTextField = (UITextField *)[cell.contentView viewWithTag:kViewTagInputTextField];
-    inputTextField.placeholder = @"Required";
-	inputTextField.returnKeyType = [[rowDic valueForKey:@"keyboardReturnKey"] integerValue];
-	inputTextField.keyboardType = [[rowDic valueForKey:@"keyboardType"] integerValue];
-	inputTextField.secureTextEntry = [[rowDic valueForKey:@"secureTextEntry"] boolValue];
+    else if(cellType == kCellTypeOnlyLabel)
+    {
+        static NSString *CellIdentifier = @"Cell2";
+        
+        cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+                    
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        
+        // Configure the cell...
+        
+        
+        cell.textLabel.text = [rowDic valueForKey:@"inputName"];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    
+    
+    
     
     
     return cell;
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSDictionary *rowDic = [[mTableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    if([[rowDic valueForKey:@"inputName"] isEqualToString:@"Lost Password"])
+    {
+        PasswordLostViewController *viewController = [[PasswordLostViewController alloc] initWithNibName:@"PasswordLostViewController" bundle:nil];
+        [self.navigationController pushViewController:viewController animated:YES];
+        [viewController release];
+    }
+}
 
 
 #pragma mark -
@@ -186,20 +227,43 @@
 {
 	NSMutableArray *array = [NSMutableArray array];
 	
+    NSMutableArray *section1 = [NSMutableArray array];
+
 	NSDictionary *row1 = [NSMutableDictionary dictionary];
+    [row1 setValue:[NSNumber numberWithInteger:kCellTypeTextField] forKey:@"cellType"];
 	[row1 setValue:@"Email" forKey:@"inputName"];
 	[row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeEmailAddress] forKey:@"keyboardType"];
 	[row1 setValue:[NSNumber numberWithInt:UIReturnKeyNext] forKey:@"keyboardReturnKey"];
 	[row1 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
-	[array addObject:row1];
+	[section1 addObject:row1];
 	
 	NSDictionary *row2 = [NSMutableDictionary dictionary];
+    [row2 setValue:[NSNumber numberWithInteger:kCellTypeTextField] forKey:@"cellType"];
 	[row2 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
 	[row2 setValue:[NSNumber numberWithInt:UIReturnKeyGo] forKey:@"keyboardReturnKey"];
 	[row2 setValue:@"Password" forKey:@"inputName"];
 	[row2 setValue:[NSNumber numberWithBool:YES] forKey:@"secureTextEntry"];
-	[array addObject:row2];
+	[section1 addObject:row2];
 	
+    [array addObject:section1];
+    
+    
+    
+    
+    
+    NSMutableArray *section2 = [NSMutableArray array];
+    
+    NSDictionary *row2_1 = [NSMutableDictionary dictionary];
+    [row2_1 setValue:[NSNumber numberWithInteger:kCellTypeOnlyLabel] forKey:@"cellType"];
+	[row2_1 setValue:@"Lost Password" forKey:@"inputName"];
+	[section2 addObject:row2_1];
+    
+    [array addObject:section2];
+    
+    
+    
+    
+    
 	self.mTableData = array;
 }
 
@@ -331,6 +395,8 @@
 	
 	[self hideActivity];
 }
+
+
 
 
 

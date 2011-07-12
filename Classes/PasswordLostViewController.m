@@ -226,7 +226,7 @@
 	ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:kURLForLostPassword]];
 	request.delegate = self;
 	request.requestMethod = @"POST";
-	[request setPostValue:email forKey:@"users[:email]"];
+	[request setPostValue:email forKey:@"user[email]"];
 	[request startAsynchronous];
 	[request release];
 	
