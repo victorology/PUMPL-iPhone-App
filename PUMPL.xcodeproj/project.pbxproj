@@ -134,6 +134,7 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		57FC377713D71EBC00171796 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57FC377613D71EBC00171796 /* Entitlements.plist */; };
 		92AF862813AFDA9A00C8F775 /* UIImage+PlasticEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862313AFDA9700C8F775 /* UIImage+PlasticEye.m */; };
 		92AF862913AFDA9A00C8F775 /* UIImage+Polaroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862513AFDA9800C8F775 /* UIImage+Polaroid.m */; };
 		92AF862A13AFDA9A00C8F775 /* UIImage+Redscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862713AFDA9900C8F775 /* UIImage+Redscale.m */; };
@@ -360,6 +361,7 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* PUMPL_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PUMPL_Prefix.pch; sourceTree = "<group>"; };
+		57FC377613D71EBC00171796 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PUMPL-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PUMPL-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		92AF862213AFDA9600C8F775 /* UIImage+PlasticEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PlasticEye.h"; sourceTree = "<group>"; };
 		92AF862313AFDA9700C8F775 /* UIImage+PlasticEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PlasticEye.m"; sourceTree = "<group>"; };
@@ -764,6 +766,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				57FC377613D71EBC00171796 /* Entitlements.plist */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -927,6 +930,7 @@
 				0BFA8AA713B9AF0B00562D8F /* Square.png in Resources */,
 				0BFA8AA813B9AF0B00562D8F /* Square@2x.png in Resources */,
 				0BFA8B1E13B9B71900562D8F /* PasswordLostViewController.xib in Resources */,
+				57FC377713D71EBC00171796 /* Entitlements.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,6 +1033,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
