@@ -6,6 +6,7 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PMTabBarController.h"
 #import "TumblrLoginViewController.h"
 #import "DataManager.h"
 #import "JSON.h"
@@ -91,8 +92,11 @@
 
 - (void)configureTheView
 {
-	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)] autorelease];
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:@selector(login:)] autorelease];
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)] autorelease];
+
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"LoginBtn.png"]
+                                                                                target:self action:@selector(login:)];
+    
 	self.navigationItem.title = @"Tumblr Login";
 	
 	

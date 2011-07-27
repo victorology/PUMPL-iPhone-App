@@ -6,6 +6,7 @@
 //  Copyright 2009 All-Seeing Interactive. All rights reserved.
 //
 
+#import "PMTabBarController.h"
 #import "ASIAuthenticationDialog.h"
 #import "ASIHTTPRequest.h"
 #import <QuartzCore/QuartzCore.h>
@@ -284,9 +285,13 @@ static const NSUInteger kDomainSection = 1;
 		[navItem setTitle:[[[self request] url] host]];
 	}
 
-	[navItem setLeftBarButtonItem:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAuthenticationFromDialog:)] autorelease]];
-	[navItem setRightBarButtonItem:[[[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleDone target:self action:@selector(loginWithCredentialsFromDialog:)] autorelease]];
-
+    
+    [navItem setLeftBarButtonItem:[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAuthenticationFromDialog:)] autorelease]];
+    
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"LoginBtn.png"]
+                                                                               target:self action:@selector(loginWithCredentialsFromDialog:)];
+    
+    
 	// We show the login form in a table view, similar to Safari's authentication dialog
 	[bar sizeToFit];
 	CGRect f = [[self view] bounds];

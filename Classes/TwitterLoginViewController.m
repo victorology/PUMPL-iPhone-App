@@ -10,6 +10,7 @@
 #import "DataManager.h"
 #import "JSON.h"
 #import "Constants.h"
+#import "PMTabBarController.h"
 
 #define kViewTagInputNameLabel 1
 #define kViewTagInputTextField 2
@@ -95,9 +96,9 @@
 - (void)configureTheView
 {
 	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)] autorelease];
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:@selector(login:)] autorelease];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"LoginBtn.png"]
+                                                                                target:self action:@selector(login:)];
 	self.navigationItem.title = @"Twitter Login";
-	
 	
     UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
 	self.view.backgroundColor = backgroundColor;

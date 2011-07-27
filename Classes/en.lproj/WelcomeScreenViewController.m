@@ -6,6 +6,8 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PMNavigationController.h"
+#import "PMTabBarController.h"
 #import "WelcomeScreenViewController.h"
 #import "LaunchViewController.h"
 #import "DataManager.h"
@@ -16,7 +18,6 @@
 #import "FacebookConnectionWebViewController.h"
 #import "TumblrLoginViewController.h"
 #import "Me2DayLoginViewController.h"
-#import "PMNavigationController.h"
 
 
 #define kAccessoryTypeDisclosureIndicator 0
@@ -152,12 +153,10 @@
     UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
 	self.view.backgroundColor = backgroundColor;
     [backgroundColor release];
+
     
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneClicked:)];
-    self.navigationItem.rightBarButtonItem = doneButton;
-    [doneButton release];
-    
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"DoneBtn.png"]
+                                                                                target:self action:@selector(doneClicked:)];
 	
 	mTableView.backgroundColor = [UIColor clearColor];
 	mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;

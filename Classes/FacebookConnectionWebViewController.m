@@ -6,6 +6,7 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PMTabBarController.h"
 #import "FacebookConnectionWebViewController.h"
 #import "JSON.h"
 #import "Constants.h"
@@ -41,7 +42,15 @@
     UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
 	self.view.backgroundColor = backgroundColor;
     [backgroundColor release];
+    
+//    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
+//                                                                                target:self action:@selector(back:)];
+    
 }
+
+//-(void) back:(id)sender {
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 
 
 /*

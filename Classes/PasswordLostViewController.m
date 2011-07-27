@@ -88,7 +88,8 @@
 
 - (void)configureTheView
 {
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(lostPassword:)] autorelease];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"DoneBtn.png"]
+                                                                                target:self action:@selector(lostPassword:)];
 	
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;

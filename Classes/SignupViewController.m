@@ -6,6 +6,7 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PMTabBarController.h"
 #import "SignupViewController.h"
 #import "JSON.h"
 #import "ASIFormDataRequest.h"
@@ -89,7 +90,8 @@
 
 - (void)configureTheView
 {
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SignUpKey", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(signUp:)] autorelease];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"SignUpBtn.png"]
+                                                                                target:self action:@selector(signUp:)];
 	
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;

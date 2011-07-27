@@ -6,6 +6,7 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PMTabBarController.h"
 #import "ImageQualitySettingController.h"
 #import "DataManager.h"
 
@@ -139,8 +140,9 @@
 	[logoImageView release];
 	
 	mTableView.backgroundColor = [UIColor clearColor];
-	
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)] autorelease];
+
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"SaveBtn.png"]
+                                                                                target:self action:@selector(save:)];
 }
 
 

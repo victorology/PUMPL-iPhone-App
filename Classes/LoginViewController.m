@@ -6,6 +6,7 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PMTabBarController.h"
 #import "LoginViewController.h"
 #import "JSON.h"
 #import "ASIFormDataRequest.h"
@@ -90,7 +91,8 @@
 
 - (void)configureTheView
 {
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Login" style:UIBarButtonItemStyleBordered target:self action:@selector(login:)] autorelease];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"LoginBtn.png"]
+                                                                                target:self action:@selector(login:)];
 	
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;

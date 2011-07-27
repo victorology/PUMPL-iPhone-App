@@ -6,6 +6,7 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PMTabBarController.h"
 #import "ApplyFilterViewController.h"
 #import "SelectedPhotoViewController.h"
 #import "UIImage+CrossProcess.h"
@@ -82,18 +83,14 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	self.navigationItem.titleView = logoImageView;
 	[logoImageView release];
 	
-	
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(back:)] autorelease];
-    
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(next:)] autorelease];
-	
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
+                                                                               target:self action:@selector(back:)];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"NextBtn.png"]
+                                                                                target:self action:@selector(next:)];
 	
 	[self buildFilterButtonScrollView];
 	
-	
 	_cropButton.hidden = YES;
-	
-	
 	
 	_HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:_HUD];
