@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  PUMPL
+
+  Created by Harmandeep Singh on 27/07/11.
+  Copyright 2011 Route Me. All rights reserved.
+*/
+
+
+"OkKey" = "Ok";
+"UnknownServerResponseKey" =  "Unknown server response";
+"ServerRequestFailedKey" = "Server request failed";
+"CancelKey" = "Cancel";
+"YesKey" = "Yes";
+"NoKey" = "No";
+
+
+
+"EmailKey" = "Email";
+"UsernameKey" = "Username";
+"PasswordKey" = "Password";
+"SignUpKey" = "SignUp";
+"PleaseEnterYourEmailKey" = "Please enter your email";
+"PleaseEnterYourUsernameKey" = "Please enter your username"; 
+"PleaseEnterYourPasswordKey" = "Please enter your password";
+"PasswordShouldBeAtLeastCharactersLongKey" = "Password should be at least 4 characters long";
+"CongratulationsYouHaveSuccessfullyRegisteredKey" = "Congratulations! You have successfully registered.";

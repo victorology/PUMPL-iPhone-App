@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  PUMPL
+
+  Created by Harmandeep Singh on 27/07/11.
+  Copyright 2011 Route Me. All rights reserved.
+*/
+
+
+"OkKey" = "확인";
+"UnknownServerResponseKey" =  "서버 오류";
+"ServerRequestFailedKey" = "서버 요청 오류";
+"CancelKey" = "취소";
+"YesKey" = "네";
+"NoKey" = "아니요";
+
+
+
+"EmailKey" = "이메일";
+"UsernameKey" = "사용자이름";
+"PasswordKey" = "비밀번호";
+"SignUpKey" = "회원가입";
+"PleaseEnterYourEmailKey" = "이메일 주소를 입력해주세요";
+"PleaseEnterYourUsernameKey" = "사용자 이름을 입력해주세요"; 
+"PleaseEnterYourPasswordKey" = "비밀번호를 입력해주세요";
+"PasswordShouldBeAtLeast4CharactersLongKey" = "비밀번호는 최소 4 자리 이상이어야 합니다";
+"CongratulationsYouHaveSuccessfullyRegisteredKey" = "성공적으로 가입 완료 되었습니다!";
