@@ -153,6 +153,13 @@
 		92AF862F13AFDAC200C8F775 /* PlasticEye.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862C13AFDAC200C8F775 /* PlasticEye.c3d */; };
 		92AF863013AFDAC200C8F775 /* polaroid.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862D13AFDAC200C8F775 /* polaroid.c3d */; };
 		92AF863113AFDAC200C8F775 /* redscale.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862E13AFDAC200C8F775 /* redscale.c3d */; };
+		92BA7C6F13E0AE3500BC447E /* PMNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 92BA7C6E13E0AE3500BC447E /* PMNavigationController.m */; };
+		92BA7C7713E0AF8500BC447E /* BackBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92BA7C7113E0AF8500BC447E /* BackBtn@2x.png */; };
+		92BA7C7813E0AF8500BC447E /* LoginBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92BA7C7213E0AF8500BC447E /* LoginBtn@2x.png */; };
+		92BA7C7913E0AF8500BC447E /* NavBack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 92BA7C7313E0AF8500BC447E /* NavBack@2x.png */; };
+		92BA7C7A13E0AF8500BC447E /* LoginBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 92BA7C7413E0AF8500BC447E /* LoginBtn.png */; };
+		92BA7C7B13E0AF8500BC447E /* BackBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 92BA7C7513E0AF8500BC447E /* BackBtn.png */; };
+		92BA7C7C13E0AF8500BC447E /* NavBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 92BA7C7613E0AF8500BC447E /* NavBack.png */; };
 		C37E330A1318F8A400B812A1 /* img-tab-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33041318F8A400B812A1 /* img-tab-photo.png */; };
 		C37E330B1318F8A400B812A1 /* img-tab-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33051318F8A400B812A1 /* img-tab-settings.png */; };
 		C37E330C1318F8A400B812A1 /* img-tab-home.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33061318F8A400B812A1 /* img-tab-home.png */; };
@@ -400,6 +407,14 @@
 		92AF862C13AFDAC200C8F775 /* PlasticEye.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlasticEye.c3d; sourceTree = "<group>"; };
 		92AF862D13AFDAC200C8F775 /* polaroid.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = polaroid.c3d; sourceTree = "<group>"; };
 		92AF862E13AFDAC200C8F775 /* redscale.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = redscale.c3d; sourceTree = "<group>"; };
+		92BA7C6D13E0AE3500BC447E /* PMNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PMNavigationController.h; sourceTree = "<group>"; };
+		92BA7C6E13E0AE3500BC447E /* PMNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMNavigationController.m; sourceTree = "<group>"; };
+		92BA7C7113E0AF8500BC447E /* BackBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackBtn@2x.png"; sourceTree = "<group>"; };
+		92BA7C7213E0AF8500BC447E /* LoginBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LoginBtn@2x.png"; sourceTree = "<group>"; };
+		92BA7C7313E0AF8500BC447E /* NavBack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBack@2x.png"; sourceTree = "<group>"; };
+		92BA7C7413E0AF8500BC447E /* LoginBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LoginBtn.png; sourceTree = "<group>"; };
+		92BA7C7513E0AF8500BC447E /* BackBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackBtn.png; sourceTree = "<group>"; };
+		92BA7C7613E0AF8500BC447E /* NavBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBack.png; sourceTree = "<group>"; };
 		C37E33041318F8A400B812A1 /* img-tab-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-photo.png"; sourceTree = "<group>"; };
 		C37E33051318F8A400B812A1 /* img-tab-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-settings.png"; sourceTree = "<group>"; };
 		C37E33061318F8A400B812A1 /* img-tab-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-home.png"; sourceTree = "<group>"; };
@@ -446,6 +461,8 @@
 				0BD333F112DB4F70006A02EB /* JSON */,
 				1D3623240D0F684500981E51 /* PUMPLAppDelegate.h */,
 				1D3623250D0F684500981E51 /* PUMPLAppDelegate.m */,
+				92BA7C6D13E0AE3500BC447E /* PMNavigationController.h */,
+				92BA7C6E13E0AE3500BC447E /* PMNavigationController.m */,
 				0BC6938312D450AC008285B2 /* LaunchViewController.h */,
 				0BC6938412D450AC008285B2 /* LaunchViewController.m */,
 				0BC6938512D450AC008285B2 /* LaunchViewController.xib */,
@@ -586,6 +603,12 @@
 			children = (
 				0BE9F548139F3091002C1D3A /* Default.png */,
 				0BE9F549139F3091002C1D3A /* Default@2x.png */,
+				92BA7C7113E0AF8500BC447E /* BackBtn@2x.png */,
+				92BA7C7513E0AF8500BC447E /* BackBtn.png */,
+				92BA7C7213E0AF8500BC447E /* LoginBtn@2x.png */,
+				92BA7C7413E0AF8500BC447E /* LoginBtn.png */,
+				92BA7C7613E0AF8500BC447E /* NavBack.png */,
+				92BA7C7313E0AF8500BC447E /* NavBack@2x.png */,
 				0BFFC22F136ED46B006AD565 /* temp */,
 				C3AFBA5D1303E05C006C5709 /* img-beige_bg.png */,
 				C3AFBA321303D955006C5709 /* beige_bg@2x.png */,
@@ -985,6 +1008,12 @@
 				0B299A6C13DE9C0E007F955A /* Roll.png in Resources */,
 				0B299A6D13DE9C0E007F955A /* Roll@2x.png in Resources */,
 				0BD1345513E0020800B7241F /* Localizable.strings in Resources */,
+				92BA7C7713E0AF8500BC447E /* BackBtn@2x.png in Resources */,
+				92BA7C7813E0AF8500BC447E /* LoginBtn@2x.png in Resources */,
+				92BA7C7913E0AF8500BC447E /* NavBack@2x.png in Resources */,
+				92BA7C7A13E0AF8500BC447E /* LoginBtn.png in Resources */,
+				92BA7C7B13E0AF8500BC447E /* BackBtn.png in Resources */,
+				92BA7C7C13E0AF8500BC447E /* NavBack.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1066,6 +1095,7 @@
 				0BCB560D13DF1C1C00B7918D /* WelcomeScreenViewController.m in Sources */,
 				0B299A7013DEE16A007F955A /* CameraImagePickerController.m in Sources */,
 				0B299A7613DEE1C9007F955A /* LibraryImagePickerController.m in Sources */,
+				92BA7C6F13E0AE3500BC447E /* PMNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

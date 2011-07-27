@@ -10,6 +10,7 @@
 #import "DataManager.h"
 #import "EnabledService.h"
 #import "PUMPLAppDelegate.h"
+#import "PMNavigationController.h"
 #import "LaunchViewController.h"
 #import "TwitterLoginViewController.h"
 #import "TumblrLoginViewController.h"
@@ -545,7 +546,7 @@
 			else if([inputName isEqualToString:@"Twitter"])
 			{
 				TwitterLoginViewController *viewController = [[TwitterLoginViewController alloc] initWithNibName:@"TwitterLoginViewController" bundle:nil];
-				UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+				UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
 				[viewController release];
 				[self presentModalViewController:navController animated:YES];
 				[navController release];
@@ -554,7 +555,7 @@
 			else if([inputName isEqualToString:@"Tumblr"])
 			{
 				TumblrLoginViewController *viewController = [[TumblrLoginViewController alloc] initWithNibName:@"TumblrLoginViewController" bundle:nil];
-				UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+				UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
 				[viewController release];
 				[self presentModalViewController:navController animated:YES];
 				[navController release];

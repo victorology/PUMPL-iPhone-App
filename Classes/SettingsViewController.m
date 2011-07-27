@@ -16,6 +16,7 @@
 #import "FacebookConnectionWebViewController.h"
 #import "TumblrLoginViewController.h"
 #import "Me2DayLoginViewController.h"
+#import "PMNavigationController.h"
 
 #define kAccessoryTypeDisclosureIndicator 0
 #define kAccessoryTypeNone 1
@@ -305,7 +306,7 @@
 		else 
 		{
 			TwitterLoginViewController *viewController = [[TwitterLoginViewController alloc] initWithNibName:@"TwitterLoginViewController" bundle:nil];
-			UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+			UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
 			[viewController release];
 			[self presentModalViewController:navController animated:YES];
 			[navController release];
@@ -325,7 +326,7 @@
 		else 
 		{
 			TumblrLoginViewController *viewController = [[TumblrLoginViewController alloc] initWithNibName:@"TumblrLoginViewController" bundle:nil];
-			UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+			UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
 			[viewController release];
 			[self presentModalViewController:navController animated:YES];
 			[navController release];

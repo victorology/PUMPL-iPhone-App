@@ -7,6 +7,7 @@
 //
 
 #import "PUMPLAppDelegate.h"
+#import "PMNavigationController.h"
 #import "LaunchViewController.h"
 #import "DataManager.h"
 #import "Appirater.h"
@@ -44,7 +45,7 @@
 	
 	
 	LaunchViewController *viewController = [[LaunchViewController alloc] initWithNibName:@"LaunchViewController" bundle:nil];
-	self.navController = [[[UINavigationController alloc] initWithRootViewController:viewController] autorelease];
+	self.navController = [[[PMNavigationController alloc] initWithRootViewController:viewController] autorelease];
 	navController.navigationBar.barStyle = UIBarStyleBlack;
 	navController.navigationBarHidden = YES;
 	[viewController release];

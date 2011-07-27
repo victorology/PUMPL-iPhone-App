@@ -10,6 +10,7 @@
 #import "HomeScreenDataSource.h"
 #import "Constants.h"
 #import "WelcomeScreenViewController.h"
+#import "PMNavigationController.h"
 
 @interface HomeScreenViewController ()
 - (void)showActivityIndicator;
@@ -110,7 +111,7 @@
     if(mShouldPresentWelcomeScreen)
     {
         WelcomeScreenViewController *viewController = [[WelcomeScreenViewController alloc] initWithNibName:@"WelcomeScreenViewController" bundle:nil];
-        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
         [viewController release];
         navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
         [self presentModalViewController:navController animated:YES];
