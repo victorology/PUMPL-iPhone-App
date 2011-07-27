@@ -88,15 +88,51 @@
 
 - (void)configureTheView
 {
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Go" style:UIBarButtonItemStyleBordered target:self action:@selector(lostPassword:)] autorelease];
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(lostPassword:)] autorelease];
 	
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;
 	[logoImageView release];
+    
+    
+    UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
+	self.view.backgroundColor = backgroundColor;
+    [backgroundColor release];
+    
 	
 	mActivityIndicator.hidden = YES;
 	mTableView.backgroundColor = [UIColor clearColor];
 	mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
+    
+    
+    
+    UILabel *instructionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 290, 60)];
+    instructionLabel.backgroundColor = [UIColor clearColor];
+    instructionLabel.numberOfLines = 3;
+    UIColor *fontColor = [[UIColor alloc] initWithRed:0.239 green:0.255 blue:0.357 alpha:1.0];
+    instructionLabel.textColor = fontColor;
+    [fontColor release];
+    instructionLabel.font = [UIFont boldSystemFontOfSize:15];
+    instructionLabel.shadowOffset = CGSizeMake(0, 1);
+    instructionLabel.shadowColor = [UIColor whiteColor];
+    
+    
+    NSString *instructionText = [[NSString alloc] initWithString:@"Enter your email address for your account so we can send you password reset instructions"];
+    instructionLabel.text = instructionText;
+    [instructionText release];
+    
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                  0,
+                                                                  320,
+                                                                  instructionLabel.frame.size.height)];
+    footerView.backgroundColor = [UIColor clearColor];
+    [footerView addSubview:instructionLabel];
+    [instructionLabel release];
+    
+    mTableView.tableFooterView = footerView;
+    [footerView release];
 }
 
 
@@ -189,10 +225,9 @@
 	NSDictionary *row1 = [NSMutableDictionary dictionary];
 	[row1 setValue:@"Email" forKey:@"inputName"];
 	[row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeEmailAddress] forKey:@"keyboardType"];
-	[row1 setValue:[NSNumber numberWithInt:UIReturnKeyGo] forKey:@"keyboardReturnKey"];
+	[row1 setValue:[NSNumber numberWithInt:UIReturnKeyDefault] forKey:@"keyboardReturnKey"];
 	[row1 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
 	[array addObject:row1];
-	
 
 	
 	self.mTableData = array;

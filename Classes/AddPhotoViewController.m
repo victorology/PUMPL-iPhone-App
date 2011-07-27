@@ -9,7 +9,6 @@
 #import "AddPhotoViewController.h"
 #import <MobileCoreServices/UTCoreTypes.h>
 #import "SelectedPhotoViewController.h"
-#import "EditScrollViewController.h"
 #import "ApplyFilterViewController.h"
 
 
@@ -17,10 +16,18 @@
 #define kCropButtonDuringSquare 1
 
 
+#define kAlertViewForCameraCapability 1
+#define kAlertViewForCameraRollCapability 2
 
 
 
 
+@interface AddPhotoViewController (Private)
+
+- (CameraImagePickerController *)newCameraImagePickerController;
+- (LibraryImagePickerController *)newLibraryImagePickerController;
+
+@end
 
 
 
@@ -28,18 +35,9 @@
 
 @implementation AddPhotoViewController
 
-@synthesize _imagePickerController;
+@synthesize _cameraImagePickerController;
+@synthesize _libraryImagePickerController;
 
-// The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
-/*
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization.
-    }
-    return self;
-}
-*/
 
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -49,15 +47,43 @@
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;
 	[logoImageView release];
+    
+    
+    UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
+	self.view.backgroundColor = backgroundColor;
+    [backgroundColor release];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose From Library", nil];
-	//[actionSheet showInView:self.tabBarController.tabBar];
-	[actionSheet showFromTabBar:self.tabBarController.tabBar];
-	[actionSheet release];
+    
+    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+    {
+        _selectedPhotoSource = kSelectedPhotoSourceCamera;
+    
+        if(!_cameraImagePickerController)
+        {
+            self._cameraImagePickerController = [self newCameraImagePickerController];
+        }
+        
+        _cropButton.tag = kCropButtonDuringFull;
+        [_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
+        _cropImageView.hidden = YES;
+        
+        
+        [self presentModalViewController:_cameraImagePickerController animated:YES];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your iphone does not have the capibility to capture image." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        alertView.tag = kAlertViewForCameraCapability;
+        [alertView show];
+        [alertView release];
+    }
+    
+	
 }
 
 
@@ -84,7 +110,8 @@
 
 
 - (void)dealloc {
-	[_imagePickerController release];
+	[_cameraImagePickerController release];
+    [_libraryImagePickerController release];
     [super dealloc];
 }
 
@@ -94,16 +121,20 @@
 
 - (IBAction)takePicture:(id)sender
 {
-	[_imagePickerController takePicture];
+	[_cameraImagePickerController takePicture];
 }
 
 - (IBAction)cancelImagePicker:(id)sender
 {
-	
-	 
+	[_cameraImagePickerController dismissModalViewControllerAnimated:YES];
+    
+    [self.tabBarController setSelectedIndex:[[DataManager sharedDataManager] mLastSelectedTabBarIndex]];
+}
 
-	[_imagePickerController dismissModalViewControllerAnimated:YES];
-	self._imagePickerController = nil;
+- (IBAction)rollClicked:(id)sender
+{    
+    _shouldDisplayLibraryPickerOnCameraOfLibrary = YES;
+    [_cameraImagePickerController dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -114,86 +145,30 @@
 	{
 		button.tag = kCropButtonDuringSquare;
 		[button setImage:[UIImage imageNamed:@"Full.png"] forState:UIControlStateNormal];
+        button.frame = CGRectMake(237, 381, 73, 35);
 		_cropImageView.hidden = NO;
 	}
 	else if(button.tag == kCropButtonDuringSquare)
 	{
 		button.tag = kCropButtonDuringFull;
 		[button setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
+        button.frame = CGRectMake(227, 381, 83, 35);
 		_cropImageView.hidden = YES;
 	}
 }
 
 
 
-#pragma mark -
-#pragma mark UIActionSheet Delegate Methods
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+
+
+#pragma mark -
+#pragma mark UIAlertView delegate Methods
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-	if(buttonIndex == 0)
-	{
-		if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-		{
-			_selectedPhotoSource = kSelectedPhotoSourceCamera;
-			
-		
-			
-			UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
-			self._imagePickerController = pickerController;
-			[pickerController release];
-			
-			pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
-			pickerController.delegate = self;
-			pickerController.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil];
-			
-			
-			_cropButton.tag = kCropButtonDuringFull;
-			[_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
-			_cropImageView.hidden = YES;
-			
-			pickerController.showsCameraControls = NO;
-			_imagePickerOverLayView.frame = CGRectMake(0, 0, 320, 480);
-			pickerController.cameraOverlayView = _imagePickerOverLayView;
-			
-			[self presentModalViewController:pickerController animated:YES];
-			
-			
-		}
-		else
-		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your iphone does not have the capibility to capture image." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-			[alertView show];
-			[alertView release];
-		}
-	}
-	else if(buttonIndex == 1)
-	{
-		if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
-		{
-			_selectedPhotoSource = kSelectedPhotoSourceLibrary;
-			
-			UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
-			self._imagePickerController = pickerController;
-			[pickerController release];
-			
-			_cropButton.tag = kCropButtonDuringFull;
-			[_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
-			_cropImageView.hidden = YES;
-			
-			pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-			pickerController.delegate = self;
-			pickerController.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil];
-			[self presentModalViewController:pickerController animated:YES];
-		}
-		else
-		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your iphone does not have the capibility to show photo library." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-			[alertView show];
-			[alertView release];
-		}
-	}
-	else if(buttonIndex == 2)
+	if(alertView.tag == kAlertViewForCameraCapability)
 	{
 		[self.tabBarController setSelectedIndex:[[DataManager sharedDataManager] mLastSelectedTabBarIndex]];
 	}
@@ -220,6 +195,9 @@
 		{
 			
 			ApplyFilterViewController *viewController = [[ApplyFilterViewController alloc] initWithNibName:@"ApplyFilterViewController" bundle:nil];
+            
+            [[UIApplication sharedApplication] setStatusBarHidden:YES];
+            viewController.wantsFullScreenLayout = YES;
 			viewController.hidesBottomBarWhenPushed = YES;
 			viewController.originalImage = imagePicked;
 			viewController.imageClickedInSquareMode = _cropButton.tag;
@@ -230,37 +208,16 @@
 		}
 	}
 	
-	[picker dismissModalViewControllerAnimated:YES];
-	self._imagePickerController = nil;
+    
+	[_libraryImagePickerController dismissModalViewControllerAnimated:YES];
+    [_cameraImagePickerController dismissModalViewControllerAnimated:YES];
 }
+
 
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-	
-	/*
-	UIImage *imagePicked = [UIImage imageNamed:@"vertical.jpg"];
-	//UIImage *imagePicked = [UIImage imageNamed:@"horizontal.jpg"];
-	UIImageWriteToSavedPhotosAlbum(imagePicked, nil, nil, nil);
-	
-	
-	
-	if(imagePicked)
-	{
-		//NSInteger selectedImageQuality = [[DataManager sharedDataManager] imageQualitySetting];
-		
-		
-		ApplyFilterViewController *viewController = [[ApplyFilterViewController alloc] initWithNibName:@"ApplyFilterViewController" bundle:nil];
-		viewController.hidesBottomBarWhenPushed = YES;
-		viewController.originalImage = imagePicked;
-		viewController.imageClickedInSquareMode = NO;
-		[self.navigationController pushViewController:viewController animated:NO];
-		[viewController release];
-		
-	}
-	*/
-	 
-	
+    _shouldDisplayCameraPickerOnDisappearOfLibrary = YES;
 	[picker dismissModalViewControllerAnimated:YES];
 }
 
@@ -268,12 +225,108 @@
 
 
 
+#pragma mark -
+#pragma mark CameraImagePickerController delegate Methods
+
+- (void)cameraImagePickerControllerDisappeared
+{
+    if(_shouldDisplayLibraryPickerOnCameraOfLibrary)
+    {
+        _shouldDisplayLibraryPickerOnCameraOfLibrary = NO;
+        
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary])
+        {
+            _selectedPhotoSource = kSelectedPhotoSourceLibrary;
+            
+            if(!_libraryImagePickerController)
+            {
+                self._libraryImagePickerController = [self newLibraryImagePickerController];
+            }
+            [self presentModalViewController:_libraryImagePickerController animated:YES];
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your iphone does not have the capibility to show photo library." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            alertView.tag = kAlertViewForCameraRollCapability;
+            [alertView show];
+            [alertView release];
+        }
+    }
+}
 
 
 
 
 
+#pragma mark -
+#pragma mark LibraryImagePickerController delegate Methods
 
+- (void)libraryImagePickerControllerDisappeared
+{
+    if(_shouldDisplayCameraPickerOnDisappearOfLibrary)
+    {
+        _shouldDisplayCameraPickerOnDisappearOfLibrary = NO;
+        
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        {
+            _selectedPhotoSource = kSelectedPhotoSourceCamera;
+            
+            if(!_cameraImagePickerController)
+            {
+                self._cameraImagePickerController = [self newCameraImagePickerController];
+            }
+            
+            _cropButton.tag = kCropButtonDuringFull;
+            [_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
+            _cropImageView.hidden = YES;
+            
+            [self presentModalViewController:_cameraImagePickerController animated:YES];
+        }
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Your iphone does not have the capibility to capture image." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            alertView.tag = kAlertViewForCameraCapability;
+            [alertView show];
+            [alertView release];
+        }
+    }
+}
+
+
+
+
+
+#pragma mark -
+#pragma mark Object Creater Methods
+
+- (CameraImagePickerController *)newCameraImagePickerController
+{
+    CameraImagePickerController *pickerController = [[CameraImagePickerController alloc] init];
+    
+    
+    pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+    pickerController.delegate = self;
+    pickerController.customDelegate = self;
+    pickerController.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil];
+    
+    pickerController.showsCameraControls = NO;
+    _imagePickerOverLayView.frame = CGRectMake(0, 0, 320, 480);
+    pickerController.cameraOverlayView = _imagePickerOverLayView;
+    
+    return pickerController;
+}
+
+- (LibraryImagePickerController *)newLibraryImagePickerController
+{
+    LibraryImagePickerController *pickerController = [[[LibraryImagePickerController alloc] init] autorelease];
+    
+    pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    pickerController.delegate = self;
+    pickerController.customDelegate = self;
+    pickerController.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil];
+    
+    return pickerController;
+}
 
 
 @end

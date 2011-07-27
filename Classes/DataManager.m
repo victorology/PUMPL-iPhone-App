@@ -118,6 +118,11 @@ static DataManager *sharedDataManager = nil;
 {
 
 	[[DataManager sharedDataManager] setUserAsLoggedInWithProfileData:nil];
+    [self setFacebookConnected:NO withNickname:nil];
+    [self setTwitterConnected:NO withNickname:nil];
+    [self setTumblrConnected:NO withNickname:nil];
+    [self setMe2dayConnected:NO withNickname:nil];
+    
 	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationPUMPLUserDidLogout object:nil]];
 }
 
@@ -136,6 +141,11 @@ static DataManager *sharedDataManager = nil;
 - (BOOL)isTumblrConnected
 {
 	return [[[NSUserDefaults standardUserDefaults] valueForKey:kIsTumblrAccountConnected] boolValue];
+}
+
+- (BOOL)isMe2dayConnected
+{
+	return [[[NSUserDefaults standardUserDefaults] valueForKey:kIsMe2dayAccountConnected] boolValue];
 }
 
 
@@ -161,7 +171,12 @@ static DataManager *sharedDataManager = nil;
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-
+- (void)setMe2dayConnected:(BOOL)isConnected withNickname:(NSString *)nickname
+{
+	[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:isConnected] forKey:kIsMe2dayAccountConnected];
+	[[NSUserDefaults standardUserDefaults] setValue:nickname forKey:kMe2dayAccountNickname];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 
 

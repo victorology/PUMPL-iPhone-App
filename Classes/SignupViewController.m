@@ -10,6 +10,7 @@
 #import "JSON.h"
 #import "ASIFormDataRequest.h"
 #import "LaunchViewController.h"
+#import "WelcomeScreenViewController.h"
 
 #define kViewTagInputNameLabel 1
 #define kViewTagInputTextField 2
@@ -88,15 +89,23 @@
 
 - (void)configureTheView
 {
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Sign up" style:UIBarButtonItemStyleBordered target:self action:@selector(signUp:)] autorelease];
+	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SignUpKey", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(signUp:)] autorelease];
 	
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;
 	[logoImageView release];
+    
+    
+    UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
+	self.view.backgroundColor = backgroundColor;
+    [backgroundColor release];
+    
 	
 	mActivityIndicator.hidden = YES;
 	mTableView.backgroundColor = [UIColor clearColor];
 	mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
 }
 
 
@@ -138,7 +147,7 @@
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		
-		UILabel *inputNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 90, 43)];
+		UILabel *inputNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 100, 43)];
 		inputNameLabel.tag = kViewTagInputNameLabel;
 		inputNameLabel.backgroundColor = [UIColor clearColor];
 		inputNameLabel.textColor = [UIColor blackColor];
@@ -146,7 +155,7 @@
 		[cell.contentView addSubview:inputNameLabel];
 		[inputNameLabel release];
 		
-		UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(110, 10, 180, 31)];
+		UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(120, 10, 170, 31)];
 		inputTextField.tag = kViewTagInputTextField;
 		inputTextField.backgroundColor = [UIColor clearColor];
 		inputTextField.borderStyle = UITextBorderStyleNone;
@@ -168,7 +177,7 @@
 	inputNameLabel.text = [rowDic valueForKey:@"inputName"];
 	
 	UITextField *inputTextField = (UITextField *)[cell.contentView viewWithTag:kViewTagInputTextField];
-    inputTextField.placeholder = @"Required";
+    
 	inputTextField.returnKeyType = [[rowDic valueForKey:@"keyboardReturnKey"] integerValue];
 	inputTextField.keyboardType = [[rowDic valueForKey:@"keyboardType"] integerValue];
 	inputTextField.secureTextEntry = [[rowDic valueForKey:@"secureTextEntry"] boolValue];
@@ -187,14 +196,14 @@
 	NSMutableArray *array = [NSMutableArray array];
 	
 	NSDictionary *row1 = [NSMutableDictionary dictionary];
-	[row1 setValue:@"Email" forKey:@"inputName"];
+	[row1 setValue:NSLocalizedString(@"EmailKey", @"") forKey:@"inputName"];
 	[row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeEmailAddress] forKey:@"keyboardType"];
 	[row1 setValue:[NSNumber numberWithInt:UIReturnKeyNext] forKey:@"keyboardReturnKey"];
 	[row1 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
 	[array addObject:row1];
 	
 	NSDictionary *row2 = [NSMutableDictionary dictionary];
-	[row2 setValue:@"Username" forKey:@"inputName"];
+	[row2 setValue:NSLocalizedString(@"UsernameKey", @"") forKey:@"inputName"];
 	[row2 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
 	[row2 setValue:[NSNumber numberWithInt:UIReturnKeyNext] forKey:@"keyboardReturnKey"];
 	[row2 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
@@ -203,7 +212,7 @@
 	NSDictionary *row3 = [NSMutableDictionary dictionary];
 	[row3 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
 	[row3 setValue:[NSNumber numberWithInt:UIReturnKeyGo] forKey:@"keyboardReturnKey"];
-	[row3 setValue:@"Password" forKey:@"inputName"];
+	[row3 setValue:NSLocalizedString(@"PasswordKey", @"") forKey:@"inputName"];
 	[row3 setValue:[NSNumber numberWithBool:YES] forKey:@"secureTextEntry"];
 	[array addObject:row3];
 	
@@ -227,7 +236,7 @@
 	NSString *email = [[[self getTextFieldForRowIndex:0] text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	if([email isEqualToString:@""])
 	{
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You cannot leave email blank" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"PleaseEnterYourEmailKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 		[alertView show];
 		[alertView release];
 		return;
@@ -236,7 +245,7 @@
 	NSString *username = [[[self getTextFieldForRowIndex:1] text] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	if([username isEqualToString:@""])
 	{
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You cannot leave username blank" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"PleaseEnterYourUsernameKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 		[alertView show];
 		[alertView release];
 		return;
@@ -246,7 +255,7 @@
 	NSString *password = [[self getTextFieldForRowIndex:2] text];
 	if([password isEqualToString:@""])
 	{
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"You cannot leave password blank" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"PleaseEnterYourPasswordKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 		[alertView show];
 		[alertView release];
 		return;
@@ -254,7 +263,7 @@
 	
 	if([password length] < 4)
 	{
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Password should be minimum 4 character long" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:NSLocalizedString(@"PasswordShouldBeAtLeast4CharactersLongKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 		[alertView show];
 		[alertView release];
 		return;
@@ -323,7 +332,7 @@
 	NSString *responseString = [request responseString];
 	
 	NSDictionary *responseDic = [responseString JSONValue];
-	
+	NSLog(@"response - %@", responseDic);
 	
 	NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
 	if(responseDic)
@@ -334,7 +343,7 @@
 			[[DataManager sharedDataManager] setUserAsLoggedInWithProfileData:userInfo]; 
 		
 			
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Congratulations" message:@"You have successfully registered yourself." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"CongratulationsYouHaveSuccessfullyRegisteredKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 			alertView.tag = 1;
 			[alertView show];
 			[alertView release];
@@ -343,14 +352,14 @@
 		else 
 		{
 			NSString *errorMessage = [responseDic valueForKey:@"error_message"];
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:errorMessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 			[alertView show];
 			[alertView release];
 		}
 	}
 	else 
 	{
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Unknown server response" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"UnknownServerResponseKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 		[alertView show];
 		[alertView release];
 	}
@@ -362,7 +371,7 @@
 
 - (void)requestFailed:(ASIHTTPRequest *)request
 {
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Server Request Failed" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"ServerRequestFailedKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
 	
@@ -380,10 +389,15 @@
 {
 	if(alertView.tag == 1)
 	{
+        
+        
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:kShouldUserBePresentedWithWelcomeScreen];
+        
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationPUMPLUserDidLogin object:nil]];
 		
-		[(LaunchViewController *)[[self.navigationController viewControllers] objectAtIndex:0] launchTabBarControllerAnimated:YES withSelectedTabIndex:2];
-		[self.navigationController popViewControllerAnimated:YES];
+		[(LaunchViewController *)[[self.navigationController viewControllers] objectAtIndex:0] launchTabBarControllerAnimated:NO withSelectedTabIndex:0];
+        [self.navigationController popViewControllerAnimated:YES];
+
 	}
 }
 

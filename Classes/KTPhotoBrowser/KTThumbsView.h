@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PullToRefreshScrollView.h"
 
 @protocol KTThumbsViewDataSource;
 @class KTThumbsViewController;
 @class KTThumbView;
 
-@interface KTThumbsView : UIScrollView <UIScrollViewDelegate>
+@interface KTThumbsView : PullToRefreshScrollView <UIScrollViewDelegate>
 {
 @private
    id <KTThumbsViewDataSource> dataSource_;

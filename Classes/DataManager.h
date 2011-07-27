@@ -29,9 +29,11 @@
 - (BOOL)isFacebookConnected;
 - (BOOL)isTwitterConnected;
 - (BOOL)isTumblrConnected;
+- (BOOL)isMe2dayConnected;
 - (void)setFacebookConnected:(BOOL)isConnected withNickname:(NSString *)nickname;
 - (void)setTwitterConnected:(BOOL)isConnected withNickname:(NSString *)nickname;
 - (void)setTumblrConnected:(BOOL)isConnected withNickname:(NSString *)nickname;
+- (void)setMe2dayConnected:(BOOL)isConnected withNickname:(NSString *)nickname;
 
 
 - (NSInteger)imageQualitySetting;

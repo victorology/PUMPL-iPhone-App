@@ -9,6 +9,7 @@
 #import "HomeScreenViewController.h"
 #import "HomeScreenDataSource.h"
 #import "Constants.h"
+#import "WelcomeScreenViewController.h"
 
 @interface HomeScreenViewController ()
 - (void)showActivityIndicator;
@@ -21,7 +22,7 @@
 
 - (void)dealloc 
 {
-	
+	[mEmptyPhotosView release];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[activityIndicatorView_ release], activityIndicatorView_ = nil;
 	[images_ release], images_ = nil;
@@ -32,21 +33,69 @@
 {
 	images_ = [[HomeScreenDataSource alloc] init];
 	[self setDataSource:images_];
-	
+    
 	[super loadView];
 }
+
+
 
 - (void)viewDidLoad 
 {
 	[super viewDidLoad];
 	
 	
+    //Set the delegate for PullToRefreshScrollView 
+    [scrollView_ setDelegate1:self];
+    
+    
+    //Login And Logout Notification
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToPUMPLLogin:) name:kNotificationPUMPLUserDidLogin object:nil];
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToPUMPLLogout:) name:kNotificationPUMPLUserDidLogout object:nil];
 
 	
+    
+    //Make the view ready for launch
 	[self configureTheView];
-	[self fetchPhotosFromPUMPLServer];
+    
+
+    
+    
+    
+    
+    
+    
+    // We have to write this code because the kNotificationPUMPLUserDidLogin notification wont work in this controller because this controller
+    // has not even registered itself to NotificationCenter for that notifiation when the app has launched and user has not logged in or signed up.
+    BOOL presentWelcomeScreen = NO;
+    if([[NSUserDefaults standardUserDefaults] valueForKey:kShouldUserBePresentedWithWelcomeScreen])
+    {
+        presentWelcomeScreen = [[[NSUserDefaults standardUserDefaults] valueForKey:kShouldUserBePresentedWithWelcomeScreen] boolValue];
+    }
+    
+    
+    if(presentWelcomeScreen)
+    {
+        mShouldPresentWelcomeScreen = YES;
+    }
+    else
+    {
+        //Fetch the photos from server to display
+        [self fetchPhotosFromPUMPLServer];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    if([[images_ imagesArray] count] == 0)
+    {
+        if(!mEmptyPhotosView)
+            [self createEmptyPhotosView];
+        
+        [scrollView_ addSubview:mEmptyPhotosView];
+    }
+
 }
 
 
@@ -54,8 +103,22 @@
 	
 	[super viewDidAppear:animated];
 	
+    //Tweak for KTPhotoBrowser for Top Navigation bar to be black.
 	[[UIApplication sharedApplication] setStatusBarHidden:NO];
-	//self.navigationController.navigationBar.translucent = NO;
+    
+    
+    if(mShouldPresentWelcomeScreen)
+    {
+        WelcomeScreenViewController *viewController = [[WelcomeScreenViewController alloc] initWithNibName:@"WelcomeScreenViewController" bundle:nil];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        [viewController release];
+        navController.navigationBar.barStyle = UIBarStyleBlackOpaque;
+        [self presentModalViewController:navController animated:YES];
+        [navController release];
+        
+        [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:NO] forKey:kShouldUserBePresentedWithWelcomeScreen];
+        mShouldPresentWelcomeScreen = NO;
+    }
 }
 
 
@@ -96,8 +159,12 @@
 
 - (void)configureTheView
 {
-	self.title = @"Home";
-	self.view.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
+    
+	self.navigationItem.title = @"Home";
+    
+    UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
+	self.view.backgroundColor = backgroundColor;
+    [backgroundColor release];
 	
 	
 	
@@ -112,8 +179,12 @@
 	[activityIndicatorView_ setHidesWhenStopped:YES];
 	[[self view] addSubview:activityIndicatorView_];
 	
-	
-	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reload:)] autorelease];
+    
+    
+    
+    
+//	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reload:)] autorelease];
+     
 }
 
 
@@ -173,6 +244,7 @@
 - (void)requestFinished:(ASIHTTPRequest *)request
 {
 	[self hideActivityIndicator];
+    [scrollView_ stopLoading];
 	
 	NSString *responseString = [request responseString];
 	
@@ -253,11 +325,31 @@
 			
 		}
 		
+        
+        if([mockPhotosArray count] == 0)
+        {
+            if(!mEmptyPhotosView)
+                [self createEmptyPhotosView];
+            
+            if([mEmptyPhotosView superview] == nil)
+            {
+                [scrollView_ addSubview:mEmptyPhotosView];
+            }
+        }
+        else
+        {
+            if([mEmptyPhotosView superview])
+            {
+                [mEmptyPhotosView removeFromSuperview];
+            }
+        }
 		
 		[images_ setImagesArray:mockPhotosArray];
 		[images_ setTitlesArray:titlesArray];
 		[self reloadThumbs];
 		
+        
+        
 	}
 	else 
 	{
@@ -301,23 +393,130 @@
 
 - (void)respondToPUMPLLogin:(NSNotification *)notificationObject
 {
-	[self fetchPhotosFromPUMPLServer];
+    
+    BOOL presentWelcomeScreen = NO;
+    if([[NSUserDefaults standardUserDefaults] valueForKey:kShouldUserBePresentedWithWelcomeScreen])
+    {
+        presentWelcomeScreen = [[[NSUserDefaults standardUserDefaults] valueForKey:kShouldUserBePresentedWithWelcomeScreen] boolValue];
+    }
+    
+    
+    if(presentWelcomeScreen)
+    {
+        mShouldPresentWelcomeScreen = YES;
+    }
+    else
+    {
+        [self fetchPhotosFromPUMPLServer];
+    }
+    
+	
 }
+
+
 
 
 
 
 #pragma mark -
-#pragma mark Action Methods
+#pragma mark PullToRefreshScrollView Delegate Methods
 
-- (void)reload:(id)sender
+
+-(void)refreshScrollView
 {
-	[images_ setImagesArray:nil];
-	[images_ setTitlesArray:nil];
-	[self reloadThumbs];
+	//[self performSelector:@selector(stopLoading) withObject:nil afterDelay:2.0];	
+    //[images_ setImagesArray:nil];
+	//[images_ setTitlesArray:nil];
+	//[self reloadThumbs];
 	
 	[self fetchPhotosFromPUMPLServer];
 }
+
+-(void)stopLoading
+{
+	[scrollView_ stopLoading];
+}
+
+
+
+
+
+- (void)createEmptyPhotosView
+{
+    [mEmptyPhotosView release];
+    mEmptyPhotosView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 367)];
+    
+    UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
+	mEmptyPhotosView.backgroundColor = backgroundColor;
+    [backgroundColor release];
+    
+    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,
+                                                                      20,
+                                                                      280,
+                                                                      24)];
+    welcomeLabel.text = @"Welcome to PUMPL!";
+    welcomeLabel.backgroundColor = [UIColor clearColor];
+    welcomeLabel.font = [UIFont boldSystemFontOfSize:20];
+    welcomeLabel.shadowColor = [UIColor whiteColor];
+    welcomeLabel.shadowOffset = CGSizeMake(0, 1);
+    [mEmptyPhotosView addSubview:welcomeLabel];
+    [welcomeLabel release];
+    
+    
+    
+    UILabel *emptyMessageLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(20,
+                                                                      52,
+                                                                      280,
+                                                                      20)];
+    emptyMessageLabel1.text = @"You still have not shared any photos yet.";
+    emptyMessageLabel1.backgroundColor = [UIColor clearColor];
+    emptyMessageLabel1.font = [UIFont systemFontOfSize:15];
+    
+    UIColor *fontColor1 = [[UIColor alloc] initWithRed:0.239 green:0.255 blue:0.357 alpha:1.0];
+    emptyMessageLabel1.textColor = fontColor1;
+    [fontColor1 release];
+    
+    emptyMessageLabel1.shadowColor = [UIColor whiteColor];
+    emptyMessageLabel1.shadowOffset = CGSizeMake(0, 1);
+    [mEmptyPhotosView addSubview:emptyMessageLabel1];
+    [emptyMessageLabel1 release];
+    
+    
+    
+    
+    
+    
+    UILabel *emptyMessageLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(20,
+                                                                            72,
+                                                                            280,
+                                                                            20)];
+    emptyMessageLabel2.text = @"To begin, click on the camera icon below.";
+    emptyMessageLabel2.backgroundColor = [UIColor clearColor];
+    emptyMessageLabel2.font = [UIFont systemFontOfSize:15];
+    
+    UIColor *fontColor2 = [[UIColor alloc] initWithRed:0.239 green:0.255 blue:0.357 alpha:1.0];
+    emptyMessageLabel2.textColor = fontColor2;
+    [fontColor2 release];
+    
+    emptyMessageLabel2.shadowColor = [UIColor whiteColor];
+    emptyMessageLabel2.shadowOffset = CGSizeMake(0, 1);
+    [mEmptyPhotosView addSubview:emptyMessageLabel2];
+    [emptyMessageLabel2 release];
+    
+    
+    UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(137,
+                                                                                100,
+                                                                                46,
+                                                                                260)];
+    arrowImageView.contentMode = UIViewContentModeScaleAspectFit;
+    UIImage *arrowImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"HomeScreenEmptyArrow" ofType:@"png"]];
+    arrowImageView.image = arrowImage;
+    [arrowImage release];
+    [mEmptyPhotosView addSubview:arrowImageView];
+    [arrowImageView release];
+    
+}
+
 
 
 

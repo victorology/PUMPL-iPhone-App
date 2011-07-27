@@ -9,14 +9,13 @@
 #import "SelectedPhotoViewController.h"
 #import "DataManager.h"
 #import "EnabledService.h"
-#import "EditScrollViewController.h"
 #import "PUMPLAppDelegate.h"
 #import "LaunchViewController.h"
 #import "TwitterLoginViewController.h"
 #import "TumblrLoginViewController.h"
 #import "FacebookConnectionWebViewController.h"
 #import "HomeScreenViewController.h"
-
+#import "Me2DayLoginViewController.h"
 
 #define kCellTypeTextField 1
 #define kCellTypeSwitch 2
@@ -26,6 +25,7 @@
 #define kViewTagInputTextField 2
 
 #define kServerCallTypeFacebookConnect 2
+#define kServerCallTypeMe2dayConnect 3
 
 
 
@@ -34,6 +34,8 @@
 
 - (void)launchFacebookConnectionCall;
 - (void)makeFacebookConnectionCall;
+- (void)launchMe2dayConnectionCall;
+- (void)makeMe2dayConnectionCall;
 
 @end
 
@@ -131,6 +133,11 @@
 	
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)] autorelease];
 
+    
+    UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
+	self.view.backgroundColor = backgroundColor;
+    [backgroundColor release];
+    
 	
 	mTableView.backgroundColor = [UIColor clearColor];
 	
@@ -147,7 +154,7 @@
 {
 	[mFreezeView removeFromSuperview];
 	
-	mFreezeView.frame = CGRectMake(0, 20, 320, 460);
+	mFreezeView.frame = CGRectMake(0, 0, 320, 480);
 	[self.navigationController.view addSubview:mFreezeView];
 }
 
@@ -236,6 +243,27 @@
 		[row2_3 setValue:nil forKey:@"isOn"];
 	}
 	[section2 addObject:row2_3];
+    
+    
+    
+    NSMutableDictionary *row2_4 = [NSMutableDictionary dictionary];
+	[row2_4 setValue:@"me2day" forKey:@"inputName"];
+	BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
+	if(isMe2dayLoggedIn)
+	{
+		[row2_4 setValue:[NSNumber numberWithInteger:kCellTypeSwitch] forKey:@"cellType"];
+		[row2_4 setValue:[NSNumber numberWithBool:YES] forKey:@"isOn"];
+	}
+	else 
+	{
+		[row2_4 setValue:[NSNumber numberWithInteger:kCellTypeDisclosureIndicator] forKey:@"cellType"];
+		[row2_4 setValue:nil forKey:@"isOn"];
+	}
+	[section2 addObject:row2_4];
+    
+    
+
+    
 	
 	
 	[array addObject:section2];
@@ -275,6 +303,35 @@
 	[request startAsynchronous];
 }
 
+
+- (void)launchMe2dayConnectionCall
+{
+	_HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:_HUD];
+	
+    _HUD.delegate = self;
+    _HUD.labelText = @"Connecting to me2day";
+	
+    
+	[_HUD show:YES];
+	[self makeMe2dayConnectionCall];
+}
+
+- (void)makeMe2dayConnectionCall
+{
+    NSDictionary *userInfo = [[DataManager sharedDataManager] getUserProfile];
+	NSString *idString = [NSString stringWithFormat:@"%@",[userInfo valueForKey:@"id"]];
+	NSString *session_api = [NSString stringWithFormat:@"%@",[userInfo valueForKey:@"session_api"]];
+	
+	NSString *urlString = [NSString stringWithFormat:@"%@", kURLForMe2dayConnection];
+	ASIFormDataRequest *request = [[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:urlString]] autorelease];
+    request.delegate = self;
+    request.requestMethod = @"POST";
+    [request setPostValue:idString forKey:@"id"];
+	[request setPostValue:session_api forKey:@"session_api"];
+	request.userInfo = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInteger:kServerCallTypeMe2dayConnect] forKey:@"callType"];
+	[request startAsynchronous];
+}
 
 
 
@@ -366,7 +423,7 @@
 				[cell.contentView addSubview:inputNameLabel];
 				[inputNameLabel release];
 				
-				UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(70, 10, 230, 31)];
+				UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(90, 10, 210, 31)];
 				inputTextField.tag = kViewTagInputTextField;
 				inputTextField.backgroundColor = [UIColor clearColor];
 				inputTextField.borderStyle = UITextBorderStyleNone;
@@ -503,6 +560,11 @@
 				[navController release];
 				
 			}
+            else if([inputName isEqualToString:@"me2day"])
+			{
+				[self launchMe2dayConnectionCall];
+			}
+        
 			
 			break;
 		}
@@ -513,6 +575,18 @@
 }
 
 
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+	NSString *sectionTitle = nil;
+	
+	if(section == 0)
+	{
+		sectionTitle = @"Post Photo";
+	}
+	
+	return sectionTitle;
+}
 
 
 
@@ -583,15 +657,16 @@
 {
 	if(alertView.tag == 1)
 	{
-		//[self.navigationController popViewControllerAnimated:YES];
-		//[self.navigationController popToRootViewControllerAnimated:YES];
-		
+        // Bring back the status bar which was set hidden when we displayed the filter screen
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        
 		//Show and configure the Home tab
 		PUMPLAppDelegate *appDelegate = (PUMPLAppDelegate *)[[UIApplication sharedApplication] delegate];
 		UITabBarController *tabController = [(LaunchViewController *)[[appDelegate.navController viewControllers] objectAtIndex:0] mTabBarController];
 		
 		UINavigationController *firstTabNavigationController = (UINavigationController *)[[tabController viewControllers] objectAtIndex:0];
 		[firstTabNavigationController popToRootViewControllerAnimated:YES];
+        [(HomeScreenViewController *)[[firstTabNavigationController viewControllers] objectAtIndex:0] fetchPhotosFromPUMPLServer];
 		[(HomeScreenViewController *)[[firstTabNavigationController viewControllers] objectAtIndex:0] fetchPhotosFromPUMPLServer];
 		[tabController setSelectedIndex:0];
 	}
@@ -652,6 +727,21 @@
 			}
 				
 
+            case kServerCallTypeMe2dayConnect:
+			{
+                NSString *alreadyLoggedInUrl = [NSString stringWithFormat:@"http://me2day.net/"];
+                NSString *endPointUrl = [NSString stringWithFormat:@"http://www.pumpl.com//me2day/confirm.json?result=true"];
+				
+				NSString *urlString = [[responseDic valueForKey:@"value"] valueForKey:@"authorize_url"];
+				Me2DayLoginViewController *viewController = [[Me2DayLoginViewController alloc] initWithNibName:@"Me2DayLoginViewController" bundle:nil];
+				viewController.urlString = urlString;
+                viewController.alreadyLoggedInUrlString = alreadyLoggedInUrl;
+				viewController.endPointCheckUrlString = endPointUrl;
+				[self.navigationController pushViewController:viewController animated:YES];
+				[viewController release];
+				
+				break;
+			}
 			
 				
 			default:

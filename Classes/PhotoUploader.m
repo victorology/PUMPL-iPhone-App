@@ -83,7 +83,7 @@
 	NSString *shouldUploadToFacebook = @"no";
 	NSString *shouldUploadToTwitter = @"no";
 	NSString *shouldUploadToTumblr = @"no";
-	
+	NSString *shouldUploadToMe2day = @"no";
 	
 	for(NSString *serviceName in _services)
 	{
@@ -98,6 +98,10 @@
 		else if([serviceName isEqualToString:@"Tumblr"])
 		{
 			shouldUploadToTumblr = @"yes";
+		}
+        else if([serviceName isEqualToString:@"me2day"])
+		{
+			shouldUploadToMe2day = @"yes";
 		}
 	}
 	
@@ -182,6 +186,7 @@
 		[_request setPostValue:shouldUploadToFacebook forKey:@"photo[post_to_facebook]"];
 		[_request setPostValue:shouldUploadToTwitter forKey:@"photo[post_to_twitter]"];
 		[_request setPostValue:shouldUploadToTumblr forKey:@"photo[post_to_tumblr]"];
+        [_request setPostValue:shouldUploadToMe2day forKey:@"photo[post_to_me2day]"];
 		[_request setPostValue:filterString forKey:@"filter"];
 		[_request setUploadProgressDelegate:self];
 		_request.timeOutSeconds = 60;

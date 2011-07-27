@@ -23,7 +23,7 @@
 #define kFilterLabelWidth 80
 #define kFilterLabelHeight 16
 #define kPaddingBetweenFilterButtons 3
-#define kFilterButtonSide 60
+#define kFilterButtonSide 70
 
 
 
@@ -76,12 +76,15 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+    
+    
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;
 	[logoImageView release];
 	
 	
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(back:)] autorelease];
+    
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleBordered target:self action:@selector(next:)] autorelease];
 	
 	
@@ -100,8 +103,6 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	
     [_HUD showWhileExecuting:@selector(configureForSquareAndFull) onTarget:self withObject:nil animated:YES];
 }
-
-
 
 
 /*
@@ -139,8 +140,8 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 - (void)buildFilterButtonScrollView
 {
-	NSInteger buttonYCoordinate = 26;
-	NSInteger lableYCoordinate = 4;
+	NSInteger buttonYCoordinate = 36;
+	NSInteger lableYCoordinate = 14;
 	
 	
 	NSInteger buttonXCoordinate = (kFilterLabelWidth - kFilterButtonSide) / 2;
@@ -305,11 +306,54 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 													 mFilterButtonScrollView.contentSize.height);												 
 	
 	
+    
+    
+    
+    
+    
+    //Polaroid Filter
 	
+	UILabel *polaroidLabel = [[UILabel alloc] initWithFrame:CGRectMake((4 * (kPaddingBetweenFilterButtons + kFilterLabelWidth)),
+                                                                       lableYCoordinate,
+                                                                       kFilterLabelWidth,
+                                                                       kFilterLabelHeight)];
+	polaroidLabel.text = @"Polaroid";
+	polaroidLabel.font = [UIFont boldSystemFontOfSize:11];
+	polaroidLabel.textAlignment = UITextAlignmentCenter;
+	polaroidLabel.textColor = [UIColor whiteColor];
+	polaroidLabel.backgroundColor = [UIColor clearColor];
+	
+	UIButton *polaroidButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonXCoordinate + polaroidLabel.frame.origin.x,
+                                                                          buttonYCoordinate,
+                                                                          kFilterButtonSide,
+                                                                          kFilterButtonSide)];
+	[polaroidButton setImage:[UIImage imageNamed:@"Roid.jpeg"] forState:UIControlStateNormal];
+	polaroidButton.tag = kFilterTagPolaroid;
+	[polaroidButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
+	polaroidButton.imageView.layer.masksToBounds = YES;
+	polaroidButton.imageView.layer.cornerRadius = 7.5;
+	
+	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
+													 mFilterButtonScrollView.contentSize.height);
+    
+    [mFilterButtonScrollView addSubview:polaroidLabel];
+	[mFilterButtonScrollView addSubview:polaroidButton];
+	[polaroidLabel release];
+	[polaroidButton release];
+    
+	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kPaddingBetweenFilterButtons,
+													 mFilterButtonScrollView.contentSize.height);
+    
+    
+	
+    
+    
+    
+    
 	
 	//Photochrome Filter
 	
-	UILabel *photochromeLabel = [[UILabel alloc] initWithFrame:CGRectMake((4 * (kPaddingBetweenFilterButtons + kFilterLabelWidth)),
+	UILabel *photochromeLabel = [[UILabel alloc] initWithFrame:CGRectMake((5 * (kPaddingBetweenFilterButtons + kFilterLabelWidth)),
 																   lableYCoordinate,
 																   kFilterLabelWidth,
 																   kFilterLabelHeight)];
@@ -346,39 +390,11 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	
 	
 	
+    
+    
+    
 	
-	//Monochrome Filter
-	
-	UILabel *monochromeLabel = [[UILabel alloc] initWithFrame:CGRectMake((5 * (kPaddingBetweenFilterButtons + kFilterLabelWidth)),
-																		  lableYCoordinate,
-																		  kFilterLabelWidth,
-																		  kFilterLabelHeight)];
-	monochromeLabel.text = @"Monochrome";
-	monochromeLabel.font = [UIFont boldSystemFontOfSize:11];
-	monochromeLabel.textAlignment = UITextAlignmentCenter;
-	monochromeLabel.textColor = [UIColor whiteColor];
-	monochromeLabel.backgroundColor = [UIColor clearColor];
-	
-	UIButton *monochromeButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonXCoordinate + monochromeLabel.frame.origin.x,
-																			 buttonYCoordinate,
-																			 kFilterButtonSide,
-																			 kFilterButtonSide)];
-	[monochromeButton setImage:[UIImage imageNamed:@"Monochrome.jpeg"] forState:UIControlStateNormal];
-	monochromeButton.tag = kFilterTagMonochrome;
-	[monochromeButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
-	monochromeButton.imageView.layer.masksToBounds = YES;
-	monochromeButton.imageView.layer.cornerRadius = 7.5;
-	
-	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
-													 mFilterButtonScrollView.contentSize.height);
-	
-    [mFilterButtonScrollView addSubview:monochromeLabel];
-	[mFilterButtonScrollView addSubview:monochromeButton];
-	[monochromeLabel release];
-	[monochromeButton release];
-
-	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kPaddingBetweenFilterButtons,
-													 mFilterButtonScrollView.contentSize.height);												 
+												 
     
     
     
@@ -452,38 +468,42 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 													 mFilterButtonScrollView.contentSize.height);												 
     
     
- 	//Polaroid Filter
+    
+    
+    
+    //Monochrome Filter
 	
-	UILabel *polaroidLabel = [[UILabel alloc] initWithFrame:CGRectMake((8 * (kPaddingBetweenFilterButtons + kFilterLabelWidth)),
-                                                                  lableYCoordinate,
-                                                                  kFilterLabelWidth,
-                                                                  kFilterLabelHeight)];
-	polaroidLabel.text = @"Polaroid";
-	polaroidLabel.font = [UIFont boldSystemFontOfSize:11];
-	polaroidLabel.textAlignment = UITextAlignmentCenter;
-	polaroidLabel.textColor = [UIColor whiteColor];
-	polaroidLabel.backgroundColor = [UIColor clearColor];
+	UILabel *monochromeLabel = [[UILabel alloc] initWithFrame:CGRectMake((8 * (kPaddingBetweenFilterButtons + kFilterLabelWidth)),
+                                                                         lableYCoordinate,
+                                                                         kFilterLabelWidth,
+                                                                         kFilterLabelHeight)];
+	monochromeLabel.text = @"Monochrome";
+	monochromeLabel.font = [UIFont boldSystemFontOfSize:11];
+	monochromeLabel.textAlignment = UITextAlignmentCenter;
+	monochromeLabel.textColor = [UIColor whiteColor];
+	monochromeLabel.backgroundColor = [UIColor clearColor];
 	
-	UIButton *polaroidButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonXCoordinate + polaroidLabel.frame.origin.x,
-                                                                     buttonYCoordinate,
-                                                                     kFilterButtonSide,
-                                                                     kFilterButtonSide)];
-	[polaroidButton setImage:[UIImage imageNamed:@"Roid.jpeg"] forState:UIControlStateNormal];
-	polaroidButton.tag = kFilterTagPolaroid;
-	[polaroidButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
-	polaroidButton.imageView.layer.masksToBounds = YES;
-	polaroidButton.imageView.layer.cornerRadius = 7.5;
+	UIButton *monochromeButton = [[UIButton alloc] initWithFrame:CGRectMake(buttonXCoordinate + monochromeLabel.frame.origin.x,
+                                                                            buttonYCoordinate,
+                                                                            kFilterButtonSide,
+                                                                            kFilterButtonSide)];
+	[monochromeButton setImage:[UIImage imageNamed:@"Monochrome.jpeg"] forState:UIControlStateNormal];
+	monochromeButton.tag = kFilterTagMonochrome;
+	[monochromeButton addTarget:self action:@selector(filterClicked:) forControlEvents:UIControlEventTouchUpInside];
+	monochromeButton.imageView.layer.masksToBounds = YES;
+	monochromeButton.imageView.layer.cornerRadius = 7.5;
 	
 	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kFilterLabelWidth,
 													 mFilterButtonScrollView.contentSize.height);
+	
+    [mFilterButtonScrollView addSubview:monochromeLabel];
+	[mFilterButtonScrollView addSubview:monochromeButton];
+	[monochromeLabel release];
+	[monochromeButton release];
     
-    [mFilterButtonScrollView addSubview:polaroidLabel];
-	[mFilterButtonScrollView addSubview:polaroidButton];
-	[polaroidLabel release];
-	[polaroidButton release];
-
 	mFilterButtonScrollView.contentSize = CGSizeMake(mFilterButtonScrollView.contentSize.width + kPaddingBetweenFilterButtons,
-													 mFilterButtonScrollView.contentSize.height);												 
+													 mFilterButtonScrollView.contentSize.height);	
+ 													 
     
 }
 
@@ -515,8 +535,18 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 		self.selectedImage = fullImageForBackUp;
 		mSelectedImageView.contentMode = UIViewContentModeScaleAspectFit;
 		
+        
+        
+        
+        
 		[_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
 		_cropButton.tag = kCropButtonDuringFull;
+        
+        if(selectedImage.size.height >= selectedImage.size.width)
+            _cropButton.frame = CGRectMake(187, 275, 83, 35);
+        else
+            _cropButton.frame = CGRectMake(227, 235, 83, 35);
+        
 		_contentModeToBeApplied = UIViewContentModeScaleAspectFit;
 	}
 	 
@@ -547,7 +577,11 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 
 
-
+- (void)back:(id)sender
+{
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)next:(id)sender
 {	
@@ -666,10 +700,17 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	if(_contentModeToBeApplied == UIViewContentModeScaleToFill)
 	{
 		[_cropButton setImage:[UIImage imageNamed:@"Full.png"] forState:UIControlStateNormal];
+        
+        _cropButton.frame = CGRectMake(237, 275, 73, 35);
 	}
 	else 
 	{
 		[_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
+        
+        if(selectedImage.size.height >= selectedImage.size.width)
+            _cropButton.frame = CGRectMake(187, 275, 83, 35);
+        else
+            _cropButton.frame = CGRectMake(227, 235, 83, 35);
 	}
 
 	

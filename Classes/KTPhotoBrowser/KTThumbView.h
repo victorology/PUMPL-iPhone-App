@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @class KTThumbsViewController;
 
 @interface KTThumbView : UIButton 

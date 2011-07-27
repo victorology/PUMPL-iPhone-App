@@ -9,7 +9,7 @@
 #import "LaunchViewController.h"
 #import "SignupViewController.h"
 #import "LoginViewController.h"
-
+#import "PUMPLAppDelegate.h"
 
 
 @implementation LaunchViewController
@@ -32,7 +32,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	
+
 	if([[DataManager sharedDataManager] isUserLoggedIn])
 	{
 		[self launchTabBarControllerAnimated:NO withSelectedTabIndex:0];

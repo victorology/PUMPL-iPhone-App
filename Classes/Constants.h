@@ -21,9 +21,13 @@
 #define kURLForFacebookConnection @"http://www.pumpl.com/facebook.json"
 #define kURLForTwitterConnection @"http://www.pumpl.com/twitter/xauth_token.json"
 #define kURLForTumblrConnection @"http://www.pumpl.com/tumblr/connect.json"
+#define kURLForMe2dayConnection @"http://www.pumpl.com/me2day/connect.json"
 #define kURLForFacebookDisconnection @"http://www.pumpl.com/facebook/unlink.json"
 #define kURLForTwitterDisconnection @"http://www.pumpl.com/twitter/unlink.json"
 #define kURLForTumblrDisconnection @"http://www.pumpl.com/tumblr/unlink.json"
+#define kURLForMe2dayDisconnection @"http://www.pumpl.com/me2day/unlink.json"
+
+
 
 #define kIsFacebookAccountConnected @"IsFacebookAccountConnected"
 #define kFacebookAccountNickname @"FacebookAccountNickname"
@@ -35,6 +39,12 @@
 #define kIsTumblrAccountConnected @"IsTumblrAccountConnected"
 #define kTumblrAccountNickname @"TumblrAccountNickname"
 
+#define kIsMe2dayAccountConnected @"IsMe2dayAccountConnected"
+#define kMe2dayAccountNickname @"Me2dayAccountNickname"
+
+#define kShouldUserBePresentedWithWelcomeScreen @"kShouldUserBePresentedWithWelcomeScreen"
+
+
 #define kNotificationPUMPLUserDidLogin @"kNotificationPUMPLUserDidLogin"
 #define kNotificationPUMPLUserDidLogout @"kNotificationPUMPLUserDidLogout"
 #define kNotificationFBDidLogin @"NotificationFBDidLogin"
@@ -43,7 +53,8 @@
 #define kNotificationTwitterDidLogout @"NotificationTwitterDidLogout"
 #define kNotificationTumblrDidLogin @"NotificationTumblrDidLogin"
 #define kNotificationTumblrDidLogout @"NotificationTumblrDidLogout"
-
+#define kNotificationMe2dayDidLogin @"NotificationMe2dayDidLogin"
+#define kNotificationMe2dayDidLogout @"NotificationMe2dayDidLogout"
 
 
 #define kSettingsImageQualityKey @"kSettingsImageQualityKey"

@@ -37,6 +37,10 @@
 	[mWebView loadRequest:request];
 	
 	self.title = @"Facebook";
+    
+    UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
+	self.view.backgroundColor = backgroundColor;
+    [backgroundColor release];
 }
 
 
@@ -65,8 +69,12 @@
 - (void)dealloc {
 	mWebView.delegate = nil;
 	[urlString release];
+    [endPointCheckUrlString release];
     [super dealloc];
 }
+
+
+
 
 
 

@@ -171,4 +171,11 @@
 }
 
 
+
+- (NSArray *)imagesArray
+{
+    return images_;
+}
+
+
 @end

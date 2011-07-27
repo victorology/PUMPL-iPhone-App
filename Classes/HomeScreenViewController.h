@@ -11,18 +11,22 @@
 #import "ASIFormDataRequest.h"
 #import "DataManager.h"
 #import "JSON.h"
+#import "PullToRefreshScrollView.h"
 
 
 @class HomeScreenDataSource;
 
-@interface HomeScreenViewController : KTThumbsViewController {
+@interface HomeScreenViewController : KTThumbsViewController <PullToRefreshScrollViewDelegate> {
 
+    BOOL mShouldPresentWelcomeScreen;
+    UIView *mEmptyPhotosView;
+    
 @private
 	HomeScreenDataSource *images_;
 	UIActivityIndicatorView *activityIndicatorView_;
-	UIWindow *window_;
 }
 
 - (void)fetchPhotosFromPUMPLServer;
+- (void)createEmptyPhotosView;
 
 @end

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CameraImagePickerController.h"
+#import "LibraryImagePickerController.h"
 
 
 #define kSelectedPhotoSourceCamera 0
@@ -14,21 +16,26 @@
 
 
 
-@interface AddPhotoViewController : UIViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate> {
+@interface AddPhotoViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, CameraImagePickerControllerDelegate, LibraryImagePickerControllerDelegate> {
 
 	NSInteger _selectedPhotoSource;
 	IBOutlet UIView *_imagePickerOverLayView;
-	UIImagePickerController *_imagePickerController;
+	CameraImagePickerController *_cameraImagePickerController;
+    LibraryImagePickerController *_libraryImagePickerController;
 	IBOutlet UIButton *_cropButton;
 	IBOutlet UIImageView *_cropImageView;
+    
+    BOOL _shouldDisplayCameraPickerOnDisappearOfLibrary;
+    BOOL _shouldDisplayLibraryPickerOnCameraOfLibrary;
 }
 
-@property (nonatomic, retain) UIImagePickerController *_imagePickerController;
-
+@property (nonatomic, retain) CameraImagePickerController *_cameraImagePickerController;
+@property (nonatomic, retain) LibraryImagePickerController *_libraryImagePickerController;
 
 
 - (IBAction)takePicture:(id)sender;
 - (IBAction)cancelImagePicker:(id)sender;
+- (IBAction)rollClicked:(id)sender;
 - (void)cropCameraViewClicked:(id)sender;
 
 @end

@@ -96,6 +96,11 @@
 	self.navigationItem.title = @"Tumblr Login";
 	
 	
+    UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
+	self.view.backgroundColor = backgroundColor;
+    [backgroundColor release];
+    
+    
 	mTableView.backgroundColor = [UIColor clearColor];
 }
 
@@ -197,8 +202,7 @@
 	NSString *idString = [NSString stringWithFormat:@"%@",[userInfo valueForKey:@"id"]];
 	NSString *session_api = [NSString stringWithFormat:@"%@",[userInfo valueForKey:@"session_api"]];
 	NSString *urlString = [NSString stringWithFormat:@"%@", kURLForTumblrConnection];
-	
-	
+		
 	_request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
 	_request.delegate = self;
 	_request.requestMethod = @"POST";
@@ -321,6 +325,7 @@
 
 #pragma mark -
 #pragma mark MBProgressHUDDelegate methods
+
 
 - (void)hudWasHidden {
     // Remove HUD from screen when the HUD was hidded

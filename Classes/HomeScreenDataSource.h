@@ -21,4 +21,6 @@
 - (void)setImagesArray:(NSArray *)imagesArray;
 - (void)setTitlesArray:(NSArray *)titlesArray;
 
+- (NSArray *)imagesArray;
+
 @end
