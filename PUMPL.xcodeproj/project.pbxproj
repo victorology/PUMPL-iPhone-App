@@ -1098,10 +1098,14 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Victor Ching";
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1113,9 +1117,13 @@
 				PREBINDING = NO;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6E81FF2-4D98-4B4D-88B8-D9C64571CEC7";
 =======
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1130,10 +1138,14 @@
 <<<<<<< HEAD
 				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Victor Ching";
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1150,10 +1162,14 @@
 				PRODUCT_NAME = PUMPL;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6E81FF2-4D98-4B4D-88B8-D9C64571CEC7";
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1167,10 +1183,14 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Victor Ching";
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1189,10 +1209,14 @@
 				PRODUCT_NAME = PUMPL;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6E81FF2-4D98-4B4D-88B8-D9C64571CEC7";
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1205,10 +1229,14 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Victor Ching";
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1225,10 +1253,14 @@
 				PRODUCT_NAME = PUMPL;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6E81FF2-4D98-4B4D-88B8-D9C64571CEC7";
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7ECFAF38-434A-4B8C-AB95-87EE310D0B5D";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1242,10 +1274,14 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Victor Ching";
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1256,9 +1292,13 @@
 				PREBINDING = NO;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6E81FF2-4D98-4B4D-88B8-D9C64571CEC7";
 =======
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1272,10 +1312,14 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Victor Ching";
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Saad Naveed (XQ33T537QN)";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
@@ -1287,9 +1331,13 @@
 				PREBINDING = NO;
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D6E81FF2-4D98-4B4D-88B8-D9C64571CEC7";
 =======
 >>>>>>> e13a5ea47178a97e9bfc43a12ed02145629609cb
+=======
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
+>>>>>>> parent of fa522be... changed parameters to distribute ipa
 =======
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376C2CA0-638E-4890-A9E5-9031D235F6FA";
 >>>>>>> parent of fa522be... changed parameters to distribute ipa
