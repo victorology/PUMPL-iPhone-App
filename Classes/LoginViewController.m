@@ -91,6 +91,9 @@
 
 - (void)configureTheView
 {
+//    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
+//                                                                               target:self action:@selector(back:)];
+    
     self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"LoginBtn.png"]
                                                                                 target:self action:@selector(login:)];
 	
@@ -107,6 +110,9 @@
 	mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
+//-(void) back:(id)sender {
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 
 - (void)showActivity
 {

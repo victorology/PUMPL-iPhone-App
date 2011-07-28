@@ -6,6 +6,7 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PMTabBarController.h"
 #import "SelectedPhotoViewController.h"
 #import "DataManager.h"
 #import "EnabledService.h"
@@ -132,6 +133,9 @@
 	self.navigationItem.titleView = logoImageView;
 	[logoImageView release];
 	
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
+                                                                               target:self action:@selector(back:)];
+    
 	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"Post" style:UIBarButtonItemStyleBordered target:self action:@selector(save:)] autorelease];
 
     
@@ -149,7 +153,9 @@
 	[mFreezeView addSubview: progressView];
 }
 
-
+-(void) back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)showFreezeScreen
 {
