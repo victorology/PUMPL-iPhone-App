@@ -6,11 +6,11 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PUMPLAppDelegate.h"
+#import "PMTabBarController.h"
 #import "LaunchViewController.h"
 #import "SignupViewController.h"
 #import "LoginViewController.h"
-#import "PUMPLAppDelegate.h"
-
 
 @implementation LaunchViewController
 
@@ -38,6 +38,9 @@
 		[self launchTabBarControllerAnimated:NO withSelectedTabIndex:0];
 	}
 	
+    UIImage* cameraImage = [UIImage imageNamed:@"camera_button_take.png"];
+    UIImage* highlitedCameraImage = [UIImage imageNamed:@"tabBar_cameraButton_ready_matte.png"];
+    [(PMTabBarController*)self.mTabBarController addCenterButtonWithImage:cameraImage highlightImage:highlitedCameraImage];
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -6,6 +6,7 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PMTabBarController.h"
 #import "PasswordLostViewController.h"
 #import "JSON.h"
 #import "ASIFormDataRequest.h"
