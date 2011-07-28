@@ -43,14 +43,13 @@
 	self.view.backgroundColor = backgroundColor;
     [backgroundColor release];
     
-//    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
-//                                                                                target:self action:@selector(back:)];
-    
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
+                                                                                target:self action:@selector(back:)];
 }
 
-//-(void) back:(id)sender {
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
+-(void) back:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 
 /*

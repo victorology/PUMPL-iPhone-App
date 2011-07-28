@@ -11,24 +11,12 @@
 
 @implementation PMNavigationController
 
--(void) initNavBar
-{
-    static UIImage* backImage = nil;
-    if(!backImage)
-    {
-        backImage = [[UIImage imageNamed:@"NavBack.png"] retain];
-    }
-    
-    UIImageView* backImageView = [[[UIImageView alloc] initWithImage:backImage] autorelease];
-    [self.navigationBar addSubview:backImageView];
-}
-
 -(id) initWithCoder:(NSCoder *)aDecoder 
 {
     self = [super initWithCoder:aDecoder];
     if(self)
     {
-        [self initNavBar];
+
     }
     return self;
 }
@@ -38,10 +26,27 @@
     self = [super initWithRootViewController:rootViewController];
     if(self)
     {
-        [self initNavBar];
+
     }
     return self;
 }
 
 
 @end
+
+
+@implementation UINavigationBar (CustomBack)
+
+- (void)drawRect:(CGRect)rect {
+
+    static UIImage* backImage = nil;
+    if(!backImage)
+    {
+        backImage = [[UIImage imageNamed:@"NavBack.png"] retain];
+    }
+    
+    [backImage drawInRect:self.bounds];
+}
+
+@end
+
