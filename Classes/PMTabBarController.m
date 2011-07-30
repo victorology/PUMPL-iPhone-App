@@ -50,6 +50,10 @@
     UIView* backView = [[UIImageView alloc] initWithImage:backImage];
     backView.frame = CGRectMake(0.0, 0.0, self.view.bounds.size.width, 48);
     [[self tabBar] insertSubview:backView atIndex:0];
+    
+    UIImage* cameraImage = [UIImage imageNamed:@"camera_button_take.png"];
+    UIImage* highlitedCameraImage = [UIImage imageNamed:@"tabBar_cameraButton_ready_matte.png"];
+    [self addCenterButtonWithImage:cameraImage highlightImage:highlitedCameraImage];
 }
 
 // Create a custom UIButton and add it to the center of our tab bar
@@ -62,29 +66,25 @@
     [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
     
-    CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
+    CGRect tabBarBounds = self.tabBar.bounds;
+    CGPoint tabBarCenter = CGPointMake(CGRectGetMidX(tabBarBounds), CGRectGetMidY(tabBarBounds));
+    CGFloat heightDifference = buttonImage.size.height - tabBarBounds.size.height;
     if (heightDifference < 0)
-        button.center = self.tabBar.center;
+    {
+        button.center = tabBarCenter;
+    }
     else
     {
-        CGPoint center = self.tabBar.center;
-        center.y = center.y - heightDifference/2.0;
-        button.center = center;
+        button.center = CGPointMake(tabBarCenter.x, tabBarCenter.y - heightDifference/2.0);
     }
     
-    [self.view addSubview:button];
-    centerButton = button;
+    [[self tabBar] addSubview:button];
 }
 
 -(void) onCameraTabBtn:(id)center
 {
-    [self setSelectedIndex:1];
-}
-
--(void) setSelectedIndex:(NSUInteger)selectedIndex
-{
-    [super setSelectedIndex:selectedIndex];
-    //centerButton.hidden = [[self tabBar] isHidden];
+    int centerIndex = [[self viewControllers] count] / 2;
+    [self setSelectedIndex:centerIndex];
 }
 
 @end

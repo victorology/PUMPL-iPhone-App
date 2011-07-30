@@ -10,7 +10,6 @@
 
 
 @interface PMTabBarController : UITabBarController {
-    UIButton* centerButton;
 }
 
 -(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage;
