@@ -149,7 +149,8 @@
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		9211408B13E2151D00ED1F08 /* camera_button_take.png in Resources */ = {isa = PBXBuildFile; fileRef = 9211408A13E2151D00ED1F08 /* camera_button_take.png */; };
 		9211408E13E2189400ED1F08 /* tabBar_cameraButton_ready_matte.png in Resources */ = {isa = PBXBuildFile; fileRef = 9211408D13E2189400ED1F08 /* tabBar_cameraButton_ready_matte.png */; };
-		921141C913E54EB000ED1F08 /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 921141C813E54EB000ED1F08 /* camera.png */; };
+		921141D813E559FA00ED1F08 /* img-tab-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 921141D613E559FA00ED1F08 /* img-tab-camera.png */; };
+		921141D913E559FA00ED1F08 /* img-tab-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 921141D713E559FA00ED1F08 /* img-tab-camera@2x.png */; };
 		92AF862813AFDA9A00C8F775 /* UIImage+PlasticEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862313AFDA9700C8F775 /* UIImage+PlasticEye.m */; };
 		92AF862913AFDA9A00C8F775 /* UIImage+Polaroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862513AFDA9800C8F775 /* UIImage+Polaroid.m */; };
 		92AF862A13AFDA9A00C8F775 /* UIImage+Redscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 92AF862713AFDA9900C8F775 /* UIImage+Redscale.m */; };
@@ -412,7 +413,8 @@
 		8D1107310486CEB800E47090 /* PUMPL-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PUMPL-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		9211408A13E2151D00ED1F08 /* camera_button_take.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera_button_take.png; sourceTree = "<group>"; };
 		9211408D13E2189400ED1F08 /* tabBar_cameraButton_ready_matte.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_cameraButton_ready_matte.png; sourceTree = "<group>"; };
-		921141C813E54EB000ED1F08 /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = camera.png; sourceTree = "<group>"; };
+		921141D613E559FA00ED1F08 /* img-tab-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-camera.png"; sourceTree = "<group>"; };
+		921141D713E559FA00ED1F08 /* img-tab-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-camera@2x.png"; sourceTree = "<group>"; };
 		92AF862213AFDA9600C8F775 /* UIImage+PlasticEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+PlasticEye.h"; sourceTree = "<group>"; };
 		92AF862313AFDA9700C8F775 /* UIImage+PlasticEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+PlasticEye.m"; sourceTree = "<group>"; };
 		92AF862413AFDA9700C8F775 /* UIImage+Polaroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Polaroid.h"; sourceTree = "<group>"; };
@@ -557,6 +559,8 @@
 		0B08F56412DCDDA50097EDE8 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
+				921141D613E559FA00ED1F08 /* img-tab-camera.png */,
+				921141D713E559FA00ED1F08 /* img-tab-camera@2x.png */,
 				C37E33041318F8A400B812A1 /* img-tab-photo.png */,
 				C37E33051318F8A400B812A1 /* img-tab-settings.png */,
 				C37E33061318F8A400B812A1 /* img-tab-home.png */,
@@ -646,7 +650,6 @@
 				92BA7C8413E0B56100BC447E /* DoneBtn.png */,
 				9211408A13E2151D00ED1F08 /* camera_button_take.png */,
 				9211408D13E2189400ED1F08 /* tabBar_cameraButton_ready_matte.png */,
-				921141C813E54EB000ED1F08 /* camera.png */,
 				0BFFC22F136ED46B006AD565 /* temp */,
 				C3AFBA5D1303E05C006C5709 /* img-beige_bg.png */,
 				C3AFBA321303D955006C5709 /* beige_bg@2x.png */,
@@ -1062,7 +1065,8 @@
 				92BA7C8C13E0B56100BC447E /* DoneBtn.png in Resources */,
 				9211408B13E2151D00ED1F08 /* camera_button_take.png in Resources */,
 				9211408E13E2189400ED1F08 /* tabBar_cameraButton_ready_matte.png in Resources */,
-				921141C913E54EB000ED1F08 /* camera.png in Resources */,
+				921141D813E559FA00ED1F08 /* img-tab-camera.png in Resources */,
+				921141D913E559FA00ED1F08 /* img-tab-camera@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

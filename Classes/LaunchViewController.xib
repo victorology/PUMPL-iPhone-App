@@ -144,13 +144,9 @@
 				</object>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<bool key="IBUIHorizontal">NO</bool>
-				<object class="IBUINavigationController" key="IBUISelectedViewController" id="25206059">
-					<object class="IBUITabBarItem" key="IBUITabBarItem" id="426417706">
-						<string key="IBUITitle">Settings</string>
-						<object class="NSCustomResource" key="IBUIImage">
-							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">img-tab-settings.png</string>
-						</object>
+				<object class="IBUINavigationController" key="IBUISelectedViewController" id="1014613954">
+					<object class="IBUITabBarItem" key="IBUITabBarItem" id="452297200">
+						<string key="IBUITitle"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 					<reference key="IBUIToolbarItems" ref="0"/>
@@ -161,7 +157,7 @@
 					</object>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					<bool key="IBUIHorizontal">NO</bool>
-					<object class="IBUINavigationBar" key="IBUINavigationBar" id="220377559">
+					<object class="IBUINavigationBar" key="IBUINavigationBar" id="465973091">
 						<nil key="NSNextResponder"/>
 						<int key="NSvFlags">256</int>
 						<string key="NSFrameSize">{320, 44}</string>
@@ -172,14 +168,18 @@
 					</object>
 					<object class="NSMutableArray" key="IBUIViewControllers">
 						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="IBUIViewController" id="34676521">
+						<object class="IBUIViewController" id="762791378">
 							<reference key="IBUIToolbarItems" ref="0"/>
-							<object class="IBUINavigationItem" key="IBUINavigationItem" id="609750056">
-								<string key="IBUITitle">Back</string>
+							<object class="IBUINavigationItem" key="IBUINavigationItem" id="331092072">
+								<object class="IBUIBarButtonItem" key="IBUIBackBarButtonItem" id="101550373">
+									<string key="IBUITitle">Back</string>
+									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+									<int key="IBUIStyle">1</int>
+								</object>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 							</object>
-							<reference key="IBUIParentViewController" ref="25206059"/>
-							<string key="IBUINibName">SettingsViewController</string>
+							<reference key="IBUIParentViewController" ref="1014613954"/>
+							<string key="IBUINibName">AddPhotoViewController</string>
 							<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 								<int key="IBUIInterfaceOrientation">1</int>
 								<int key="interfaceOrientation">1</int>
@@ -235,12 +235,13 @@
 							</object>
 						</object>
 					</object>
-					<object class="IBUINavigationController" id="1014613954">
-						<object class="IBUITabBarItem" key="IBUITabBarItem" id="452297200">
-							<string key="IBUITitle">Photo</string>
+					<reference ref="1014613954"/>
+					<object class="IBUINavigationController" id="25206059">
+						<object class="IBUITabBarItem" key="IBUITabBarItem" id="426417706">
+							<string key="IBUITitle">Settings</string>
 							<object class="NSCustomResource" key="IBUIImage">
 								<string key="NSClassName">NSImage</string>
-								<string key="NSResourceName">img-tab-photo.png</string>
+								<string key="NSResourceName">img-tab-settings.png</string>
 							</object>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
@@ -252,7 +253,7 @@
 						</object>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<bool key="IBUIHorizontal">NO</bool>
-						<object class="IBUINavigationBar" key="IBUINavigationBar" id="465973091">
+						<object class="IBUINavigationBar" key="IBUINavigationBar" id="220377559">
 							<nil key="NSNextResponder"/>
 							<int key="NSvFlags">256</int>
 							<string key="NSFrameSize">{320, 44}</string>
@@ -263,18 +264,14 @@
 						</object>
 						<object class="NSMutableArray" key="IBUIViewControllers">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBUIViewController" id="762791378">
+							<object class="IBUIViewController" id="34676521">
 								<reference key="IBUIToolbarItems" ref="0"/>
-								<object class="IBUINavigationItem" key="IBUINavigationItem" id="331092072">
-									<object class="IBUIBarButtonItem" key="IBUIBackBarButtonItem" id="101550373">
-										<string key="IBUITitle">Back</string>
-										<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-										<int key="IBUIStyle">1</int>
-									</object>
+								<object class="IBUINavigationItem" key="IBUINavigationItem" id="609750056">
+									<string key="IBUITitle">Back</string>
 									<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								</object>
-								<reference key="IBUIParentViewController" ref="1014613954"/>
-								<string key="IBUINibName">AddPhotoViewController</string>
+								<reference key="IBUIParentViewController" ref="25206059"/>
+								<string key="IBUINibName">SettingsViewController</string>
 								<object class="IBUISimulatedOrientationMetrics" key="IBUISimulatedOrientationMetrics">
 									<int key="IBUIInterfaceOrientation">1</int>
 									<int key="interfaceOrientation">1</int>
@@ -284,7 +281,6 @@
 							</object>
 						</object>
 					</object>
-					<reference ref="25206059"/>
 				</object>
 				<object class="IBUITabBar" key="IBUITabBar" id="828097098">
 					<reference key="NSNextResponder"/>
@@ -615,7 +611,6 @@
 				<string>btn-launch-login.png</string>
 				<string>btn-launch-signup.png</string>
 				<string>img-tab-home.png</string>
-				<string>img-tab-photo.png</string>
 				<string>img-tab-settings.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
@@ -624,7 +619,6 @@
 				<string>{278, 45}</string>
 				<string>{278, 45}</string>
 				<string>{30, 28}</string>
-				<string>{40, 28}</string>
 				<string>{30, 30}</string>
 			</object>
 		</object>
