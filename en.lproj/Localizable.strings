@@ -1,0 +1,90 @@
+/* 
+  Localizable.strings
+  PUMPL
+
+  Created by Harmandeep Singh on 27/07/11.
+  Copyright 2011 Route Me. All rights reserved.
+*/
+
+
+"OkKey" = "Ok";
+"UnknownServerResponseKey" =  "Unknown server response";
+"ServerRequestFailedKey" = "Server request failed";
+"CancelKey" = "Cancel";
+"YesKey" = "Yes";
+"NoKey" = "No";
+"BackKey" = "Back";
+"ErrorKey" = "Error";
+"CongratulationsKey" = "Congratulations";
+
+
+
+"EmailKey" = "Email";
+"UsernameKey" = "Username";
+"PasswordKey" = "Password";
+"SignUpKey" = "SignUp";
+"PleaseEnterYourEmailKey" = "Please enter your email";
+"PleaseEnterYourUsernameKey" = "Please enter your username"; 
+"PleaseEnterYourPasswordKey" = "Please enter your password";
+"PasswordShouldBeAtLeastCharactersLongKey" = "Password should be at least 4 characters long";
+"CongratulationsYouHaveSuccessfullyRegisteredKey" = "Congratulations! You have successfully registered.";
+
+
+"LoginKey" = "Login";
+"LostPasswordKey" = "Lost Password";
+
+
+"GoKey" = "Go";
+"PleaseCheckYourEmailForPasswordDetailsKey" = "Please check your email for password details";
+"DoneKey" = "Done"; 
+"ThereWasAnErrorResetingYourPasswordKey" = "There was an error reseting your password";
+
+
+
+
+"SettingsKey" = "Settings";
+"SharingKey" = "Sharing";
+"LogoutKey" = "Logout";
+"ConnectingToFacebookKey" = "Connecting To Facebook";
+"TwitterLoginKey" = "Twitter Login";
+"TumblrLoginKey" = "Tumblr Login";
+"DisconnectKey" = "Disconnect";
+"ConfirmationKey" = "Confirmation";
+"AreYouSureKey" = "Are you sure?";
+"ConnectingToServerKey" = "Connecting to server";
+"DisconnectingFromFacebookKey" = "Disconnecting from Facebook";
+
+
+"HomeKey" = "Home";
+"FailedToConnectToTheServerPleaseTryAgainLaterKey" = "Failed to connect to the server, please try again later";
+
+
+
+"PhotoKey" = "Photo";
+"TakePhotoKey" = "Take Photo";
+"ChooseFromLibraryKey" = "Choose From Library";
+"SquareKey" = "Square";
+"FullKey" = "Full";
+
+
+
+"ProcessingImageKey" = "Processing Image";
+"NextKey" = "Next";
+"ApplyingFilterKey" = "Applying Filter";
+
+
+
+
+"PostKey" = "Post";
+"CaptionKey" = "Caption";
+"UploadingToPUMPLKey" = "Uploading To PUMPL";
+"YourPhotoHasBeenSuccessfullyUploadedKey" = "Your photo has been successfully uploaded";
+"UploadFailedKey" = "Upload failed";
+"FailedToConnectWithServerKey" = "Failed to connect with server";
+
+
+
+
+
+
+
