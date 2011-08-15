@@ -131,6 +131,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    
 }
 
 
@@ -149,6 +151,8 @@
 
 - (void)configureTheView
 {
+    
+    
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;
 	[logoImageView release];
@@ -284,7 +288,7 @@
 	NSDictionary *rowDic = [[mTableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	NSString *blackLabelText = [rowDic valueForKey:@"blackLabel"];
 	
-	if([blackLabelText isEqualToString:@"Facebook"])
+	if([blackLabelText isEqualToString:NSLocalizedString(@"FacebookKey", @"")])
 	{
 		BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
 		if(isFacebookLoggedIn)
@@ -300,7 +304,7 @@
 		}
 
 	}
-	else if([blackLabelText isEqualToString:@"Twitter"])
+	else if([blackLabelText isEqualToString:NSLocalizedString(@"TwitterKey", @"")])
 	{
 		BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
 		if(isTwitterLoggedIn)
@@ -320,7 +324,7 @@
 		}
 		
 	}
-	else if([blackLabelText isEqualToString:@"Tumblr"])
+	else if([blackLabelText isEqualToString:NSLocalizedString(@"TumblrKey", @"")])
 	{
 		BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
 		if(isTumblrLoggedIn)
@@ -340,7 +344,7 @@
 		}
 		
 	}
-    else if([blackLabelText isEqualToString:@"me2day"])
+    else if([blackLabelText isEqualToString:NSLocalizedString(@"me2dayKey", @"")])
 	{
 		BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
 		if(isMe2dayLoggedIn)
@@ -515,7 +519,7 @@
 	[self.navigationController.view addSubview:_HUD];
 	
     _HUD.delegate = self;
-    _HUD.labelText = @"Connecting to me2day";
+    _HUD.labelText = NSLocalizedString(@"ConnectingToMe2dayKey", @"");
 	
     
 	[_HUD show:YES];
@@ -578,7 +582,7 @@
 	
 	NSDictionary *row1_1 = [NSMutableDictionary dictionary];
 	[row1_1 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
-	[row1_1 setValue:@"Facebook" forKey:@"blackLabel"];
+	[row1_1 setValue:NSLocalizedString(@"FacebookKey", @"") forKey:@"blackLabel"];
 	[row1_1 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
 	[row1_1 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
 	BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
@@ -592,7 +596,7 @@
 	
 	NSDictionary *row1_2 = [NSMutableDictionary dictionary];
 	[row1_2 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
-	[row1_2 setValue:@"Twitter" forKey:@"blackLabel"];
+	[row1_2 setValue:NSLocalizedString(@"TwitterKey", @"") forKey:@"blackLabel"];
 	[row1_2 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
 	[row1_2 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
 	BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
@@ -606,7 +610,7 @@
 	
 	NSDictionary *row1_3 = [NSMutableDictionary dictionary];
 	[row1_3 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
-	[row1_3 setValue:@"Tumblr" forKey:@"blackLabel"];
+	[row1_3 setValue:NSLocalizedString(@"TumblrKey", @"") forKey:@"blackLabel"];
 	[row1_3 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
 	[row1_3 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
 	BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
@@ -620,7 +624,7 @@
     
     NSDictionary *row1_4 = [NSMutableDictionary dictionary];
 	[row1_4 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
-	[row1_4 setValue:@"me2day" forKey:@"blackLabel"];
+	[row1_4 setValue:NSLocalizedString(@"me2dayKey", @"") forKey:@"blackLabel"];
 	[row1_4 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
 	[row1_4 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
 	BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];

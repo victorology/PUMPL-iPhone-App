@@ -14,9 +14,13 @@
 
 	UITabBarController *mTabBarController;
 	
+    UIButton *mSignUpButton;
+    UIButton *mLoginButton;
 }
 
 @property (nonatomic, retain) IBOutlet UITabBarController *mTabBarController;
+@property (nonatomic, retain) IBOutlet UIButton *mSignUpButton;
+@property (nonatomic, retain) IBOutlet UIButton *mLoginButton;
 
 - (void)launchTabBarControllerAnimated:(BOOL)animated withSelectedTabIndex:(NSInteger)selectedTabIndex;
 

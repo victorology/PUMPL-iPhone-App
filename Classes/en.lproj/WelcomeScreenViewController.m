@@ -70,6 +70,8 @@
 @implementation WelcomeScreenViewController
 
 @synthesize mTableView;
+@synthesize mWelcomeLabel;
+@synthesize mMessageLabel;
 @synthesize mTableData;
 @synthesize mTableHeaderView;
 
@@ -88,6 +90,8 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [mTableData release];
     [mTableView release];
+    [mMessageLabel release];
+    [mWelcomeLabel release];
     [mTableHeaderView release];
     [super dealloc];
 }
@@ -130,6 +134,9 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.mMessageLabel = nil;
+    self.mWelcomeLabel = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -156,13 +163,17 @@
     [backgroundColor release];
     
     
-//    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneClicked:)];
-//    self.navigationItem.rightBarButtonItem = doneButton;
-//    [doneButton release];
-    
-    
-    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"DoneBtn.png"]
+
+    UIImage *doneButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonDoneButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:doneButtonImage
                                                                                 target:self action:@selector(doneClicked:)];
+    [doneButtonImage release];
+    
+    
+    
+    mWelcomeLabel.text = NSLocalizedString(@"WelcomeToPUMPLKey", @"");
+    mMessageLabel.text = NSLocalizedString(@"WelcomeScreenMessageKey", @"");
+    
     
 	
 	mTableView.backgroundColor = [UIColor clearColor];
@@ -302,7 +313,7 @@
 	[self.navigationController.view addSubview:_HUD];
 	
     _HUD.delegate = self;
-    _HUD.labelText = @"Connecting to me2day";
+    _HUD.labelText = NSLocalizedString(@"ConnectingToMe2dayKey", @"");
 	
     
 	[_HUD show:YES];
@@ -357,18 +368,18 @@
 	NSMutableArray *array = [NSMutableArray array];
 	
 	
-    
 	
+    
 	NSMutableArray *section1 = [NSMutableArray array];
 	
 	NSDictionary *row1_1 = [NSMutableDictionary dictionary];
 	[row1_1 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
-	[row1_1 setValue:@"Facebook" forKey:@"blackLabel"];
+	[row1_1 setValue:NSLocalizedString(@"FacebookKey", @"") forKey:@"blackLabel"];
 	[row1_1 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
 	[row1_1 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
 	BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
 	if(isFacebookLoggedIn)
-		[row1_1 setValue:@"disconnect" forKey:@"detailedLabel"];
+		[row1_1 setValue:NSLocalizedString(@"DisconnectKey", @"") forKey:@"detailedLabel"];
 	else
 		[row1_1 setValue:nil forKey:@"detailedLabel"];
 	[section1 addObject:row1_1];
@@ -377,12 +388,12 @@
 	
 	NSDictionary *row1_2 = [NSMutableDictionary dictionary];
 	[row1_2 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
-	[row1_2 setValue:@"Twitter" forKey:@"blackLabel"];
+	[row1_2 setValue:NSLocalizedString(@"TwitterKey", @"") forKey:@"blackLabel"];
 	[row1_2 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
 	[row1_2 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
 	BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
 	if(isTwitterLoggedIn)
-		[row1_2 setValue:@"disconnect" forKey:@"detailedLabel"];
+		[row1_2 setValue:NSLocalizedString(@"DisconnectKey", @"") forKey:@"detailedLabel"];
 	else
 		[row1_2 setValue:nil forKey:@"detailedLabel"];
 	[section1 addObject:row1_2];
@@ -391,12 +402,12 @@
 	
 	NSDictionary *row1_3 = [NSMutableDictionary dictionary];
 	[row1_3 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
-	[row1_3 setValue:@"Tumblr" forKey:@"blackLabel"];
+	[row1_3 setValue:NSLocalizedString(@"TumblrKey", @"") forKey:@"blackLabel"];
 	[row1_3 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
 	[row1_3 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
 	BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
 	if(isTumblrLoggedIn)
-		[row1_3 setValue:@"disconnect" forKey:@"detailedLabel"];
+		[row1_3 setValue:NSLocalizedString(@"DisconnectKey", @"") forKey:@"detailedLabel"];
 	else
 		[row1_3 setValue:nil forKey:@"detailedLabel"];
 	[section1 addObject:row1_3];
@@ -405,12 +416,12 @@
     
     NSDictionary *row1_4 = [NSMutableDictionary dictionary];
 	[row1_4 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
-	[row1_4 setValue:@"me2day" forKey:@"blackLabel"];
+	[row1_4 setValue:NSLocalizedString(@"me2dayKey", @"") forKey:@"blackLabel"];
 	[row1_4 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
 	[row1_4 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
 	BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
 	if(isMe2dayLoggedIn)
-		[row1_4 setValue:@"disconnect" forKey:@"detailedLabel"];
+		[row1_4 setValue:NSLocalizedString(@"DisconnectKey", @"")forKey:@"detailedLabel"];
 	else
 		[row1_4 setValue:nil forKey:@"detailedLabel"];
 	[section1 addObject:row1_4];
@@ -540,13 +551,15 @@
 	
 	NSDictionary *rowDic = [[mTableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 	NSString *blackLabelText = [rowDic valueForKey:@"blackLabel"];
-	
-	if([blackLabelText isEqualToString:@"Facebook"])
+    
+    
+    
+    if([blackLabelText isEqualToString:NSLocalizedString(@"FacebookKey", @"")])
 	{
 		BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
 		if(isFacebookLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"Are you sure?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
 			alertView.tag = kAlertViewForFacebookDisconnect;
 			[alertView show];
 			[alertView release];
@@ -557,12 +570,12 @@
 		}
         
 	}
-	else if([blackLabelText isEqualToString:@"Twitter"])
+	else if([blackLabelText isEqualToString:NSLocalizedString(@"TwitterKey", @"")])
 	{
 		BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
 		if(isTwitterLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"Are you sure?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
 			alertView.tag = kAlertViewForTwitterDisconnect;
 			[alertView show];
 			[alertView release];
@@ -577,12 +590,12 @@
 		}
 		
 	}
-	else if([blackLabelText isEqualToString:@"Tumblr"])
+	else if([blackLabelText isEqualToString:NSLocalizedString(@"TumblrKey", @"")])
 	{
 		BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
 		if(isTumblrLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"Are you sure?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
 			alertView.tag = kAlertViewForTumblrDisconnect;
 			[alertView show];
 			[alertView release];
@@ -597,12 +610,12 @@
 		}
 		
 	}
-    else if([blackLabelText isEqualToString:@"me2day"])
+    else if([blackLabelText isEqualToString:NSLocalizedString(@"me2dayKey", @"")])
 	{
 		BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
 		if(isMe2dayLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:@"Are you sure?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
 			alertView.tag = kAlertViewForMe2dayDisconnect;
 			[alertView show];
 			[alertView release];
@@ -613,6 +626,82 @@
 		}
         
 	}
+    
+    
+    
+	
+//	if([blackLabelText isEqualToString:@"Facebook"])
+//	{
+//		BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
+//		if(isFacebookLoggedIn)
+//		{
+//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+//			alertView.tag = kAlertViewForFacebookDisconnect;
+//			[alertView show];
+//			[alertView release];
+//		}
+//		else 
+//		{
+//			[self launchFacebookConnectionCall];			
+//		}
+//        
+//	}
+//	else if([blackLabelText isEqualToString:@"Twitter"])
+//	{
+//		BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
+//		if(isTwitterLoggedIn)
+//		{
+//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+//			alertView.tag = kAlertViewForTwitterDisconnect;
+//			[alertView show];
+//			[alertView release];
+//		}
+//		else 
+//		{
+//			TwitterLoginViewController *viewController = [[TwitterLoginViewController alloc] initWithNibName:@"TwitterLoginViewController" bundle:nil];
+//			UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
+//			[viewController release];
+//			[self presentModalViewController:navController animated:YES];
+//			[navController release];
+//		}
+//		
+//	}
+//	else if([blackLabelText isEqualToString:@"Tumblr"])
+//	{
+//		BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
+//		if(isTumblrLoggedIn)
+//		{
+//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+//			alertView.tag = kAlertViewForTumblrDisconnect;
+//			[alertView show];
+//			[alertView release];
+//		}
+//		else 
+//		{
+//			TumblrLoginViewController *viewController = [[TumblrLoginViewController alloc] initWithNibName:@"TumblrLoginViewController" bundle:nil];
+//			UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
+//			[viewController release];
+//			[self presentModalViewController:navController animated:YES];
+//			[navController release];
+//		}
+//		
+//	}
+//    else if([blackLabelText isEqualToString:@"me2day"])
+//	{
+//		BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
+//		if(isMe2dayLoggedIn)
+//		{
+//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+//			alertView.tag = kAlertViewForMe2dayDisconnect;
+//			[alertView show];
+//			[alertView release];
+//		}
+//		else 
+//		{
+//			[self launchMe2dayConnectionCall];			
+//		}
+//        
+//	}
 	
 	[mTableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -940,6 +1029,49 @@
 	_HUD = nil;
 }
 
+
+
+
+#pragma mark -
+#pragma mark UIAlertView delegate Methods
+
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	
+	if(alertView.tag == kAlertViewForFacebookDisconnect)
+	{
+		if(buttonIndex == 1)
+		{
+			[self launchFacebookDisconnectionCall];
+		}
+        
+	}
+	else if(alertView.tag == kAlertViewForTwitterDisconnect)
+	{
+		if(buttonIndex == 1)
+		{
+			[self launchTwitterDisconnectionCall];
+		}
+		
+	}
+	else if(alertView.tag == kAlertViewForTumblrDisconnect)
+	{
+		if(buttonIndex == 1)
+		{
+			[self launchTumblrDisconnectionCall];
+		}
+		
+	}
+    else if(alertView.tag == kAlertViewForMe2dayDisconnect)
+	{
+		if(buttonIndex == 1)
+		{
+			[self launchMe2dayDisconnectionCall];
+		}
+		
+	}
+}
 
 
 @end

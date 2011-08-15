@@ -16,6 +16,11 @@
 "BackKey" = "이전";
 "ErrorKey" = "연결 오류";
 "CongratulationsKey" = "축하합니다";
+"FacebookKey" = "페이스북";
+"TwitterKey" = "트위터";
+"TumblrKey" = "텀블러";
+"me2dayKey" = "미투데이";
+
 
 
 
@@ -32,7 +37,7 @@
 
 "LoginKey" = "로그인";
 "LostPasswordKey" = "비밀번호 찾기";
-
+"LostPasswordScreenInstructionKey" = "이메일 주소 입력 하시면 이메일 리셋을 할수 있는 방법을 보내드릴께요";
 
 
 
@@ -52,15 +57,24 @@
 "TumblrLoginKey" = "텀블러 로그인";
 "DisconnectKey" = "연결 끊기";
 "ConfirmationKey" = "확인";
-"AreYouSureKey" = "정말 페이스북에서 연결 끊기를 하시겠습니까?";
 "ConnectingToServerKey" = "서버와 연결";
 "DisconnectingFromFacebookKey" = "페이스북과 연결을 끊는 중";
+"AreYouSureKey" = "확인 해주세요";
+"DisconnectingFromTwitterKey" = "트위터를 연동 끊습니다.";
+"DisconnectingFromTumblrKey" = "텀블러를 연동 끊습니다.";
+"DisconnectingFromMe2dayKey" = "미투데이를 연동 끊습니다.";
 
 
 
+
+"MyPhotosKey" = "Pending";
 "HomeKey" = "홈";
 "FailedToConnectToTheServerPleaseTryAgainLaterKey" = "서버연결에 실패하였습니다. 재시도 해주시기 바랍니다";
+"WelcomeToPUMPLKey" = "펌플에 환영합니다!";
+"YouStillHaveNotSharedAnyPhotosYet" = "아직 시작을 하지 않았네요.";
+"ToBeginClickOnTheCameraIconBelow" = "시작을 할려면 카메라 아이콘을 클릭 해주세요.";
 
+"WelcomeScreenMessageKey" = "Korean version pending";
 
 
 "PhotoKey" = "사진";
@@ -68,7 +82,7 @@
 "ChooseFromLibraryKey" = "내 앨범에서 사진 찾기";
 "SquareKey" = "사각";
 "FullKey" = "전체";
-
+"YourIphoneDoesNotHaveTheCapibilityToCaptureImage." = "당신의 아이폰을 사진을 찍을수 없습니다.";
 
 
 "ProcessingImageKey" = "이미지 처리중";
@@ -84,7 +98,15 @@
 "YourPhotoHasBeenSuccessfullyUploadedKey" = "사진이 성공적으로 업로드 되었습니다";
 "UploadFailedKey" = "업로드 실패";
 "FailedToConnectWithServerKey" = "서버와 접속 실패";
+"ConnectingToMe2dayKey" = "미투데이를 연동합니다";
+"PostPhotoKey" = "사진을 올리기";
 
 
 
+"ImageLaunchScreenLoginButtonKey" = "LoginKR";
+"ImageLaunchScreenRegisterButtonKey" = "RegisterKR";
+"ImageBarButtonLoginButtonKey" = "LoginBtnKR";
+"ImageBarButtonBackButtonKey" = "BackBtnKR";
+"ImageBarButtonSignUpButtonKey" = "RegisterBtnKR";
+"ImageBarButtonDoneButtonKey" = "DoneBtnKR";
 

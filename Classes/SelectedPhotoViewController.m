@@ -203,7 +203,7 @@
 	
 	
 	NSMutableDictionary *row2_1 = [NSMutableDictionary dictionary];
-	[row2_1 setValue:@"Facebook" forKey:@"inputName"];
+	[row2_1 setValue:NSLocalizedString(@"FacebookKey", @"") forKey:@"inputName"];
 	BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
 	if(isFacebookLoggedIn)
 	{
@@ -219,7 +219,7 @@
 	
 	
 	NSMutableDictionary *row2_2 = [NSMutableDictionary dictionary];
-	[row2_2 setValue:@"Twitter" forKey:@"inputName"];
+	[row2_2 setValue:NSLocalizedString(@"TwitterKey", @"") forKey:@"inputName"];
 	BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
 	if(isTwitterLoggedIn)
 	{
@@ -235,7 +235,7 @@
 	
 	
 	NSMutableDictionary *row2_3 = [NSMutableDictionary dictionary];
-	[row2_3 setValue:@"Tumblr" forKey:@"inputName"];
+	[row2_3 setValue:NSLocalizedString(@"TumblrKey", @"") forKey:@"inputName"];
 	BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
 	if(isTumblrLoggedIn)
 	{
@@ -252,7 +252,7 @@
     
     
     NSMutableDictionary *row2_4 = [NSMutableDictionary dictionary];
-	[row2_4 setValue:@"me2day" forKey:@"inputName"];
+	[row2_4 setValue:NSLocalizedString(@"me2dayKey", @"") forKey:@"inputName"];
 	BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
 	if(isMe2dayLoggedIn)
 	{
@@ -314,8 +314,11 @@
 	_HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:_HUD];
 	
+
+
+    
     _HUD.delegate = self;
-    _HUD.labelText = @"Connecting to me2day";
+    _HUD.labelText = NSLocalizedString(@"ConnectingToMe2dayKey", @"");
 	
     
 	[_HUD show:YES];
@@ -592,7 +595,7 @@
 	
 	if(section == 0)
 	{
-		sectionTitle = @"Post Photo";
+		sectionTitle = NSLocalizedString(@"PostPhotoKey", @"");
 	}
 	
 	return sectionTitle;

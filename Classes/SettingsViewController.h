@@ -14,6 +14,7 @@
 
 	UITableView *mTableView;
 	NSMutableArray *mTableData;
+    
 	
 	MBProgressHUD *_HUD;
 }

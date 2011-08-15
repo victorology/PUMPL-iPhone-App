@@ -173,6 +173,8 @@
     
 	self.navigationItem.title = @"Home";
     
+    
+    
     UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
 	self.view.backgroundColor = backgroundColor;
     [backgroundColor release];
@@ -489,7 +491,7 @@
                                                                       20,
                                                                       280,
                                                                       24)];
-    welcomeLabel.text = @"Welcome to PUMPL!";
+    welcomeLabel.text = NSLocalizedString(@"WelcomeToPUMPLKey", @"");
     welcomeLabel.backgroundColor = [UIColor clearColor];
     welcomeLabel.font = [UIFont boldSystemFontOfSize:20];
     welcomeLabel.shadowColor = [UIColor whiteColor];
@@ -503,7 +505,7 @@
                                                                       52,
                                                                       280,
                                                                       20)];
-    emptyMessageLabel1.text = @"You still have not shared any photos yet.";
+    emptyMessageLabel1.text = NSLocalizedString(@"YouStillHaveNotSharedAnyPhotosYet", @"");
     emptyMessageLabel1.backgroundColor = [UIColor clearColor];
     emptyMessageLabel1.font = [UIFont systemFontOfSize:15];
     
@@ -525,7 +527,7 @@
                                                                             72,
                                                                             280,
                                                                             20)];
-    emptyMessageLabel2.text = @"To begin, click on the camera icon below.";
+    emptyMessageLabel2.text = NSLocalizedString(@"ToBeginClickOnTheCameraIconBelow", @"");
     emptyMessageLabel2.backgroundColor = [UIColor clearColor];
     emptyMessageLabel2.font = [UIFont systemFontOfSize:15];
     

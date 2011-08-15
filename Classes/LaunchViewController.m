@@ -15,6 +15,8 @@
 @implementation LaunchViewController
 
 @synthesize mTabBarController;
+@synthesize mSignUpButton;
+@synthesize mLoginButton;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -33,10 +35,34 @@
     [super viewDidLoad];
 
 
+    //Configure the buttons
+    
+    [mSignUpButton setTitle:nil forState:UIControlStateNormal];
+    UIImage *signUpImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageLaunchScreenRegisterButtonKey", @"") ofType:@"png"]];
+    [mSignUpButton setBackgroundImage:signUpImage forState:UIControlStateNormal];
+    [signUpImage release];
+    
+    
+    [mLoginButton setTitle:nil forState:UIControlStateNormal];
+    UIImage *loginImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageLaunchScreenLoginButtonKey", @"") ofType:@"png"]];
+    [mLoginButton setBackgroundImage:loginImage forState:UIControlStateNormal];
+    [loginImage release];
+    
+    
+
+    
+    UIViewController *firstTabController = [[mTabBarController viewControllers] objectAtIndex:0];
+    firstTabController.tabBarItem.title = NSLocalizedString(@"MyPhotosKey", @"");
+    
+    UIViewController *thirdTabController = [[mTabBarController viewControllers] objectAtIndex:2];
+    thirdTabController.tabBarItem.title = NSLocalizedString(@"SettingsKey", @"");
+    
 	if([[DataManager sharedDataManager] isUserLoggedIn])
 	{
 		[self launchTabBarControllerAnimated:NO withSelectedTabIndex:0];
 	}
+    
+    
 	
 }
 
@@ -64,13 +90,19 @@
 }
 
 - (void)viewDidUnload {
-    [super viewDidUnload];
+    
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.mSignUpButton = nil;
+    self.mLoginButton = nil;
+    [super viewDidUnload];
 }
 
 
 - (void)dealloc {
+    [mSignUpButton release];
+    [mLoginButton release];
 	[mTabBarController release];
     [super dealloc];
 }

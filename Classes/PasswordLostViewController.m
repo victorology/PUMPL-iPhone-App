@@ -89,13 +89,20 @@
 
 - (void)configureTheView
 {
-    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
+    
+    UIImage *backButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonBackButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:backButtonImage
                                                                                target:self action:@selector(back:)];
+    [backButtonImage release];
     
-    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"DoneBtn.png"]
+    
+    
+    UIImage *doneButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonDoneButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:doneButtonImage
                                                                                 target:self action:@selector(lostPassword:)];
+    [doneButtonImage release];
     
-//	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"DoneKey", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(lostPassword:)] autorelease];
+
 	
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
 	self.navigationItem.titleView = logoImageView;
@@ -125,10 +132,11 @@
     instructionLabel.shadowOffset = CGSizeMake(0, 1);
     instructionLabel.shadowColor = [UIColor whiteColor];
     
-    
-    NSString *instructionText = [[NSString alloc] initWithString:@"Enter your email address for your account so we can send you password reset instructions"];
+    //LostPasswordScreenInstructionKey
+    NSString *instructionText = [[NSString alloc] initWithString:NSLocalizedString(@"LostPasswordScreenInstructionKey", @"")];
     instructionLabel.text = instructionText;
     [instructionText release];
+    
     
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                                   0,

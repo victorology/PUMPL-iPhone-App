@@ -90,13 +90,19 @@
 
 - (void)configureTheView
 {
-//	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"SignUpKey", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(signUp:)] autorelease];
+
     
-    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
+    
+    UIImage *backButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonBackButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:backButtonImage
                                                                                target:self action:@selector(back:)];
+    [backButtonImage release];
     
-    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"SignUpBtn.png"]
+    
+    UIImage *signUpButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonSignUpButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:signUpButtonImage
                                                                                 target:self action:@selector(signUp:)];
+    [signUpButtonImage release];
     
     
 	

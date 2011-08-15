@@ -16,6 +16,10 @@
 "BackKey" = "Back";
 "ErrorKey" = "Error";
 "CongratulationsKey" = "Congratulations";
+"FacebookKey" = "Facebook";
+"TwitterKey" = "Twitter";
+"TumblrKey" = "Tumblr";
+"me2dayKey" = "me2day";
 
 
 
@@ -32,6 +36,7 @@
 
 "LoginKey" = "Login";
 "LostPasswordKey" = "Lost Password";
+"LostPasswordScreenInstructionKey" = "Enter your email address for your account so we can send you password reset instructions";
 
 
 "GoKey" = "Go";
@@ -50,13 +55,25 @@
 "TumblrLoginKey" = "Tumblr Login";
 "DisconnectKey" = "Disconnect";
 "ConfirmationKey" = "Confirmation";
-"AreYouSureKey" = "Are you sure?";
 "ConnectingToServerKey" = "Connecting to server";
 "DisconnectingFromFacebookKey" = "Disconnecting from Facebook";
+"AreYouSureKey" = "Are you sure?";
+"DisconnectingFromTwitterKey" = "Disconnecting from twitter";
+"DisconnectingFromTumblrKey" = "Disconnecting from tumblr";
+"DisconnectingFromMe2dayKey" = "Disconnecting from me2day";
 
 
+
+"MyPhotosKey" = "My Photos";
 "HomeKey" = "Home";
 "FailedToConnectToTheServerPleaseTryAgainLaterKey" = "Failed to connect to the server, please try again later";
+"WelcomeToPUMPLKey" = "Welcome to PUMPL!";
+"YouStillHaveNotSharedAnyPhotosYet" = "You still have not shared any photos yet.";
+"ToBeginClickOnTheCameraIconBelow" = "To begin, click on the camera icon below.";
+
+
+"WelcomeScreenMessageKey" = "To start, connect a social network you would like to share photos with";
+
 
 
 
@@ -65,6 +82,7 @@
 "ChooseFromLibraryKey" = "Choose From Library";
 "SquareKey" = "Square";
 "FullKey" = "Full";
+"YourIphoneDoesNotHaveTheCapibilityToCaptureImage." = "Your iphone does not have the capibility to capture image.";
 
 
 
@@ -81,10 +99,18 @@
 "YourPhotoHasBeenSuccessfullyUploadedKey" = "Your photo has been successfully uploaded";
 "UploadFailedKey" = "Upload failed";
 "FailedToConnectWithServerKey" = "Failed to connect with server";
+"ConnectingToMe2dayKey" = "Connecting to me2day";
+"PostPhotoKey" = "Post Photo";
 
 
 
 
+"ImageLaunchScreenLoginButtonKey" = "Login";
+"ImageLaunchScreenRegisterButtonKey" = "Register";
+"ImageBarButtonLoginButtonKey" = "LoginBtn";
+"ImageBarButtonBackButtonKey" = "BackBtn";
+"ImageBarButtonSignUpButtonKey" = "SignUpBtn";
+"ImageBarButtonDoneButtonKey" = "DoneBtn";
 
 
 

@@ -13,6 +13,8 @@
 @interface WelcomeScreenViewController : UIViewController <MBProgressHUDDelegate> {
     
     UITableView *mTableView;
+    UILabel *mWelcomeLabel;
+    UILabel *mMessageLabel;
     UIView *mTableHeaderView;
     
     MBProgressHUD *_HUD;
@@ -21,6 +23,8 @@
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *mTableView;
+@property (nonatomic, retain) IBOutlet UILabel *mWelcomeLabel;
+@property (nonatomic, retain) IBOutlet UILabel *mMessageLabel;
 @property (nonatomic, retain) IBOutlet UIView *mTableHeaderView;
 @property (nonatomic, retain) NSMutableArray *mTableData;
 

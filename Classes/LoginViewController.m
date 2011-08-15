@@ -91,11 +91,17 @@
 
 - (void)configureTheView
 {
-    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
+    UIImage *backButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonBackButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:backButtonImage
                                                                                target:self action:@selector(back:)];
+    [backButtonImage release];
     
-    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"LoginBtn.png"]
+    
+    UIImage *loginButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonLoginButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:loginButtonImage
                                                                                 target:self action:@selector(login:)];
+    [loginButtonImage release];
+    
     
 	
 	UIImageView *logoImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img-bar-logo.png"]];
