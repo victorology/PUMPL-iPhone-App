@@ -61,6 +61,14 @@
 "DisconnectingFromTwitterKey" = "Disconnecting from twitter";
 "DisconnectingFromTumblrKey" = "Disconnecting from tumblr";
 "DisconnectingFromMe2dayKey" = "Disconnecting from me2day";
+"YouHaveSuccessfullyLoggedIntoYourTwitterAccountKey" = "You have successfully logged into your twitter account.";
+"CouldNotLogIntoTwitterScreenKey" = "Could not log into twitter screen";
+"YouHaveSuccessfullyLoggedIntoYourTumblrAccountKey" = "You have successfully logged into your tumblr account.";
+"CouldNotLogIntoTumblrScreenKey" = "Could not log into tumblr screen";
+"Me2dayAlreadyLoggedInMessageKey" = "You are already logged in to me2day. Please logout and try again";
+
+
+
 
 
 
@@ -82,7 +90,7 @@
 "ChooseFromLibraryKey" = "Choose From Library";
 "SquareKey" = "Square";
 "FullKey" = "Full";
-"YourIphoneDoesNotHaveTheCapibilityToCaptureImage." = "Your iphone does not have the capibility to capture image.";
+"YourIphoneDoesNotHaveTheCapibilityToCaptureImageKey" = "Your iphone does not have the capibility to capture image.";
 
 
 
@@ -111,6 +119,7 @@
 "ImageBarButtonBackButtonKey" = "BackBtn";
 "ImageBarButtonSignUpButtonKey" = "SignUpBtn";
 "ImageBarButtonDoneButtonKey" = "DoneBtn";
+"ImageBarButtonNextButtonKey" = "NextBtn";
 
 
 

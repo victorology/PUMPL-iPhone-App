@@ -64,8 +64,14 @@
 	self.view.backgroundColor = backgroundColor;
     [backgroundColor release];
     
-    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
+    
+    
+    UIImage *backButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonBackButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:backButtonImage
                                                                                target:self action:@selector(back:)];
+    [backButtonImage release];
+    
+    
 }
 
 
@@ -107,7 +113,8 @@
     
     if([webViewUrlString isEqualToString:alreadyLoggedInUrlString])
 	{
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"You are already logged in to me2day. Please logout and try again" delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"Me2dayAlreadyLoggedInMessageKey"
+, @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
         [alertView show];
         [alertView release];
 	}

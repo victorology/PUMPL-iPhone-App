@@ -77,7 +77,7 @@
     }
     else
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"YourIphoneDoesNotHaveTheCapibilityToCaptureImage", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"YourIphoneDoesNotHaveTheCapibilityToCaptureImageKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
         alertView.tag = kAlertViewForCameraCapability;
         [alertView show];
         [alertView release];
@@ -288,7 +288,7 @@
         }
         else
         {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"YourIphoneDoesNotHaveTheCapibilityToCaptureImage", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"YourIphoneDoesNotHaveTheCapibilityToCaptureImageKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
             alertView.tag = kAlertViewForCameraCapability;
             [alertView show];
             [alertView release];

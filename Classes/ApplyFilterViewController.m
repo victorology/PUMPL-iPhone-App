@@ -84,14 +84,19 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	[logoImageView release];
 	
 	
-//    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"BackKey", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(back:)] autorelease];
-//    
-//	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"NextKey", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(next:)] autorelease];
-	
-    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"BackBtn.png"]
+
+	UIImage *backButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonBackButtonKey", @"") ofType:@"png"]];
+   
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:backButtonImage
                                                                                target:self action:@selector(back:)];
-    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"NextBtn.png"]
+    [backButtonImage release];
+    
+    
+    
+    UIImage *nextButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonNextButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:nextButtonImage
                                                                                 target:self action:@selector(next:)];
+    [nextButtonImage release];
     
 	
 	[self buildFilterButtonScrollView];

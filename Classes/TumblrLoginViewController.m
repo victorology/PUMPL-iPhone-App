@@ -92,13 +92,19 @@
 
 - (void)configureTheView
 {
-	self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)] autorelease];
-//	self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"LoginKey", @"") style:UIBarButtonItemStyleBordered target:self action:@selector(login:)] autorelease];
+	UIImage *backButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonBackButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:backButtonImage
+                                                                               target:self action:@selector(cancel:)];
+    [backButtonImage release];
+    
+    
 	self.navigationItem.title = NSLocalizedString(@"TumblrLoginKey", @"");
     
     
-    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:[UIImage imageNamed:@"LoginBtn.png"]
+    UIImage *loginButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonLoginButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:loginButtonImage
                                                                                 target:self action:@selector(login:)];
+    [loginButtonImage release];
 	
 	
     UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
@@ -361,14 +367,14 @@
 		{
 			[[DataManager sharedDataManager] setTumblrConnected:YES withNickname:nil];
 			
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CongratulationsKey", @"") message:@"You have successfully logged into your tumblr account." delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CongratulationsKey", @"") message:NSLocalizedString(@"YouHaveSuccessfullyLoggedIntoYourTumblrAccountKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 			alertView.tag = 1;
 			[alertView show];
 			[alertView release];
 		}
 		else 
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Could not log into tumblr screen" delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"CouldNotLogIntoTumblrScreenKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 			[alertView show];
 			[alertView release];
 		}
