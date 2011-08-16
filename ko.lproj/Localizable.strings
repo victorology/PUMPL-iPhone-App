@@ -49,7 +49,7 @@
 
 
 
-"SettingsKey" = "계정 설정";
+"SettingsKey" = "설정";
 "SharingKey" = "공유";
 "LogoutKey" = "로그아웃";
 "ConnectingToFacebookKey" = "페이스북과 연결";
@@ -72,7 +72,7 @@
 
 
 
-"MyPhotosKey" = "Pending";
+"MyPhotosKey" = "내 사진";
 "HomeKey" = "홈";
 "FailedToConnectToTheServerPleaseTryAgainLaterKey" = "서버연결에 실패하였습니다. 재시도 해주시기 바랍니다";
 "WelcomeToPUMPLKey" = "펌플에 환영합니다!";
