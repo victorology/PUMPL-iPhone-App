@@ -171,7 +171,7 @@
 - (void)configureTheView
 {
     
-	self.navigationItem.title = @"Home";
+	self.navigationItem.title = NSLocalizedString(@"HomeKey", @"");
     
     
     

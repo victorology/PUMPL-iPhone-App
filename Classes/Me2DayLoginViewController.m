@@ -58,7 +58,7 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
 	[mWebView loadRequest:request];
 	
-	self.title = @"me2day";
+	self.title = NSLocalizedString(@"me2dayKey", @"");
     
     UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
 	self.view.backgroundColor = backgroundColor;
