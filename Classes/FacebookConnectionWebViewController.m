@@ -37,7 +37,7 @@
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:urlString]];
 	[mWebView loadRequest:request];
 	
-	self.title = @"Facebook";
+	self.title = NSLocalizedString(@"FacebookKey", @"");
     
     
     UIImage *backButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonBackButtonKey", @"") ofType:@"png"]];

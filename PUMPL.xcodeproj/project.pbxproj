@@ -305,8 +305,6 @@
 		0BC6938312D450AC008285B2 /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
 		0BC6938412D450AC008285B2 /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
 		0BC6938512D450AC008285B2 /* LaunchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchViewController.xib; sourceTree = "<group>"; };
-		0BC6939D12D4593F008285B2 /* img-launchbackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-launchbackground.png"; sourceTree = "<group>"; };
-		0BC6939E12D4593F008285B2 /* img-launchbackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-launchbackground@2x.png"; sourceTree = "<group>"; };
 		0BC693A212D459E6008285B2 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		0BC693A312D459E6008285B2 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		0BC693A412D459E6008285B2 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -682,8 +680,6 @@
 				0B08F45612DCCDAB0097EDE8 /* img-bar-logo.png */,
 				0B08F45712DCCDAB0097EDE8 /* img-bar-logo@2x.png */,
 				0BC693AE12D45AF7008285B2 /* img-bluebackground.png */,
-				0BC6939D12D4593F008285B2 /* img-launchbackground.png */,
-				0BC6939E12D4593F008285B2 /* img-launchbackground@2x.png */,
 			);
 			name = images;
 			sourceTree = "<group>";

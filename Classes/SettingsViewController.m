@@ -468,7 +468,7 @@
 	[self.navigationController.view addSubview:_HUD];
 	
     _HUD.delegate = self;
-    _HUD.labelText = @"Disconnecting from twitter";
+    _HUD.labelText = NSLocalizedString(@"DisconnectingFromTwitterKey", @"");
 	
     
 	[_HUD show:YES];
@@ -494,7 +494,7 @@
 	[self.navigationController.view addSubview:_HUD];
 	
     _HUD.delegate = self;
-    _HUD.labelText = @"Disconnecting from tumblr";
+    _HUD.labelText = NSLocalizedString(@"DisconnectingFromTumblrKey", @"");
 	
 	[_HUD show:YES];
 	[self makeTumblrDisconnectionCall];
@@ -549,7 +549,7 @@
 	[self.navigationController.view addSubview:_HUD];
 	
     _HUD.delegate = self;
-    _HUD.labelText = @"Disconnecting from me2day";
+    _HUD.labelText = NSLocalizedString(@"DisconnectingFromMe2dayKey", @"");
 	
 	[_HUD show:YES];
 	[self makeMe2dayDisconnectionCall];

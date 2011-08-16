@@ -70,7 +70,7 @@
 {
 	if([delegate respondsToSelector:@selector(photoUploader:hasStartedTheStepWithTitle:)])
 	{
-		[delegate photoUploader:self hasStartedTheStepWithTitle:@"Uploading to PUMPL"];
+		[delegate photoUploader:self hasStartedTheStepWithTitle:NSLocalizedString(@"UploadingToPUMPLKey", @"")];
 	}
 	
 	NSDictionary *userInfo = [[DataManager sharedDataManager] getUserProfile];
