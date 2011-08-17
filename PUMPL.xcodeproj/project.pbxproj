@@ -22,7 +22,6 @@
 		0B10378C13B3000E00DD5017 /* Xpro.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 0B10378313B3000E00DD5017 /* Xpro.jpeg */; };
 		0B10381413B31ECE00DD5017 /* TempScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B10381313B31ECE00DD5017 /* TempScrollView.m */; };
 		0B1039AE13B4A63D00DD5017 /* UIImage-Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B1039AD13B4A63D00DD5017 /* UIImage-Extensions.m */; };
-		0B11FB7913ED484A006975A4 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B11FB7813ED484A006975A4 /* libz.1.2.5.dylib */; };
 		0B299A6413DE9B8F007F955A /* CameraBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B299A6213DE9B8F007F955A /* CameraBG.png */; };
 		0B299A6513DE9B8F007F955A /* CameraBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B299A6313DE9B8F007F955A /* CameraBG@2x.png */; };
 		0B299A6813DE9BC8007F955A /* CameraButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B299A6613DE9BC8007F955A /* CameraButton.png */; };
@@ -195,6 +194,7 @@
 		92AF862F13AFDAC200C8F775 /* PlasticEye.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862C13AFDAC200C8F775 /* PlasticEye.c3d */; };
 		92AF863013AFDAC200C8F775 /* polaroid.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862D13AFDAC200C8F775 /* polaroid.c3d */; };
 		92AF863113AFDAC200C8F775 /* redscale.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862E13AFDAC200C8F775 /* redscale.c3d */; };
+		92EA7AC613FC4BF5000FBEC3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92EA7AC513FC4BF5000FBEC3 /* libz.dylib */; };
 		C37E330A1318F8A400B812A1 /* img-tab-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33041318F8A400B812A1 /* img-tab-photo.png */; };
 		C37E330B1318F8A400B812A1 /* img-tab-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33051318F8A400B812A1 /* img-tab-settings.png */; };
 		C37E330C1318F8A400B812A1 /* img-tab-home.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33061318F8A400B812A1 /* img-tab-home.png */; };
@@ -226,7 +226,6 @@
 		0B10381313B31ECE00DD5017 /* TempScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempScrollView.m; sourceTree = "<group>"; };
 		0B1039AC13B4A63D00DD5017 /* UIImage-Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage-Extensions.h"; sourceTree = "<group>"; };
 		0B1039AD13B4A63D00DD5017 /* UIImage-Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage-Extensions.m"; sourceTree = "<group>"; };
-		0B11FB7813ED484A006975A4 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		0B299A6213DE9B8F007F955A /* CameraBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraBG.png; sourceTree = "<group>"; };
 		0B299A6313DE9B8F007F955A /* CameraBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CameraBG@2x.png"; sourceTree = "<group>"; };
 		0B299A6613DE9BC8007F955A /* CameraButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CameraButton.png; sourceTree = "<group>"; };
@@ -382,7 +381,6 @@
 		0BD3346012DB51CD006A02EB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		0BD3346212DB51CD006A02EB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		0BD3346412DB51CD006A02EB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		0BD3346612DB51CD006A02EB /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		0BD3347B12DB53B8006A02EB /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		0BD3371712DB830B006A02EB /* AddPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPhotoViewController.h; sourceTree = "<group>"; };
 		0BD3371812DB830B006A02EB /* AddPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPhotoViewController.m; sourceTree = "<group>"; };
@@ -485,6 +483,7 @@
 		92AF862C13AFDAC200C8F775 /* PlasticEye.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlasticEye.c3d; sourceTree = "<group>"; };
 		92AF862D13AFDAC200C8F775 /* polaroid.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = polaroid.c3d; sourceTree = "<group>"; };
 		92AF862E13AFDAC200C8F775 /* redscale.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = redscale.c3d; sourceTree = "<group>"; };
+		92EA7AC513FC4BF5000FBEC3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		C37E33041318F8A400B812A1 /* img-tab-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-photo.png"; sourceTree = "<group>"; };
 		C37E33051318F8A400B812A1 /* img-tab-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-settings.png"; sourceTree = "<group>"; };
 		C37E33061318F8A400B812A1 /* img-tab-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-home.png"; sourceTree = "<group>"; };
@@ -502,7 +501,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B11FB7913ED484A006975A4 /* libz.1.2.5.dylib in Frameworks */,
+				92EA7AC613FC4BF5000FBEC3 /* libz.dylib in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
@@ -955,7 +954,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				0B11FB7813ED484A006975A4 /* libz.1.2.5.dylib */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -995,8 +993,8 @@
 				0BD3346012DB51CD006A02EB /* CFNetwork.framework */,
 				0BD3346212DB51CD006A02EB /* MobileCoreServices.framework */,
 				0BD3346412DB51CD006A02EB /* SystemConfiguration.framework */,
-				0BD3346612DB51CD006A02EB /* libz.1.2.3.dylib */,
 				C3990545131397FE00E23E9C /* QuartzCore.framework */,
+				92EA7AC513FC4BF5000FBEC3 /* libz.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1297,7 +1295,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PUMPL_Prefix.pch;
@@ -1309,7 +1307,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "04D5D27A-7AC7-4E46-B82C-463EA3561B4A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = "Ad Hoc";
@@ -1318,7 +1316,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1332,7 +1330,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "04D5D27A-7AC7-4E46-B82C-463EA3561B4A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Debug;
 		};
@@ -1340,7 +1338,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Victor Ching (GZ9L6NHNN9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PUMPL_Prefix.pch;
@@ -1352,7 +1350,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "04D5D27A-7AC7-4E46-B82C-463EA3561B4A";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
