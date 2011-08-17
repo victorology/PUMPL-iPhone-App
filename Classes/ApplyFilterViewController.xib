@@ -48,7 +48,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{10, 320}, {300, 116}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSNextKeyView"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -136,9 +135,10 @@
 					<object class="IBUILabel" id="893553632">
 						<reference key="NSNextResponder" ref="577721604"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{97, 41}, {126, 22}}</string>
+						<string key="NSFrame">{{0, 41}, {320, 22}}</string>
 						<reference key="NSSuperview" ref="577721604"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -155,6 +155,7 @@
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
 						<float key="IBUIMinimumFontSize">10</float>
+						<int key="IBUITextAlignment">1</int>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
 							<double key="pointSize">18</double>
@@ -236,6 +237,14 @@
 						<reference key="destination" ref="577721604"/>
 					</object>
 					<int key="connectionID">32</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">_applyingFilterTextLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="893553632"/>
+					</object>
+					<int key="connectionID">33</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -351,7 +360,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">32</int>
+			<int key="maxID">33</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -375,6 +384,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>_applyingFilterIndicatorView</string>
+							<string>_applyingFilterTextLabel</string>
 							<string>_applyingFilterView</string>
 							<string>_cropButton</string>
 							<string>mFilterButtonScrollView</string>
@@ -383,6 +393,7 @@
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>UIActivityIndicatorView</string>
+							<string>UILabel</string>
 							<string>UIView</string>
 							<string>UIButton</string>
 							<string>UIScrollView</string>
@@ -394,6 +405,7 @@
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>_applyingFilterIndicatorView</string>
+							<string>_applyingFilterTextLabel</string>
 							<string>_applyingFilterView</string>
 							<string>_cropButton</string>
 							<string>mFilterButtonScrollView</string>
@@ -404,6 +416,10 @@
 							<object class="IBToOneOutletInfo">
 								<string key="name">_applyingFilterIndicatorView</string>
 								<string key="candidateClassName">UIActivityIndicatorView</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">_applyingFilterTextLabel</string>
+								<string key="candidateClassName">UILabel</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">_applyingFilterView</string>

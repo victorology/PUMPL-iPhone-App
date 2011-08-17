@@ -735,7 +735,7 @@
 	NSDictionary *responseDic = [responseString JSONValue];
 	
 	
-    NSLog(@"Response - %@", responseDic);
+//    NSLog(@"Response - %@", responseDic);
     
 	NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
 	if(code == 0)

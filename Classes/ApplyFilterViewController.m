@@ -102,7 +102,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     
     
     
-    
+    _applyingFilterTextLabel.text = NSLocalizedString(@"ApplyingFilterKey", @"");
 
     
     

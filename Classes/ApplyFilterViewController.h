@@ -30,6 +30,7 @@
     
     IBOutlet UIView *_applyingFilterView;
     IBOutlet UIActivityIndicatorView *_applyingFilterIndicatorView;
+    IBOutlet UILabel *_applyingFilterTextLabel;
 }
 
 @property (nonatomic, retain) UIImage *selectedImage;
