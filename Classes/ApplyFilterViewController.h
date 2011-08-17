@@ -27,6 +27,9 @@
 	NSInteger _filterApplied;
 	
 	UIViewContentMode _contentModeToBeApplied;
+    
+    IBOutlet UIView *_applyingFilterView;
+    IBOutlet UIActivityIndicatorView *_applyingFilterIndicatorView;
 }
 
 @property (nonatomic, retain) UIImage *selectedImage;

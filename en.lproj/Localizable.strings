@@ -91,7 +91,7 @@
 "SquareKey" = "Square";
 "FullKey" = "Full";
 "YourIphoneDoesNotHaveTheCapibilityToCaptureImageKey" = "Your iphone does not have the capibility to capture image.";
-
+"YourIphoneDoesNotHaveTheCapibilityToShowPhotoLibraryKey" = "Your iphone does not have the capibility to show photo library.";
 
 
 "ProcessingImageKey" = "Processing Image";
@@ -120,6 +120,8 @@
 "ImageBarButtonSignUpButtonKey" = "SignUpBtn";
 "ImageBarButtonDoneButtonKey" = "DoneBtn";
 "ImageBarButtonNextButtonKey" = "NextBtn";
+"ImageBarButtonPhotosButtonKey" = "MyPhotosBtn";
+"ImageButtonLostPasswordButtonKey" = "LostPassword";
 
 
 

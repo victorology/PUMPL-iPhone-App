@@ -45,6 +45,8 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 - (void)buildFilterButtonScrollView;
 - (void)configureImageViewForOrientation;
 - (void)configureForSquareAndFull;
+- (void)showApplyingFilterActivityIndicatorView;
+- (void)hideApplyingFilterActivityIndicatorView;
 + (UIImage *)resizeImage:(UIImage *)image forImageQuality:(NSInteger)imageQuality;
 + (UIImage *)croppedImageToSize:(CGSize)croppedSize fromFullImage:(UIImage *)fullImage;
 + (UIImage *)cropImage:(UIImage*)sourceImage;
@@ -98,6 +100,14 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
                                                                                 target:self action:@selector(next:)];
     [nextButtonImage release];
     
+    
+    
+    
+
+    
+    
+    
+    
 	
 	[self buildFilterButtonScrollView];
 	
@@ -139,6 +149,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 
 - (void)dealloc {
+    
 	[originalImage release];
 	[squareImageForBackUp release];
 	[fullImageForBackUp release];
@@ -610,13 +621,16 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 {
 	UIButton *button = (UIButton *)sender;
 	
-	_HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-	[self.navigationController.view addSubview:_HUD];
-	
-    _HUD.delegate = self;
-    _HUD.labelText = NSLocalizedString(@"ApplyingFilterKey", @"");
-	
-    [_HUD showWhileExecuting:@selector(applyFilter:) onTarget:self withObject:[NSNumber numberWithInteger:button.tag] animated:YES];
+    [self showApplyingFilterActivityIndicatorView];
+    [self performSelector:@selector(applyFilter:) withObject:[NSNumber numberWithInteger:button.tag] afterDelay:0.1];
+    
+//	_HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+//	[self.navigationController.view addSubview:_HUD];
+//	
+//    _HUD.delegate = self;
+//    _HUD.labelText = NSLocalizedString(@"ApplyingFilterKey", @"");
+//	
+//    [_HUD showWhileExecuting:@selector(applyFilter:) onTarget:self withObject:[NSNumber numberWithInteger:button.tag] animated:YES];
 }
 
 
@@ -727,7 +741,8 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	
 	_cropButton.enabled = YES;
 	
-	[_HUD hide:YES];
+//	[_HUD hide:YES];
+    [self hideApplyingFilterActivityIndicatorView];
 }
 
 
@@ -751,13 +766,16 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	}
 	
 	
-	_HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-	[self.navigationController.view addSubview:_HUD];
-	
-    _HUD.delegate = self;
-    _HUD.labelText = NSLocalizedString(@"ApplyingFilterKey", @"");
-	
-    [_HUD showWhileExecuting:@selector(applyFilter:) onTarget:self withObject:[NSNumber numberWithInteger:_filterApplied] animated:YES];
+    [self showApplyingFilterActivityIndicatorView];
+    [self performSelector:@selector(applyFilter:) withObject:[NSNumber numberWithInteger:_filterApplied] afterDelay:0.1];
+    
+//	_HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+//	[self.navigationController.view addSubview:_HUD];
+//	
+//    _HUD.delegate = self;
+//    _HUD.labelText = NSLocalizedString(@"ApplyingFilterKey", @"");
+//	
+//    [_HUD showWhileExecuting:@selector(applyFilter:) onTarget:self withObject:[NSNumber numberWithInteger:_filterApplied] animated:YES];
 }
 
 
@@ -967,6 +985,23 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 
 
+
+#pragma mark -
+#pragma mark UIActivity Indicator View manipulation Methods
+
+- (void)showApplyingFilterActivityIndicatorView
+{
+    _applyingFilterView.frame = CGRectMake(0, 200, 320, 69);
+    [self.view addSubview:_applyingFilterView];
+    [_applyingFilterIndicatorView startAnimating];
+}
+
+
+- (void)hideApplyingFilterActivityIndicatorView
+{
+    [_applyingFilterIndicatorView stopAnimating];
+    [_applyingFilterView removeFromSuperview];
+}
 
 
 

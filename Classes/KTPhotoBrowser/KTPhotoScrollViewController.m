@@ -11,6 +11,7 @@
 #import "KTPhotoBrowserGlobal.h"
 #import "KTPhotoView.h"
 #import "TempScrollView.h"
+#import "PMTabBarController.h"
 
 const CGFloat ktkDefaultPortraitToolbarHeight   = 44;
 const CGFloat ktkDefaultLandscapeToolbarHeight  = 33;
@@ -217,6 +218,13 @@ const CGFloat ktkDefaultToolbarHeight = 44;
    for (int i=0; i < photoCount_; i++) {
       [photoViews_ addObject:[NSNull null]];
    }
+    
+    
+    UIImage *photosButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonPhotosButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:photosButtonImage
+                                                                               target:self action:@selector(back:)];
+    [photosButtonImage release];
+    
 }
 
 - (void)didReceiveMemoryWarning 
@@ -585,6 +593,11 @@ const CGFloat ktkDefaultToolbarHeight = 44;
 
 #pragma mark -
 #pragma mark Toolbar Actions
+
+- (void)back:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)nextPhoto 
 {

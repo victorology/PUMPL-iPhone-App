@@ -13,7 +13,7 @@
 
 - (void)setFrame:(CGRect)newRect
 {
-	NSLog(@"self - %@", NSStringFromCGRect(newRect));
+	
 	[super setFrame:newRect];
 }
 

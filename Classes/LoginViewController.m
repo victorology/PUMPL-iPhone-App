@@ -115,6 +115,26 @@
 	mActivityIndicator.hidden = YES;
 	mTableView.backgroundColor = [UIColor clearColor];
 	mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
+    
+    
+    
+    
+    UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 29)];
+    tableFooterView.backgroundColor = [UIColor clearColor];
+    
+    UIButton *forgotButton = [[UIButton alloc] initWithFrame:CGRectMake(72.5, 10, 175, 19)];
+    UIImage *buttonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageButtonLostPasswordButtonKey", @"") ofType:@"png"]];
+    [forgotButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
+    [buttonImage release];
+    [forgotButton addTarget:self action:@selector(forgotButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [tableFooterView addSubview:forgotButton];
+    [forgotButton release];
+    
+    mTableView.tableFooterView = tableFooterView;
+    [tableFooterView release];
+    
 }
 
 
@@ -266,14 +286,14 @@
     
     
     
-    NSMutableArray *section2 = [NSMutableArray array];
-    
-    NSDictionary *row2_1 = [NSMutableDictionary dictionary];
-    [row2_1 setValue:[NSNumber numberWithInteger:kCellTypeOnlyLabel] forKey:@"cellType"];
-	[row2_1 setValue:NSLocalizedString(@"LostPasswordKey", @"") forKey:@"inputName"];
-	[section2 addObject:row2_1];
-    
-    [array addObject:section2];
+//    NSMutableArray *section2 = [NSMutableArray array];
+//    
+//    NSDictionary *row2_1 = [NSMutableDictionary dictionary];
+//    [row2_1 setValue:[NSNumber numberWithInteger:kCellTypeOnlyLabel] forKey:@"cellType"];
+//	[row2_1 setValue:NSLocalizedString(@"LostPasswordKey", @"") forKey:@"inputName"];
+//	[section2 addObject:row2_1];
+//    
+//    [array addObject:section2];
     
     
     
@@ -331,6 +351,14 @@
 
 -(void) back:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+- (void)forgotButtonClicked:(id)sender
+{
+    PasswordLostViewController *viewController = [[PasswordLostViewController alloc] initWithNibName:@"PasswordLostViewController" bundle:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
+    [viewController release];
 }
 
 

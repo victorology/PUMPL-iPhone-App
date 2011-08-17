@@ -250,7 +250,7 @@
         }
         else
         {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Your iphone does not have the capibility to show photo library." delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"YourIphoneDoesNotHaveTheCapibilityToShowPhotoLibraryKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
             alertView.tag = kAlertViewForCameraRollCapability;
             [alertView show];
             [alertView release];
