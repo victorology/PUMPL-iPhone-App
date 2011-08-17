@@ -195,6 +195,40 @@
 		92AF863013AFDAC200C8F775 /* polaroid.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862D13AFDAC200C8F775 /* polaroid.c3d */; };
 		92AF863113AFDAC200C8F775 /* redscale.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862E13AFDAC200C8F775 /* redscale.c3d */; };
 		92EA7AC613FC4BF5000FBEC3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92EA7AC513FC4BF5000FBEC3 /* libz.dylib */; };
+		92EA7BC613FC5C7A000FBEC3 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7B9513FC5C7A000FBEC3 /* GLProgram.m */; };
+		92EA7BC713FC5C7A000FBEC3 /* GLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7B9713FC5C7A000FBEC3 /* GLTexture.m */; };
+		92EA7BC813FC5C7A000FBEC3 /* RenderTexture+Curve.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7B9913FC5C7A000FBEC3 /* RenderTexture+Curve.m */; };
+		92EA7BC913FC5C7A000FBEC3 /* RenderTexture+Curve3d+Vignette.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7B9B13FC5C7A000FBEC3 /* RenderTexture+Curve3d+Vignette.m */; };
+		92EA7BCA13FC5C7A000FBEC3 /* RenderTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7B9D13FC5C7A000FBEC3 /* RenderTexture.m */; };
+		92EA7BCB13FC5C7A000FBEC3 /* crossprocess_curve.png in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BA013FC5C7A000FBEC3 /* crossprocess_curve.png */; };
+		92EA7BCC13FC5C7A000FBEC3 /* lomo_colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BA113FC5C7A000FBEC3 /* lomo_colormap.png */; };
+		92EA7BCD13FC5C7A000FBEC3 /* photochrom_colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BA213FC5C7A000FBEC3 /* photochrom_colormap.png */; };
+		92EA7BCE13FC5C7A000FBEC3 /* plasticeye_colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BA313FC5C7A000FBEC3 /* plasticeye_colormap.png */; };
+		92EA7BCF13FC5C7A000FBEC3 /* polaroid_curve.png in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BA413FC5C7A000FBEC3 /* polaroid_curve.png */; };
+		92EA7BD013FC5C7A000FBEC3 /* redscale_colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BA513FC5C7A000FBEC3 /* redscale_colormap.png */; };
+		92EA7BD113FC5C7A000FBEC3 /* vintage_colormap.png in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BA613FC5C7A000FBEC3 /* vintage_colormap.png */; };
+		92EA7BD213FC5C7A000FBEC3 /* RenderTexture+CrossProcess.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7BA813FC5C7A000FBEC3 /* RenderTexture+CrossProcess.m */; };
+		92EA7BD313FC5C7A000FBEC3 /* RenderTexture+Lomo.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7BAA13FC5C7A000FBEC3 /* RenderTexture+Lomo.m */; };
+		92EA7BD413FC5C7A000FBEC3 /* RenderTexture+Monochrome.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7BAC13FC5C7A000FBEC3 /* RenderTexture+Monochrome.m */; };
+		92EA7BD513FC5C7A000FBEC3 /* RenderTexture+Photochrom.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7BAE13FC5C7A000FBEC3 /* RenderTexture+Photochrom.m */; };
+		92EA7BD613FC5C7A000FBEC3 /* RenderTexture+PlasticEye.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7BB013FC5C7A000FBEC3 /* RenderTexture+PlasticEye.m */; };
+		92EA7BD713FC5C7A000FBEC3 /* RenderTexture+Polaroid.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7BB213FC5C7A000FBEC3 /* RenderTexture+Polaroid.m */; };
+		92EA7BD813FC5C7A000FBEC3 /* RenderTexture+Redscale.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7BB413FC5C7A000FBEC3 /* RenderTexture+Redscale.m */; };
+		92EA7BD913FC5C7A000FBEC3 /* RenderTexture+Vintage.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7BB613FC5C7A000FBEC3 /* RenderTexture+Vintage.m */; };
+		92EA7BE613FC5C7A000FBEC3 /* RenderTexture+Filters.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7BC513FC5C7A000FBEC3 /* RenderTexture+Filters.m */; };
+		92EA7BE813FC5CCB000FBEC3 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92EA7BE713FC5CCB000FBEC3 /* OpenGLES.framework */; };
+		92EA7BE913FC5D91000FBEC3 /* BaseShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BB813FC5C7A000FBEC3 /* BaseShader.fsh */; };
+		92EA7BEA13FC5D91000FBEC3 /* BaseShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BB913FC5C7A000FBEC3 /* BaseShader.vsh */; };
+		92EA7BEB13FC5D91000FBEC3 /* Curve3dShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BBA13FC5C7A000FBEC3 /* Curve3dShader.fsh */; };
+		92EA7BEC13FC5D91000FBEC3 /* Curve3dShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BBB13FC5C7A000FBEC3 /* Curve3dShader.vsh */; };
+		92EA7BED13FC5D91000FBEC3 /* Curve3dVignetteShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BBC13FC5C7A000FBEC3 /* Curve3dVignetteShader.fsh */; };
+		92EA7BEE13FC5D91000FBEC3 /* Curve3dVignetteShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BBD13FC5C7A000FBEC3 /* Curve3dVignetteShader.vsh */; };
+		92EA7BEF13FC5D91000FBEC3 /* CurveShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BBE13FC5C7A000FBEC3 /* CurveShader.fsh */; };
+		92EA7BF013FC5D92000FBEC3 /* CurveShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BBF13FC5C7A000FBEC3 /* CurveShader.vsh */; };
+		92EA7BF113FC5D92000FBEC3 /* MonochromeShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BC013FC5C7A000FBEC3 /* MonochromeShader.fsh */; };
+		92EA7BF213FC5D92000FBEC3 /* MonochromeShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BC113FC5C7A000FBEC3 /* MonochromeShader.vsh */; };
+		92EA7BF313FC5D92000FBEC3 /* PhotochromShader.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BC213FC5C7A000FBEC3 /* PhotochromShader.fsh */; };
+		92EA7BF413FC5D92000FBEC3 /* PhotochromShader.vsh in Resources */ = {isa = PBXBuildFile; fileRef = 92EA7BC313FC5C7A000FBEC3 /* PhotochromShader.vsh */; };
 		C37E330A1318F8A400B812A1 /* img-tab-photo.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33041318F8A400B812A1 /* img-tab-photo.png */; };
 		C37E330B1318F8A400B812A1 /* img-tab-settings.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33051318F8A400B812A1 /* img-tab-settings.png */; };
 		C37E330C1318F8A400B812A1 /* img-tab-home.png in Resources */ = {isa = PBXBuildFile; fileRef = C37E33061318F8A400B812A1 /* img-tab-home.png */; };
@@ -484,6 +518,54 @@
 		92AF862D13AFDAC200C8F775 /* polaroid.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = polaroid.c3d; sourceTree = "<group>"; };
 		92AF862E13AFDAC200C8F775 /* redscale.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = redscale.c3d; sourceTree = "<group>"; };
 		92EA7AC513FC4BF5000FBEC3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		92EA7B9413FC5C7A000FBEC3 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
+		92EA7B9513FC5C7A000FBEC3 /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
+		92EA7B9613FC5C7A000FBEC3 /* GLTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLTexture.h; sourceTree = "<group>"; };
+		92EA7B9713FC5C7A000FBEC3 /* GLTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLTexture.m; sourceTree = "<group>"; };
+		92EA7B9813FC5C7A000FBEC3 /* RenderTexture+Curve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+Curve.h"; sourceTree = "<group>"; };
+		92EA7B9913FC5C7A000FBEC3 /* RenderTexture+Curve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+Curve.m"; sourceTree = "<group>"; };
+		92EA7B9A13FC5C7A000FBEC3 /* RenderTexture+Curve3d+Vignette.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+Curve3d+Vignette.h"; sourceTree = "<group>"; };
+		92EA7B9B13FC5C7A000FBEC3 /* RenderTexture+Curve3d+Vignette.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+Curve3d+Vignette.m"; sourceTree = "<group>"; };
+		92EA7B9C13FC5C7A000FBEC3 /* RenderTexture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderTexture.h; sourceTree = "<group>"; };
+		92EA7B9D13FC5C7A000FBEC3 /* RenderTexture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RenderTexture.m; sourceTree = "<group>"; };
+		92EA7BA013FC5C7A000FBEC3 /* crossprocess_curve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crossprocess_curve.png; sourceTree = "<group>"; };
+		92EA7BA113FC5C7A000FBEC3 /* lomo_colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lomo_colormap.png; sourceTree = "<group>"; };
+		92EA7BA213FC5C7A000FBEC3 /* photochrom_colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = photochrom_colormap.png; sourceTree = "<group>"; };
+		92EA7BA313FC5C7A000FBEC3 /* plasticeye_colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plasticeye_colormap.png; sourceTree = "<group>"; };
+		92EA7BA413FC5C7A000FBEC3 /* polaroid_curve.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = polaroid_curve.png; sourceTree = "<group>"; };
+		92EA7BA513FC5C7A000FBEC3 /* redscale_colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redscale_colormap.png; sourceTree = "<group>"; };
+		92EA7BA613FC5C7A000FBEC3 /* vintage_colormap.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vintage_colormap.png; sourceTree = "<group>"; };
+		92EA7BA713FC5C7A000FBEC3 /* RenderTexture+CrossProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+CrossProcess.h"; sourceTree = "<group>"; };
+		92EA7BA813FC5C7A000FBEC3 /* RenderTexture+CrossProcess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+CrossProcess.m"; sourceTree = "<group>"; };
+		92EA7BA913FC5C7A000FBEC3 /* RenderTexture+Lomo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+Lomo.h"; sourceTree = "<group>"; };
+		92EA7BAA13FC5C7A000FBEC3 /* RenderTexture+Lomo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+Lomo.m"; sourceTree = "<group>"; };
+		92EA7BAB13FC5C7A000FBEC3 /* RenderTexture+Monochrome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+Monochrome.h"; sourceTree = "<group>"; };
+		92EA7BAC13FC5C7A000FBEC3 /* RenderTexture+Monochrome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+Monochrome.m"; sourceTree = "<group>"; };
+		92EA7BAD13FC5C7A000FBEC3 /* RenderTexture+Photochrom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+Photochrom.h"; sourceTree = "<group>"; };
+		92EA7BAE13FC5C7A000FBEC3 /* RenderTexture+Photochrom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+Photochrom.m"; sourceTree = "<group>"; };
+		92EA7BAF13FC5C7A000FBEC3 /* RenderTexture+PlasticEye.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+PlasticEye.h"; sourceTree = "<group>"; };
+		92EA7BB013FC5C7A000FBEC3 /* RenderTexture+PlasticEye.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+PlasticEye.m"; sourceTree = "<group>"; };
+		92EA7BB113FC5C7A000FBEC3 /* RenderTexture+Polaroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+Polaroid.h"; sourceTree = "<group>"; };
+		92EA7BB213FC5C7A000FBEC3 /* RenderTexture+Polaroid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+Polaroid.m"; sourceTree = "<group>"; };
+		92EA7BB313FC5C7A000FBEC3 /* RenderTexture+Redscale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+Redscale.h"; sourceTree = "<group>"; };
+		92EA7BB413FC5C7A000FBEC3 /* RenderTexture+Redscale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+Redscale.m"; sourceTree = "<group>"; };
+		92EA7BB513FC5C7A000FBEC3 /* RenderTexture+Vintage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+Vintage.h"; sourceTree = "<group>"; };
+		92EA7BB613FC5C7A000FBEC3 /* RenderTexture+Vintage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+Vintage.m"; sourceTree = "<group>"; };
+		92EA7BB813FC5C7A000FBEC3 /* BaseShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BaseShader.fsh; sourceTree = "<group>"; };
+		92EA7BB913FC5C7A000FBEC3 /* BaseShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = BaseShader.vsh; sourceTree = "<group>"; };
+		92EA7BBA13FC5C7A000FBEC3 /* Curve3dShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Curve3dShader.fsh; sourceTree = "<group>"; };
+		92EA7BBB13FC5C7A000FBEC3 /* Curve3dShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Curve3dShader.vsh; sourceTree = "<group>"; };
+		92EA7BBC13FC5C7A000FBEC3 /* Curve3dVignetteShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Curve3dVignetteShader.fsh; sourceTree = "<group>"; };
+		92EA7BBD13FC5C7A000FBEC3 /* Curve3dVignetteShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Curve3dVignetteShader.vsh; sourceTree = "<group>"; };
+		92EA7BBE13FC5C7A000FBEC3 /* CurveShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = CurveShader.fsh; sourceTree = "<group>"; };
+		92EA7BBF13FC5C7A000FBEC3 /* CurveShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = CurveShader.vsh; sourceTree = "<group>"; };
+		92EA7BC013FC5C7A000FBEC3 /* MonochromeShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MonochromeShader.fsh; sourceTree = "<group>"; };
+		92EA7BC113FC5C7A000FBEC3 /* MonochromeShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = MonochromeShader.vsh; sourceTree = "<group>"; };
+		92EA7BC213FC5C7A000FBEC3 /* PhotochromShader.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PhotochromShader.fsh; sourceTree = "<group>"; };
+		92EA7BC313FC5C7A000FBEC3 /* PhotochromShader.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = PhotochromShader.vsh; sourceTree = "<group>"; };
+		92EA7BC413FC5C7A000FBEC3 /* RenderTexture+Filters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RenderTexture+Filters.h"; sourceTree = "<group>"; };
+		92EA7BC513FC5C7A000FBEC3 /* RenderTexture+Filters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RenderTexture+Filters.m"; sourceTree = "<group>"; };
+		92EA7BE713FC5CCB000FBEC3 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		C37E33041318F8A400B812A1 /* img-tab-photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-photo.png"; sourceTree = "<group>"; };
 		C37E33051318F8A400B812A1 /* img-tab-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-settings.png"; sourceTree = "<group>"; };
 		C37E33061318F8A400B812A1 /* img-tab-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-home.png"; sourceTree = "<group>"; };
@@ -501,6 +583,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92EA7BE813FC5CCB000FBEC3 /* OpenGLES.framework in Frameworks */,
 				92EA7AC613FC4BF5000FBEC3 /* libz.dylib in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
@@ -524,6 +607,7 @@
 				0BFFC3AE136EFA5C006AD565 /* MBProgressHUD.h */,
 				0BFFC3AF136EFA5C006AD565 /* MBProgressHUD.m */,
 				0BFFC34B136EF5E2006AD565 /* Filters */,
+				92EA7B9213FC5C79000FBEC3 /* RenderTexture */,
 				0BD31A4112EE6CE900C7228F /* UIImage-categories */,
 				0BD3342512DB517D006A02EB /* Reachability */,
 				0BD3340712DB50FC006A02EB /* ASIHttpRequest */,
@@ -994,9 +1078,96 @@
 				0BD3346212DB51CD006A02EB /* MobileCoreServices.framework */,
 				0BD3346412DB51CD006A02EB /* SystemConfiguration.framework */,
 				C3990545131397FE00E23E9C /* QuartzCore.framework */,
+				92EA7BE713FC5CCB000FBEC3 /* OpenGLES.framework */,
 				92EA7AC513FC4BF5000FBEC3 /* libz.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		92EA7B9213FC5C79000FBEC3 /* RenderTexture */ = {
+			isa = PBXGroup;
+			children = (
+				92EA7B9313FC5C7A000FBEC3 /* Core */,
+				92EA7B9E13FC5C7A000FBEC3 /* Filters */,
+				92EA7BC413FC5C7A000FBEC3 /* RenderTexture+Filters.h */,
+				92EA7BC513FC5C7A000FBEC3 /* RenderTexture+Filters.m */,
+			);
+			path = RenderTexture;
+			sourceTree = "<group>";
+		};
+		92EA7B9313FC5C7A000FBEC3 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				92EA7B9413FC5C7A000FBEC3 /* GLProgram.h */,
+				92EA7B9513FC5C7A000FBEC3 /* GLProgram.m */,
+				92EA7B9613FC5C7A000FBEC3 /* GLTexture.h */,
+				92EA7B9713FC5C7A000FBEC3 /* GLTexture.m */,
+				92EA7B9813FC5C7A000FBEC3 /* RenderTexture+Curve.h */,
+				92EA7B9913FC5C7A000FBEC3 /* RenderTexture+Curve.m */,
+				92EA7B9A13FC5C7A000FBEC3 /* RenderTexture+Curve3d+Vignette.h */,
+				92EA7B9B13FC5C7A000FBEC3 /* RenderTexture+Curve3d+Vignette.m */,
+				92EA7B9C13FC5C7A000FBEC3 /* RenderTexture.h */,
+				92EA7B9D13FC5C7A000FBEC3 /* RenderTexture.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		92EA7B9E13FC5C7A000FBEC3 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				92EA7B9F13FC5C7A000FBEC3 /* Curves */,
+				92EA7BB713FC5C7A000FBEC3 /* Shaders */,
+				92EA7BA713FC5C7A000FBEC3 /* RenderTexture+CrossProcess.h */,
+				92EA7BA813FC5C7A000FBEC3 /* RenderTexture+CrossProcess.m */,
+				92EA7BA913FC5C7A000FBEC3 /* RenderTexture+Lomo.h */,
+				92EA7BAA13FC5C7A000FBEC3 /* RenderTexture+Lomo.m */,
+				92EA7BAB13FC5C7A000FBEC3 /* RenderTexture+Monochrome.h */,
+				92EA7BAC13FC5C7A000FBEC3 /* RenderTexture+Monochrome.m */,
+				92EA7BAD13FC5C7A000FBEC3 /* RenderTexture+Photochrom.h */,
+				92EA7BAE13FC5C7A000FBEC3 /* RenderTexture+Photochrom.m */,
+				92EA7BAF13FC5C7A000FBEC3 /* RenderTexture+PlasticEye.h */,
+				92EA7BB013FC5C7A000FBEC3 /* RenderTexture+PlasticEye.m */,
+				92EA7BB113FC5C7A000FBEC3 /* RenderTexture+Polaroid.h */,
+				92EA7BB213FC5C7A000FBEC3 /* RenderTexture+Polaroid.m */,
+				92EA7BB313FC5C7A000FBEC3 /* RenderTexture+Redscale.h */,
+				92EA7BB413FC5C7A000FBEC3 /* RenderTexture+Redscale.m */,
+				92EA7BB513FC5C7A000FBEC3 /* RenderTexture+Vintage.h */,
+				92EA7BB613FC5C7A000FBEC3 /* RenderTexture+Vintage.m */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
+		92EA7B9F13FC5C7A000FBEC3 /* Curves */ = {
+			isa = PBXGroup;
+			children = (
+				92EA7BA013FC5C7A000FBEC3 /* crossprocess_curve.png */,
+				92EA7BA113FC5C7A000FBEC3 /* lomo_colormap.png */,
+				92EA7BA213FC5C7A000FBEC3 /* photochrom_colormap.png */,
+				92EA7BA313FC5C7A000FBEC3 /* plasticeye_colormap.png */,
+				92EA7BA413FC5C7A000FBEC3 /* polaroid_curve.png */,
+				92EA7BA513FC5C7A000FBEC3 /* redscale_colormap.png */,
+				92EA7BA613FC5C7A000FBEC3 /* vintage_colormap.png */,
+			);
+			path = Curves;
+			sourceTree = "<group>";
+		};
+		92EA7BB713FC5C7A000FBEC3 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				92EA7BB813FC5C7A000FBEC3 /* BaseShader.fsh */,
+				92EA7BB913FC5C7A000FBEC3 /* BaseShader.vsh */,
+				92EA7BBA13FC5C7A000FBEC3 /* Curve3dShader.fsh */,
+				92EA7BBB13FC5C7A000FBEC3 /* Curve3dShader.vsh */,
+				92EA7BBC13FC5C7A000FBEC3 /* Curve3dVignetteShader.fsh */,
+				92EA7BBD13FC5C7A000FBEC3 /* Curve3dVignetteShader.vsh */,
+				92EA7BBE13FC5C7A000FBEC3 /* CurveShader.fsh */,
+				92EA7BBF13FC5C7A000FBEC3 /* CurveShader.vsh */,
+				92EA7BC013FC5C7A000FBEC3 /* MonochromeShader.fsh */,
+				92EA7BC113FC5C7A000FBEC3 /* MonochromeShader.vsh */,
+				92EA7BC213FC5C7A000FBEC3 /* PhotochromShader.fsh */,
+				92EA7BC313FC5C7A000FBEC3 /* PhotochromShader.vsh */,
+			);
+			path = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1050,6 +1221,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92EA7BE913FC5D91000FBEC3 /* BaseShader.fsh in Resources */,
+				92EA7BEA13FC5D91000FBEC3 /* BaseShader.vsh in Resources */,
+				92EA7BEB13FC5D91000FBEC3 /* Curve3dShader.fsh in Resources */,
+				92EA7BEC13FC5D91000FBEC3 /* Curve3dShader.vsh in Resources */,
+				92EA7BED13FC5D91000FBEC3 /* Curve3dVignetteShader.fsh in Resources */,
+				92EA7BEE13FC5D91000FBEC3 /* Curve3dVignetteShader.vsh in Resources */,
+				92EA7BEF13FC5D91000FBEC3 /* CurveShader.fsh in Resources */,
+				92EA7BF013FC5D92000FBEC3 /* CurveShader.vsh in Resources */,
+				92EA7BF113FC5D92000FBEC3 /* MonochromeShader.fsh in Resources */,
+				92EA7BF213FC5D92000FBEC3 /* MonochromeShader.vsh in Resources */,
+				92EA7BF313FC5D92000FBEC3 /* PhotochromShader.fsh in Resources */,
+				92EA7BF413FC5D92000FBEC3 /* PhotochromShader.vsh in Resources */,
 				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
 				0BC6938712D450AC008285B2 /* LaunchViewController.xib in Resources */,
 				0BC693A612D459E6008285B2 /* LoginViewController.xib in Resources */,
@@ -1167,6 +1350,13 @@
 				0BF20E4813FB8092006565CE /* LostPasswordKR@2x.png in Resources */,
 				0BF20E4F13FB8177006565CE /* img-tab-camera.png in Resources */,
 				0BF20E5013FB8177006565CE /* img-tab-camera@2x.png in Resources */,
+				92EA7BCB13FC5C7A000FBEC3 /* crossprocess_curve.png in Resources */,
+				92EA7BCC13FC5C7A000FBEC3 /* lomo_colormap.png in Resources */,
+				92EA7BCD13FC5C7A000FBEC3 /* photochrom_colormap.png in Resources */,
+				92EA7BCE13FC5C7A000FBEC3 /* plasticeye_colormap.png in Resources */,
+				92EA7BCF13FC5C7A000FBEC3 /* polaroid_curve.png in Resources */,
+				92EA7BD013FC5C7A000FBEC3 /* redscale_colormap.png in Resources */,
+				92EA7BD113FC5C7A000FBEC3 /* vintage_colormap.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1250,6 +1440,20 @@
 				0B299A7613DEE1C9007F955A /* LibraryImagePickerController.m in Sources */,
 				0B90FDD213F5367000B890DC /* PMNavigationController.m in Sources */,
 				0B90FDD313F5367000B890DC /* PMTabBarController.m in Sources */,
+				92EA7BC613FC5C7A000FBEC3 /* GLProgram.m in Sources */,
+				92EA7BC713FC5C7A000FBEC3 /* GLTexture.m in Sources */,
+				92EA7BC813FC5C7A000FBEC3 /* RenderTexture+Curve.m in Sources */,
+				92EA7BC913FC5C7A000FBEC3 /* RenderTexture+Curve3d+Vignette.m in Sources */,
+				92EA7BCA13FC5C7A000FBEC3 /* RenderTexture.m in Sources */,
+				92EA7BD213FC5C7A000FBEC3 /* RenderTexture+CrossProcess.m in Sources */,
+				92EA7BD313FC5C7A000FBEC3 /* RenderTexture+Lomo.m in Sources */,
+				92EA7BD413FC5C7A000FBEC3 /* RenderTexture+Monochrome.m in Sources */,
+				92EA7BD513FC5C7A000FBEC3 /* RenderTexture+Photochrom.m in Sources */,
+				92EA7BD613FC5C7A000FBEC3 /* RenderTexture+PlasticEye.m in Sources */,
+				92EA7BD713FC5C7A000FBEC3 /* RenderTexture+Polaroid.m in Sources */,
+				92EA7BD813FC5C7A000FBEC3 /* RenderTexture+Redscale.m in Sources */,
+				92EA7BD913FC5C7A000FBEC3 /* RenderTexture+Vintage.m in Sources */,
+				92EA7BE613FC5C7A000FBEC3 /* RenderTexture+Filters.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

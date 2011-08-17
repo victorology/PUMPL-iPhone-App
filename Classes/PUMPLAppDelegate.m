@@ -20,6 +20,8 @@
 #import "UIImage+Polaroid.h"
 #import "UIImage+Redscale.h"
 
+#import "RenderTexture+Filters.h"
+
 
 @implementation PUMPLAppDelegate
 
@@ -42,7 +44,7 @@
     [UIImage loadPolaroidCurves];
     [UIImage loadRedscaleCurves];
 	
-	
+	//[RenderTexture loadFilterPrograms];
 	
 	LaunchViewController *viewController = [[LaunchViewController alloc] initWithNibName:@"LaunchViewController" bundle:nil];
 	self.navController = [[[PMNavigationController alloc] initWithRootViewController:viewController] autorelease];
