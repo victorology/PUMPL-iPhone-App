@@ -132,10 +132,10 @@
     
     
     
-    UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 29)];
+    UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 69)];
     tableFooterView.backgroundColor = [UIColor clearColor];
     
-    UIButton *forgotButton = [[UIButton alloc] initWithFrame:CGRectMake(72.5, 10, 175, 19)];
+    UIButton *forgotButton = [[UIButton alloc] initWithFrame:CGRectMake(72.5, 50, 175, 19)];
     UIImage *buttonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageButtonLostPasswordButtonKey", @"") ofType:@"png"]];
     [forgotButton setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [buttonImage release];
