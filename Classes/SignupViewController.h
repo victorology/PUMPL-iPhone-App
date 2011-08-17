@@ -19,7 +19,7 @@
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *mTableView;
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView *mActivityIndicator;
+@property (nonatomic, retain) UIActivityIndicatorView *mActivityIndicator;
 @property (nonatomic, retain) NSMutableArray *mTableData;
 
 - (void)configureTheView;

@@ -112,9 +112,20 @@
 	self.view.backgroundColor = backgroundColor;
     [backgroundColor release];
 	
-	mActivityIndicator.hidden = YES;
+	
 	mTableView.backgroundColor = [UIColor clearColor];
 	mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
+    
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    indicatorView.frame = CGRectMake(141, 86, 37, 37);
+    self.mActivityIndicator = indicatorView;
+    [indicatorView release];
+    mActivityIndicator.hidden = YES;
+    [self.view addSubview:mActivityIndicator];
+    
+    
     
     
     
