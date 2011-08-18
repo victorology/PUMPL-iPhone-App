@@ -194,6 +194,7 @@
 		92AF862F13AFDAC200C8F775 /* PlasticEye.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862C13AFDAC200C8F775 /* PlasticEye.c3d */; };
 		92AF863013AFDAC200C8F775 /* polaroid.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862D13AFDAC200C8F775 /* polaroid.c3d */; };
 		92AF863113AFDAC200C8F775 /* redscale.c3d in Resources */ = {isa = PBXBuildFile; fileRef = 92AF862E13AFDAC200C8F775 /* redscale.c3d */; };
+		92CDB8BD13FDA5C200532E01 /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 92CDB8BC13FDA5C200532E01 /* EAGLView.m */; };
 		92EA7AC613FC4BF5000FBEC3 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 92EA7AC513FC4BF5000FBEC3 /* libz.dylib */; };
 		92EA7BC613FC5C7A000FBEC3 /* GLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7B9513FC5C7A000FBEC3 /* GLProgram.m */; };
 		92EA7BC713FC5C7A000FBEC3 /* GLTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = 92EA7B9713FC5C7A000FBEC3 /* GLTexture.m */; };
@@ -517,6 +518,8 @@
 		92AF862C13AFDAC200C8F775 /* PlasticEye.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = PlasticEye.c3d; sourceTree = "<group>"; };
 		92AF862D13AFDAC200C8F775 /* polaroid.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = polaroid.c3d; sourceTree = "<group>"; };
 		92AF862E13AFDAC200C8F775 /* redscale.c3d */ = {isa = PBXFileReference; lastKnownFileType = file; path = redscale.c3d; sourceTree = "<group>"; };
+		92CDB8BB13FDA5C200532E01 /* EAGLView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EAGLView.h; sourceTree = "<group>"; };
+		92CDB8BC13FDA5C200532E01 /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		92EA7AC513FC4BF5000FBEC3 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		92EA7B9413FC5C7A000FBEC3 /* GLProgram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLProgram.h; sourceTree = "<group>"; };
 		92EA7B9513FC5C7A000FBEC3 /* GLProgram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GLProgram.m; sourceTree = "<group>"; };
@@ -651,6 +654,8 @@
 				0BD3371712DB830B006A02EB /* AddPhotoViewController.h */,
 				0BD3371812DB830B006A02EB /* AddPhotoViewController.m */,
 				0BD3371912DB830B006A02EB /* AddPhotoViewController.xib */,
+				92CDB8BB13FDA5C200532E01 /* EAGLView.h */,
+				92CDB8BC13FDA5C200532E01 /* EAGLView.m */,
 				0BFFC25C136ED5FB006AD565 /* ApplyFilterViewController.h */,
 				0BFFC25D136ED5FB006AD565 /* ApplyFilterViewController.m */,
 				0BFFC25E136ED5FB006AD565 /* ApplyFilterViewController.xib */,
@@ -1454,6 +1459,7 @@
 				92EA7BD813FC5C7A000FBEC3 /* RenderTexture+Redscale.m in Sources */,
 				92EA7BD913FC5C7A000FBEC3 /* RenderTexture+Vintage.m in Sources */,
 				92EA7BE613FC5C7A000FBEC3 /* RenderTexture+Filters.m in Sources */,
+				92CDB8BD13FDA5C200532E01 /* EAGLView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

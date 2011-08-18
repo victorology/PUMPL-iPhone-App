@@ -12,6 +12,7 @@
 #import "Appirater.h"
 #import "PMNavigationController.h"
 
+/*
 #import "UIImage+CrossProcess.h"
 #import "UIImage+Photochrom.h"
 #import "UIImage+Vintage.h"
@@ -19,6 +20,7 @@
 #import "UIImage+PlasticEye.h"
 #import "UIImage+Polaroid.h"
 #import "UIImage+Redscale.h"
+*/
 
 #import "RenderTexture+Filters.h"
 
@@ -36,6 +38,7 @@
     
     // Override point for customization after application launch.
 	
+    /*
 	[UIImage loadCrossProcessCurves];
     [UIImage loadVintageCurves];
     [UIImage loadPhotochromCurves];
@@ -43,7 +46,8 @@
     [UIImage loadPlasticEyeCurves];
     [UIImage loadPolaroidCurves];
     [UIImage loadRedscaleCurves];
-	
+	*/
+    
 	//[RenderTexture loadFilterPrograms];
 	
 	LaunchViewController *viewController = [[LaunchViewController alloc] initWithNibName:@"LaunchViewController" bundle:nil];
