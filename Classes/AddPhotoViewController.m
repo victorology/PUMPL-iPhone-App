@@ -77,6 +77,13 @@
     }
     else
     {
+#ifdef TARGET_IPHONE_SIMULATOR
+        NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:[UIImage imageNamed:@"Default.png"], @"UIImagePickerControllerOriginalImage",
+                              kUTTypeImage, @"UIImagePickerControllerMediaType", nil];
+        [self imagePickerController:nil didFinishPickingMediaWithInfo:info];
+        return;
+#endif
+        
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"YourIphoneDoesNotHaveTheCapibilityToCaptureImageKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
         alertView.tag = kAlertViewForCameraCapability;
         [alertView show];
@@ -190,11 +197,13 @@
 	{
 		UIImage *imagePicked = [info valueForKey:@"UIImagePickerControllerOriginalImage"];
 		
+#ifndef TARGET_IPHONE_SIMULATOR
 		if(_selectedPhotoSource == kSelectedPhotoSourceCamera)
 		{
 			UIImageWriteToSavedPhotosAlbum(imagePicked, nil, nil, nil);
 		}
-		
+#endif
+        
 		if(imagePicked)
 		{
 			

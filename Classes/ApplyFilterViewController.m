@@ -943,6 +943,9 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     CGImageRef imageRef = CGImageCreateWithImageInRect([imageToBeCropped CGImage], rect);
 	
     CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+#ifdef TARGET_IPHONE_SIMULATOR    
+    bitmapInfo = kCGImageAlphaPremultipliedLast;
+#endif     
     CGColorSpaceRef colorSpaceInfo = CGImageGetColorSpace(imageRef);
     CGContextRef bitmap = CGBitmapContextCreate(NULL, rect.size.width, rect.size.height, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
 	

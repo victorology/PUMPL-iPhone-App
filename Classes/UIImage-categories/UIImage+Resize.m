@@ -115,6 +115,11 @@
     CGRect transposedRect = CGRectMake(0, 0, newRect.size.height, newRect.size.width);
     CGImageRef imageRef = self.CGImage;
     
+    CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+#ifdef TARGET_IPHONE_SIMULATOR    
+    bitmapInfo = kCGImageAlphaPremultipliedLast;
+#endif     
+    
     // Build a context that's the same dimensions as the new size
     CGContextRef bitmap = CGBitmapContextCreate(NULL,
                                                 newRect.size.width,
@@ -122,7 +127,7 @@
                                                 CGImageGetBitsPerComponent(imageRef),
                                                 0,
                                                 CGImageGetColorSpace(imageRef),
-                                                CGImageGetBitmapInfo(imageRef));
+                                                bitmapInfo);
     
     // Rotate and/or flip the image if required by its orientation
     CGContextConcatCTM(bitmap, transform);
