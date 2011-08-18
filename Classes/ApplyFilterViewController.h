@@ -29,7 +29,7 @@
 	UIViewContentMode _contentModeToBeApplied;
     
     IBOutlet UIView *_applyingFilterView;
-    IBOutlet UIActivityIndicatorView *_applyingFilterIndicatorView;
+    UIActivityIndicatorView *_applyingFilterIndicatorView;
     IBOutlet UILabel *_applyingFilterTextLabel;
 }
 

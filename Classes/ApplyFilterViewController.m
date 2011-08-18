@@ -102,6 +102,11 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     
     
     
+    
+    _applyingFilterIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _applyingFilterIndicatorView.frame = CGRectMake(142, 0, 37, 37);
+    [_applyingFilterView addSubview:_applyingFilterIndicatorView];
+    
     _applyingFilterTextLabel.text = NSLocalizedString(@"ApplyingFilterKey", @"");
 
     
@@ -150,6 +155,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 - (void)dealloc {
     
+    [_applyingFilterIndicatorView release];
 	[originalImage release];
 	[squareImageForBackUp release];
 	[fullImageForBackUp release];
