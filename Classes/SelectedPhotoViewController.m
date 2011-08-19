@@ -117,7 +117,14 @@
 	[progressView release];
 	[mTableData release];
 	[mSelectedImage release];
+    
+    
 	[mTableView release];
+    // There was a crash. So to resolve it i had to nulify the delegate and datasource of mTableView
+    mTableView.delegate = nil;
+    mTableView.dataSource = nil;
+    
+    
     [super dealloc];
 }
 
@@ -684,7 +691,7 @@
 	if(alertView.tag == 1)
 	{
         // Bring back the status bar which was set hidden when we displayed the filter screen
-//        [[UIApplication sharedApplication] setStatusBarHidden:NO];
+        [[UIApplication sharedApplication] setStatusBarHidden:NO];
         
 		//Show and configure the Home tab
 		PUMPLAppDelegate *appDelegate = (PUMPLAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -695,6 +702,9 @@
         [(HomeScreenViewController *)[[firstTabNavigationController viewControllers] objectAtIndex:0] fetchPhotosFromPUMPLServer];
 		[(HomeScreenViewController *)[[firstTabNavigationController viewControllers] objectAtIndex:0] fetchPhotosFromPUMPLServer];
 		[tabController setSelectedIndex:0];
+        
+        // Make the navigation controller of second tab in tab bar pop to root view controller
+        [(UINavigationController *)[[self.tabBarController viewControllers] objectAtIndex:1] popToRootViewControllerAnimated:YES];
 	}
 }
 

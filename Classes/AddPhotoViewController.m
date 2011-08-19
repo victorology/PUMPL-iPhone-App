@@ -59,6 +59,11 @@
 	[super viewWillAppear:animated];
 	
     
+    
+    
+    
+    
+    
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
     {
         _selectedPhotoSource = kSelectedPhotoSourceCamera;

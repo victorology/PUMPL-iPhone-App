@@ -113,6 +113,10 @@
 - (void)viewDidAppear:(BOOL)animated {
 	
 	[super viewDidAppear:animated];
+    
+    
+    
+    
 	
     //Tweak for KTPhotoBrowser for Top Navigation bar to be black.
 //	[[UIApplication sharedApplication] setStatusBarHidden:NO];

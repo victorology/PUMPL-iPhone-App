@@ -157,6 +157,10 @@
 	if(tabBarController.selectedIndex != 1)
 	{
 		[[DataManager sharedDataManager] setMLastSelectedTabBarIndex:tabBarController.selectedIndex];
+        
+        
+        
+       
 	}
 	else
 	{
