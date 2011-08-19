@@ -182,6 +182,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     [super dealloc];
 }
 
+
 -(void) drawFilter:(int)filterTag
 {
     [renderView setFramebuffer];
@@ -189,19 +190,19 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
     
-    /*
-    CGSize contentSize = [render contentSize];
-    CGFloat k = contentSize.width/contentSize.height;
+    CGSize imageSize = [render contentSize];
     
-    CGSize sz = CGSizeMake(2.25*k, 1.5);
-    if(sz.width > 2.25) 
-    {
-        sz = CGSizeMake(2.25, 1.5/k);
-    }
-    CGRect rect = CGRectMake(-sz.width/2, 0.2 -sz.height/2, sz.width, + sz.height);
-    */
+    CGFloat widthFactor = renderView.frame.size.width / imageSize.width;
+    CGFloat heightFactor = renderView.frame.size.height / imageSize.height;
+    CGFloat scaleFactor = widthFactor < heightFactor ? widthFactor : heightFactor;
     
-    CGRect rect = CGRectMake(-1,-1, 2,2);
+    CGFloat w = imageSize.width*scaleFactor;
+    CGFloat h = imageSize.height*scaleFactor;
+    
+    w = w/renderView.frame.size.width;
+    h = h/renderView.frame.size.height;
+    
+    CGRect rect = CGRectMake(-w, -h, 2*w, 2*h);
     
 	switch (filterTag) 
 	{
