@@ -124,21 +124,12 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	
 	
 	_cropButton.hidden = YES;
-	
 
-    static EAGLContext* context = nil;
-    if(!context) 
-    {
-        context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
-        NSAssert(context!=nil, @"Failed to create ES context");
-    }
-	
+    EAGLContext* context = [(PUMPLAppDelegate*)[[UIApplication sharedApplication] delegate] eaglContext];
     [renderView setContext:context];
     [renderView setFramebuffer];
-    
-    [RenderTexture loadFilterPrograms];
-    
 
+    
 	_HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:_HUD];
 	

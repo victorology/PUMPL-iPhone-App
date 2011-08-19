@@ -6,21 +6,13 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import <OpenGLES/EAGL.h>
+
 #import "PUMPLAppDelegate.h"
 #import "LaunchViewController.h"
 #import "DataManager.h"
 #import "Appirater.h"
 #import "PMNavigationController.h"
-
-/*
-#import "UIImage+CrossProcess.h"
-#import "UIImage+Photochrom.h"
-#import "UIImage+Vintage.h"
-#import "UIImage+Lomo.h"
-#import "UIImage+PlasticEye.h"
-#import "UIImage+Polaroid.h"
-#import "UIImage+Redscale.h"
-*/
 
 #import "RenderTexture+Filters.h"
 
@@ -29,7 +21,7 @@
 
 @synthesize window;
 @synthesize navController;
-
+@synthesize eaglContext;
 
 #pragma mark -
 #pragma mark Application lifecycle
@@ -38,17 +30,17 @@
     
     // Override point for customization after application launch.
 	
-    /*
-	[UIImage loadCrossProcessCurves];
-    [UIImage loadVintageCurves];
-    [UIImage loadPhotochromCurves];
-    [UIImage loadLomoCurves];
-    [UIImage loadPlasticEyeCurves];
-    [UIImage loadPolaroidCurves];
-    [UIImage loadRedscaleCurves];
-	*/
     
-	//[RenderTexture loadFilterPrograms];
+    eaglContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
+    if(!eaglContext) 
+    {
+        [[[[UIAlertView alloc] initWithTitle:@"Error" message:@"This device does not support OpenGLES 2.0"
+                                    delegate:nil cancelButtonTitle:nil otherButtonTitles:nil] autorelease] show];
+    }
+    
+    [EAGLContext setCurrentContext:eaglContext];
+	[RenderTexture loadFilterPrograms];
+    [EAGLContext setCurrentContext:nil];
 	
 	LaunchViewController *viewController = [[LaunchViewController alloc] initWithNibName:@"LaunchViewController" bundle:nil];
 	self.navController = [[[PMNavigationController alloc] initWithRootViewController:viewController] autorelease];
@@ -126,6 +118,7 @@
 - (void)dealloc {
 	[navController release];
     [window release];
+    [eaglContext release];
     [super dealloc];
 }
 

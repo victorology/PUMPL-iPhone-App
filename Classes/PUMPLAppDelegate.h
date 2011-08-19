@@ -8,13 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class EAGLContext;
 @interface PUMPLAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
 	UINavigationController *navController;
+    
+    EAGLContext* eaglContext;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) UINavigationController *navController;
+
+@property (nonatomic, readonly) EAGLContext* eaglContext;
 
 @end
 
