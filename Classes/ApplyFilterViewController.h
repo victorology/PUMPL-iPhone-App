@@ -10,16 +10,19 @@
 #import "MBProgressHUD.h"
 #import <QuartzCore/QuartzCore.h>
 
+@class EAGLView;
+@class RenderTexture;
 @interface ApplyFilterViewController : UIViewController <MBProgressHUDDelegate> {
 
 	UIImage *selectedImage;
-	UIImage *finalImage;
 	UIImage *fullImageForBackUp;
 	UIImage *originalImage;
-	
-	IBOutlet UIImageView *mSelectedImageView;
+
+	IBOutlet EAGLView* renderView;
 	IBOutlet UIScrollView *mFilterButtonScrollView;
 	IBOutlet UIButton *_cropButton;
+    
+    RenderTexture* render;
 	
 	MBProgressHUD *_HUD;
 	BOOL _wasFilterSelected;
@@ -34,12 +37,11 @@
 }
 
 @property (nonatomic, retain) UIImage *selectedImage;
-@property (nonatomic, retain) UIImage *finalImage;
 @property (nonatomic, retain) UIImage *fullImageForBackUp;
 @property (nonatomic, retain) UIImage *squareImageForBackUp;
 @property (nonatomic, retain) UIImage *originalImage;
 @property (nonatomic, assign) BOOL imageClickedInSquareMode;
-
+@property (nonatomic, retain) RenderTexture* render;
 
 - (IBAction)squareOrFullClicked:(id)sender;
 

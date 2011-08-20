@@ -6,9 +6,12 @@
 //  Copyright 2011 Route Me. All rights reserved.
 //
 
+#import "PUMPLAppDelegate.h"
 #import "PMTabBarController.h"
 #import "ApplyFilterViewController.h"
 #import "SelectedPhotoViewController.h"
+
+/*
 #import "UIImage+CrossProcess.h"
 #import "UIImage+Photochrom.h"
 #import "UIImage+Vintage.h"
@@ -17,9 +20,13 @@
 #import "UIImage+PlasticEye.h"
 #import "UIImage+Polaroid.h"
 #import "UIImage+Redscale.h"
+ */
+
 #import "UIImage+Resize.h"
 #import "UIImage-Extensions.h"
 
+#import "EAGLView.h"
+#import "RenderTexture+Filters.h"
 
 #define kFilterLabelWidth 80
 #define kFilterLabelHeight 16
@@ -43,7 +50,6 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 @interface ApplyFilterViewController (Private)
 
 - (void)buildFilterButtonScrollView;
-- (void)configureImageViewForOrientation;
 - (void)configureForSquareAndFull;
 - (void)showApplyingFilterActivityIndicatorView;
 - (void)hideApplyingFilterActivityIndicatorView;
@@ -58,11 +64,11 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 @implementation ApplyFilterViewController
 
 @synthesize selectedImage;
-@synthesize finalImage;
 @synthesize imageClickedInSquareMode;
 @synthesize fullImageForBackUp;
 @synthesize squareImageForBackUp;
 @synthesize originalImage;
+@synthesize render;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -118,9 +124,12 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	
 	
 	_cropButton.hidden = YES;
-	
-	
-	
+
+    EAGLContext* context = [(PUMPLAppDelegate*)[[UIApplication sharedApplication] delegate] eaglContext];
+    [renderView setContext:context];
+    [renderView setFramebuffer];
+
+    
 	_HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
 	[self.navigationController.view addSubview:_HUD];
 	
@@ -154,14 +163,127 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 
 - (void)dealloc {
-    
     [_applyingFilterIndicatorView release];
+    [renderView release];
 	[originalImage release];
 	[squareImageForBackUp release];
 	[fullImageForBackUp release];
-	[finalImage release];
 	[selectedImage release];
+    [render release];
     [super dealloc];
+}
+
+
+-(void) drawFilter:(int)filterTag
+{
+    [renderView setFramebuffer];
+    
+    glClearColor(0.5f, 0.5f, 0.5f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    CGSize imageSize = [render contentSize];
+    
+    CGFloat widthFactor = renderView.frame.size.width / imageSize.width;
+    CGFloat heightFactor = renderView.frame.size.height / imageSize.height;
+    CGFloat scaleFactor = widthFactor < heightFactor ? widthFactor : heightFactor;
+    
+    CGFloat w = imageSize.width*scaleFactor;
+    CGFloat h = imageSize.height*scaleFactor;
+    
+    w = w/renderView.frame.size.width;
+    h = h/renderView.frame.size.height;
+    
+    CGRect rect = CGRectMake(-w, -h, 2*w, 2*h);
+    
+	switch (filterTag) 
+	{
+		case kFilterTag:
+		case kFilterTagNormal:
+            [render drawInRect:rect];
+            break;
+			
+		case kFilterTagXPro:
+            [render drawCrossProcessInRect:rect];
+			break;
+			
+		case kFilterTagVintage:
+            [render drawVintageInRect:rect];
+			break;
+			
+		case kFilterTagLomo:
+            [render drawLomoInRect:rect];
+			break;
+			
+		case kFilterTagPhotochrome:
+            [render drawPhotochromInRect:rect];
+			break;
+			
+		case kFilterTagMonochrome:
+            [render drawMonochromeInRect:rect];
+			break;
+            
+		case kFilterTagPlasticEye:
+            [render drawPlasticEyeInRect:rect];
+			break;
+            
+		case kFilterTagPolaroid:
+            [render drawPolaroidInRect:rect];
+			break;
+            
+		case kFilterTagRedscale:
+            [render drawRedscaleInRect:rect];
+			break;
+            
+		default:
+            [render drawInRect:rect];
+			break;
+	}
+    
+    [renderView presentFramebuffer];  
+}
+
+-(UIImage*) getImageProcessedWithFilter:(int)filterTag 
+{
+	switch (filterTag) 
+	{
+		case kFilterTag:
+		case kFilterTagNormal:
+            return selectedImage;
+			
+		case kFilterTagXPro:
+            [render applyCrossProcessFilter];
+			break;
+			
+		case kFilterTagVintage:
+            [render applyVintageFilter];
+			break;
+			
+		case kFilterTagLomo:
+            [render applyLomoFilter];
+			break;
+			
+		case kFilterTagPhotochrome:
+            [render applyPhotochromFilter];
+			break;
+			
+		case kFilterTagMonochrome:
+            [render applyMonochromeFilter];
+			break;
+            
+		case kFilterTagPlasticEye:
+            [render applyPlasticEyeFilter];
+			break;
+            
+		case kFilterTagPolaroid:
+            [render applyPolaroidFilter];
+			break;
+            
+		case kFilterTagRedscale:
+            [render applyRedscaleFilter];
+			break;
+	}
+    
+    return [render getUIImage];
 }
 
 
@@ -550,7 +672,6 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 		_cropButton.hidden = YES;
 		
 		self.selectedImage = squareImageForBackUp;
-		mSelectedImageView.contentMode = UIViewContentModeScaleToFill;
 		_contentModeToBeApplied = UIViewContentModeScaleToFill;
 	}
 	else 
@@ -561,9 +682,6 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 		_cropButton.hidden = NO;
 		
 		self.selectedImage = fullImageForBackUp;
-		mSelectedImageView.contentMode = UIViewContentModeScaleAspectFit;
-		
-        
         
         
         
@@ -578,31 +696,14 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 		_contentModeToBeApplied = UIViewContentModeScaleAspectFit;
 	}
 	 
+    [renderView setFramebuffer];
+    self.render = [[[RenderTexture alloc] initWithImage:selectedImage] autorelease];
+    [self drawFilter:kFilterTagNormal];
 	
 	self.originalImage = nil;
 	
-	
-	[self configureImageViewForOrientation];
 	[_HUD hide:YES];
 }
-
-
-- (void)configureImageViewForOrientation
-{
-	if(selectedImage.size.height >= selectedImage.size.width)
-	{
-		mSelectedImageView.frame = CGRectMake(0, 0, 320, 320);
-	}
-	else
-	{
-		mSelectedImageView.frame = CGRectMake(0, 0, 320, 320);
-	}
-
-	self.finalImage = selectedImage;
-	mSelectedImageView.image = finalImage;
-}
-
-
 
 
 - (void)back:(id)sender
@@ -611,10 +712,11 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
 - (void)next:(id)sender
 {	
 	SelectedPhotoViewController *viewController = [[SelectedPhotoViewController alloc] initWithNibName:@"SelectedPhotoViewController" bundle:nil];
-	viewController.mSelectedImage = finalImage;
+	viewController.mSelectedImage = [self getImageProcessedWithFilter:_filterApplied];
 	viewController.wasFilterSelected = _wasFilterSelected;
 	viewController.filterApplied = _filterApplied;
 	[self.navigationController pushViewController:viewController animated:YES];
@@ -628,7 +730,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	UIButton *button = (UIButton *)sender;
 	
     [self showApplyingFilterActivityIndicatorView];
-    [self performSelector:@selector(applyFilter:) withObject:[NSNumber numberWithInteger:button.tag] afterDelay:0.1];
+    [self performSelector:@selector(applyFilter:) withObject:[NSNumber numberWithInteger:button.tag] afterDelay:0];
     
 //	_HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
 //	[self.navigationController.view addSubview:_HUD];
@@ -647,88 +749,20 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	
 	_filterApplied = filterTag;
 	
-	switch (filterTag) 
-	{
-		case kFilterTag:
-		{
-			self.finalImage = selectedImage;
-			_wasFilterSelected = NO;
-			
-			break;
-		}
-			
-		case kFilterTagNormal:
-		{
-			self.finalImage = selectedImage;
-			_wasFilterSelected = NO;
-			
-			break;
-		}
-			
-		case kFilterTagXPro:
-		{
-			self.finalImage = [selectedImage imageByApplyingCrossProcessFilter];
-			_wasFilterSelected = YES;
-			break;
-		}
-			
-		case kFilterTagVintage:
-		{
-			self.finalImage = [selectedImage imageByApplyingVintageFilter];
-			_wasFilterSelected = YES;
-			break;
-		}
-			
-		case kFilterTagLomo:
-		{
-			self.finalImage = [selectedImage imageByApplyingLomoFilter];
-			_wasFilterSelected = YES;
-			break;
-		}
-			
-		case kFilterTagPhotochrome:
-		{
-			self.finalImage = [selectedImage imageByApplyingPhotochromFilter];
-			_wasFilterSelected = YES;
-			break;
-		}
-			
-		case kFilterTagMonochrome:
-		{
-			self.finalImage = [selectedImage imageByApplyingMonochromeFilter];
-			_wasFilterSelected = YES;
-			break;
-		}
-
-		case kFilterTagPlasticEye:
-		{
-			self.finalImage = [selectedImage imageByApplyingPlasticEyeFilter];
-			_wasFilterSelected = YES;
-			break;
-		}
-
-		case kFilterTagPolaroid:
-		{
-			self.finalImage = [selectedImage imageByApplyingPolaroidFilter];
-			_wasFilterSelected = YES;
-			break;
-		}
-
-		case kFilterTagRedscale:
-		{
-			self.finalImage = [selectedImage imageByApplyingRedscaleFilter];
-			_wasFilterSelected = YES;
-			break;
-		}
-            
-		default:
-			break;
-	}
-	
-	mSelectedImageView.contentMode = _contentModeToBeApplied;
-	mSelectedImageView.image = finalImage;
-	
-	if(_contentModeToBeApplied == UIViewContentModeScaleToFill)
+    
+    if(filterTag==kFilterTag || filterTag==kFilterTagNormal) 
+    {
+        _wasFilterSelected = NO;
+    } 
+    else
+    {
+        _wasFilterSelected = YES;
+    }
+    
+    [self drawFilter:filterTag];
+    
+    
+    if(_contentModeToBeApplied == UIViewContentModeScaleToFill)
 	{
 		[_cropButton setImage:[UIImage imageNamed:@"Full.png"] forState:UIControlStateNormal];
         
@@ -744,7 +778,6 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
             _cropButton.frame = CGRectMake(227, 235, 83, 35);
 	}
 
-	
 	_cropButton.enabled = YES;
 	
 //	[_HUD hide:YES];
@@ -771,6 +804,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 		self.selectedImage = fullImageForBackUp;
 	}
 	
+    self.render = [[[RenderTexture alloc] initWithImage:selectedImage] autorelease];
 	
     [self showApplyingFilterActivityIndicatorView];
     [self performSelector:@selector(applyFilter:) withObject:[NSNumber numberWithInteger:_filterApplied] afterDelay:0.1];
@@ -943,6 +977,9 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     CGImageRef imageRef = CGImageCreateWithImageInRect([imageToBeCropped CGImage], rect);
 	
     CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
+#ifdef TARGET_IPHONE_SIMULATOR    
+    bitmapInfo = kCGImageAlphaPremultipliedLast;
+#endif     
     CGColorSpaceRef colorSpaceInfo = CGImageGetColorSpace(imageRef);
     CGContextRef bitmap = CGBitmapContextCreate(NULL, rect.size.width, rect.size.height, CGImageGetBitsPerComponent(imageRef), CGImageGetBytesPerRow(imageRef), colorSpaceInfo, bitmapInfo);
 	
