@@ -70,6 +70,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToFBDidLogin:) name:kNotificationFBDidLogin object:nil];
+    
+    
 	[self configureTheView];
 	
 }
@@ -110,7 +114,7 @@
 
 - (void)dealloc {
 	
-	
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[mPhotoUploader release];
 	[mFreezeMessageLabel release];
 	[mFreezeView release];
@@ -321,10 +325,21 @@
 	NSDictionary *userInfo = [[DataManager sharedDataManager] getUserProfile];
 	NSString *idString = [NSString stringWithFormat:@"%@",[userInfo valueForKey:@"id"]];
 	NSString *session_api = [NSString stringWithFormat:@"%@",[userInfo valueForKey:@"session_api"]];
+	NSString *accessToken = [[[DataManager sharedDataManager] facebook] accessToken];
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if([language isEqualToString:@"ko"])
+    {
+        language = @"kr";
+    }
 	
-	NSString *urlString = [NSString stringWithFormat:@"%@?id=%@&session_api=%@", kURLForFacebookConnection, idString, session_api];
-	ASIHTTPRequest *request = [[[ASIHTTPRequest alloc] initWithURL:[NSURL URLWithString:urlString]] autorelease];
-	request.delegate = self;
+	NSString *urlString = [NSString stringWithFormat:@"%@", kURLForFacebookSingleSignOn];
+    ASIFormDataRequest *request = [[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:urlString]] autorelease];
+    request.delegate = self;
+    request.requestMethod = @"POST";
+    [request setPostValue:idString forKey:@"id"];
+	[request setPostValue:session_api forKey:@"session_api"];
+    [request setPostValue:accessToken forKey:@"fb_access_token"];
+    [request setPostValue:language forKey:@"language"];
 	request.userInfo = [NSMutableDictionary dictionaryWithObject:[NSNumber numberWithInteger:kServerCallTypeFacebookConnect] forKey:@"callType"];
 	[request startAsynchronous];
 }
@@ -574,7 +589,7 @@
 			NSString *inputName = [rowDic valueForKey:@"inputName"];
 			if([inputName isEqualToString:@"Facebook"])
 			{
-				[self launchFacebookConnectionCall];
+                [[DataManager sharedDataManager] facebookLogin];
 			}
 			else if([inputName isEqualToString:@"Twitter"])
 			{
@@ -747,18 +762,11 @@
 			
 			case kServerCallTypeFacebookConnect:
 			{
-				//Build End Point URL
-				NSDictionary *userInfo = [[DataManager sharedDataManager] getUserProfile];
-				NSString *idString = [NSString stringWithFormat:@"%@",[userInfo valueForKey:@"id"]];
-				NSString *session_api = [NSString stringWithFormat:@"%@",[userInfo valueForKey:@"session_api"]];
-				NSString *endPointUrl = [NSString stringWithFormat:@"http://www.pumpl.com/facebook/confirm_api/%@/id/%@.json", session_api, idString];
-				
-				NSString *urlString = [[responseDic valueForKey:@"value"] valueForKey:@"authorize_url"];
-				FacebookConnectionWebViewController *viewController = [[FacebookConnectionWebViewController alloc] initWithNibName:@"FacebookConnectionWebViewController" bundle:nil];
-				viewController.urlString = urlString;
-				viewController.endPointCheckUrlString = endPointUrl;
-				[self.navigationController pushViewController:viewController animated:YES];
-				[viewController release];
+				NSString *nickName = [[[responseDic valueForKey:@"value"] valueForKey:@"user"] valueForKey:@"nickname"];
+                [[DataManager sharedDataManager] setFacebookConnected:YES withNickname:nickName];
+                
+                [self buildTableData];
+                [mTableView reloadData];
 				
 				break;
 			}
@@ -818,5 +826,16 @@
 	
 }
 
+
+
+
+
+
+
+
+- (void)respondToFBDidLogin:(NSNotification *)notificationObject
+{    
+    [self launchFacebookConnectionCall];
+}
 
 @end

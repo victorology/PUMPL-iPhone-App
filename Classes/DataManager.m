@@ -9,6 +9,7 @@
 #import "DataManager.h"
 
 
+static NSString* kAppId = @"170977086255854";
 
 #define kUserInfoKey @"userInfo"
 
@@ -21,6 +22,7 @@ static DataManager *sharedDataManager = nil;
 
 
 @synthesize mLastSelectedTabBarIndex;
+@synthesize facebook;
 
 
 #pragma mark -
@@ -55,7 +57,8 @@ static DataManager *sharedDataManager = nil;
                 sharedDataManager = self;
                 // custom initialization here
 				
-				
+				facebook = [[Facebook alloc] initWithAppId:kAppId
+                                                andDelegate:self];
             }
         }
     }
@@ -157,6 +160,8 @@ static DataManager *sharedDataManager = nil;
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+
+
 - (void)setTwitterConnected:(BOOL)isConnected withNickname:(NSString *)nickname
 {
 	[[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:isConnected] forKey:kIsTwitterAccountConnected];
@@ -177,6 +182,61 @@ static DataManager *sharedDataManager = nil;
 	[[NSUserDefaults standardUserDefaults] setValue:nickname forKey:kMe2dayAccountNickname];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+
+
+
+
+#pragma mark -
+#pragma mark Facebook Methods
+
+- (void)facebookLogin
+{
+    if(_permissions == nil)
+    {
+        _permissions =  [[NSArray arrayWithObjects:
+                          @"read_stream", @"publish_stream", @"offline_access",nil] retain]; 
+    }
+    
+    [facebook authorize:_permissions];
+}
+
+
+- (void)facebookLogout
+{
+    [facebook logout:self];
+}
+
+
+
+
+
+
+#pragma mark -
+#pragma mark FBSession Delegate Methods
+
+- (void)fbDidLogin {
+
+    [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationFBDidLogin object:nil]];
+}
+
+/**
+ * Called when the user canceled the authorization dialog.
+ */
+-(void)fbDidNotLogin:(BOOL)cancelled {
+//    NSLog(@"did not login");
+}
+
+/**
+ * Called when the request logout has succeeded.
+ */
+- (void)fbDidLogout {
+
+    
+}
+
+
+
 
 
 

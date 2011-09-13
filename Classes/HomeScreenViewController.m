@@ -44,6 +44,8 @@
 {
 	[super viewDidLoad];
 	
+    
+    
 	
     //Set the delegate for PullToRefreshScrollView 
     [scrollView_ setDelegate1:self];

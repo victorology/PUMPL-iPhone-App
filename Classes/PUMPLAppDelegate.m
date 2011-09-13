@@ -15,6 +15,7 @@
 #import "PMNavigationController.h"
 
 #import "RenderTexture+Filters.h"
+#import "FBConnect.h"
 
 
 @implementation PUMPLAppDelegate
@@ -112,6 +113,12 @@
     /*
      Free up as much memory as possible by purging cached data objects that can be recreated (or reloaded from disk) later.
      */
+}
+
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    return [[DataManager sharedDataManager].facebook handleOpenURL:url];
 }
 
 

@@ -292,6 +292,14 @@
 		[alertView release];
 		return;
 	}
+    
+    
+    NSString *language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if([language isEqualToString:@"ko"])
+    {
+        language = @"kr";
+    }
+    
 	
 	ASIFormDataRequest *request = [[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:kURLForRegistrationRequest]];
 	request.delegate = self;
@@ -299,6 +307,7 @@
 	[request setPostValue:email forKey:@"user[email]"];
 	[request setPostValue:username forKey:@"user[nickname]"];
 	[request setPostValue:password forKey:@"user[password]"];
+    [request setPostValue:language forKey:@"language"];
 	[request startAsynchronous];
 	[request release];
 	

@@ -133,6 +133,11 @@
 		0BE8DBC013D40C0D00FAC065 /* HomeScreenEmptyArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BE8DBBF13D40C0D00FAC065 /* HomeScreenEmptyArrow.png */; };
 		0BECCF3213D2ECD700A0384C /* Me2DayLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BECCF3013D2ECD700A0384C /* Me2DayLoginViewController.m */; };
 		0BECCF3313D2ECD700A0384C /* Me2DayLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BECCF3113D2ECD700A0384C /* Me2DayLoginViewController.xib */; };
+		0BF17AFA141EF94A004D811F /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0BF17AF0141EF94A004D811F /* FBDialog.bundle */; };
+		0BF17AFB141EF94A004D811F /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF17AF3141EF94A004D811F /* FBRequest.m */; };
+		0BF17AFC141EF94A004D811F /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF17AF4141EF94A004D811F /* Facebook.m */; };
+		0BF17AFD141EF94A004D811F /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF17AF7141EF94A004D811F /* FBLoginDialog.m */; };
+		0BF17AFE141EF94A004D811F /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF17AF9141EF94A004D811F /* FBDialog.m */; };
 		0BF20E3D13FB7D0A006565CE /* MyPhotosBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF20E3913FB7D0A006565CE /* MyPhotosBtn.png */; };
 		0BF20E3E13FB7D0A006565CE /* MyPhotosBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF20E3A13FB7D0A006565CE /* MyPhotosBtn@2x.png */; };
 		0BF20E3F13FB7D0A006565CE /* MyPhotosBtnKR.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF20E3B13FB7D0A006565CE /* MyPhotosBtnKR.png */; };
@@ -436,6 +441,16 @@
 		0BECCF2F13D2ECD700A0384C /* Me2DayLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Me2DayLoginViewController.h; sourceTree = "<group>"; };
 		0BECCF3013D2ECD700A0384C /* Me2DayLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Me2DayLoginViewController.m; sourceTree = "<group>"; };
 		0BECCF3113D2ECD700A0384C /* Me2DayLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Me2DayLoginViewController.xib; sourceTree = "<group>"; };
+		0BF17AF0141EF94A004D811F /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = src/FBDialog.bundle; sourceTree = "<group>"; };
+		0BF17AF1141EF94A004D811F /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBConnect.h; path = src/FBConnect.h; sourceTree = "<group>"; };
+		0BF17AF2141EF94A004D811F /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = src/FBRequest.h; sourceTree = "<group>"; };
+		0BF17AF3141EF94A004D811F /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = src/FBRequest.m; sourceTree = "<group>"; };
+		0BF17AF4141EF94A004D811F /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Facebook.m; path = src/Facebook.m; sourceTree = "<group>"; };
+		0BF17AF5141EF94A004D811F /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = src/Facebook.h; sourceTree = "<group>"; };
+		0BF17AF6141EF94A004D811F /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBLoginDialog.h; path = src/FBLoginDialog.h; sourceTree = "<group>"; };
+		0BF17AF7141EF94A004D811F /* FBLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBLoginDialog.m; path = src/FBLoginDialog.m; sourceTree = "<group>"; };
+		0BF17AF8141EF94A004D811F /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBDialog.h; path = src/FBDialog.h; sourceTree = "<group>"; };
+		0BF17AF9141EF94A004D811F /* FBDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBDialog.m; path = src/FBDialog.m; sourceTree = "<group>"; };
 		0BF20E3913FB7D0A006565CE /* MyPhotosBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyPhotosBtn.png; sourceTree = "<group>"; };
 		0BF20E3A13FB7D0A006565CE /* MyPhotosBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MyPhotosBtn@2x.png"; sourceTree = "<group>"; };
 		0BF20E3B13FB7D0A006565CE /* MyPhotosBtnKR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MyPhotosBtnKR.png; sourceTree = "<group>"; };
@@ -904,6 +919,23 @@
 			name = "Pull To Refresh";
 			sourceTree = "<group>";
 		};
+		0BF17AEE141EF932004D811F /* FBConnect */ = {
+			isa = PBXGroup;
+			children = (
+				0BF17AF0141EF94A004D811F /* FBDialog.bundle */,
+				0BF17AF1141EF94A004D811F /* FBConnect.h */,
+				0BF17AF2141EF94A004D811F /* FBRequest.h */,
+				0BF17AF3141EF94A004D811F /* FBRequest.m */,
+				0BF17AF4141EF94A004D811F /* Facebook.m */,
+				0BF17AF5141EF94A004D811F /* Facebook.h */,
+				0BF17AF6141EF94A004D811F /* FBLoginDialog.h */,
+				0BF17AF7141EF94A004D811F /* FBLoginDialog.m */,
+				0BF17AF8141EF94A004D811F /* FBDialog.h */,
+				0BF17AF9141EF94A004D811F /* FBDialog.m */,
+			);
+			name = FBConnect;
+			sourceTree = "<group>";
+		};
 		0BF4012713F8E7150094C51C /* Launch Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -1043,6 +1075,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				0BF17AEE141EF932004D811F /* FBConnect */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
@@ -1362,6 +1395,7 @@
 				92EA7BCF13FC5C7A000FBEC3 /* polaroid_curve.png in Resources */,
 				92EA7BD013FC5C7A000FBEC3 /* redscale_colormap.png in Resources */,
 				92EA7BD113FC5C7A000FBEC3 /* vintage_colormap.png in Resources */,
+				0BF17AFA141EF94A004D811F /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1460,6 +1494,10 @@
 				92EA7BD913FC5C7A000FBEC3 /* RenderTexture+Vintage.m in Sources */,
 				92EA7BE613FC5C7A000FBEC3 /* RenderTexture+Filters.m in Sources */,
 				92CDB8BD13FDA5C200532E01 /* EAGLView.m in Sources */,
+				0BF17AFB141EF94A004D811F /* FBRequest.m in Sources */,
+				0BF17AFC141EF94A004D811F /* Facebook.m in Sources */,
+				0BF17AFD141EF94A004D811F /* FBLoginDialog.m in Sources */,
+				0BF17AFE141EF94A004D811F /* FBDialog.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
