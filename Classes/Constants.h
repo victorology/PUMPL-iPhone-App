@@ -19,6 +19,7 @@
 #define kURLForFetchPhotos @"http://www.pumpl.com/photos/mine.json"
 #define kURLForConnectedServices @"http://www.pumpl.com/connections.json"
 #define kURLForFacebookConnection @"http://www.pumpl.com/facebook.json"
+#define kURLForFacebookSingleSignOn @"http://www.pumpl.com/facebook/single_sign_on.json" 
 #define kURLForTwitterConnection @"http://www.pumpl.com/twitter/xauth_token.json"
 #define kURLForTumblrConnection @"http://www.pumpl.com/tumblr/connect.json"
 #define kURLForMe2dayConnection @"http://www.pumpl.com/me2day/connect.json"
@@ -31,6 +32,10 @@
 
 #define kIsFacebookAccountConnected @"IsFacebookAccountConnected"
 #define kFacebookAccountNickname @"FacebookAccountNickname"
+#define kFacebookAccountAccessToken @"FacebookAccountAccessToken"
+#define kFacebookAccountExpirationDate @"FacebookAccountExpirationDate"
+
+
 
 #define kIsTwitterAccountConnected @"IsTwitterAccountConnected"
 #define kTwitterAccountNickname @"TwitterAccountNickname"
