@@ -147,6 +147,11 @@
 		0BF20E4813FB8092006565CE /* LostPasswordKR@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF20E4613FB8092006565CE /* LostPasswordKR@2x.png */; };
 		0BF20E4F13FB8177006565CE /* img-tab-camera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF20E4D13FB8177006565CE /* img-tab-camera.png */; };
 		0BF20E5013FB8177006565CE /* img-tab-camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF20E4E13FB8177006565CE /* img-tab-camera@2x.png */; };
+		0BF39ECC143C0FED00CD0C70 /* SettingsCheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF39ECA143C0FED00CD0C70 /* SettingsCheckmark.png */; };
+		0BF39ECD143C0FED00CD0C70 /* SettingsFakeImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF39ECB143C0FED00CD0C70 /* SettingsFakeImage.png */; };
+		0BF39ECF143C108900CD0C70 /* SettingsUncheckmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF39ECE143C108900CD0C70 /* SettingsUncheckmark.png */; };
+		0BF39ED3143C14EE00CD0C70 /* FacebookSettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BF39ED1143C14EE00CD0C70 /* FacebookSettingsController.m */; };
+		0BF39ED4143C14EE00CD0C70 /* FacebookSettingsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BF39ED2143C14EE00CD0C70 /* FacebookSettingsController.xib */; };
 		0BF4012513F8E5F60094C51C /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF4012313F8E5F60094C51C /* Default.png */; };
 		0BF4012613F8E5F60094C51C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF4012413F8E5F60094C51C /* Default@2x.png */; };
 		0BF4013113F8E75D0094C51C /* Login.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BF4012913F8E75D0094C51C /* Login.png */; };
@@ -459,6 +464,12 @@
 		0BF20E4613FB8092006565CE /* LostPasswordKR@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LostPasswordKR@2x.png"; sourceTree = "<group>"; };
 		0BF20E4D13FB8177006565CE /* img-tab-camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-camera.png"; sourceTree = "<group>"; };
 		0BF20E4E13FB8177006565CE /* img-tab-camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-tab-camera@2x.png"; sourceTree = "<group>"; };
+		0BF39ECA143C0FED00CD0C70 /* SettingsCheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsCheckmark.png; sourceTree = "<group>"; };
+		0BF39ECB143C0FED00CD0C70 /* SettingsFakeImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsFakeImage.png; sourceTree = "<group>"; };
+		0BF39ECE143C108900CD0C70 /* SettingsUncheckmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SettingsUncheckmark.png; sourceTree = "<group>"; };
+		0BF39ED0143C14ED00CD0C70 /* FacebookSettingsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookSettingsController.h; sourceTree = "<group>"; };
+		0BF39ED1143C14EE00CD0C70 /* FacebookSettingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookSettingsController.m; sourceTree = "<group>"; };
+		0BF39ED2143C14EE00CD0C70 /* FacebookSettingsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookSettingsController.xib; sourceTree = "<group>"; };
 		0BF4012313F8E5F60094C51C /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		0BF4012413F8E5F60094C51C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		0BF4012913F8E75D0094C51C /* Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login.png; sourceTree = "<group>"; };
@@ -801,6 +812,9 @@
 		0BC6938912D45370008285B2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0BF39ECE143C108900CD0C70 /* SettingsUncheckmark.png */,
+				0BF39ECA143C0FED00CD0C70 /* SettingsCheckmark.png */,
+				0BF39ECB143C0FED00CD0C70 /* SettingsFakeImage.png */,
 				0BF20E3913FB7D0A006565CE /* MyPhotosBtn.png */,
 				0BF20E3A13FB7D0A006565CE /* MyPhotosBtn@2x.png */,
 				0BF20E3B13FB7D0A006565CE /* MyPhotosBtnKR.png */,
@@ -883,6 +897,9 @@
 				0BECCF2F13D2ECD700A0384C /* Me2DayLoginViewController.h */,
 				0BECCF3013D2ECD700A0384C /* Me2DayLoginViewController.m */,
 				0BECCF3113D2ECD700A0384C /* Me2DayLoginViewController.xib */,
+				0BF39ED0143C14ED00CD0C70 /* FacebookSettingsController.h */,
+				0BF39ED1143C14EE00CD0C70 /* FacebookSettingsController.m */,
+				0BF39ED2143C14EE00CD0C70 /* FacebookSettingsController.xib */,
 			);
 			name = "Settings Tab";
 			sourceTree = "<group>";
@@ -1392,6 +1409,10 @@
 				92EA7BCF13FC5C7A000FBEC3 /* polaroid_curve.png in Resources */,
 				92EA7BD013FC5C7A000FBEC3 /* redscale_colormap.png in Resources */,
 				92EA7BD113FC5C7A000FBEC3 /* vintage_colormap.png in Resources */,
+				0BF39ECC143C0FED00CD0C70 /* SettingsCheckmark.png in Resources */,
+				0BF39ECD143C0FED00CD0C70 /* SettingsFakeImage.png in Resources */,
+				0BF39ECF143C108900CD0C70 /* SettingsUncheckmark.png in Resources */,
+				0BF39ED4143C14EE00CD0C70 /* FacebookSettingsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1494,6 +1515,7 @@
 				0B2EF2801423067400A68FAE /* SBJsonBase.m in Sources */,
 				0B2EF2811423067400A68FAE /* SBJsonParser.m in Sources */,
 				0B2EF2821423067400A68FAE /* SBJsonWriter.m in Sources */,
+				0BF39ED3143C14EE00CD0C70 /* FacebookSettingsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

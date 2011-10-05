@@ -17,9 +17,15 @@
 #import "TumblrLoginViewController.h"
 #import "Me2DayLoginViewController.h"
 #import "PMNavigationController.h"
+#import "FacebookSettingsController.h"
 
 #define kAccessoryTypeDisclosureIndicator 0
 #define kAccessoryTypeNone 1
+#define kCellImageTypeCheckmark 0
+#define kCellImageTypeNotChecked 1
+
+#define kCellViewTagCheckmarkButton 100
+
 
 #define kCellType1 0
 #define kCellType2 1
@@ -204,6 +210,21 @@
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
 				
 				
+                
+                UIButton *checkMarkButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
+                                                                                       0,
+                                                                                       44, 
+                                                                                       44)];
+                checkMarkButton.tag = kCellViewTagCheckmarkButton;
+                [checkMarkButton addTarget:self action:@selector(checkmarkButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+                [cell.contentView addSubview:checkMarkButton];
+                [checkMarkButton release];
+                
+                
+                
+                UIImage *fakeImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SettingsFakeImage" ofType:@"png"]];
+                cell.imageView.image = fakeImage;
+                [fakeImage release];
 			}
 			
 			
@@ -223,6 +244,31 @@
 				cell.accessoryView = nil;
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			}
+            
+            
+            
+            UIButton *checkmarkButton = (UIButton *)[cell.contentView viewWithTag:kCellViewTagCheckmarkButton];
+            
+            NSInteger imageType = [[rowDic valueForKey:@"imageType"] integerValue];
+            if(imageType == kCellImageTypeCheckmark)
+            {
+                UIImage *checkImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SettingsCheckmark" ofType:@"png"]];
+                [checkmarkButton setBackgroundImage:checkImage forState:UIControlStateNormal];
+                [checkImage release];
+                
+                checkmarkButton.userInteractionEnabled = YES;
+            }
+            else if(imageType == kCellImageTypeNotChecked)
+            {
+                UIImage *checkImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SettingsUncheckmark" ofType:@"png"]];
+                [checkmarkButton setBackgroundImage:checkImage forState:UIControlStateNormal];
+                [checkImage release];
+                
+                checkmarkButton.userInteractionEnabled = NO;
+            }
+            
+            
+            
 			
 			break;
 		}
@@ -293,11 +339,11 @@
 	{
 		BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
 		if(isFacebookLoggedIn)
-		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
-			alertView.tag = kAlertViewForFacebookDisconnect;
-			[alertView show];
-			[alertView release];
+		{            
+            FacebookSettingsController *settingsController = [[FacebookSettingsController alloc] initWithNibName:@"FacebookSettingsController" bundle:nil];
+            [self.navigationController pushViewController:settingsController animated:YES];
+            [settingsController release];
+            
 		}
 		else 
 		{
@@ -310,10 +356,7 @@
 		BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
 		if(isTwitterLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
-			alertView.tag = kAlertViewForTwitterDisconnect;
-			[alertView show];
-			[alertView release];
+
 		}
 		else 
 		{
@@ -330,10 +373,7 @@
 		BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
 		if(isTumblrLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
-			alertView.tag = kAlertViewForTumblrDisconnect;
-			[alertView show];
-			[alertView release];
+
 		}
 		else 
 		{
@@ -350,10 +390,7 @@
 		BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
 		if(isMe2dayLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
-			alertView.tag = kAlertViewForMe2dayDisconnect;
-			[alertView show];
-			[alertView release];
+
 		}
 		else 
 		{
@@ -609,13 +646,19 @@
 	NSDictionary *row1_1 = [NSMutableDictionary dictionary];
 	[row1_1 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
 	[row1_1 setValue:NSLocalizedString(@"FacebookKey", @"") forKey:@"blackLabel"];
-	[row1_1 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
-	[row1_1 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
-	BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
+	[row1_1 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];  
+    BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
 	if(isFacebookLoggedIn)
-		[row1_1 setValue:NSLocalizedString(@"DisconnectKey", @"") forKey:@"detailedLabel"];
+    {
+        [row1_1 setValue:[NSNumber numberWithInt:kCellImageTypeCheckmark] forKey:@"imageType"];
+        [row1_1 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
+    }
 	else
-		[row1_1 setValue:nil forKey:@"detailedLabel"];
+    {
+        [row1_1 setValue:[NSNumber numberWithInt:kCellImageTypeNotChecked] forKey:@"imageType"];
+        [row1_1 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
+    }
+		
 	[section1 addObject:row1_1];
 	
 	
@@ -624,12 +667,18 @@
 	[row1_2 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
 	[row1_2 setValue:NSLocalizedString(@"TwitterKey", @"") forKey:@"blackLabel"];
 	[row1_2 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
-	[row1_2 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
-	BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
+    BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
 	if(isTwitterLoggedIn)
-		[row1_2 setValue:NSLocalizedString(@"DisconnectKey", @"") forKey:@"detailedLabel"];
+    {
+        [row1_2 setValue:[NSNumber numberWithInt:kCellImageTypeCheckmark] forKey:@"imageType"];
+        [row1_2 setValue:[NSNumber numberWithInt:kAccessoryTypeNone] forKey:@"accessoryType"];
+    }
 	else
-		[row1_2 setValue:nil forKey:@"detailedLabel"];
+    {
+        [row1_2 setValue:[NSNumber numberWithInt:kCellImageTypeNotChecked] forKey:@"imageType"];
+        [row1_2 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
+    }
+
 	[section1 addObject:row1_2];
 	
 	
@@ -638,13 +687,23 @@
 	[row1_3 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
 	[row1_3 setValue:NSLocalizedString(@"TumblrKey", @"") forKey:@"blackLabel"];
 	[row1_3 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
-	[row1_3 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
-	BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
+    
+    BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
 	if(isTumblrLoggedIn)
-		[row1_3 setValue:NSLocalizedString(@"DisconnectKey", @"") forKey:@"detailedLabel"];
+    {
+        [row1_3 setValue:[NSNumber numberWithInt:kCellImageTypeCheckmark] forKey:@"imageType"];
+        [row1_3 setValue:[NSNumber numberWithInt:kAccessoryTypeNone] forKey:@"accessoryType"];
+    }
 	else
-		[row1_3 setValue:nil forKey:@"detailedLabel"];
+    {
+        [row1_3 setValue:[NSNumber numberWithInt:kCellImageTypeNotChecked] forKey:@"imageType"];
+        [row1_3 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
+    }
+
 	[section1 addObject:row1_3];
+    
+    
+    
     
     
     
@@ -652,12 +711,19 @@
 	[row1_4 setValue:[NSNumber numberWithInt:kCellType1] forKey:@"cellType"];
 	[row1_4 setValue:NSLocalizedString(@"me2dayKey", @"") forKey:@"blackLabel"];
 	[row1_4 setValue:[NSNumber numberWithInt:UITextAlignmentLeft] forKey:@"textAlignment"];
-	[row1_4 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
-	BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
+    
+    BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
 	if(isMe2dayLoggedIn)
-		[row1_4 setValue:NSLocalizedString(@"DisconnectKey", @"") forKey:@"detailedLabel"];
+    {
+        [row1_4 setValue:[NSNumber numberWithInt:kCellImageTypeCheckmark] forKey:@"imageType"];
+        [row1_4 setValue:[NSNumber numberWithInt:kAccessoryTypeNone] forKey:@"accessoryType"];
+    }
 	else
-		[row1_4 setValue:nil forKey:@"detailedLabel"];
+    {
+        [row1_4 setValue:[NSNumber numberWithInt:kCellImageTypeNotChecked] forKey:@"imageType"];
+        [row1_4 setValue:[NSNumber numberWithInt:kAccessoryTypeDisclosureIndicator] forKey:@"accessoryType"];
+    }
+
 	[section1 addObject:row1_4];
 	
 	/*
@@ -1127,6 +1193,72 @@
     [_HUD release];
 	_HUD = nil;
 }
+
+
+
+
+
+#pragma mark -
+#pragma mark Action methods
+
+- (void)checkmarkButtonClicked:(id)sender
+{
+    UITableViewCell *cell = (UITableViewCell *)[[(UIButton *)sender superview] superview];
+    NSIndexPath *indexPath = [mTableView indexPathForCell:cell];
+    
+    
+    NSDictionary *rowDic = [[mTableData objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+	NSString *blackLabelText = [rowDic valueForKey:@"blackLabel"];
+	
+	if([blackLabelText isEqualToString:NSLocalizedString(@"FacebookKey", @"")])
+	{
+		BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
+		if(isFacebookLoggedIn)
+		{
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
+			alertView.tag = kAlertViewForFacebookDisconnect;
+			[alertView show];
+			[alertView release];
+		}
+		
+        
+	}
+	else if([blackLabelText isEqualToString:NSLocalizedString(@"TwitterKey", @"")])
+	{
+		BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
+		if(isTwitterLoggedIn)
+		{
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
+			alertView.tag = kAlertViewForTwitterDisconnect;
+			[alertView show];
+			[alertView release];
+		}
+	}
+	else if([blackLabelText isEqualToString:NSLocalizedString(@"TumblrKey", @"")])
+	{
+		BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
+		if(isTumblrLoggedIn)
+		{
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
+			alertView.tag = kAlertViewForTumblrDisconnect;
+			[alertView show];
+			[alertView release];
+		}
+	}
+    else if([blackLabelText isEqualToString:NSLocalizedString(@"me2dayKey", @"")])
+	{
+		BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
+		if(isMe2dayLoggedIn)
+		{
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
+			alertView.tag = kAlertViewForMe2dayDisconnect;
+			[alertView show];
+			[alertView release];
+		}
+        
+	}
+}
+
 
 
 
