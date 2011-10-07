@@ -119,3 +119,7 @@
 "ImageBarButtonPhotosButtonKey" = "MyPhotosBtnKR";
 "ImageButtonLostPasswordButtonKey" = "LostPasswordKR";
 
+
+"PostToWallKey" = "Post to Wall";
+"PostToAlbumKey" = "Post to Album";
+"WallKey" = "Wall";

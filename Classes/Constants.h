@@ -27,6 +27,7 @@
 #define kURLForTwitterDisconnection @"http://www.pumpl.com/twitter/unlink.json"
 #define kURLForTumblrDisconnection @"http://www.pumpl.com/tumblr/unlink.json"
 #define kURLForMe2dayDisconnection @"http://www.pumpl.com/me2day/unlink.json"
+#define kURLForGettingFacebookAlbums @"http://pumpl.com/facebook/albums.json"
 
 
 
@@ -34,7 +35,8 @@
 #define kFacebookAccountNickname @"FacebookAccountNickname"
 #define kFacebookAccountAccessToken @"FacebookAccountAccessToken"
 #define kFacebookAccountExpirationDate @"FacebookAccountExpirationDate"
-
+#define kFacebookUploadAlbumName @"FacebookUploadAlbumName"
+#define kFacebookUploadAlbumID @"FacebookUploadAlbumID"
 
 
 #define kIsTwitterAccountConnected @"IsTwitterAccountConnected"

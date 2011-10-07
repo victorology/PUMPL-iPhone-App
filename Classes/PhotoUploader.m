@@ -175,6 +175,27 @@
 	}
 	
 	
+    
+    NSString *shouldPostToFacebookWall = nil;
+    NSString *shouldPostToFacebookAlbum = nil;
+    NSString *facebookAlbumId = nil;
+    if([shouldUploadToFacebook isEqualToString:@"yes"])
+    {
+        NSString *albumName = [[DataManager sharedDataManager] getFacebookUploadAlbumName];
+        if(albumName)
+        {
+            shouldPostToFacebookWall = @"no";
+            shouldPostToFacebookAlbum = @"yes";
+            facebookAlbumId = [[DataManager sharedDataManager] getFacebookUploadAlbumID];
+        }
+        else
+        {
+            shouldPostToFacebookWall = @"yes";
+            shouldPostToFacebookAlbum = @"no";
+        }
+    }
+    
+    
 	
 	if(imageData)
 	{
@@ -196,6 +217,21 @@
 		{
 			[_request setPostValue:_title forKey:@"photo[title]"];
 		}
+        
+        if(shouldPostToFacebookWall)
+        {
+            [_request setPostValue:shouldPostToFacebookWall forKey:@"photo[post_to_facebook_wall]"];
+        }
+        
+        if(shouldPostToFacebookAlbum)
+        {
+            [_request setPostValue:shouldPostToFacebookAlbum forKey:@"photo[post_to_facebook_album]"];
+        }
+        
+        if(facebookAlbumId)
+        {
+            [_request setPostValue:facebookAlbumId forKey:@"photo[album_id]"];
+        }
 		
 		
 		[_request setData:imageData withFileName:@"fileName.jpg" andContentType:@"image/jpg" forKey:@"photo[image]"];

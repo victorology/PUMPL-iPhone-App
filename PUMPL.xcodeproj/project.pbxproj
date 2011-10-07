@@ -55,6 +55,8 @@
 		0B664D2613F8F078000D69E9 /* NextBtnKR@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B664D1C13F8F078000D69E9 /* NextBtnKR@2x.png */; };
 		0B664D2713F8F078000D69E9 /* RegisterBtnKR.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B664D1D13F8F078000D69E9 /* RegisterBtnKR.png */; };
 		0B664D2813F8F078000D69E9 /* RegisterBtnKR@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B664D1E13F8F078000D69E9 /* RegisterBtnKR@2x.png */; };
+		0B845763143F34C800E16B7B /* FacebookSettingsCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B845761143F34C800E16B7B /* FacebookSettingsCheck.png */; };
+		0B845764143F34C800E16B7B /* FacebookSettingsCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B845762143F34C800E16B7B /* FacebookSettingsCheck@2x.png */; };
 		0B8EFA7613A8DF5E00F5F517 /* croppedCameraOverlay.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B8EFA7513A8DF5E00F5F517 /* croppedCameraOverlay.png */; };
 		0B8EFBA913A9900900F5F517 /* KTPhotoBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0B8EFB9B13A9900900F5F517 /* KTPhotoBrowser.bundle */; };
 		0B8EFBAA13A9900900F5F517 /* KTPhotoBrowserGlobal.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B8EFB9E13A9900900F5F517 /* KTPhotoBrowserGlobal.m */; };
@@ -320,6 +322,8 @@
 		0B664D1C13F8F078000D69E9 /* NextBtnKR@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NextBtnKR@2x.png"; sourceTree = "<group>"; };
 		0B664D1D13F8F078000D69E9 /* RegisterBtnKR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = RegisterBtnKR.png; sourceTree = "<group>"; };
 		0B664D1E13F8F078000D69E9 /* RegisterBtnKR@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RegisterBtnKR@2x.png"; sourceTree = "<group>"; };
+		0B845761143F34C800E16B7B /* FacebookSettingsCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FacebookSettingsCheck.png; sourceTree = "<group>"; };
+		0B845762143F34C800E16B7B /* FacebookSettingsCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FacebookSettingsCheck@2x.png"; sourceTree = "<group>"; };
 		0B8EFA7513A8DF5E00F5F517 /* croppedCameraOverlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = croppedCameraOverlay.png; path = ../croppedCameraOverlay.png; sourceTree = "<group>"; };
 		0B8EFB9B13A9900900F5F517 /* KTPhotoBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = KTPhotoBrowser.bundle; sourceTree = "<group>"; };
 		0B8EFB9C13A9900900F5F517 /* KTPhotoBrowserDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KTPhotoBrowserDataSource.h; sourceTree = "<group>"; };
@@ -812,6 +816,8 @@
 		0BC6938912D45370008285B2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0B845761143F34C800E16B7B /* FacebookSettingsCheck.png */,
+				0B845762143F34C800E16B7B /* FacebookSettingsCheck@2x.png */,
 				0BF39ECE143C108900CD0C70 /* SettingsUncheckmark.png */,
 				0BF39ECA143C0FED00CD0C70 /* SettingsCheckmark.png */,
 				0BF39ECB143C0FED00CD0C70 /* SettingsFakeImage.png */,
@@ -1413,6 +1419,8 @@
 				0BF39ECD143C0FED00CD0C70 /* SettingsFakeImage.png in Resources */,
 				0BF39ECF143C108900CD0C70 /* SettingsUncheckmark.png in Resources */,
 				0BF39ED4143C14EE00CD0C70 /* FacebookSettingsController.xib in Resources */,
+				0B845763143F34C800E16B7B /* FacebookSettingsCheck.png in Resources */,
+				0B845764143F34C800E16B7B /* FacebookSettingsCheck@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

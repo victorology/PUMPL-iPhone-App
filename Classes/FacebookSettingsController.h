@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MBProgressHUD.h"
+#import "ASIHTTPRequest.h"
 
-@interface FacebookSettingsController : UIViewController
+@interface FacebookSettingsController : UIViewController <MBProgressHUDDelegate> {
+    
+    IBOutlet UITableView *mTableView;
+    MBProgressHUD *_HUD;
+    
+    NSMutableArray *mTableData;
+    NSMutableArray *mUserAlbumsArray;
+    ASIHTTPRequest *mRequest;
+}
 
 @end

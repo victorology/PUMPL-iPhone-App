@@ -125,6 +125,7 @@ static DataManager *sharedDataManager = nil;
     [self setTwitterConnected:NO withNickname:nil];
     [self setTumblrConnected:NO withNickname:nil];
     [self setMe2dayConnected:NO withNickname:nil];
+    [self setFacebookUploadAlbum:nil withAlbumID:nil];
     
 	[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationPUMPLUserDidLogout object:nil]];
 }
@@ -207,6 +208,24 @@ static DataManager *sharedDataManager = nil;
     [facebook logout:self];
 }
 
+
+- (void)setFacebookUploadAlbum:(NSString *)albumName withAlbumID:(NSString *)albumID
+{
+    [[NSUserDefaults standardUserDefaults] setValue:albumName forKey:kFacebookUploadAlbumName];
+	[[NSUserDefaults standardUserDefaults] setValue:albumID forKey:kFacebookUploadAlbumID];
+	[[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+- (NSString *)getFacebookUploadAlbumName
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kFacebookUploadAlbumName];
+}
+
+- (NSString *)getFacebookUploadAlbumID
+{
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kFacebookUploadAlbumID];
+}
 
 
 

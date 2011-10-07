@@ -39,8 +39,12 @@
 - (void)setTumblrConnected:(BOOL)isConnected withNickname:(NSString *)nickname;
 - (void)setMe2dayConnected:(BOOL)isConnected withNickname:(NSString *)nickname;
 
+
 - (void)facebookLogin;
 - (void)facebookLogout;
+- (void)setFacebookUploadAlbum:(NSString *)albumName withAlbumID:(NSString *)albumID;
+- (NSString *)getFacebookUploadAlbumName;
+- (NSString *)getFacebookUploadAlbumID;
 
 
 - (NSInteger)imageQualitySetting;
