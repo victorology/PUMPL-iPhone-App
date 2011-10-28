@@ -132,6 +132,8 @@
 		0BD3371F12DB8316006A02EB /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BD3371D12DB8316006A02EB /* SettingsViewController.m */; };
 		0BD3372012DB8316006A02EB /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BD3371E12DB8316006A02EB /* SettingsViewController.xib */; };
 		0BDC36B613D6B67100A67649 /* WelcomeScreenViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0BDC36B413D6B67100A67649 /* WelcomeScreenViewController.xib */; };
+		0BDFDC09145A41E900CFA32E /* NavBackForTabBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BDFDC07145A41E900CFA32E /* NavBackForTabBar.png */; };
+		0BDFDC0A145A41E900CFA32E /* NavBackForTabBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0BDFDC08145A41E900CFA32E /* NavBackForTabBar@2x.png */; };
 		0BE3FF9112E96427004453A1 /* EnabledService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE3FF9012E96427004453A1 /* EnabledService.m */; };
 		0BE3FFF512E9731D004453A1 /* PhotoUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE3FFF412E9731D004453A1 /* PhotoUploader.m */; };
 		0BE8DBBC13D3F36800FAC065 /* PullToRefreshScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BE8DBBB13D3F36800FAC065 /* PullToRefreshScrollView.m */; };
@@ -447,6 +449,8 @@
 		0BD3371E12DB8316006A02EB /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		0BDC36B213D6B67100A67649 /* WelcomeScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeScreenViewController.h; sourceTree = "<group>"; };
 		0BDC36B413D6B67100A67649 /* WelcomeScreenViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeScreenViewController.xib; sourceTree = "<group>"; };
+		0BDFDC07145A41E900CFA32E /* NavBackForTabBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NavBackForTabBar.png; sourceTree = "<group>"; };
+		0BDFDC08145A41E900CFA32E /* NavBackForTabBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "NavBackForTabBar@2x.png"; sourceTree = "<group>"; };
 		0BE3FF8F12E96427004453A1 /* EnabledService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnabledService.h; sourceTree = "<group>"; };
 		0BE3FF9012E96427004453A1 /* EnabledService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnabledService.m; sourceTree = "<group>"; };
 		0BE3FFF312E9731D004453A1 /* PhotoUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoUploader.h; sourceTree = "<group>"; };
@@ -849,6 +853,8 @@
 				0BF4012413F8E5F60094C51C /* Default@2x.png */,
 				0B90FDD813F5385400B890DC /* NavBack.png */,
 				0B90FDD913F5385400B890DC /* NavBack@2x.png */,
+				0BDFDC07145A41E900CFA32E /* NavBackForTabBar.png */,
+				0BDFDC08145A41E900CFA32E /* NavBackForTabBar@2x.png */,
 				0B90FDDA13F5385400B890DC /* SaveBtn.png */,
 				0B90FDDB13F5385400B890DC /* SaveBtn@2x.png */,
 				0B90FDE213F5385400B890DC /* camera_button_take.png */,
@@ -1421,6 +1427,8 @@
 				0BF39ED4143C14EE00CD0C70 /* FacebookSettingsController.xib in Resources */,
 				0B845763143F34C800E16B7B /* FacebookSettingsCheck.png in Resources */,
 				0B845764143F34C800E16B7B /* FacebookSettingsCheck@2x.png in Resources */,
+				0BDFDC09145A41E900CFA32E /* NavBackForTabBar.png in Resources */,
+				0BDFDC0A145A41E900CFA32E /* NavBackForTabBar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1554,13 +1562,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Classes/Build/Products/three20;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = "Ad Hoc";
@@ -1569,7 +1580,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Victor Ching";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = PUMPL_Prefix.pch;
@@ -1581,7 +1592,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D8B65C33-1B96-4EBB-A809-E3A00B4C7C5E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = "Ad Hoc";
@@ -1590,7 +1601,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Victor Ching";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1604,7 +1615,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = PUMPL;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D8B65C33-1B96-4EBB-A809-E3A00B4C7C5E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 			};
 			name = Debug;
 		};
@@ -1633,12 +1644,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = /Classes/Build/Products/three20;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;

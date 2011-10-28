@@ -89,6 +89,7 @@
 "FullKey" = "전체";
 "YourIphoneDoesNotHaveTheCapibilityToCaptureImageKey" = "당신의 아이폰을 사진을 찍을수 없습니다.";
 "YourIphoneDoesNotHaveTheCapibilityToShowPhotoLibraryKey" = "Pending";
+"PleaseWaitKey" = "Please Wait";
 
 
 "ProcessingImageKey" = "이미지 처리중";

@@ -230,7 +230,7 @@
 
 - (void)cancel:(id)sender
 {
-	[self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)login:(id)sender
@@ -327,7 +327,7 @@
 	if(alertView.tag == 1)
 	{
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationTumblrDidLogin object:nil]];
-		[self dismissModalViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
 	}
 }
 

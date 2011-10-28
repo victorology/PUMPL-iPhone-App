@@ -46,10 +46,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIImage* backImage = [[UIImage imageNamed:@"NavBack.png"] retain];
-    UIView* backView = [[UIImageView alloc] initWithImage:backImage];
-    backView.frame = CGRectMake(0.0, 0.0, self.view.bounds.size.width, 48);
-    [[self tabBar] insertSubview:backView atIndex:0];
+    
+    if([self.tabBar respondsToSelector:@selector(setBackgroundImage:)])
+    {
+        [self.tabBar setBackgroundImage:[UIImage imageNamed:@"NavBackForTabBar.png"]];
+    }
+    else
+    {
+        UIImage* backImage = [[UIImage imageNamed:@"NavBack.png"] retain];
+        UIView* backView = [[UIImageView alloc] initWithImage:backImage];
+        backView.frame = CGRectMake(0.0, 0.0, self.view.bounds.size.width, 48);
+        [[self tabBar] insertSubview:backView atIndex:0];
+    }
+    
     
     UIImage* cameraImage = [UIImage imageNamed:@"img-tab-camera.png"];
     [self addCenterButtonWithImage:cameraImage highlightImage:cameraImage];

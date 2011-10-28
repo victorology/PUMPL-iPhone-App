@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CameraImagePickerController.h"
 #import "LibraryImagePickerController.h"
+#import "MBProgressHUD.h"
 
 
 #define kSelectedPhotoSourceCamera 0
@@ -16,7 +17,7 @@
 
 
 
-@interface AddPhotoViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, CameraImagePickerControllerDelegate, LibraryImagePickerControllerDelegate> {
+@interface AddPhotoViewController : UIViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, CameraImagePickerControllerDelegate, LibraryImagePickerControllerDelegate, MBProgressHUDDelegate> {
 
 	NSInteger _selectedPhotoSource;
 	IBOutlet UIView *_imagePickerOverLayView;
@@ -24,9 +25,11 @@
     LibraryImagePickerController *_libraryImagePickerController;
 	IBOutlet UIButton *_cropButton;
 	IBOutlet UIImageView *_cropImageView;
+    MBProgressHUD *_HUD;
     
     BOOL _shouldDisplayCameraPickerOnDisappearOfLibrary;
     BOOL _shouldDisplayLibraryPickerOnCameraOfLibrary;
+    BOOL _shouldDisplayCameraPickerInViewWillAppear;
 }
 
 @property (nonatomic, retain) CameraImagePickerController *_cameraImagePickerController;

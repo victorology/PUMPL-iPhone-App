@@ -92,6 +92,7 @@
 "FullKey" = "Full";
 "YourIphoneDoesNotHaveTheCapibilityToCaptureImageKey" = "Your iphone does not have the capibility to capture image.";
 "YourIphoneDoesNotHaveTheCapibilityToShowPhotoLibraryKey" = "Your iphone does not have the capibility to show photo library.";
+"PleaseWaitKey" = "Please Wait";
 
 
 "ProcessingImageKey" = "Processing Image";

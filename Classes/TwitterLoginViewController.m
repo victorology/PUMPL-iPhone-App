@@ -242,7 +242,8 @@
 
 - (void)cancel:(id)sender
 {
-	[self dismissModalViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
+//	[self dismissModalViewControllerAnimated:YES];
 }
 
 - (void)login:(id)sender
@@ -340,7 +341,8 @@
 	{
 		
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationTwitterDidLogin object:nil]];
-		[self dismissModalViewControllerAnimated:YES];
+        [self.navigationController popViewControllerAnimated:YES];
+
 	}
 }
 

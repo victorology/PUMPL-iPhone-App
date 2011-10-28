@@ -360,11 +360,10 @@
 		}
 		else 
 		{
-			TwitterLoginViewController *viewController = [[TwitterLoginViewController alloc] initWithNibName:@"TwitterLoginViewController" bundle:nil];
-			UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
-			[viewController release];
-			[self presentModalViewController:navController animated:YES];
-			[navController release];
+			TwitterLoginViewController *viewController = [[TwitterLoginViewController alloc] initWithNibName:@"TwitterLoginViewController" bundle:nil];			
+            [self.navigationController pushViewController:viewController animated:YES];
+            [viewController release];
+
 		}
 		
 	}
@@ -378,10 +377,9 @@
 		else 
 		{
 			TumblrLoginViewController *viewController = [[TumblrLoginViewController alloc] initWithNibName:@"TumblrLoginViewController" bundle:nil];
-			UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
-			[viewController release];
-			[self presentModalViewController:navController animated:YES];
-			[navController release];
+            [self.navigationController pushViewController:viewController animated:YES];
+            [viewController release];
+
 		}
 		
 	}

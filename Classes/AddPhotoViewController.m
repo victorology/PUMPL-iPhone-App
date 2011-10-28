@@ -52,6 +52,9 @@
     UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
 	self.view.backgroundColor = backgroundColor;
     [backgroundColor release];
+    
+    
+    _shouldDisplayCameraPickerInViewWillAppear = YES;
 }
 
 
@@ -59,44 +62,73 @@
 	[super viewWillAppear:animated];
 	
     
+#if TARGET_IPHONE_SIMULATOR
     
+    [self performSelector:@selector(presentCameraImagePickerController)];
     
+#else
     
+    _HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:_HUD];
+	
+    _HUD.delegate = self;
+    _HUD.labelText = NSLocalizedString(@"PleaseWaitKey", @"");
+	
+	[_HUD show:YES];
+    [self performSelector:@selector(presentCameraImagePickerController) withObject:nil afterDelay:0.01];
     
-    
-    if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
-    {
-        _selectedPhotoSource = kSelectedPhotoSourceCamera;
-    
-        if(!_cameraImagePickerController)
-        {
-            self._cameraImagePickerController = [self newCameraImagePickerController];
-        }
-        
-        _cropButton.tag = kCropButtonDuringFull;
-        [_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
-        _cropImageView.hidden = YES;
-        
-        
-        [self presentModalViewController:_cameraImagePickerController animated:YES];
-    }
-    else
-    {
-#ifdef TARGET_IPHONE_SIMULATOR
-        NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:[UIImage imageNamed:@"Default.png"], @"UIImagePickerControllerOriginalImage",
-                              kUTTypeImage, @"UIImagePickerControllerMediaType", nil];
-        [self imagePickerController:nil didFinishPickingMediaWithInfo:info];
-        return;
 #endif
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"YourIphoneDoesNotHaveTheCapibilityToCaptureImageKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
-        alertView.tag = kAlertViewForCameraCapability;
-        [alertView show];
-        [alertView release];
-    }
+    
+
     
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+}
+
+
+
+- (void)presentCameraImagePickerController
+{
+    if(_shouldDisplayCameraPickerInViewWillAppear)
+    {
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
+        {
+            _selectedPhotoSource = kSelectedPhotoSourceCamera;
+            
+            if(!_cameraImagePickerController)
+            {
+                self._cameraImagePickerController = [self newCameraImagePickerController];
+            }
+            
+            _cropButton.tag = kCropButtonDuringFull;
+            [_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
+            _cropImageView.hidden = YES;
+            
+            
+            [self presentModalViewController:_cameraImagePickerController animated:YES];
+        }
+        else
+        {
+#if TARGET_IPHONE_SIMULATOR
+            NSDictionary* info = [NSDictionary dictionaryWithObjectsAndKeys:[UIImage imageNamed:@"Default.png"], @"UIImagePickerControllerOriginalImage",
+                                  kUTTypeImage, @"UIImagePickerControllerMediaType", nil];
+            [self imagePickerController:nil didFinishPickingMediaWithInfo:info];
+            return;
+#endif
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"YourIphoneDoesNotHaveTheCapibilityToCaptureImageKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+            alertView.tag = kAlertViewForCameraCapability;
+            [alertView show];
+            [alertView release];
+        }
+    }
+    else
+    {
+        _shouldDisplayCameraPickerInViewWillAppear = YES;
+    } 
+    
+    
+    [_HUD hide:YES];
 }
 
 
@@ -139,7 +171,7 @@
 
 - (IBAction)cancelImagePicker:(id)sender
 {
-
+    _shouldDisplayCameraPickerInViewWillAppear = NO;
     [_cameraImagePickerController dismissModalViewControllerAnimated:YES];
     [self.tabBarController setSelectedIndex:[[DataManager sharedDataManager] mLastSelectedTabBarIndex]]; 
 }
@@ -149,6 +181,7 @@
 
 - (IBAction)rollClicked:(id)sender
 {    
+    _shouldDisplayCameraPickerInViewWillAppear = NO;
     _shouldDisplayLibraryPickerOnCameraOfLibrary = YES;
     [_cameraImagePickerController dismissModalViewControllerAnimated:YES];
 }
@@ -202,8 +235,11 @@
 	{
 		UIImage *imagePicked = [info valueForKey:@"UIImagePickerControllerOriginalImage"];
 		
+        
 #ifndef TARGET_IPHONE_SIMULATOR
-		if(_selectedPhotoSource == kSelectedPhotoSourceCamera)
+		
+#else
+        if(_selectedPhotoSource == kSelectedPhotoSourceCamera)
 		{
 			UIImageWriteToSavedPhotosAlbum(imagePicked, nil, nil, nil);
 		}
@@ -344,6 +380,18 @@
     pickerController.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil];
     
     return pickerController;
+}
+
+
+
+#pragma mark -
+#pragma mark MBProgressHUDDelegate methods
+
+- (void)hudWasHidden {
+    // Remove HUD from screen when the HUD was hidded
+    [_HUD removeFromSuperview];
+    [_HUD release];
+	_HUD = nil;
 }
 
 

@@ -116,7 +116,7 @@
     CGImageRef imageRef = self.CGImage;
     
     CGBitmapInfo bitmapInfo = CGImageGetBitmapInfo(imageRef);
-#ifdef TARGET_IPHONE_SIMULATOR    
+#if TARGET_IPHONE_SIMULATOR    
     bitmapInfo = kCGImageAlphaPremultipliedLast;
 #endif     
     

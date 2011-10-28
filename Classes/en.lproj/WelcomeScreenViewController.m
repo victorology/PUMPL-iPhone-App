@@ -597,10 +597,8 @@
 		else 
 		{
 			TwitterLoginViewController *viewController = [[TwitterLoginViewController alloc] initWithNibName:@"TwitterLoginViewController" bundle:nil];
-			UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
+            [self.navigationController pushViewController:viewController animated:YES];
 			[viewController release];
-			[self presentModalViewController:navController animated:YES];
-			[navController release];
 		}
 		
 	}
@@ -617,10 +615,8 @@
 		else 
 		{
 			TumblrLoginViewController *viewController = [[TumblrLoginViewController alloc] initWithNibName:@"TumblrLoginViewController" bundle:nil];
-			UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
-			[viewController release];
-			[self presentModalViewController:navController animated:YES];
-			[navController release];
+            [self.navigationController pushViewController:viewController animated:YES];
+            [viewController release];
 		}
 		
 	}
@@ -643,79 +639,7 @@
     
     
     
-	
-//	if([blackLabelText isEqualToString:@"Facebook"])
-//	{
-//		BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
-//		if(isFacebookLoggedIn)
-//		{
-//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-//			alertView.tag = kAlertViewForFacebookDisconnect;
-//			[alertView show];
-//			[alertView release];
-//		}
-//		else 
-//		{
-//			[self launchFacebookConnectionCall];			
-//		}
-//        
-//	}
-//	else if([blackLabelText isEqualToString:@"Twitter"])
-//	{
-//		BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
-//		if(isTwitterLoggedIn)
-//		{
-//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-//			alertView.tag = kAlertViewForTwitterDisconnect;
-//			[alertView show];
-//			[alertView release];
-//		}
-//		else 
-//		{
-//			TwitterLoginViewController *viewController = [[TwitterLoginViewController alloc] initWithNibName:@"TwitterLoginViewController" bundle:nil];
-//			UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
-//			[viewController release];
-//			[self presentModalViewController:navController animated:YES];
-//			[navController release];
-//		}
-//		
-//	}
-//	else if([blackLabelText isEqualToString:@"Tumblr"])
-//	{
-//		BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
-//		if(isTumblrLoggedIn)
-//		{
-//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-//			alertView.tag = kAlertViewForTumblrDisconnect;
-//			[alertView show];
-//			[alertView release];
-//		}
-//		else 
-//		{
-//			TumblrLoginViewController *viewController = [[TumblrLoginViewController alloc] initWithNibName:@"TumblrLoginViewController" bundle:nil];
-//			UINavigationController *navController = [[PMNavigationController alloc] initWithRootViewController:viewController];
-//			[viewController release];
-//			[self presentModalViewController:navController animated:YES];
-//			[navController release];
-//		}
-//		
-//	}
-//    else if([blackLabelText isEqualToString:@"me2day"])
-//	{
-//		BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
-//		if(isMe2dayLoggedIn)
-//		{
-//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Confirmation" message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
-//			alertView.tag = kAlertViewForMe2dayDisconnect;
-//			[alertView show];
-//			[alertView release];
-//		}
-//		else 
-//		{
-//			[self launchMe2dayConnectionCall];			
-//		}
-//        
-//	}
+
 	
 	[mTableView deselectRowAtIndexPath:indexPath animated:YES];
     

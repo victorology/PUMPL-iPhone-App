@@ -71,7 +71,7 @@ static DataManager *sharedDataManager = nil;
 
 - (unsigned)retainCount { return UINT_MAX; }
 
-- (void)release {}
+//- (void)release {}
 
 - (id)autorelease { return self; }
 
