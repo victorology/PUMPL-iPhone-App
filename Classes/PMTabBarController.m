@@ -73,6 +73,7 @@
     [button addTarget:self action:@selector(onCameraTabBtn:) forControlEvents:UIControlEventTouchUpInside];
     [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
+    [button setShowsTouchWhenHighlighted:YES];
     
     
     CGRect tabBarBounds = self.tabBar.bounds;
