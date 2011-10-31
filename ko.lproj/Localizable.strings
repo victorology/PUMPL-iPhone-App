@@ -121,6 +121,6 @@
 "ImageButtonLostPasswordButtonKey" = "LostPasswordKR";
 
 
-"PostToWallKey" = "Post to Wall";
-"PostToAlbumKey" = "Post to Album";
-"WallKey" = "Wall";
+"PostToWallKey" = "담벼락으로 올리기";
+"PostToAlbumKey" = "앨범으로 올리기";
+"WallKey" = "담벼락";
