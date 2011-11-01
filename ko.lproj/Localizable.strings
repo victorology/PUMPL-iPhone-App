@@ -68,6 +68,11 @@
 "YouHaveSuccessfullyLoggedIntoYourTumblrAccountKey" = "텀블러를 연동 했습니다.";
 "CouldNotLogIntoTumblrScreenKey" = "텀블러를 연동 실페 했습니다.";
 "Me2dayAlreadyLoggedInMessageKey" = "미투데이에 이미 로그인이었습니다. 로그아웃 하고 다시 해보세요.";
+"FacebookLogoutConfirmationMessageKey" = "Are you sure you want to unlink from Facebook?";
+"TwitterLogoutConfirmationMessageKey" = "Are you sure you want to unlink from Twitter?";
+"TumblerLogoutConfirmationMessageKey" = "Are you sure you want to unlink from Tumbler?";
+"Me2dayLogoutConfirmationMessageKey" = "Are you sure you want to unlink from Me2day?";
+"AccountLogoutConfirmationMessageKey" = "Are you sure you want to log out?";
 
 
 

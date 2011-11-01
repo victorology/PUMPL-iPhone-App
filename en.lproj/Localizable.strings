@@ -66,8 +66,11 @@
 "YouHaveSuccessfullyLoggedIntoYourTumblrAccountKey" = "You have successfully logged into your tumblr account.";
 "CouldNotLogIntoTumblrScreenKey" = "Could not log into tumblr screen";
 "Me2dayAlreadyLoggedInMessageKey" = "You are already logged in to me2day. Please logout and try again";
-
-
+"FacebookLogoutConfirmationMessageKey" = "Are you sure you want to unlink from Facebook?";
+"TwitterLogoutConfirmationMessageKey" = "Are you sure you want to unlink from Twitter?";
+"TumblerLogoutConfirmationMessageKey" = "Are you sure you want to unlink from Tumbler?";
+"Me2dayLogoutConfirmationMessageKey" = "Are you sure you want to unlink from Me2day?";
+"AccountLogoutConfirmationMessageKey" = "Are you sure you want to log out?";
 
 
 

@@ -398,7 +398,7 @@
 	}
 	else if([blackLabelText isEqualToString:NSLocalizedString(@"LogoutKey", @"")])
 	{
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
+		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"AccountLogoutConfirmationMessageKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
 		alertView.tag = kAlertViewForLogout;
 		[alertView show];
 		[alertView release];
@@ -1213,7 +1213,7 @@
 		BOOL isFacebookLoggedIn = [[DataManager sharedDataManager] isFacebookConnected];
 		if(isFacebookLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"FacebookLogoutConfirmationMessageKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
 			alertView.tag = kAlertViewForFacebookDisconnect;
 			[alertView show];
 			[alertView release];
@@ -1226,7 +1226,7 @@
 		BOOL isTwitterLoggedIn = [[DataManager sharedDataManager] isTwitterConnected];
 		if(isTwitterLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"TwitterLogoutConfirmationMessageKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
 			alertView.tag = kAlertViewForTwitterDisconnect;
 			[alertView show];
 			[alertView release];
@@ -1237,7 +1237,7 @@
 		BOOL isTumblrLoggedIn = [[DataManager sharedDataManager] isTumblrConnected];
 		if(isTumblrLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"TumblerLogoutConfirmationMessageKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
 			alertView.tag = kAlertViewForTumblrDisconnect;
 			[alertView show];
 			[alertView release];
@@ -1248,7 +1248,7 @@
 		BOOL isMe2dayLoggedIn = [[DataManager sharedDataManager] isMe2dayConnected];
 		if(isMe2dayLoggedIn)
 		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"ConfirmationKey", @"") message:NSLocalizedString(@"AreYouSureKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"Me2dayLogoutConfirmationMessageKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"NoKey", @"") otherButtonTitles:NSLocalizedString(@"YesKey", @""), nil];
 			alertView.tag = kAlertViewForMe2dayDisconnect;
 			[alertView show];
 			[alertView release];
