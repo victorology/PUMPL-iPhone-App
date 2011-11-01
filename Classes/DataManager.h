@@ -24,6 +24,7 @@
 @property (nonatomic, readonly) Facebook* facebook;
 
 + (DataManager*)sharedDataManager;
++ (BOOL)iOS_5;
 
 - (void)setUserAsLoggedInWithProfileData:(NSDictionary *)profileDic;
 - (BOOL)isUserLoggedIn;

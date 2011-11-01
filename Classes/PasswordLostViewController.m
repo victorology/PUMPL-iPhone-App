@@ -246,7 +246,14 @@
 	
 	NSDictionary *row1 = [NSMutableDictionary dictionary];
 	[row1 setValue:NSLocalizedString(@"EmailKey", @"") forKey:@"inputName"];
-	[row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeEmailAddress] forKey:@"keyboardType"];
+    
+    
+    if([DataManager iOS_5])
+        [row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeDefault] forKey:@"keyboardType"];
+    else
+        [row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeEmailAddress] forKey:@"keyboardType"];
+    
+
 	[row1 setValue:[NSNumber numberWithInt:UIReturnKeyDefault] forKey:@"keyboardReturnKey"];
 	[row1 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
 	[array addObject:row1];

@@ -278,14 +278,27 @@
 	NSDictionary *row1 = [NSMutableDictionary dictionary];
     [row1 setValue:[NSNumber numberWithInteger:kCellTypeTextField] forKey:@"cellType"];
 	[row1 setValue:NSLocalizedString(@"EmailKey", @"") forKey:@"inputName"];
-	[row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeEmailAddress] forKey:@"keyboardType"];
+    
+    if([DataManager iOS_5])
+        [row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeDefault] forKey:@"keyboardType"];
+    else
+        [row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeEmailAddress] forKey:@"keyboardType"];
+    
 	[row1 setValue:[NSNumber numberWithInt:UIReturnKeyNext] forKey:@"keyboardReturnKey"];
 	[row1 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
 	[section1 addObject:row1];
+    
+    
+    
 	
 	NSDictionary *row2 = [NSMutableDictionary dictionary];
     [row2 setValue:[NSNumber numberWithInteger:kCellTypeTextField] forKey:@"cellType"];
-	[row2 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
+    
+    if([DataManager iOS_5])
+        [row2 setValue:[NSNumber numberWithInt:UIKeyboardTypeDefault] forKey:@"keyboardType"];
+    else
+        [row2 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
+    
 	[row2 setValue:[NSNumber numberWithInt:UIReturnKeyGo] forKey:@"keyboardReturnKey"];
 	[row2 setValue:NSLocalizedString(@"PasswordKey", @"") forKey:@"inputName"];
 	[row2 setValue:[NSNumber numberWithBool:YES] forKey:@"secureTextEntry"];

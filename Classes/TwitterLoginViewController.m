@@ -200,13 +200,23 @@
 	
 	NSDictionary *row1 = [NSMutableDictionary dictionary];
 	[row1 setValue:NSLocalizedString(@"UsernameKey", @"") forKey:@"inputName"];
-	[row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
+    
+    if([DataManager iOS_5])
+        [row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeDefault] forKey:@"keyboardType"];
+    else
+        [row1 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
+
 	[row1 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
 	[array addObject:row1];
 	
 	NSDictionary *row2 = [NSMutableDictionary dictionary];
 	[row2 setValue:NSLocalizedString(@"PasswordKey", @"") forKey:@"inputName"];
-	[row2 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
+    
+    if([DataManager iOS_5])
+        [row2 setValue:[NSNumber numberWithInt:UIKeyboardTypeDefault] forKey:@"keyboardType"];
+    else
+        [row2 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
+    
 	[row2 setValue:[NSNumber numberWithBool:YES] forKey:@"secureTextEntry"];
 	[array addObject:row2];
 	

@@ -287,4 +287,37 @@ static DataManager *sharedDataManager = nil;
 }
 
 
+
+
+
+#pragma mark -
+#pragma mark Helper Methods
+
+
++ (BOOL)iOS_5 {
+    
+    BOOL isOS5 = NO;
+    
+    NSString *osVersion = @"5.0";
+    NSString *currOsVersion = [[UIDevice currentDevice] systemVersion];
+    
+    NSComparisonResult result = [currOsVersion compare:osVersion options:NSNumericSearch];
+    if(result == NSOrderedAscending)
+    {
+        isOS5 = NO;
+    }
+    else if(result == NSOrderedSame)
+    {
+        isOS5 = YES;
+    }
+    else if(result == NSOrderedDescending)
+    {
+        isOS5 = YES;
+    }
+    
+    return isOS5;
+}
+
+
+
 @end

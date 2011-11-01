@@ -9,6 +9,7 @@
 #import "FacebookSettingsController.h"
 #import "DataManager.h"
 #import "JSON.h"
+#import "PMTabBarController.h"
 
 
 
@@ -96,6 +97,12 @@
 	
 	mTableView.backgroundColor = [UIColor clearColor];
 	mTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    
+    UIImage *backButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonBackButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:backButtonImage
+                                                                               target:self action:@selector(cancel:)];
+    [backButtonImage release];
 }
 
 
@@ -408,6 +415,17 @@
     [_HUD removeFromSuperview];
     [_HUD release];
 	_HUD = nil;
+}
+
+
+
+#pragma mark -
+#pragma mark Action Methods
+
+- (void)cancel:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    //	[self dismissModalViewControllerAnimated:YES];
 }
 
 

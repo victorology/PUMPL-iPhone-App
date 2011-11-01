@@ -32,6 +32,13 @@
     // Override point for customization after application launch.
 	
     
+//    [[NSUserDefaults standardUserDefaults] setObject: [NSArray arrayWithObject: @"ru_RU"] forKey: @"AppleLanguages"];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    
+    
+    
     eaglContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];
     if(!eaglContext) 
     {

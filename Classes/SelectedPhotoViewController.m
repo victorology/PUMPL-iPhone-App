@@ -213,7 +213,12 @@
 	NSMutableDictionary *row1_1 = [NSMutableDictionary dictionary];
 	[row1_1 setValue:[NSNumber numberWithInteger:kCellTypeTextField] forKey:@"cellType"];
 	[row1_1 setValue:NSLocalizedString(@"CaptionKey", @"") forKey:@"inputName"];
-	[row1_1 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
+    
+    if([DataManager iOS_5])
+        [row1_1 setValue:[NSNumber numberWithInt:UIKeyboardTypeDefault] forKey:@"keyboardType"];
+    else
+        [row1_1 setValue:[NSNumber numberWithInt:UIKeyboardTypeAlphabet] forKey:@"keyboardType"];
+    
 	[row1_1 setValue:[NSNumber numberWithBool:NO] forKey:@"secureTextEntry"];
 	[section1 addObject:row1_1];
 	
