@@ -59,6 +59,8 @@ static DataManager *sharedDataManager = nil;
 				
 				facebook = [[Facebook alloc] initWithAppId:kAppId
                                                 andDelegate:self];
+                
+                [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(respondToPUMPLLogin:) name:kNotificationPUMPLUserDidLogin object:nil];
             }
         }
     }
@@ -316,6 +318,20 @@ static DataManager *sharedDataManager = nil;
     }
     
     return isOS5;
+}
+
+
+
+
+
+
+#pragma mark -
+#pragma mark Notification Methods
+
+
+- (void)respondToPUMPLLogin:(NSNotification *)notificationObject
+{
+    [self setFacebookUploadAlbum:@"Mobile Photos (PUMPL)" withAlbumID:nil];
 }
 
 

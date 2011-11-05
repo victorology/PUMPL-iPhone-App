@@ -271,6 +271,14 @@
 				[delegate photoUploaderHasFinishedUploading];
 			}
 		}
+        else
+        {
+            NSString *errorMessage = NSLocalizedString(@"UnknownServerResponseKey", nil);
+            if([delegate respondsToSelector:@selector(photoUploader:hasEncounteredError:)])
+            {
+                [delegate photoUploader:self hasEncounteredError:errorMessage];
+            }
+        }
 	}
 	else 
 	{

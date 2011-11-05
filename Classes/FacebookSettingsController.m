@@ -141,8 +141,31 @@
     mTableData = [[NSMutableArray alloc] init];
     
     
+
     NSString *selectedAlbumName = [[DataManager sharedDataManager] getFacebookUploadAlbumName];
     NSString *selectedAlbumID = [[DataManager sharedDataManager] getFacebookUploadAlbumID];
+    
+    
+    
+    if(selectedAlbumName && selectedAlbumID == nil)
+    {
+        // This means this is case that user is loading the facebook settings for the first time.
+        // And for that we have to make "Mobile Photos (PUMPL)" the default selected album.
+        // When the user logs in, the DataManager sets the album name as ""Mobile Photos (PUMPL)" and albumID as nil
+        // That is why we reach this situation when user logs for the first time
+        
+        for(NSDictionary *albumDic in mUserAlbumsArray)
+        {
+            
+            if([selectedAlbumName isEqualToString:[albumDic valueForKey:@"name"]])
+            {
+                selectedAlbumID = [NSString stringWithFormat:@"%@", [albumDic valueForKey:@"id"]];
+                [[DataManager sharedDataManager] setFacebookUploadAlbum:selectedAlbumName withAlbumID:selectedAlbumID];
+                break;
+            }
+        }
+    }
+    
     
     
     
