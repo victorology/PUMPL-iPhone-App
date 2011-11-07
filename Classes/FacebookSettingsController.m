@@ -383,26 +383,35 @@
 	
 
     
-	NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
-	if(code == 0)
-	{
-        [mUserAlbumsArray release];
-        mUserAlbumsArray = [[NSMutableArray alloc] init];
-        
-		NSArray *albumsArray = [responseDic valueForKey:@"value"];
-        for(NSDictionary *albumDic in albumsArray)
+	if(responseDic)
+    {
+        NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
+        if(code == 0)
         {
-            [mUserAlbumsArray addObject:albumDic];
+            [mUserAlbumsArray release];
+            mUserAlbumsArray = [[NSMutableArray alloc] init];
+            
+            NSArray *albumsArray = [responseDic valueForKey:@"value"];
+            for(NSDictionary *albumDic in albumsArray)
+            {
+                [mUserAlbumsArray addObject:albumDic];
+            }
         }
-	}
-	else 
-	{
-		NSString *errorMessage = [responseDic valueForKey:@"error_message"];
-		
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+        else 
+        {
+            NSString *errorMessage = [responseDic valueForKey:@"error_message"];
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+            [alertView show];
+            [alertView release];
+        }
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"UnknownServerResponseKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 		[alertView show];
 		[alertView release];
-	}
+    }
 	
 	
 	

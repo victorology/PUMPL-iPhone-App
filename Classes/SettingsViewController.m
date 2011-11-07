@@ -827,210 +827,218 @@
 	
 //    NSLog(@"Response - %@", responseDic);
     
-	NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
-	if(code == 0)
-	{
-		NSInteger callType = [[request.userInfo valueForKey:@"callType"] integerValue];
-		
-		switch (callType) 
-		{
-			case kServerCallTypeCheckConnections:
-			{
-				//Facebook Data
-				NSDictionary *facebookData = [[responseDic objectForKey:@"value"] objectForKey:@"facebook"];
-				if(facebookData)
-				{
-					BOOL isConnected = [[facebookData valueForKey:@"is_connected"] boolValue];
-					if(isConnected)
-					{
-						NSString *nickName = [facebookData valueForKey:@"nickname"];
-						[[DataManager sharedDataManager] setFacebookConnected:YES withNickname:nickName];
-					}
-					else 
-					{
-						[[DataManager sharedDataManager] setFacebookConnected:NO withNickname:nil];
-					}
-				}
-				
-				
-				//Twitter Data
-				NSDictionary *twitterData = [[responseDic objectForKey:@"value"] objectForKey:@"twitter"];
-				if(twitterData)
-				{
-					BOOL isConnected = [[twitterData valueForKey:@"is_connected"] boolValue];
-					if(isConnected)
-					{
-						NSString *nickName = [twitterData valueForKey:@"nickname"];
-						[[DataManager sharedDataManager] setTwitterConnected:YES withNickname:nickName];
-					}
-					else 
-					{
-						[[DataManager sharedDataManager] setTwitterConnected:NO withNickname:nil];
-					}
-				}
-				
-				
-				//Tumblr Data
-				NSDictionary *tumblrData = [[responseDic objectForKey:@"value"] objectForKey:@"tumblr"];
-				if(tumblrData)
-				{
-					BOOL isConnected = [[tumblrData valueForKey:@"is_connected"] boolValue];
-					if(isConnected)
-					{
-						NSString *nickName = [tumblrData valueForKey:@"nickname"];
-						[[DataManager sharedDataManager] setTumblrConnected:YES withNickname:nickName];
-					}
-					else 
-					{
-						[[DataManager sharedDataManager] setTumblrConnected:NO withNickname:nil];
-					}
-				}
-                
-                
-                //me2day Data
-				NSDictionary *me2dayData = [[responseDic objectForKey:@"value"] objectForKey:@"me2day"];
-				if(me2dayData)
-				{
-					BOOL isConnected = [[me2dayData valueForKey:@"is_connected"] boolValue];
-					if(isConnected)
-					{
-						NSString *nickName = [me2dayData valueForKey:@"nickname"];
-						[[DataManager sharedDataManager] setMe2dayConnected:YES withNickname:nickName];
-					}
-					else 
-					{
-						[[DataManager sharedDataManager] setMe2dayConnected:NO withNickname:nil];
-					}
-				}
-				
-				break;
-			}
-				
-			case kServerCallTypeFacebookConnect:
-			{                
-                NSString *nickName = [[[responseDic valueForKey:@"value"] valueForKey:@"user"] valueForKey:@"nickname"];
-                [[DataManager sharedDataManager] setFacebookConnected:YES withNickname:nickName];
-                
-                [self buildTableData];
-                [mTableView reloadData];
-				
-				break;
-			}
-				
-			case kServerCallTypeFacebookDisconnect:
-			{
-				NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"facebook"] valueForKey:@"unlink"];
-				if([check isEqualToString:@"success"])
-				{
-                    [[DataManager sharedDataManager] facebookLogout];
-					[[DataManager sharedDataManager] setFacebookConnected:NO withNickname:nil];
-					[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationFBDidLogout object:nil]];
-					
-					/*
-					 self.mTableData = nil;
-					 [mTableView reloadData];
-					 [self launchServerCallForCheckingConnectedServices];
-					 */
-				}
-				
-				break;
-			}
-				
-			case kServerCallTypeTwitterDisconnect:
-			{
-				NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"twitter"] valueForKey:@"unlink"];
-				if([check isEqualToString:@"success"])
-				{
-					[[DataManager sharedDataManager] setTwitterConnected:NO withNickname:nil];
-					[self buildTableData];
-					[mTableView reloadData];
-					
-					/*
-					self.mTableData = nil;
-					[mTableView reloadData];
-					[self launchServerCallForCheckingConnectedServices];
-					 */
-				}
-				
-				break;
-			}
-				
-			case kServerCallTypeTumblrDisconnect:
-			{
-				
-				NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"tumblr"] valueForKey:@"unlink"];
-				if([check isEqualToString:@"success"])
-				{
-					[[DataManager sharedDataManager] setTumblrConnected:NO withNickname:nil];
-					[self buildTableData];
-					[mTableView reloadData];
-					
-					/*
-					self.mTableData = nil;
-					[mTableView reloadData];
-					[self launchServerCallForCheckingConnectedServices];
-					 */
-				}
-				 
-				
-				break;
-			}
-                
-            case kServerCallTypeMe2dayConnect:
-			{
-				//Build End Point URL
-				NSString *alreadyLoggedInUrl = [NSString stringWithFormat:@"http://me2day.net/"];
-                NSString *endPointUrl = [NSString stringWithFormat:@"http://www.pumpl.com//me2day/confirm.json?result=true"];
-				
-				NSString *urlString = [[responseDic valueForKey:@"value"] valueForKey:@"authorize_url"];
-				Me2DayLoginViewController *viewController = [[Me2DayLoginViewController alloc] initWithNibName:@"Me2DayLoginViewController" bundle:nil];
-				viewController.urlString = urlString;
-                viewController.alreadyLoggedInUrlString = alreadyLoggedInUrl;
-				viewController.endPointCheckUrlString = endPointUrl;
-				[self.navigationController pushViewController:viewController animated:YES];
-				[viewController release];
-				
-				break;
-			}
-                
-                
-            case kServerCallTypeMe2dayDisconnect:
-			{
-				
-				NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"me2day"] valueForKey:@"unlink"];
-				if([check isEqualToString:@"success"])
-				{
-					[[DataManager sharedDataManager] setMe2dayConnected:NO withNickname:nil];
-					[self buildTableData];
-					[mTableView reloadData];
-					
-					/*
-                     self.mTableData = nil;
-                     [mTableView reloadData];
-                     [self launchServerCallForCheckingConnectedServices];
-					 */
-				}
-                
-				
-				break;
-			}
-                
-                
-				
-			default:
-				break;
-		}
-		
-	}
-	else 
-	{
-		NSString *errorMessage = [responseDic valueForKey:@"error_message"];
-		
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+	if(responseDic)
+    {
+        NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
+        if(code == 0)
+        {
+            NSInteger callType = [[request.userInfo valueForKey:@"callType"] integerValue];
+            
+            switch (callType) 
+            {
+                case kServerCallTypeCheckConnections:
+                {
+                    //Facebook Data
+                    NSDictionary *facebookData = [[responseDic objectForKey:@"value"] objectForKey:@"facebook"];
+                    if(facebookData)
+                    {
+                        BOOL isConnected = [[facebookData valueForKey:@"is_connected"] boolValue];
+                        if(isConnected)
+                        {
+                            NSString *nickName = [facebookData valueForKey:@"nickname"];
+                            [[DataManager sharedDataManager] setFacebookConnected:YES withNickname:nickName];
+                        }
+                        else 
+                        {
+                            [[DataManager sharedDataManager] setFacebookConnected:NO withNickname:nil];
+                        }
+                    }
+                    
+                    
+                    //Twitter Data
+                    NSDictionary *twitterData = [[responseDic objectForKey:@"value"] objectForKey:@"twitter"];
+                    if(twitterData)
+                    {
+                        BOOL isConnected = [[twitterData valueForKey:@"is_connected"] boolValue];
+                        if(isConnected)
+                        {
+                            NSString *nickName = [twitterData valueForKey:@"nickname"];
+                            [[DataManager sharedDataManager] setTwitterConnected:YES withNickname:nickName];
+                        }
+                        else 
+                        {
+                            [[DataManager sharedDataManager] setTwitterConnected:NO withNickname:nil];
+                        }
+                    }
+                    
+                    
+                    //Tumblr Data
+                    NSDictionary *tumblrData = [[responseDic objectForKey:@"value"] objectForKey:@"tumblr"];
+                    if(tumblrData)
+                    {
+                        BOOL isConnected = [[tumblrData valueForKey:@"is_connected"] boolValue];
+                        if(isConnected)
+                        {
+                            NSString *nickName = [tumblrData valueForKey:@"nickname"];
+                            [[DataManager sharedDataManager] setTumblrConnected:YES withNickname:nickName];
+                        }
+                        else 
+                        {
+                            [[DataManager sharedDataManager] setTumblrConnected:NO withNickname:nil];
+                        }
+                    }
+                    
+                    
+                    //me2day Data
+                    NSDictionary *me2dayData = [[responseDic objectForKey:@"value"] objectForKey:@"me2day"];
+                    if(me2dayData)
+                    {
+                        BOOL isConnected = [[me2dayData valueForKey:@"is_connected"] boolValue];
+                        if(isConnected)
+                        {
+                            NSString *nickName = [me2dayData valueForKey:@"nickname"];
+                            [[DataManager sharedDataManager] setMe2dayConnected:YES withNickname:nickName];
+                        }
+                        else 
+                        {
+                            [[DataManager sharedDataManager] setMe2dayConnected:NO withNickname:nil];
+                        }
+                    }
+                    
+                    break;
+                }
+                    
+                case kServerCallTypeFacebookConnect:
+                {                
+                    NSString *nickName = [[[responseDic valueForKey:@"value"] valueForKey:@"user"] valueForKey:@"nickname"];
+                    [[DataManager sharedDataManager] setFacebookConnected:YES withNickname:nickName];
+                    
+                    [self buildTableData];
+                    [mTableView reloadData];
+                    
+                    break;
+                }
+                    
+                case kServerCallTypeFacebookDisconnect:
+                {
+                    NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"facebook"] valueForKey:@"unlink"];
+                    if([check isEqualToString:@"success"])
+                    {
+                        [[DataManager sharedDataManager] facebookLogout];
+                        [[DataManager sharedDataManager] setFacebookConnected:NO withNickname:nil];
+                        [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationFBDidLogout object:nil]];
+                        
+                        /*
+                         self.mTableData = nil;
+                         [mTableView reloadData];
+                         [self launchServerCallForCheckingConnectedServices];
+                         */
+                    }
+                    
+                    break;
+                }
+                    
+                case kServerCallTypeTwitterDisconnect:
+                {
+                    NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"twitter"] valueForKey:@"unlink"];
+                    if([check isEqualToString:@"success"])
+                    {
+                        [[DataManager sharedDataManager] setTwitterConnected:NO withNickname:nil];
+                        [self buildTableData];
+                        [mTableView reloadData];
+                        
+                        /*
+                         self.mTableData = nil;
+                         [mTableView reloadData];
+                         [self launchServerCallForCheckingConnectedServices];
+                         */
+                    }
+                    
+                    break;
+                }
+                    
+                case kServerCallTypeTumblrDisconnect:
+                {
+                    
+                    NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"tumblr"] valueForKey:@"unlink"];
+                    if([check isEqualToString:@"success"])
+                    {
+                        [[DataManager sharedDataManager] setTumblrConnected:NO withNickname:nil];
+                        [self buildTableData];
+                        [mTableView reloadData];
+                        
+                        /*
+                         self.mTableData = nil;
+                         [mTableView reloadData];
+                         [self launchServerCallForCheckingConnectedServices];
+                         */
+                    }
+                    
+                    
+                    break;
+                }
+                    
+                case kServerCallTypeMe2dayConnect:
+                {
+                    //Build End Point URL
+                    NSString *alreadyLoggedInUrl = [NSString stringWithFormat:@"http://me2day.net/"];
+                    NSString *endPointUrl = [NSString stringWithFormat:@"http://www.pumpl.com//me2day/confirm.json?result=true"];
+                    
+                    NSString *urlString = [[responseDic valueForKey:@"value"] valueForKey:@"authorize_url"];
+                    Me2DayLoginViewController *viewController = [[Me2DayLoginViewController alloc] initWithNibName:@"Me2DayLoginViewController" bundle:nil];
+                    viewController.urlString = urlString;
+                    viewController.alreadyLoggedInUrlString = alreadyLoggedInUrl;
+                    viewController.endPointCheckUrlString = endPointUrl;
+                    [self.navigationController pushViewController:viewController animated:YES];
+                    [viewController release];
+                    
+                    break;
+                }
+                    
+                    
+                case kServerCallTypeMe2dayDisconnect:
+                {
+                    
+                    NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"me2day"] valueForKey:@"unlink"];
+                    if([check isEqualToString:@"success"])
+                    {
+                        [[DataManager sharedDataManager] setMe2dayConnected:NO withNickname:nil];
+                        [self buildTableData];
+                        [mTableView reloadData];
+                        
+                        /*
+                         self.mTableData = nil;
+                         [mTableView reloadData];
+                         [self launchServerCallForCheckingConnectedServices];
+                         */
+                    }
+                    
+                    
+                    break;
+                }
+                    
+                    
+                    
+                default:
+                    break;
+            }
+            
+        }
+        else 
+        {
+            NSString *errorMessage = [responseDic valueForKey:@"error_message"];
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+            [alertView show];
+            [alertView release];
+        }
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"UnknownServerResponseKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 		[alertView show];
 		[alertView release];
-	}
-	
+    }
 	
 	
 	

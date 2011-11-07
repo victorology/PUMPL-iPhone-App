@@ -446,24 +446,36 @@
 	NSString *responseString = [request responseString];
 	
 	NSDictionary *responseDic = [responseString JSONValue];
+    
+        
+	if(responseDic)
+    {
+        NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
+        if(code == 0)
+        {
+            NSDictionary *userInfo = [[responseDic objectForKey:@"value"] objectForKey:@"registered_user"];
+            [[DataManager sharedDataManager] setUserAsLoggedInWithProfileData:userInfo]; 
+            [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationPUMPLUserDidLogin object:nil]];
+            
+            [(LaunchViewController *)[[self.navigationController viewControllers] objectAtIndex:0] launchTabBarControllerAnimated:YES withSelectedTabIndex:0];
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else 
+        {
+            NSString *errorMessage = [responseDic valueForKey:@"error_message"];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+            [alertView show];
+            [alertView release];
+        }
+    }
+    else
+    {
+        NSString *errorMessage = NSLocalizedString(@"UnknownServerResponseKey", nil);
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+        [alertView show];
+        [alertView release];
+    }
 	
-	NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
-	if(code == 0)
-	{
-		NSDictionary *userInfo = [[responseDic objectForKey:@"value"] objectForKey:@"registered_user"];
-		[[DataManager sharedDataManager] setUserAsLoggedInWithProfileData:userInfo]; 
-		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationPUMPLUserDidLogin object:nil]];
-		
-		[(LaunchViewController *)[[self.navigationController viewControllers] objectAtIndex:0] launchTabBarControllerAnimated:YES withSelectedTabIndex:0];
-		[self.navigationController popViewControllerAnimated:YES];
-	}
-	else 
-	{
-		NSString *errorMessage = [responseDic valueForKey:@"error_message"];
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
-		[alertView show];
-		[alertView release];
-	}
 	
 	[self hideActivity];
 }

@@ -384,33 +384,42 @@
 	NSDictionary *responseDic = [responseString JSONValue];
 	
 	
-	NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
-	if(code == 0)
-	{
-		if([[[responseDic valueForKey:@"value"] valueForKey:@"is_twitter_connected"] boolValue])
-		{
-			[[DataManager sharedDataManager] setTwitterConnected:YES withNickname:nil];
-			
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CongratulationsKey", @"") message:NSLocalizedString(@"YouHaveSuccessfullyLoggedIntoYourTwitterAccountKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
-			alertView.tag = 1;
-			[alertView show];
-			[alertView release];
-		}
-		else 
-		{
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"CouldNotLogIntoTwitterScreenKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
-			[alertView show];
-			[alertView release];
-		}
-	}
-	else 
-	{
-		NSString *errorMessage = [responseDic valueForKey:@"error_message"];
-		
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+	if(responseDic)
+    {
+        NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
+        if(code == 0)
+        {
+            if([[[responseDic valueForKey:@"value"] valueForKey:@"is_twitter_connected"] boolValue])
+            {
+                [[DataManager sharedDataManager] setTwitterConnected:YES withNickname:nil];
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"CongratulationsKey", @"") message:NSLocalizedString(@"YouHaveSuccessfullyLoggedIntoYourTwitterAccountKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+                alertView.tag = 1;
+                [alertView show];
+                [alertView release];
+            }
+            else 
+            {
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"CouldNotLogIntoTwitterScreenKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+                [alertView show];
+                [alertView release];
+            }
+        }
+        else 
+        {
+            NSString *errorMessage = [responseDic valueForKey:@"error_message"];
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+            [alertView show];
+            [alertView release];
+        }
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"UnknownServerResponseKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 		[alertView show];
 		[alertView release];
-	}
+    }
 	
 	
 	[self buildTableData];

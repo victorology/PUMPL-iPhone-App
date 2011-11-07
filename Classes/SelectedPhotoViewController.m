@@ -686,7 +686,7 @@
 	[self hideFreezeScreen];
 	
 	
-	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:NSLocalizedString(@"UploadFailedKey", @""),errorMessage] delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"UploadFailedKey", @"") message:[NSString stringWithFormat:@"%@",errorMessage] delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 	[alertView show];
 	[alertView release];
 }

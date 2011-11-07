@@ -270,82 +270,106 @@
 	NSDictionary *responseDic = [responseString JSONValue];
 	
 	
-	
-	
-	
-	NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
-	if(code == 0)
-	{
-		NSArray *photos = [responseDic valueForKey:@"value"];
-		
-		NSMutableArray *mockPhotosArray = [NSMutableArray array];
-		NSMutableArray *titlesArray = [NSMutableArray array];
-		
-		for(NSDictionary *photoDic in photos)
-		{
-			BOOL retina = NO;
-
-			if([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
-				retina = [[UIScreen mainScreen] scale] == 2.0 ? YES : NO;
-			
-			
-			
-			NSString *smallUrl = nil;
-			
-			if(retina)
-			{
-				smallUrl = [photoDic valueForKey:@"thumbnail_url_retina"];
-			}
-			else 
-			{
-				smallUrl = [photoDic valueForKey:@"thumbnail_url"];
-			}
-
-
-	
-			NSString *bigUrl = [photoDic valueForKey:@"original_url"];
-			NSString *titleString = [photoDic valueForKey:@"title"];
-			
-			NSInteger imageHeight;
-			NSNumber *heightNumber = [photoDic valueForKey:@"original_height"];
-			if([heightNumber isKindOfClass:[NSNull class]])
-			{
-				imageHeight = 480;
-			}
-			else 
-			{
-				imageHeight = [heightNumber integerValue];
-			}
-			
-			
-			NSInteger imageWidth;
-			NSNumber *widthNumber = [photoDic valueForKey:@"original_width"];
-			if([widthNumber isKindOfClass:[NSNull class]])
-			{
-				imageWidth = 320;
-			}
-			else 
-			{
-				imageWidth = [widthNumber integerValue];
-			}
-			
-			
-			
-			if([titleString isKindOfClass:[NSNull class]])
-			{
-				titleString = @"";
-			}
-			
-			
-			NSMutableArray *imageAndThumbnailArray = [NSMutableArray arrayWithObjects:bigUrl, smallUrl, nil];
-			[mockPhotosArray addObject:imageAndThumbnailArray];
-			
-			[titlesArray addObject:titleString];
-			
-		}
-		
-        
-        if([mockPhotosArray count] == 0)
+    if(responseDic)
+    {
+        NSInteger code = [[responseDic valueForKey:@"code"] integerValue];
+        if(code == 0)
+        {
+            NSArray *photos = [responseDic valueForKey:@"value"];
+            
+            NSMutableArray *mockPhotosArray = [NSMutableArray array];
+            NSMutableArray *titlesArray = [NSMutableArray array];
+            
+            for(NSDictionary *photoDic in photos)
+            {
+                BOOL retina = NO;
+                
+                if([[UIScreen mainScreen] respondsToSelector:@selector(scale)])
+                    retina = [[UIScreen mainScreen] scale] == 2.0 ? YES : NO;
+                
+                
+                
+                NSString *smallUrl = nil;
+                
+                if(retina)
+                {
+                    smallUrl = [photoDic valueForKey:@"thumbnail_url_retina"];
+                }
+                else 
+                {
+                    smallUrl = [photoDic valueForKey:@"thumbnail_url"];
+                }
+                
+                
+                
+                NSString *bigUrl = [photoDic valueForKey:@"original_url"];
+                NSString *titleString = [photoDic valueForKey:@"title"];
+                
+                NSInteger imageHeight;
+                NSNumber *heightNumber = [photoDic valueForKey:@"original_height"];
+                if([heightNumber isKindOfClass:[NSNull class]])
+                {
+                    imageHeight = 480;
+                }
+                else 
+                {
+                    imageHeight = [heightNumber integerValue];
+                }
+                
+                
+                NSInteger imageWidth;
+                NSNumber *widthNumber = [photoDic valueForKey:@"original_width"];
+                if([widthNumber isKindOfClass:[NSNull class]])
+                {
+                    imageWidth = 320;
+                }
+                else 
+                {
+                    imageWidth = [widthNumber integerValue];
+                }
+                
+                
+                
+                if([titleString isKindOfClass:[NSNull class]])
+                {
+                    titleString = @"";
+                }
+                
+                
+                NSMutableArray *imageAndThumbnailArray = [NSMutableArray arrayWithObjects:bigUrl, smallUrl, nil];
+                [mockPhotosArray addObject:imageAndThumbnailArray];
+                
+                [titlesArray addObject:titleString];
+                
+            }
+            
+            
+            if([mockPhotosArray count] == 0)
+            {
+                if(!mEmptyPhotosView)
+                    [self createEmptyPhotosView];
+                
+                if([mEmptyPhotosView superview] == nil)
+                {
+                    [scrollView_ addSubview:mEmptyPhotosView];
+                }
+            }
+            else
+            {
+                if([mEmptyPhotosView superview])
+                {
+                    [mEmptyPhotosView removeFromSuperview];
+                }
+            }
+            
+            [images_ setImagesArray:mockPhotosArray];
+            [images_ setTitlesArray:titlesArray];
+            [self reloadThumbs];
+            
+            
+            
+        }
+        else if(code == 1)
         {
             if(!mEmptyPhotosView)
                 [self createEmptyPhotosView];
@@ -354,48 +378,34 @@
             {
                 [scrollView_ addSubview:mEmptyPhotosView];
             }
+            
+            
+            NSString *errorMessage = [responseDic valueForKey:@"error_message"];
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+            [alertView show];
+            [alertView release];
         }
-        else
+        else 
         {
-            if([mEmptyPhotosView superview])
-            {
-                [mEmptyPhotosView removeFromSuperview];
-            }
+            NSString *errorMessage = [responseDic valueForKey:@"error_message"];
+            
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+            [alertView show];
+            [alertView release];
+            
         }
-		
-		[images_ setImagesArray:mockPhotosArray];
-		[images_ setTitlesArray:titlesArray];
-		[self reloadThumbs];
-		
-        
-        
-	}
-    else if(code == 1)
-	{
-		if(!mEmptyPhotosView)
-            [self createEmptyPhotosView];
-        
-        if([mEmptyPhotosView superview] == nil)
-        {
-            [scrollView_ addSubview:mEmptyPhotosView];
-        }
-        
-        
-        NSString *errorMessage = [responseDic valueForKey:@"error_message"];
-		
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
+    }
+    else
+    {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"UnknownServerResponseKey", @"") delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 		[alertView show];
 		[alertView release];
-	}
-	else 
-	{
-		NSString *errorMessage = [responseDic valueForKey:@"error_message"];
-		
-		UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
-		[alertView show];
-		[alertView release];
-        
-	}
+    }
+	
+	
+	
+	
 }
 
 
