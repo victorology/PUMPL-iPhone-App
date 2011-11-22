@@ -374,7 +374,10 @@
 	}
 	else 
 	{
-		[self signUp:nil];
+        if(!mSignUpDoneCheckToPreventCrash)
+        {
+            [self signUp:nil];
+        }
 	}
 
 	
@@ -450,12 +453,14 @@
 	if(alertView.tag == 1)
 	{
         
+        mSignUpDoneCheckToPreventCrash = YES;
         
         [[NSUserDefaults standardUserDefaults] setValue:[NSNumber numberWithBool:YES] forKey:kShouldUserBePresentedWithWelcomeScreen];
         
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationPUMPLUserDidLogin object:nil]];
 		
 		[(LaunchViewController *)[[self.navigationController viewControllers] objectAtIndex:0] launchTabBarControllerAnimated:NO withSelectedTabIndex:0];
+        
         [self.navigationController popViewControllerAnimated:YES];
 
 	}

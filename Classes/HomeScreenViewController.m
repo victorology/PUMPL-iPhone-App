@@ -12,10 +12,18 @@
 #import "WelcomeScreenViewController.h"
 #import "PMNavigationController.h"
 
+
+#define kOverlayCameraTabXCoord 49
+#define kOverlayCameraTabYCoord 271
+
+
 @interface HomeScreenViewController ()
 - (void)showActivityIndicator;
 - (void)hideActivityIndicator;
 - (void)configureTheView;
+- (UIView *)overlayViewForCameraButton;
+- (void)showOverlayViewForCameraButtonAnimated:(BOOL)animated;
+- (void)removeOverlayViewForCameraButtonAnimated:(BOOL)animated;
 
 @end
 
@@ -23,7 +31,7 @@
 
 - (void)dealloc 
 {
-	[mEmptyPhotosView release];
+    [mOverlayCameraButtonView release];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[activityIndicatorView_ release], activityIndicatorView_ = nil;
 	[images_ release], images_ = nil;
@@ -92,15 +100,22 @@
     [super viewWillAppear:animated];
     
     
-    if([[images_ imagesArray] count] == 0 && _isFirstTimeAfterLogin)
-    {
-        _isFirstTimeAfterLogin = NO;
+//    if([[images_ imagesArray] count] == 0 && _isFirstTimeAfterLogin)
+//    {
+//        _isFirstTimeAfterLogin = NO;
+//        
+//        // Add Overlay here
+//        
+//        [self showOverlayViewForCameraButtonAnimated:YES];
         
-        if(!mEmptyPhotosView)
-            [self createEmptyPhotosView];
-        
-        [scrollView_ addSubview:mEmptyPhotosView];
-    }
+//        if(!mEmptyPhotosView)
+//            [self createEmptyPhotosView];
+//        
+//        [scrollView_ addSubview:mEmptyPhotosView];
+//    }
+    
+    
+    
     
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     
@@ -118,8 +133,6 @@
     
     
     
-    
-	
     //Tweak for KTPhotoBrowser for Top Navigation bar to be black.
 //	[[UIApplication sharedApplication] setStatusBarHidden:NO];
     
@@ -346,20 +359,11 @@
             
             if([mockPhotosArray count] == 0)
             {
-                if(!mEmptyPhotosView)
-                    [self createEmptyPhotosView];
-                
-                if([mEmptyPhotosView superview] == nil)
-                {
-                    [scrollView_ addSubview:mEmptyPhotosView];
-                }
+                [self showOverlayViewForCameraButtonAnimated:YES];
             }
             else
             {
-                if([mEmptyPhotosView superview])
-                {
-                    [mEmptyPhotosView removeFromSuperview];
-                }
+                [self removeOverlayViewForCameraButtonAnimated:YES];
             }
             
             [images_ setImagesArray:mockPhotosArray];
@@ -371,14 +375,7 @@
         }
         else if(code == 1)
         {
-            if(!mEmptyPhotosView)
-                [self createEmptyPhotosView];
-            
-            if([mEmptyPhotosView superview] == nil)
-            {
-                [scrollView_ addSubview:mEmptyPhotosView];
-            }
-            
+            [self showOverlayViewForCameraButtonAnimated:YES];
             
             NSString *errorMessage = [responseDic valueForKey:@"error_message"];
             
@@ -432,11 +429,12 @@
 
 - (void)respondToPUMPLLogout:(NSNotification *)notificationObject
 {
+    [self removeOverlayViewForCameraButtonAnimated:NO];
+    
 	[images_ setImagesArray:nil];
 	[images_ setTitlesArray:nil];
 	[self reloadThumbs];
     
-    [mEmptyPhotosView removeFromSuperview];
 }
 
 
@@ -494,82 +492,88 @@
 
 
 
-- (void)createEmptyPhotosView
+#pragma mark -
+#pragma mark UI Methods
+
+
+- (UIView *)overlayViewForCameraButton
 {
-    [mEmptyPhotosView release];
-    mEmptyPhotosView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 367)];
+    if(mOverlayCameraButtonView == nil)
+    {
+        UIImage *overlayImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OverlayForCameraButton" ofType:@"png"]];
+        
+        UIImageView *overlayImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                                      0,
+                                                                                      overlayImage.size.width,
+                                                                                      overlayImage.size.height)];
+        overlayImageView.image = overlayImage;
+        [overlayImage release];
+        
+        mOverlayCameraButtonView = [[UIView alloc] initWithFrame:CGRectMake(kOverlayCameraTabXCoord,
+                                                                            kOverlayCameraTabYCoord,
+                                                                            overlayImageView.frame.size.width,
+                                                                            overlayImageView.frame.size.height)];
+        mOverlayCameraButtonView.alpha = 0.0;
+        mOverlayCameraButtonView.backgroundColor = [UIColor clearColor];
+        [mOverlayCameraButtonView addSubview:overlayImageView];
+        [overlayImageView release];
+    }
     
-    UIColor *backgroundColor = [[UIColor alloc] initWithRed:0.91 green:0.91 blue:0.91 alpha:1.0];
-	mEmptyPhotosView.backgroundColor = backgroundColor;
-    [backgroundColor release];
+    return mOverlayCameraButtonView;
+}
+
+
+- (void)showOverlayViewForCameraButtonAnimated:(BOOL)animated
+{
+    UIView *overlayViewForCameraTab = [self overlayViewForCameraButton];
+    [scrollView_ addSubview:overlayViewForCameraTab];
     
-    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(20,
-                                                                      20,
-                                                                      280,
-                                                                      24)];
-    welcomeLabel.text = NSLocalizedString(@"WelcomeToPUMPLKey", @"");
-    welcomeLabel.backgroundColor = [UIColor clearColor];
-    welcomeLabel.font = [UIFont boldSystemFontOfSize:20];
-    welcomeLabel.shadowColor = [UIColor whiteColor];
-    welcomeLabel.shadowOffset = CGSizeMake(0, 1);
-    [mEmptyPhotosView addSubview:welcomeLabel];
-    [welcomeLabel release];
-    
-    
-    
-    UILabel *emptyMessageLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(20,
-                                                                      52,
-                                                                      280,
-                                                                      20)];
-    emptyMessageLabel1.text = NSLocalizedString(@"YouStillHaveNotSharedAnyPhotosYet", @"");
-    emptyMessageLabel1.backgroundColor = [UIColor clearColor];
-    emptyMessageLabel1.font = [UIFont systemFontOfSize:15];
-    
-    UIColor *fontColor1 = [[UIColor alloc] initWithRed:0.239 green:0.255 blue:0.357 alpha:1.0];
-    emptyMessageLabel1.textColor = fontColor1;
-    [fontColor1 release];
-    
-    emptyMessageLabel1.shadowColor = [UIColor whiteColor];
-    emptyMessageLabel1.shadowOffset = CGSizeMake(0, 1);
-    [mEmptyPhotosView addSubview:emptyMessageLabel1];
-    [emptyMessageLabel1 release];
-    
-    
-    
-    
-    
-    
-    UILabel *emptyMessageLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(20,
-                                                                            72,
-                                                                            280,
-                                                                            20)];
-    emptyMessageLabel2.text = NSLocalizedString(@"ToBeginClickOnTheCameraIconBelow", @"");
-    emptyMessageLabel2.backgroundColor = [UIColor clearColor];
-    emptyMessageLabel2.font = [UIFont systemFontOfSize:15];
-    
-    UIColor *fontColor2 = [[UIColor alloc] initWithRed:0.239 green:0.255 blue:0.357 alpha:1.0];
-    emptyMessageLabel2.textColor = fontColor2;
-    [fontColor2 release];
-    
-    emptyMessageLabel2.shadowColor = [UIColor whiteColor];
-    emptyMessageLabel2.shadowOffset = CGSizeMake(0, 1);
-    [mEmptyPhotosView addSubview:emptyMessageLabel2];
-    [emptyMessageLabel2 release];
-    
-    
-    UIImageView *arrowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(137,
-                                                                                100,
-                                                                                46,
-                                                                                260)];
-    arrowImageView.contentMode = UIViewContentModeScaleAspectFit;
-    UIImage *arrowImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"HomeScreenEmptyArrow" ofType:@"png"]];
-    arrowImageView.image = arrowImage;
-    [arrowImage release];
-    [mEmptyPhotosView addSubview:arrowImageView];
-    [arrowImageView release];
+    if(animated)
+    {
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationCurveEaseOut
+                         animations:^{
+                             
+                             overlayViewForCameraTab.alpha = 1.0;
+                         } 
+                         completion:^(BOOL finished) {
+                             
+                         }];
+    }
+    else
+    {
+        overlayViewForCameraTab.alpha = 1.0;
+    }
     
 }
 
+- (void)removeOverlayViewForCameraButtonAnimated:(BOOL)animated
+{
+    UIView *overlayViewForCameraTab = [self overlayViewForCameraButton];
+    
+    
+    if(animated)
+    {
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationCurveEaseOut
+                         animations:^{
+                             
+                             overlayViewForCameraTab.alpha = 0.0;
+                         } 
+                         completion:^(BOOL finished) {
+                             
+                             [overlayViewForCameraTab removeFromSuperview];
+                         }]; 
+    }
+    else
+    {
+        overlayViewForCameraTab.alpha = 0.0;
+        [overlayViewForCameraTab removeFromSuperview];
+    }
+    
+}
 
 
 

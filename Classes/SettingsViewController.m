@@ -46,6 +46,13 @@
 #define kServerCallTypeMe2dayDisconnect 7
 
 
+#define kOverlayCameraTabXCoord 49
+#define kOverlayCameraTabYCoord 271
+
+#define kOverlaySettingsServicesXCoord 49
+#define kOverlaySettingsServicesYCoord 77
+
+
 @interface SettingsViewController (Private)
 
 - (void)launchServerCallForCheckingConnectedServices;
@@ -62,6 +69,12 @@
 - (void)makeMe2dayConnectionCall;
 - (void)launchMe2dayDisconnectionCall;
 - (void)makeMe2dayDisconnectionCall;
+- (UIView *)overlayViewForCameraButton;
+- (UIView *)overlayViewForSettingsServices;
+- (void)showOverlayViewForCameraButtonAnimated:(BOOL)animated;
+- (void)removeOverlayViewForCameraButtonAnimated:(BOOL)animated;
+- (void)showOverlayViewForSettingsServicesAnimated:(BOOL)animated;
+- (void)removeOverlayViewForSettingsServicesAnimated:(BOOL)animated;
 
 @end
 
@@ -116,7 +129,9 @@
     {
         self.navigationController.navigationBar.frame = CGRectMake(0, 20, 320, 44);
     }
-    
+
+    [self showOverlayViewForCameraButtonAnimated:YES];
+    [self showOverlayViewForSettingsServicesAnimated:YES];
 }
 
 /*
@@ -144,6 +159,9 @@
 
 
 - (void)dealloc {
+    
+    [mOverlaySettingsServicesView release];
+    [mOverlayCameraButtonView release];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[mTableData release];
 	[mTableView release];
@@ -1266,6 +1284,194 @@
 }
 
 
+
+
+
+
+#pragma mark -
+#pragma mark UI Methods
+
+
+- (UIView *)overlayViewForCameraButton
+{
+    if(mOverlayCameraButtonView == nil)
+    {
+        UIImage *overlayImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OverlayForCameraButton" ofType:@"png"]];
+        
+        UIImageView *overlayImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                                      0,
+                                                                                      overlayImage.size.width,
+                                                                                      overlayImage.size.height)];
+        overlayImageView.image = overlayImage;
+        [overlayImage release];
+        
+        mOverlayCameraButtonView = [[UIView alloc] initWithFrame:CGRectMake(kOverlayCameraTabXCoord,
+                                                                            kOverlayCameraTabYCoord,
+                                                                            overlayImageView.frame.size.width,
+                                                                            overlayImageView.frame.size.height)];
+        mOverlayCameraButtonView.alpha = 0.0;
+        mOverlayCameraButtonView.backgroundColor = [UIColor clearColor];
+        [mOverlayCameraButtonView addSubview:overlayImageView];
+        [overlayImageView release];
+    }
+    
+    return mOverlayCameraButtonView;
+}
+
+
+- (UIView *)overlayViewForSettingsServices
+{
+    if(mOverlaySettingsServicesView == nil)
+    {
+        UIImage *overlayImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"OverlayForSettingsTab" ofType:@"png"]];
+        
+        UIImageView *overlayImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kOverlaySettingsServicesXCoord,
+                                                                                      kOverlaySettingsServicesYCoord,
+                                                                                      overlayImage.size.width,
+                                                                                      overlayImage.size.height)];
+        overlayImageView.image = overlayImage;
+        [overlayImage release];
+        
+        mOverlaySettingsServicesView = [[UIView alloc] initWithFrame:CGRectMake(0,
+                                                                                0,
+                                                                                self.view.frame.size.width,
+                                                                                self.view.frame.size.height)];
+        mOverlaySettingsServicesView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+        mOverlaySettingsServicesView.alpha = 0.0;
+        
+        [mOverlaySettingsServicesView addSubview:overlayImageView];
+        [overlayImageView release];
+    }
+    
+    return mOverlaySettingsServicesView;
+}
+
+
+- (void)showOverlayViewForCameraButtonAnimated:(BOOL)animated
+{
+    UIView *overlayViewForCameraTab = [self overlayViewForCameraButton];
+    [self.view addSubview:overlayViewForCameraTab];
+    
+    if(animated)
+    {
+        [UIView animateWithDuration:0.6
+                              delay:0.0
+                            options:UIViewAnimationCurveEaseOut
+                         animations:^{
+                             
+                             overlayViewForCameraTab.alpha = 1.0;
+                         } 
+                         completion:^(BOOL finished) {
+                             
+                         }];
+    }
+    else
+    {
+        overlayViewForCameraTab.alpha = 1.0;
+    }
+    
+}
+
+- (void)removeOverlayViewForCameraButtonAnimated:(BOOL)animated
+{
+    UIView *overlayViewForCameraTab = [self overlayViewForCameraButton];
+    
+    
+    if(animated)
+    {
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationCurveEaseOut
+                         animations:^{
+                             
+                             overlayViewForCameraTab.alpha = 0.0;
+                         } 
+                         completion:^(BOOL finished) {
+                             
+                             [overlayViewForCameraTab removeFromSuperview];
+                         }]; 
+    }
+    else
+    {
+        overlayViewForCameraTab.alpha = 0.0;
+        [overlayViewForCameraTab removeFromSuperview];
+    }
+    
+}
+
+
+
+- (void)showOverlayViewForSettingsServicesAnimated:(BOOL)animated
+{
+    UIView *overlayViewForSettingsServices = [self overlayViewForSettingsServices];
+    [self.view addSubview:overlayViewForSettingsServices];
+    
+    if(animated)
+    {
+        [UIView animateWithDuration:0.6
+                              delay:0.0
+                            options:UIViewAnimationCurveEaseOut
+                         animations:^{
+                             
+                             overlayViewForSettingsServices.alpha = 1.0;
+                         } 
+                         completion:^(BOOL finished) {
+                             
+                         }];
+    }
+    else
+    {
+        overlayViewForSettingsServices.alpha = 1.0;
+    }
+    
+}
+
+- (void)removeOverlayViewForSettingsServicesAnimated:(BOOL)animated
+{
+    UIView *overlayViewForSettingsServices = [self overlayViewForSettingsServices];
+    
+    
+    if(animated)
+    {
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationCurveEaseOut
+                         animations:^{
+                             
+                             overlayViewForSettingsServices.alpha = 0.0;
+                         } 
+                         completion:^(BOOL finished) {
+                             
+                             [overlayViewForSettingsServices removeFromSuperview];
+                         }]; 
+    }
+    else
+    {
+        overlayViewForSettingsServices.alpha = 0.0;
+        [overlayViewForSettingsServices removeFromSuperview];
+    }
+    
+}
+
+
+
+
+#pragma mark -
+#pragma mark UITouches Methods
+
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    UITouch *touch = [touches anyObject];
+    if(touch.view == mOverlayCameraButtonView)
+    {
+        [self removeOverlayViewForCameraButtonAnimated:YES];
+    }
+    else if(touch.view == mOverlaySettingsServicesView)
+    {
+        [self removeOverlayViewForSettingsServicesAnimated:YES];
+    }
+}
 
 
 

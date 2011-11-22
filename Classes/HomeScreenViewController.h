@@ -19,8 +19,9 @@
 @interface HomeScreenViewController : KTThumbsViewController <PullToRefreshScrollViewDelegate> {
 
     BOOL mShouldPresentWelcomeScreen;
-    UIView *mEmptyPhotosView;
     BOOL _isFirstTimeAfterLogin;
+    
+    UIView *mOverlayCameraButtonView;
     
 @private
 	HomeScreenDataSource *images_;
@@ -28,6 +29,6 @@
 }
 
 - (void)fetchPhotosFromPUMPLServer;
-- (void)createEmptyPhotosView;
+
 
 @end

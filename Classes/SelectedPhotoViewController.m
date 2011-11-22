@@ -18,6 +18,8 @@
 #import "Me2DayLoginViewController.h"
 #import "PMNavigationController.h"
 #import "PMTabBarController.h"
+#import "ApplyFilterViewController.h"
+#import "Constants.h"
 
 #define kCellTypeTextField 1
 #define kCellTypeSwitch 2
@@ -407,9 +409,27 @@
 			[array addObject:[rowDic valueForKey:@"inputName"]];
 		}
 	}
+    
+    
+    
+    // Now we have to upload the 800 by 600 version (if Full Size) and 600 by 600 (if Square image) of the photo.
+    
+    UIImage *imageToBeUploaded = nil;
+    
+    if(mSelectedImage.size.width == mSelectedImage.size.height)
+    {
+        imageToBeUploaded = [ApplyFilterViewController croppedImageToSize:CGSizeMake(600, 600) fromFullImage:mSelectedImage];
+    }
+    else
+    {
+        imageToBeUploaded = [ApplyFilterViewController resizeImage:mSelectedImage forImageQuality:kSettingsImageQualitySmall];
+    }
+    
+    
+    
 								
 	
-	self.mPhotoUploader = [[[PhotoUploader alloc] initWithImage:mSelectedImage andTitle:titleString andServices:array andFilter:filterApplied] autorelease];
+	self.mPhotoUploader = [[[PhotoUploader alloc] initWithImage:imageToBeUploaded andTitle:titleString andServices:array andFilter:filterApplied] autorelease];
 	if(mPhotoUploader)
 	{
 		mPhotoUploader.delegate = self;
@@ -469,15 +489,9 @@
 			if (cell == nil) {
 				cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 				
-				UILabel *inputNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 90, 43)];
-				inputNameLabel.tag = kViewTagInputNameLabel;
-				inputNameLabel.backgroundColor = [UIColor clearColor];
-				inputNameLabel.textColor = [UIColor blackColor];
-				inputNameLabel.font = [UIFont boldSystemFontOfSize:18];
-				[cell.contentView addSubview:inputNameLabel];
-				[inputNameLabel release];
-				
-				UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(90, 10, 210, 31)];
+                
+                
+                UITextField *inputTextField = [[UITextField alloc] initWithFrame:CGRectMake(10, 10, 290, 31)];
 				inputTextField.tag = kViewTagInputTextField;
 				inputTextField.backgroundColor = [UIColor clearColor];
 				inputTextField.borderStyle = UITextBorderStyleNone;
@@ -486,6 +500,17 @@
 				inputTextField.autocorrectionType = UITextAutocorrectionTypeNo;
 				[cell.contentView addSubview:inputTextField];
 				[inputTextField release];
+                
+                
+				UILabel *inputNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 90, 43)];
+				inputNameLabel.tag = kViewTagInputNameLabel;
+				inputNameLabel.backgroundColor = [UIColor clearColor];
+				inputNameLabel.textColor = [UIColor blackColor];
+				inputNameLabel.font = [UIFont boldSystemFontOfSize:18];
+				[cell.contentView addSubview:inputNameLabel];
+				[inputNameLabel release];
+				
+				
 				
 				cell.selectionStyle = UITableViewCellSelectionStyleNone;
 			}
@@ -649,6 +674,23 @@
 {
 	[textField resignFirstResponder];
 	return YES;
+}
+
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    UILabel *inputLabel = (UILabel *)[[textField superview] viewWithTag:kViewTagInputNameLabel];
+    inputLabel.hidden = YES;
+}
+
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if([[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@""])
+    {
+        UILabel *inputLabel = (UILabel *)[[textField superview] viewWithTag:kViewTagInputNameLabel];
+        inputLabel.hidden = NO;
+    }
 }
 
 

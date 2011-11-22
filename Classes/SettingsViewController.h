@@ -15,7 +15,8 @@
 	UITableView *mTableView;
 	NSMutableArray *mTableData;
     
-	
+    UIView *mOverlayCameraButtonView;
+    UIView *mOverlaySettingsServicesView;
 	MBProgressHUD *_HUD;
 }
 

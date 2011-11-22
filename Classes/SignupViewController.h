@@ -16,6 +16,7 @@
 	UIActivityIndicatorView *mActivityIndicator;
 
 	NSMutableArray *mTableData;
+    BOOL mSignUpDoneCheckToPreventCrash;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *mTableView;

@@ -53,9 +53,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 - (void)configureForSquareAndFull;
 - (void)showApplyingFilterActivityIndicatorView;
 - (void)hideApplyingFilterActivityIndicatorView;
-+ (UIImage *)resizeImage:(UIImage *)image forImageQuality:(NSInteger)imageQuality;
-+ (UIImage *)croppedImageToSize:(CGSize)croppedSize fromFullImage:(UIImage *)fullImage;
-+ (UIImage *)cropImage:(UIImage*)sourceImage;
+
 
 
 @end
@@ -667,7 +665,28 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	
 	if(imageClickedInSquareMode)
 	{
-		self.squareImageForBackUp = [ApplyFilterViewController croppedImageToSize:CGSizeMake(600, 600) fromFullImage:originalImage];
+        // First retreive the smaller side between width and height
+        CGFloat imageSideToBeUsed = 0;
+        
+        if(originalImage.size.width <= originalImage.size.height)
+        {
+            imageSideToBeUsed = originalImage.size.width;
+        }
+        else
+        {
+            imageSideToBeUsed = originalImage.size.height;
+        }
+        
+        
+        // Then we shall check whether the side length that we are going to use is less than 1536 or not. 
+        // The max value of the side can be 1536
+        
+        if(imageSideToBeUsed > 1536)
+        {
+            imageSideToBeUsed = 1536;
+        }
+        
+		self.squareImageForBackUp = [ApplyFilterViewController croppedImageToSize:CGSizeMake(imageSideToBeUsed, imageSideToBeUsed) fromFullImage:originalImage];
 		
 		_cropButton.hidden = YES;
 		
@@ -676,9 +695,45 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	}
 	else 
 	{
-		self.fullImageForBackUp = [ApplyFilterViewController resizeImage:originalImage forImageQuality:selectedImageQuality];
-		self.squareImageForBackUp = [ApplyFilterViewController croppedImageToSize:CGSizeMake(600, 600) fromFullImage:originalImage];
+        // Configure the Full Size Image
+        
+        self.fullImageForBackUp = [ApplyFilterViewController resizeTo2048By1536ForImage:originalImage];
+        
+        
+        
+        
+        
+        // Configure the Square Image
+        
+        // First retreive the smaller side between width and height
+        CGFloat imageSideToBeUsed = 0;
+        
+        if(originalImage.size.width <= originalImage.size.height)
+        {
+            imageSideToBeUsed = originalImage.size.width;
+        }
+        else
+        {
+            imageSideToBeUsed = originalImage.size.height;
+        }
+        
+        
+        // Then we shall check whether the side length that we are going to use is less than 1536 or not. 
+        // The max value of the side can be 1536
+        
+        if(imageSideToBeUsed > 1536)
+        {
+            imageSideToBeUsed = 1536;
+        }
+                
+		self.squareImageForBackUp = [ApplyFilterViewController croppedImageToSize:CGSizeMake(imageSideToBeUsed, imageSideToBeUsed) fromFullImage:originalImage];
 		
+        
+        
+        
+        
+        
+        
 		_cropButton.hidden = NO;
 		
 		self.selectedImage = fullImageForBackUp;
@@ -902,6 +957,56 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	
 	return modifiedImage;
 }
+
++ (UIImage *)resizeTo2048By1536ForImage:(UIImage *)imageToBeResized
+{
+    UIImage *modifiedImage = nil;
+    
+    
+    
+    //Determine the orientation of the image
+    float imageWidth = [imageToBeResized size].width;
+    float imageHeight = [imageToBeResized size].height;
+    
+    
+    
+    
+    if(imageHeight >= imageWidth)
+    {
+        //First check whether the resize is neccessary or not
+        
+        if(imageWidth <= 1536 && imageHeight <= 2048)
+        {
+            return  imageToBeResized;
+        }
+        
+        
+        // If we reach here, that means we need to resize
+        
+        
+        modifiedImage = [imageToBeResized resizedImage:CGSizeMake(1536, 2048) interpolationQuality:kCGInterpolationHigh];
+        
+    }
+    else
+    {
+        //First check whether the resize is neccessary or not
+        
+        if(imageHeight <= 1536 && imageWidth <= 2048)
+        {
+            return  imageToBeResized;
+        }
+        
+        
+        // If we reach here, that means we need to resize
+        
+        modifiedImage = [imageToBeResized resizedImage:CGSizeMake(2048, 1536) interpolationQuality:kCGInterpolationHigh];
+    }
+    
+    
+    
+    return modifiedImage;
+}
+
 
 
 

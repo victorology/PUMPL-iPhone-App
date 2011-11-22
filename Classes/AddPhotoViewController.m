@@ -234,6 +234,8 @@
 	if([[info valueForKey:@"UIImagePickerControllerMediaType"] isEqualToString:(NSString *)kUTTypeImage])
 	{
 		UIImage *imagePicked = [info valueForKey:@"UIImagePickerControllerOriginalImage"];
+        CGSize  temp = imagePicked.size;
+        NSLog(@"image size - %@", NSStringFromCGSize(temp));
 		
         
 #ifndef TARGET_IPHONE_SIMULATOR
@@ -362,6 +364,7 @@
     pickerController.delegate = self;
     pickerController.customDelegate = self;
     pickerController.mediaTypes = [NSArray arrayWithObjects:(NSString *)kUTTypeImage, nil];
+    
     
     pickerController.showsCameraControls = NO;
     _imagePickerOverLayView.frame = CGRectMake(0, 0, 320, 480);

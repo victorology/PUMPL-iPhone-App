@@ -43,6 +43,11 @@
 @property (nonatomic, assign) BOOL imageClickedInSquareMode;
 @property (nonatomic, retain) RenderTexture* render;
 
++ (UIImage *)resizeImage:(UIImage *)image forImageQuality:(NSInteger)imageQuality;
++ (UIImage *)croppedImageToSize:(CGSize)croppedSize fromFullImage:(UIImage *)fullImage;
++ (UIImage *)cropImage:(UIImage*)sourceImage;
++ (UIImage *)resizeTo2048By1536ForImage:(UIImage *)imageToBeResized;
+
 - (IBAction)squareOrFullClicked:(id)sender;
 
 @end

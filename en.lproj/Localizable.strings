@@ -119,7 +119,8 @@
 
 
 "ImageLaunchScreenLoginButtonKey" = "Login";
-"ImageLaunchScreenRegisterButtonKey" = "Register";
+"ImageLaunchScreenRegisterButtonKey" = "RegisterBtn";
+"ImageLaunchScreenMaskImageKey" = "Launch";
 "ImageBarButtonLoginButtonKey" = "LoginBtn";
 "ImageBarButtonBackButtonKey" = "BackBtn";
 "ImageBarButtonSignUpButtonKey" = "SignUpBtn";

@@ -12,11 +12,20 @@
 #import "PUMPLAppDelegate.h"
 
 
+#define kTimeIntervalForImageChange 5
+
+#define kNumberOfBackgroundImages 5
+
+#define kAnimationDurationForBackgroundImageChange 1.0
+
+
 @implementation LaunchViewController
 
 @synthesize mTabBarController;
 @synthesize mSignUpButton;
 @synthesize mLoginButton;
+@synthesize mBackgroundViewForRotatingImages;
+@synthesize mMaskImageView;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 /*
@@ -34,7 +43,42 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
+    // Configure the mask image
+    
+    UIImage *maskImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageLaunchScreenMaskImageKey", nil) ofType:@"png"]];
+    mMaskImageView.image = maskImage;
+    [maskImage release];
 
+    
+    
+    // Configure the Background Image Stuff
+    
+    mBackgroundImageViewsArray = [[NSMutableArray alloc] init];
+    
+    for(int i=1; i<= kNumberOfBackgroundImages; i++)
+    {
+        UIImage *image = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"LaunchBackgroundImage%d",i] ofType:@"jpg"]];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,
+                                                                               0,
+                                                                               mBackgroundViewForRotatingImages.frame.size.width,
+                                                                               mBackgroundViewForRotatingImages.frame.size.height)];
+        imageView.image = image;
+        [image release];
+        [mBackgroundImageViewsArray addObject:imageView];
+        [imageView release];
+    }
+    
+    mCurrentIndexForBackgroundImage = 0;
+    
+    if([mBackgroundImageViewsArray count] > 0)
+    {
+        [mBackgroundViewForRotatingImages addSubview:[mBackgroundImageViewsArray objectAtIndex:mCurrentIndexForBackgroundImage]];
+    }
+    
+    
+    
+    
     //Configure the buttons
     
     [mSignUpButton setTitle:nil forState:UIControlStateNormal];
@@ -71,7 +115,22 @@
 	[super viewWillAppear:animated];
 	
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+    
+    [mTimerForBackgroundImageRotation release];
+    mTimerForBackgroundImageRotation = [[NSTimer scheduledTimerWithTimeInterval:kTimeIntervalForImageChange target:self selector:@selector(timeToChangeBackgroundImage:) userInfo:nil repeats:YES] retain];
+    
 }
+
+- (void)viewDidDisappear:(BOOL)animated {
+    
+    [super viewDidDisappear:animated];
+    
+    [mTimerForBackgroundImageRotation invalidate];
+    [mTimerForBackgroundImageRotation release];
+    mTimerForBackgroundImageRotation = nil;
+}
+
 
 
 /*
@@ -96,11 +155,15 @@
     
     self.mSignUpButton = nil;
     self.mLoginButton = nil;
+    self.mMaskImageView = nil;
+    self.mBackgroundViewForRotatingImages = nil;
     [super viewDidUnload];
 }
 
 
 - (void)dealloc {
+    [mMaskImageView release];
+    [mBackgroundViewForRotatingImages release];
     [mSignUpButton release];
     [mLoginButton release];
 	[mTabBarController release];
@@ -169,6 +232,43 @@
 	}
 }
 
+
+
+
+- (void)timeToChangeBackgroundImage:(NSTimer *)timer
+{
+    if([mBackgroundImageViewsArray count] > mCurrentIndexForBackgroundImage)
+    {
+        UIImageView *currentImageView = [mBackgroundImageViewsArray objectAtIndex:mCurrentIndexForBackgroundImage];
+        
+        NSInteger nextImageIndex = mCurrentIndexForBackgroundImage + 1;
+        if(nextImageIndex >= kNumberOfBackgroundImages)
+        {
+            nextImageIndex = 0;
+        }
+        
+        if([mBackgroundImageViewsArray count] > nextImageIndex)
+        {
+            UIImageView *nextImageView = [mBackgroundImageViewsArray objectAtIndex:nextImageIndex];
+            nextImageView.alpha = 0.0;
+            [mBackgroundViewForRotatingImages addSubview:nextImageView];
+            
+            [UIView animateWithDuration:kAnimationDurationForBackgroundImageChange
+                                  delay:0.0
+                                options:UIViewAnimationCurveLinear
+                             animations:^{
+                                 
+                                 nextImageView.alpha = 1.0;
+                             } 
+                             completion:^(BOOL finished) {
+                                 
+                                 [currentImageView removeFromSuperview];
+                                 mCurrentIndexForBackgroundImage = nextImageIndex;
+                             }];
+            
+        }
+    }
+}
 
 
 @end
