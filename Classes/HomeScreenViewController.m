@@ -72,9 +72,7 @@
     
     
     
-    
-    
-    
+
     // We have to write this code because the kNotificationPUMPLUserDidLogin notification wont work in this controller because this controller
     // has not even registered itself to NotificationCenter for that notifiation when the app has launched and user has not logged in or signed up.
     BOOL presentWelcomeScreen = NO;
@@ -113,6 +111,12 @@
 //        
 //        [scrollView_ addSubview:mEmptyPhotosView];
 //    }
+    
+    
+    if(![[DataManager sharedDataManager] hasUserPostedAnyPhoto])
+    {
+        [self showOverlayViewForCameraButtonAnimated:YES];
+    }
     
     
     
@@ -238,7 +242,7 @@
 	NSDictionary *userInfo = [[DataManager sharedDataManager] getUserProfile];
 	NSString *idString = [NSString stringWithFormat:@"%@",[userInfo valueForKey:@"id"]];
 	NSString *session_api = [NSString stringWithFormat:@"%@",[userInfo valueForKey:@"session_api"]];
-	
+
 	NSString *urlString = [NSString stringWithFormat:@"%@?id=%@&session_api=%@", kURLForFetchPhotos, idString, session_api];
 	ASIFormDataRequest *request = [[[ASIFormDataRequest alloc] initWithURL:[NSURL URLWithString:urlString]] autorelease];
 	request.delegate = self;
@@ -359,10 +363,17 @@
             
             if([mockPhotosArray count] == 0)
             {
-                [self showOverlayViewForCameraButtonAnimated:YES];
+                // Now since we got Zero photos, we need to check the settings whether user had earlier posted an pic
+                // If not, then we shall show tutorial overlay
+                
+                if(![[DataManager sharedDataManager] hasUserPostedAnyPhoto])
+                {
+                    [self showOverlayViewForCameraButtonAnimated:YES];
+                }
             }
             else
             {
+                [[DataManager sharedDataManager] setThatCurrentUserHasPostedPhotosEarlier];
                 [self removeOverlayViewForCameraButtonAnimated:YES];
             }
             
@@ -373,15 +384,16 @@
             
             
         }
-        else if(code == 1)
+        else if(code == 1) // Code 1 has only been reserved for the situation where user has no photos on the server. So no alert view.
         {
-            [self showOverlayViewForCameraButtonAnimated:YES];
+            // Now since we got Zero photos, we need to check the settings whether user had earlier posted an pic
+            // If not, then we shall show tutorial overlay
             
-            NSString *errorMessage = [responseDic valueForKey:@"error_message"];
+            if(![[DataManager sharedDataManager] hasUserPostedAnyPhoto])
+            {
+                [self showOverlayViewForCameraButtonAnimated:YES];
+            }
             
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:nil cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
-            [alertView show];
-            [alertView release];
         }
         else 
         {

@@ -339,6 +339,7 @@
 {
 	if(alertView.tag == 1)
 	{
+        [[DataManager sharedDataManager] setThatCurrentUserHasConnectedToAServiceAtLeastOneTime];
 		[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationTumblrDidLogin object:nil]];
         [self.navigationController popViewControllerAnimated:YES];
 	}

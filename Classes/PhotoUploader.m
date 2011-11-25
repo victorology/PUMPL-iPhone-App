@@ -210,7 +210,7 @@
         [_request setPostValue:shouldUploadToMe2day forKey:@"photo[post_to_me2day]"];
 		[_request setPostValue:filterString forKey:@"filter"];
 		[_request setUploadProgressDelegate:self];
-		_request.timeOutSeconds = 60;
+		_request.timeOutSeconds = 500;
 		
 		
 		if(_title)

@@ -38,6 +38,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 	[self.navigationController setNavigationBarHidden:NO animated:YES];
 	[self configureTheView];
 	[self buildTableData];

@@ -52,6 +52,8 @@
 #define kShouldUserBePresentedWithWelcomeScreen @"kShouldUserBePresentedWithWelcomeScreen"
 
 
+
+
 #define kNotificationPUMPLUserDidLogin @"kNotificationPUMPLUserDidLogin"
 #define kNotificationPUMPLUserDidLogout @"kNotificationPUMPLUserDidLogout"
 #define kNotificationFBDidLogin @"NotificationFBDidLogin"
@@ -81,3 +83,14 @@
 #define kFilterTagPlasticEye 7
 #define kFilterTagPolaroid 8
 #define kFilterTagRedscale 9
+
+
+
+#define kSettingsPLISTFileName @"PUMPLSettings"
+#define kSettingsCurrentLoggedInUserID @"SettingsCurrentLoggedInUserID"
+#define kSettingsCollectionsOfUserData @"SettingsCollectionsOfUserData"
+#define kSettingsUserProfile @"SettingsUserProfile"
+#define kSettingsHasUserPostedHisFirstPhoto @"SettingsHasUserPostedHisFirstPhoto"
+#define kSettingsHasUserConnectedToHisServiceAtleastOnce @"SettingsHasUserConnectedToHisServiceAtleastOnce"
+
+

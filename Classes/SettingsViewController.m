@@ -130,8 +130,16 @@
         self.navigationController.navigationBar.frame = CGRectMake(0, 20, 320, 44);
     }
 
-    [self showOverlayViewForCameraButtonAnimated:YES];
-    [self showOverlayViewForSettingsServicesAnimated:YES];
+    
+    if(![[DataManager sharedDataManager] hasUserPostedAnyPhoto])
+    {
+        [self showOverlayViewForCameraButtonAnimated:YES];
+    }
+    
+    if(![[DataManager sharedDataManager] hasUserConnectedToAServiceAtLeastOneTime])
+    {
+       [self showOverlayViewForSettingsServicesAnimated:YES]; 
+    }
 }
 
 /*

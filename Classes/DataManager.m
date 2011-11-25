@@ -87,6 +87,11 @@ static DataManager *sharedDataManager = nil;
 
 - (void)setUserAsLoggedInWithProfileData:(NSDictionary *)profileDic
 {
+    // The first line of code is to support the new mechanism for saving user data
+    [self userHasLoggedInWithProfileData:profileDic];
+    
+    
+    // The rest of the code is to support early save user data mechanism
 	NSMutableDictionary *mutableProfileDic = nil;
 	if(profileDic != nil)
 	{
@@ -185,6 +190,10 @@ static DataManager *sharedDataManager = nil;
 	[[NSUserDefaults standardUserDefaults] setValue:nickname forKey:kMe2dayAccountNickname];
 	[[NSUserDefaults standardUserDefaults] synchronize];
 }
+
+
+
+
 
 
 
@@ -332,6 +341,164 @@ static DataManager *sharedDataManager = nil;
 - (void)respondToPUMPLLogin:(NSNotification *)notificationObject
 {
     [self setFacebookUploadAlbum:@"Mobile Photos (PUMPL)" withAlbumID:nil];
+}
+
+
+
+
+
+#pragma mark -
+#pragma mark User Data Methods
+
+- (void)initializeSettingsDictionary
+{
+    if(settingsDictionary == nil)
+    {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString *filePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", kSettingsPLISTFileName]];
+        
+        NSData *settingsDicData = [NSData dataWithContentsOfFile:filePath];
+        NSString *errorString = nil;
+        NSPropertyListFormat *temp = nil;
+        settingsDictionary = (NSMutableDictionary *)[[NSPropertyListSerialization propertyListFromData:settingsDicData
+                                                                                     mutabilityOption:NSPropertyListMutableContainersAndLeaves
+                                                                                               format:temp 
+                                                                                      errorDescription:&errorString] retain];
+        
+        if(errorString)
+        {
+            NSLog(@"Error: While reading the Settings PLIST file from disk with description - %@", errorString);
+        }
+        
+
+        if(settingsDictionary == nil)
+        {
+            settingsDictionary = [[NSMutableDictionary alloc] init];
+            
+            NSError *errorWhileConvertingDicToData = nil;
+            NSData *dataToWrite = [NSPropertyListSerialization dataWithPropertyList:settingsDictionary
+                                                                             format:NSPropertyListXMLFormat_v1_0
+                                                                            options:0
+                                                                              error:&errorWhileConvertingDicToData];
+            if(dataToWrite)
+            {
+                BOOL success = [dataToWrite writeToFile:filePath atomically:YES];
+                if(!success)
+                {
+                    NSLog(@"Error: While writing to Settings PLIST File");
+                }
+            }
+            else
+            {
+                NSLog(@"Error: While converting dictionary to NSData with error - %@", errorWhileConvertingDicToData);
+            }
+            
+            
+        }
+    }
+}
+
+- (void)saveSettingsDictionary
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.plist", kSettingsPLISTFileName]];
+
+    
+    NSError *errorWhileConvertingDicToData = nil;
+    NSData *dataToWrite = [NSPropertyListSerialization dataWithPropertyList:settingsDictionary
+                                                                     format:NSPropertyListXMLFormat_v1_0
+                                                                    options:0
+                                                                      error:&errorWhileConvertingDicToData];
+    
+    if(dataToWrite)
+    {
+        BOOL success = [dataToWrite writeToFile:filePath atomically:YES];
+        if(!success)
+        {
+            NSLog(@"Error: While writing to Settings PLIST File");
+        }
+    }
+    else
+    {
+        NSLog(@"Error: While converting dictionary to NSData with error - %@", errorWhileConvertingDicToData);
+    }
+    
+    
+}
+
+
+- (void)setCurrentUserID:(NSInteger)currentUserID
+{
+    [settingsDictionary setValue:[NSString stringWithFormat:@"%d", currentUserID] forKey:kSettingsCurrentLoggedInUserID];
+    [self saveSettingsDictionary];
+}
+
+
+- (NSMutableDictionary *)getUserDataForCurrentUser
+{
+    NSMutableDictionary *collectionOfUserDataDic = [settingsDictionary objectForKey:kSettingsCollectionsOfUserData];
+    if(collectionOfUserDataDic == nil)
+    {
+        collectionOfUserDataDic = [NSMutableDictionary dictionary];
+        [settingsDictionary setValue:collectionOfUserDataDic forKey:kSettingsCollectionsOfUserData];
+        [self saveSettingsDictionary];
+    }
+    
+    NSInteger currentUserID = [[settingsDictionary valueForKey:kSettingsCurrentLoggedInUserID] integerValue];
+    if(currentUserID == 0)
+        return nil;
+    
+    NSMutableDictionary *userDataDic = [collectionOfUserDataDic objectForKey:[NSString stringWithFormat:@"%d", currentUserID]];
+    if(userDataDic == nil)
+    {
+        userDataDic = [NSMutableDictionary dictionary];
+        [collectionOfUserDataDic setObject:userDataDic forKey:[NSString stringWithFormat:@"%d", currentUserID]];
+        [self saveSettingsDictionary];
+    }
+    
+    return userDataDic;
+}
+
+
+- (void)userHasLoggedInWithProfileData:(NSDictionary *)profileData
+{
+    NSInteger currentUserID = [[profileData valueForKey:@"id"] integerValue];
+    [self setCurrentUserID:currentUserID];
+    
+    NSMutableDictionary *userData = [self getUserDataForCurrentUser];
+    [userData setObject:profileData forKey:kSettingsUserProfile];
+    [self saveSettingsDictionary];
+}
+
+
+- (BOOL)hasUserPostedAnyPhoto
+{
+    NSMutableDictionary *userDataForCurrentUser = [self getUserDataForCurrentUser];
+    return [[userDataForCurrentUser valueForKey:kSettingsHasUserPostedHisFirstPhoto] boolValue];
+}
+
+- (void)setThatCurrentUserHasPostedPhotosEarlier
+{
+    NSMutableDictionary *userDataForCurrentUser = [self getUserDataForCurrentUser];
+    [userDataForCurrentUser setValue:[NSNumber numberWithBool:YES] forKey:kSettingsHasUserPostedHisFirstPhoto];
+    [self saveSettingsDictionary];
+}
+
+
+- (BOOL)hasUserConnectedToAServiceAtLeastOneTime
+{
+    NSMutableDictionary *userDataForCurrentUser = [self getUserDataForCurrentUser];
+    return [[userDataForCurrentUser valueForKey:kSettingsHasUserConnectedToHisServiceAtleastOnce] boolValue];
+}
+
+
+- (void)setThatCurrentUserHasConnectedToAServiceAtLeastOneTime
+{
+    NSMutableDictionary *userDataForCurrentUser = [self getUserDataForCurrentUser];
+    [userDataForCurrentUser setValue:[NSNumber numberWithBool:YES] forKey:kSettingsHasUserConnectedToHisServiceAtleastOnce];
+    [self saveSettingsDictionary];
 }
 
 

@@ -31,7 +31,8 @@
     
     // Override point for customization after application launch.
 	
-    [DataManager sharedDataManager];
+    
+    [[DataManager sharedDataManager] initializeSettingsDictionary];
     
     
     eaglContext = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES2];

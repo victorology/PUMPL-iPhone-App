@@ -145,6 +145,7 @@
                     if(isMe2dayConnected && [isMe2dayConnected boolValue])
                     {
                         [[DataManager sharedDataManager] setMe2dayConnected:YES withNickname:nil];
+                        [[DataManager sharedDataManager] setThatCurrentUserHasConnectedToAServiceAtLeastOneTime];
                         [[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationMe2dayDidLogin object:nil]];
                         [self.navigationController popViewControllerAnimated:YES];
                     }

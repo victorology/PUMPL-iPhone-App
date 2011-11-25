@@ -17,6 +17,8 @@
 
     Facebook* facebook;
     NSArray* _permissions;
+    
+    NSMutableDictionary *settingsDictionary;
 }
 
 
@@ -50,5 +52,17 @@
 
 - (NSInteger)imageQualitySetting;
 - (void)setImageQuality:(NSInteger)imageQuality;
+
+
+
+- (void)initializeSettingsDictionary;
+- (void)saveSettingsDictionary;
+- (void)setCurrentUserID:(NSInteger)currentUserID;
+- (NSMutableDictionary *)getUserDataForCurrentUser;
+- (void)userHasLoggedInWithProfileData:(NSDictionary *)profileData;
+- (BOOL)hasUserPostedAnyPhoto;
+- (void)setThatCurrentUserHasPostedPhotosEarlier;
+- (BOOL)hasUserConnectedToAServiceAtLeastOneTime;
+- (void)setThatCurrentUserHasConnectedToAServiceAtLeastOneTime;
 
 @end

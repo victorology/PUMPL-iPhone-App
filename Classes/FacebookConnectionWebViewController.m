@@ -127,6 +127,7 @@
 				if(isFacebookConnected && [isFacebookConnected boolValue])
 				{
 					[[DataManager sharedDataManager] setFacebookConnected:YES withNickname:nil];
+                    [[DataManager sharedDataManager] setThatCurrentUserHasConnectedToAServiceAtLeastOneTime];
 					[[NSNotificationCenter defaultCenter] postNotification:[NSNotification notificationWithName:kNotificationFBDidLogin object:nil]];
 					[self.navigationController popViewControllerAnimated:YES];
 				}

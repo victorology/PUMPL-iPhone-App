@@ -750,6 +750,9 @@
 {
 	if(alertView.tag == 1)
 	{
+        // Mark in the user save data that user has now at least posted one photo
+        [[DataManager sharedDataManager] setThatCurrentUserHasPostedPhotosEarlier];
+        
         // Bring back the status bar which was set hidden when we displayed the filter screen
         [[UIApplication sharedApplication] setStatusBarHidden:NO];
         
