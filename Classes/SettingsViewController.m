@@ -948,7 +948,7 @@
                 case kServerCallTypeFacebookDisconnect:
                 {
                     NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"facebook"] valueForKey:@"unlink"];
-                    if([check isEqualToString:@"success"])
+                    if([[check lowercaseString] isEqualToString:@"success"])
                     {
                         [[DataManager sharedDataManager] facebookLogout];
                         [[DataManager sharedDataManager] setFacebookConnected:NO withNickname:nil];
@@ -967,7 +967,7 @@
                 case kServerCallTypeTwitterDisconnect:
                 {
                     NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"twitter"] valueForKey:@"unlink"];
-                    if([check isEqualToString:@"success"])
+                    if([[check lowercaseString] isEqualToString:@"success"])
                     {
                         [[DataManager sharedDataManager] setTwitterConnected:NO withNickname:nil];
                         [self buildTableData];
@@ -987,7 +987,7 @@
                 {
                     
                     NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"tumblr"] valueForKey:@"unlink"];
-                    if([check isEqualToString:@"success"])
+                    if([[check lowercaseString] isEqualToString:@"success"])
                     {
                         [[DataManager sharedDataManager] setTumblrConnected:NO withNickname:nil];
                         [self buildTableData];
@@ -1026,7 +1026,7 @@
                 {
                     
                     NSString *check = [[[responseDic valueForKey:@"value"] valueForKey:@"me2day"] valueForKey:@"unlink"];
-                    if([check isEqualToString:@"success"])
+                    if([[check lowercaseString] isEqualToString:@"success"])
                     {
                         [[DataManager sharedDataManager] setMe2dayConnected:NO withNickname:nil];
                         [self buildTableData];

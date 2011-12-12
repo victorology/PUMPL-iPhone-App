@@ -26,6 +26,9 @@
 	IBOutlet UIButton *_cropButton;
 	IBOutlet UIImageView *_cropImageView;
     MBProgressHUD *_HUD;
+    UIView *_flashOptionsView;
+    UIButton *_currentFlashOptionButton;
+    
     
     BOOL _shouldDisplayCameraPickerOnDisappearOfLibrary;
     BOOL _shouldDisplayLibraryPickerOnCameraOfLibrary;

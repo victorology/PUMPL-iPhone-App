@@ -20,12 +20,26 @@
 #define kAlertViewForCameraRollCapability 2
 
 
+#define kFlashOptionButtonTagAuto 1
+#define kFlashOptionButtonTagOn 2
+#define kFlashOptionButtonTagOff 3
+
+
 
 
 @interface AddPhotoViewController (Private)
 
 - (CameraImagePickerController *)newCameraImagePickerController;
 - (LibraryImagePickerController *)newLibraryImagePickerController;
+- (void)checkAndConfigureTheCameraControlsForDifferentVersionsOfDevice;
+- (void)configureFlashCameraControlsForCameraDevice:(UIImagePickerControllerCameraDevice)device forPickerController:(UIImagePickerController *)controller;
+- (void)showFlashOptionsViewAnimated:(BOOL)animated;
+- (void)hideFlashOptionsViewAnimated:(BOOL)animated;
+- (void)showFlashStatusButtonForStatus:(NSInteger)flashOption Animated:(BOOL)animated;
+- (void)hideFlashStatusButtonAnimated:(BOOL)animated;
+- (void)showCropButtonAnimated:(BOOL)animated;
+- (void)hideCropButtonAnimated:(BOOL)animated;
+
 
 @end
 
@@ -55,6 +69,8 @@
     
     
     _shouldDisplayCameraPickerInViewWillAppear = YES;
+    
+
 }
 
 
@@ -100,8 +116,13 @@
                 self._cameraImagePickerController = [self newCameraImagePickerController];
             }
             
+            
+            
+            
+            
             _cropButton.tag = kCropButtonDuringFull;
             [_cropButton setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
+            _cropButton.frame = CGRectMake(119, 10, 82, 34);
             _cropImageView.hidden = YES;
             
             
@@ -155,10 +176,327 @@
 
 
 - (void)dealloc {
+    [_currentFlashOptionButton release];
+    [_flashOptionsView release];
 	[_cameraImagePickerController release];
     [_libraryImagePickerController release];
     [super dealloc];
 }
+
+
+#pragma mark -
+#pragma mark UIConfiguration Methods
+
+
+- (void)checkAndConfigureTheCameraControlsForDifferentVersionsOfDevice
+{
+    // Lets first check whether there is additional front camera or not
+    BOOL isFrontCameraAvailable = [UIImagePickerController isCameraDeviceAvailable:UIImagePickerControllerCameraDeviceFront];
+    
+    if(isFrontCameraAvailable)
+    {
+        UIButton *switchCameraButton = [[UIButton alloc] initWithFrame:CGRectMake(241,
+                                                                                  10,
+                                                                                  69,
+                                                                                  34)];
+        UIImage *switchCameraImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"SelfCamera" ofType:@"png"]];
+        [switchCameraButton setImage:switchCameraImage forState:UIControlStateNormal];
+        [switchCameraImage release];
+        
+        [switchCameraButton addTarget:self action:@selector(switchCameraClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [_imagePickerOverLayView addSubview:switchCameraButton];
+        [switchCameraButton release];
+    }
+
+}
+
+
+- (void)configureFlashCameraControlsForCameraDevice:(UIImagePickerControllerCameraDevice)device forPickerController:(UIImagePickerController *)controller
+{
+    UIImagePickerControllerCameraDevice newCamera = 0;
+    
+    if(device == UIImagePickerControllerCameraDeviceRear)
+    {
+        newCamera = UIImagePickerControllerCameraDeviceFront;
+    }
+    else if(device == UIImagePickerControllerCameraDeviceFront)
+    {
+        newCamera = UIImagePickerControllerCameraDeviceRear;
+    }
+    
+    
+    
+    // Remove the flash options if visible in any case
+    [self hideFlashOptionsViewAnimated:YES];
+    
+    
+    BOOL isFlashAvailable = [UIImagePickerController isFlashAvailableForCameraDevice:newCamera];
+    
+    if(isFlashAvailable)
+    {
+        UIImagePickerControllerCameraFlashMode flashMode = controller.cameraFlashMode;
+        
+        NSInteger flashModeToShow = 0;
+        if(flashMode == UIImagePickerControllerCameraFlashModeAuto)
+        {
+            flashModeToShow = kFlashOptionButtonTagAuto;
+        }
+        else if(flashMode == UIImagePickerControllerCameraFlashModeOn)
+        {
+            flashModeToShow = kFlashOptionButtonTagOn;
+        }
+        else if(flashMode == UIImagePickerControllerCameraFlashModeOff)
+        {
+            flashModeToShow = kFlashOptionButtonTagOff;
+        }
+        
+        [self showFlashStatusButtonForStatus:flashModeToShow Animated:YES];
+    }
+    else
+    {
+        [self hideFlashStatusButtonAnimated:YES];
+    }
+}
+
+
+- (void)showFlashStatusButtonForStatus:(NSInteger)flashOption Animated:(BOOL)animated
+{
+    if(_currentFlashOptionButton == nil)
+    {
+        _currentFlashOptionButton = [[UIButton alloc] init];
+        [_currentFlashOptionButton addTarget:self action:@selector(currentFlashStatusButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationCurveLinear
+                     animations:^{
+                         
+                         _currentFlashOptionButton.alpha = 0.0;
+                     } 
+                     completion:^(BOOL finished) {
+                         
+                         if(_currentFlashOptionButton.superview == nil)
+                         {
+                             _currentFlashOptionButton.alpha = 0.0;
+                             [_imagePickerOverLayView addSubview:_currentFlashOptionButton];
+                         }
+                         
+                         
+                         if(flashOption == kFlashOptionButtonTagAuto)
+                         {
+                             UIImage *flashAutoImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"FlashAuto" ofType:@"png"]];
+                             [_currentFlashOptionButton setImage:flashAutoImage forState:UIControlStateNormal];
+                             [flashAutoImage release];
+                             
+                             _currentFlashOptionButton.frame = CGRectMake(10,
+                                                                          10,
+                                                                          80,
+                                                                          34);
+                         }
+                         else if(flashOption == kFlashOptionButtonTagOn)
+                         {
+                             UIImage *flashAutoImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"FlashOn" ofType:@"png"]];
+                             [_currentFlashOptionButton setImage:flashAutoImage forState:UIControlStateNormal];
+                             [flashAutoImage release];
+                             
+                             _currentFlashOptionButton.frame = CGRectMake(10,
+                                                                          10,
+                                                                          67,
+                                                                          34);
+                         }
+                         else if(flashOption == kFlashOptionButtonTagOff)
+                         {
+                             UIImage *flashAutoImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"FlashOff" ofType:@"png"]];
+                             [_currentFlashOptionButton setImage:flashAutoImage forState:UIControlStateNormal];
+                             [flashAutoImage release];
+                             
+                             _currentFlashOptionButton.frame = CGRectMake(10,
+                                                                          10,
+                                                                          68,
+                                                                          34);
+                         }
+                         
+                         
+                         [UIView animateWithDuration:0.3
+                                               delay:0.0
+                                             options:UIViewAnimationCurveLinear
+                                          animations:^{
+                                              
+                                              _currentFlashOptionButton.alpha = 1.0;
+                                          } 
+                                          completion:^(BOOL finished) {
+                                              
+                                          }];
+                         
+                         
+                     }];
+    
+    
+    
+    
+    
+}
+
+- (void)hideFlashStatusButtonAnimated:(BOOL)animated
+{
+    if(animated)
+    {
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             
+                             _currentFlashOptionButton.alpha = 0.0;
+                         } 
+                         completion:^(BOOL finished) {
+                             
+                             [_currentFlashOptionButton removeFromSuperview];
+                             _currentFlashOptionButton.alpha = 1.0;
+                         }];
+    }
+    else
+    {
+        
+    }
+}
+
+
+- (void)showFlashOptionsViewAnimated:(BOOL)animated
+{
+    if(_flashOptionsView == nil)
+    {
+        _flashOptionsView = [[UIView alloc] initWithFrame:CGRectMake(10,
+                                                                     10,
+                                                                     192,
+                                                                     35)];
+        _flashOptionsView.backgroundColor = [UIColor clearColor];
+        
+        UIImage *flashOptionAutoImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"flashOptionsViewAutoButton" ofType:@"png"]];
+        UIButton *autoButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
+                                                                          0,
+                                                                          82,
+                                                                          35)];
+        autoButton.tag = kFlashOptionButtonTagAuto;
+        [autoButton setImage:flashOptionAutoImage forState:UIControlStateNormal];
+        [flashOptionAutoImage release];
+        [autoButton addTarget:self action:@selector(flashOptionsSelected:) forControlEvents:UIControlEventTouchUpInside];
+        [_flashOptionsView addSubview:autoButton];
+        [autoButton release];
+        
+        
+        
+        UIImage *flashOptionOnImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"flashOptionsViewOnButton" ofType:@"png"]];
+        UIButton *onButton = [[UIButton alloc] initWithFrame:CGRectMake(82,
+                                                                        0,
+                                                                        55,
+                                                                        35)];
+        onButton.tag = kFlashOptionButtonTagOn;
+        [onButton setImage:flashOptionOnImage forState:UIControlStateNormal];
+        [flashOptionOnImage release];
+        [onButton addTarget:self action:@selector(flashOptionsSelected:) forControlEvents:UIControlEventTouchUpInside];
+        [_flashOptionsView addSubview:onButton];
+        [onButton release];
+        
+        
+        
+        UIImage *flashOptionOffImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"flashOptionsViewOffButton" ofType:@"png"]];
+        UIButton *offButton = [[UIButton alloc] initWithFrame:CGRectMake(137,
+                                                                         0,
+                                                                         55,
+                                                                         35)];
+        offButton.tag = kFlashOptionButtonTagOff;
+        [offButton setImage:flashOptionOffImage forState:UIControlStateNormal];
+        [flashOptionOffImage release];
+        [offButton addTarget:self action:@selector(flashOptionsSelected:) forControlEvents:UIControlEventTouchUpInside];
+        [_flashOptionsView addSubview:offButton];
+        [offButton release];
+    }
+    
+    
+    if(animated)
+    {
+        
+        _flashOptionsView.alpha = 0.0;
+        [_imagePickerOverLayView addSubview:_flashOptionsView];
+        
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             
+                             _flashOptionsView.alpha = 1.0;
+                         } 
+                         completion:^(BOOL finished) {
+                             
+                         }];
+    }
+    else
+    {
+        
+    }
+}
+
+- (void)hideFlashOptionsViewAnimated:(BOOL)animated
+{
+    if(animated)
+    {
+        [UIView animateWithDuration:0.3
+                              delay:0.0
+                            options:UIViewAnimationCurveLinear
+                         animations:^{
+                             
+                             _flashOptionsView.alpha = 0.0;
+                         } 
+                         completion:^(BOOL finished) {
+                             
+                             [_flashOptionsView removeFromSuperview];
+                             _flashOptionsView.alpha = 1.0;
+                         }];
+    }
+    else
+    {
+        
+    }
+}
+
+
+
+- (void)showCropButtonAnimated:(BOOL)animated
+{
+    if(_cropButton.superview == nil)
+    {
+        [_imagePickerOverLayView addSubview:_cropButton];
+    }
+    
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationCurveLinear
+                     animations:^{
+                        
+                         _cropButton.alpha = 1.0;
+                     } 
+                     completion:^(BOOL finished) {
+                         
+                     }];
+}
+
+- (void)hideCropButtonAnimated:(BOOL)animated
+{
+    [UIView animateWithDuration:0.3
+                          delay:0.0
+                        options:UIViewAnimationCurveLinear
+                     animations:^{
+                         
+                         _cropButton.alpha = 0.0;
+                     } 
+                     completion:^(BOOL finished) {
+                         
+                         [_cropButton removeFromSuperview];
+                     }];
+}
+
+
 
 
 #pragma mark -
@@ -194,21 +532,68 @@
 	{
 		button.tag = kCropButtonDuringSquare;
 		[button setImage:[UIImage imageNamed:@"Full.png"] forState:UIControlStateNormal];
-        button.frame = CGRectMake(237, 381, 73, 35);
+        button.frame = CGRectMake(132, 10, 57, 34);
 		_cropImageView.hidden = NO;
 	}
 	else if(button.tag == kCropButtonDuringSquare)
 	{
 		button.tag = kCropButtonDuringFull;
 		[button setImage:[UIImage imageNamed:@"Square.png"] forState:UIControlStateNormal];
-        button.frame = CGRectMake(227, 381, 83, 35);
+        button.frame = CGRectMake(119, 10, 82, 34);
 		_cropImageView.hidden = YES;
 	}
 }
 
 
+- (void)switchCameraClicked:(id)sender
+{
+    UIImagePickerControllerCameraDevice currentDevice = _cameraImagePickerController.cameraDevice;
+    
+    if(currentDevice == UIImagePickerControllerCameraDeviceRear)
+    {
+        _cameraImagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceFront;
+        [self configureFlashCameraControlsForCameraDevice:UIImagePickerControllerCameraDeviceFront forPickerController:_cameraImagePickerController];
+    }
+    else if(currentDevice == UIImagePickerControllerCameraDeviceFront)
+    {
+        _cameraImagePickerController.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+        [self configureFlashCameraControlsForCameraDevice:UIImagePickerControllerCameraDeviceRear forPickerController:_cameraImagePickerController];
+    }
+}
 
 
+- (void)currentFlashStatusButtonClicked:(id)sender
+{
+    [self hideCropButtonAnimated:YES];
+    [self hideFlashStatusButtonAnimated:YES];
+    [self showFlashOptionsViewAnimated:YES];
+}
+
+- (void)flashOptionsSelected:(id)sender
+{
+    UIButton *button = (UIButton *)sender;
+    
+    if(button.tag == kFlashOptionButtonTagAuto)
+    {
+        _cameraImagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeAuto; 
+    }
+    else if(button.tag == kFlashOptionButtonTagOn)
+    {
+        _cameraImagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOn; 
+    }
+    else if(button.tag == kFlashOptionButtonTagOn)
+    {
+        _cameraImagePickerController.cameraFlashMode = UIImagePickerControllerCameraFlashModeOff; 
+    }
+    
+    [self hideFlashOptionsViewAnimated:YES];
+    [self showFlashStatusButtonForStatus:button.tag Animated:YES];
+    [self showCropButtonAnimated:YES];
+}
+
+
+
+                             
 
 
 #pragma mark -
@@ -369,6 +754,11 @@
     pickerController.showsCameraControls = NO;
     _imagePickerOverLayView.frame = CGRectMake(0, 0, 320, 480);
     pickerController.cameraOverlayView = _imagePickerOverLayView;
+    
+    [self checkAndConfigureTheCameraControlsForDifferentVersionsOfDevice];
+    
+    // Now lets configure the flash controls for the current camera device
+    [self configureFlashCameraControlsForCameraDevice:pickerController.cameraDevice forPickerController:pickerController];
     
     return pickerController;
 }
