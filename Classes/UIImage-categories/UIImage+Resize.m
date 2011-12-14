@@ -101,6 +101,10 @@
     return [self resizedImage:newSize interpolationQuality:quality];
 }
 
+
+
+
+
 #pragma mark -
 #pragma mark Private helper methods
 

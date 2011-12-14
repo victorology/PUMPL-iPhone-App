@@ -153,7 +153,7 @@
     
     UIImage *backButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonBackButtonKey", @"") ofType:@"png"]];
     self.navigationItem.leftBarButtonItem = [UITabBarController tabBarButtonWithImage:backButtonImage
-                                                                               target:self action:@selector(back:)];
+                                                                               target:self action:@selector(cancel:)];
     [backButtonImage release];
     
     
@@ -450,8 +450,21 @@
 }
 
 
--(void) back:(id)sender {
-    [self.navigationController popViewControllerAnimated:YES];
+-(void) cancel:(id)sender {
+    
+
+    
+    // Bring back the status bar which was set hidden when we displayed the filter screen
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
+    //Show and configure the Home tab
+    PUMPLAppDelegate *appDelegate = (PUMPLAppDelegate *)[[UIApplication sharedApplication] delegate];
+    UITabBarController *tabController = [(LaunchViewController *)[[appDelegate.navController viewControllers] objectAtIndex:0] mTabBarController];
+    [tabController setSelectedIndex:0];
+    
+    // Make the navigation controller of second tab in tab bar pop to root view controller
+    [(UINavigationController *)[[self.tabBarController viewControllers] objectAtIndex:1] popToRootViewControllerAnimated:YES];
+    
 }
 
 

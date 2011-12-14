@@ -48,6 +48,7 @@
 + (UIImage *)cropImage:(UIImage*)sourceImage;
 + (UIImage *)resizeTo2048By1536ForImage:(UIImage *)imageToBeResized;
 
+
 - (IBAction)squareOrFullClicked:(id)sender;
 
 @end

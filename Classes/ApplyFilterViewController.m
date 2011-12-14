@@ -101,7 +101,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     
     UIImage *nextButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonNextButtonKey", @"") ofType:@"png"]];
     self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:nextButtonImage
-                                                                                target:self action:@selector(next:)];
+                                                                                target:self action:@selector(done:)];
     [nextButtonImage release];
     
     
@@ -658,9 +658,6 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 - (void)configureForSquareAndFull
 {
-	NSInteger selectedImageQuality = [[DataManager sharedDataManager] imageQualitySetting];
-	
-	
 
 	
 	if(imageClickedInSquareMode)
@@ -681,9 +678,9 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
         // Then we shall check whether the side length that we are going to use is less than 1536 or not. 
         // The max value of the side can be 1536
         
-        if(imageSideToBeUsed > 1536)
+        if(imageSideToBeUsed > 2048)
         {
-            imageSideToBeUsed = 1536;
+            imageSideToBeUsed = 2048;
         }
         
 		self.squareImageForBackUp = [ApplyFilterViewController croppedImageToSize:CGSizeMake(imageSideToBeUsed, imageSideToBeUsed) fromFullImage:originalImage];
@@ -721,9 +718,9 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
         // Then we shall check whether the side length that we are going to use is less than 1536 or not. 
         // The max value of the side can be 1536
         
-        if(imageSideToBeUsed > 1536)
+        if(imageSideToBeUsed > 2048)
         {
-            imageSideToBeUsed = 1536;
+            imageSideToBeUsed = 2048;
         }
                 
 		self.squareImageForBackUp = [ApplyFilterViewController croppedImageToSize:CGSizeMake(imageSideToBeUsed, imageSideToBeUsed) fromFullImage:originalImage];
@@ -768,7 +765,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 }
 
 
-- (void)next:(id)sender
+- (void)done:(id)sender
 {	
 	SelectedPhotoViewController *viewController = [[SelectedPhotoViewController alloc] initWithNibName:@"SelectedPhotoViewController" bundle:nil];
 	viewController.mSelectedImage = [self getImageProcessedWithFilter:_filterApplied];
@@ -973,33 +970,35 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     
     if(imageHeight >= imageWidth)
     {
-        //First check whether the resize is neccessary or not
         
+        // Even if the size is already less than required, we still need to use the resizing method to fix the orientation of image being captured from the camera
         if(imageWidth <= 1536 && imageHeight <= 2048)
         {
-            return  imageToBeResized;
+            modifiedImage = [imageToBeResized resizedImage:CGSizeMake(imageWidth, imageHeight) interpolationQuality:kCGInterpolationHigh];
+
+        }
+        else
+        {
+            modifiedImage = [imageToBeResized resizedImage:CGSizeMake(1536, 2048) interpolationQuality:kCGInterpolationHigh];
         }
         
         
-        // If we reach here, that means we need to resize
-        
-        
-        modifiedImage = [imageToBeResized resizedImage:CGSizeMake(1536, 2048) interpolationQuality:kCGInterpolationHigh];
         
     }
     else
     {
-        //First check whether the resize is neccessary or not
+        // Even if the size is already less than required, we still need to use the resizing method to fix the orientation of image being captured from the camera
         
         if(imageHeight <= 1536 && imageWidth <= 2048)
         {
-            return  imageToBeResized;
+            modifiedImage = [imageToBeResized resizedImage:CGSizeMake(imageWidth, imageHeight) interpolationQuality:kCGInterpolationHigh];
+        }
+        else
+        {
+            modifiedImage = [imageToBeResized resizedImage:CGSizeMake(2048, 1536) interpolationQuality:kCGInterpolationHigh];
         }
         
         
-        // If we reach here, that means we need to resize
-        
-        modifiedImage = [imageToBeResized resizedImage:CGSizeMake(2048, 1536) interpolationQuality:kCGInterpolationHigh];
     }
     
     
@@ -1130,8 +1129,6 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 	
     return resultFinallyRotatedImage;	
 }
-
-
 
 
 #pragma mark -
