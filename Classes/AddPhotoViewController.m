@@ -213,16 +213,16 @@
 
 - (void)configureFlashCameraControlsForCameraDevice:(UIImagePickerControllerCameraDevice)device forPickerController:(UIImagePickerController *)controller
 {
-    UIImagePickerControllerCameraDevice newCamera = 0;
-    
-    if(device == UIImagePickerControllerCameraDeviceRear)
-    {
-        newCamera = UIImagePickerControllerCameraDeviceFront;
-    }
-    else if(device == UIImagePickerControllerCameraDeviceFront)
-    {
-        newCamera = UIImagePickerControllerCameraDeviceRear;
-    }
+//    UIImagePickerControllerCameraDevice newCamera = 0;
+//    
+//    if(device == UIImagePickerControllerCameraDeviceRear)
+//    {
+//        newCamera = UIImagePickerControllerCameraDeviceFront;
+//    }
+//    else if(device == UIImagePickerControllerCameraDeviceFront)
+//    {
+//        newCamera = UIImagePickerControllerCameraDeviceRear;
+//    }
     
     
     
@@ -230,7 +230,7 @@
     [self hideFlashOptionsViewAnimated:YES];
     
     
-    BOOL isFlashAvailable = [UIImagePickerController isFlashAvailableForCameraDevice:newCamera];
+    BOOL isFlashAvailable = [UIImagePickerController isFlashAvailableForCameraDevice:device];
     
     if(isFlashAvailable)
     {
