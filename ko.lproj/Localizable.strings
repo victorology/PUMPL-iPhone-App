@@ -125,6 +125,8 @@
 "ImageBarButtonNextButtonKey" = "NextBtnKR";
 "ImageBarButtonPhotosButtonKey" = "MyPhotosBtnKR";
 "ImageButtonLostPasswordButtonKey" = "LostPasswordKR";
+"ImageBarButtonCancelBlackButtonKey" = "CancelBlackBtnKR";
+"ImageBarButtonDoneBlueButtonKey" = "DoneBlueBtnKR";
 
 
 "PostToWallKey" = "담벼락으로 올리기";

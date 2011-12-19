@@ -99,10 +99,10 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     
     
     
-    UIImage *nextButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonNextButtonKey", @"") ofType:@"png"]];
-    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:nextButtonImage
+    UIImage *doneButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonDoneBlueButtonKey", @"") ofType:@"png"]];
+    self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:doneButtonImage
                                                                                 target:self action:@selector(done:)];
-    [nextButtonImage release];
+    [doneButtonImage release];
     
     
     

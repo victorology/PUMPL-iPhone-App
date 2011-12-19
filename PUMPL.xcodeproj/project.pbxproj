@@ -30,6 +30,30 @@
 		0B299A6D13DE9C0E007F955A /* Roll@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B299A6B13DE9C0E007F955A /* Roll@2x.png */; };
 		0B299A7013DEE16A007F955A /* CameraImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B299A6F13DEE169007F955A /* CameraImagePickerController.m */; };
 		0B299A7613DEE1C9007F955A /* LibraryImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B299A7513DEE1C4007F955A /* LibraryImagePickerController.m */; };
+		0B2BEE12149EFF190071BF9F /* Flash.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE04149EFF170071BF9F /* Flash.png */; };
+		0B2BEE13149EFF190071BF9F /* Flash@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE05149EFF170071BF9F /* Flash@2x.png */; };
+		0B2BEE14149EFF190071BF9F /* FlashAuto.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE06149EFF170071BF9F /* FlashAuto.png */; };
+		0B2BEE15149EFF190071BF9F /* FlashAuto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE07149EFF170071BF9F /* FlashAuto@2x.png */; };
+		0B2BEE16149EFF190071BF9F /* FlashOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE08149EFF170071BF9F /* FlashOff.png */; };
+		0B2BEE17149EFF190071BF9F /* FlashOff@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE09149EFF170071BF9F /* FlashOff@2x.png */; };
+		0B2BEE18149EFF190071BF9F /* FlashOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE0A149EFF170071BF9F /* FlashOn.png */; };
+		0B2BEE19149EFF190071BF9F /* FlashOn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE0B149EFF180071BF9F /* FlashOn@2x.png */; };
+		0B2BEE1A149EFF190071BF9F /* flashOptionsViewAutoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE0C149EFF180071BF9F /* flashOptionsViewAutoButton.png */; };
+		0B2BEE1B149EFF190071BF9F /* flashOptionsViewAutoButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE0D149EFF180071BF9F /* flashOptionsViewAutoButton@2x.png */; };
+		0B2BEE1C149EFF190071BF9F /* flashOptionsViewOffButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE0E149EFF180071BF9F /* flashOptionsViewOffButton.png */; };
+		0B2BEE1D149EFF190071BF9F /* flashOptionsViewOffButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE0F149EFF180071BF9F /* flashOptionsViewOffButton@2x.png */; };
+		0B2BEE1E149EFF190071BF9F /* flashOptionsViewOnButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE10149EFF180071BF9F /* flashOptionsViewOnButton.png */; };
+		0B2BEE1F149EFF190071BF9F /* flashOptionsViewOnButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE11149EFF180071BF9F /* flashOptionsViewOnButton@2x.png */; };
+		0B2BEE23149EFF260071BF9F /* SelfCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE21149EFF260071BF9F /* SelfCamera.png */; };
+		0B2BEE24149EFF260071BF9F /* SelfCamera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE22149EFF260071BF9F /* SelfCamera@2x.png */; };
+		0B2BEE2D149F01480071BF9F /* CancelBlackBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE25149F01480071BF9F /* CancelBlackBtn.png */; };
+		0B2BEE2E149F01480071BF9F /* CancelBlackBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE26149F01480071BF9F /* CancelBlackBtn@2x.png */; };
+		0B2BEE2F149F01480071BF9F /* CancelBlackBtnKR.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE27149F01480071BF9F /* CancelBlackBtnKR.png */; };
+		0B2BEE30149F01480071BF9F /* CancelBlackBtnKR@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE28149F01480071BF9F /* CancelBlackBtnKR@2x.png */; };
+		0B2BEE31149F01480071BF9F /* DoneBlueBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE29149F01480071BF9F /* DoneBlueBtn.png */; };
+		0B2BEE32149F01480071BF9F /* DoneBlueBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE2A149F01480071BF9F /* DoneBlueBtn@2x.png */; };
+		0B2BEE33149F01480071BF9F /* DoneBlueBtnKR.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE2B149F01480071BF9F /* DoneBlueBtnKR.png */; };
+		0B2BEE34149F01480071BF9F /* DoneBlueBtnKR@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B2BEE2C149F01480071BF9F /* DoneBlueBtnKR@2x.png */; };
 		0B2EF2691423063100A68FAE /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2EF2621423063100A68FAE /* FBRequest.m */; };
 		0B2EF26A1423063100A68FAE /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2EF2631423063100A68FAE /* Facebook.m */; };
 		0B2EF26B1423063100A68FAE /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B2EF2661423063100A68FAE /* FBLoginDialog.m */; };
@@ -299,6 +323,30 @@
 		0B299A6F13DEE169007F955A /* CameraImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraImagePickerController.m; sourceTree = "<group>"; };
 		0B299A7413DEE1C1007F955A /* LibraryImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LibraryImagePickerController.h; sourceTree = "<group>"; };
 		0B299A7513DEE1C4007F955A /* LibraryImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LibraryImagePickerController.m; sourceTree = "<group>"; };
+		0B2BEE04149EFF170071BF9F /* Flash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flash.png; sourceTree = "<group>"; };
+		0B2BEE05149EFF170071BF9F /* Flash@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flash@2x.png"; sourceTree = "<group>"; };
+		0B2BEE06149EFF170071BF9F /* FlashAuto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlashAuto.png; sourceTree = "<group>"; };
+		0B2BEE07149EFF170071BF9F /* FlashAuto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlashAuto@2x.png"; sourceTree = "<group>"; };
+		0B2BEE08149EFF170071BF9F /* FlashOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlashOff.png; sourceTree = "<group>"; };
+		0B2BEE09149EFF170071BF9F /* FlashOff@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlashOff@2x.png"; sourceTree = "<group>"; };
+		0B2BEE0A149EFF170071BF9F /* FlashOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = FlashOn.png; sourceTree = "<group>"; };
+		0B2BEE0B149EFF180071BF9F /* FlashOn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FlashOn@2x.png"; sourceTree = "<group>"; };
+		0B2BEE0C149EFF180071BF9F /* flashOptionsViewAutoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flashOptionsViewAutoButton.png; sourceTree = "<group>"; };
+		0B2BEE0D149EFF180071BF9F /* flashOptionsViewAutoButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashOptionsViewAutoButton@2x.png"; sourceTree = "<group>"; };
+		0B2BEE0E149EFF180071BF9F /* flashOptionsViewOffButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flashOptionsViewOffButton.png; sourceTree = "<group>"; };
+		0B2BEE0F149EFF180071BF9F /* flashOptionsViewOffButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashOptionsViewOffButton@2x.png"; sourceTree = "<group>"; };
+		0B2BEE10149EFF180071BF9F /* flashOptionsViewOnButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flashOptionsViewOnButton.png; sourceTree = "<group>"; };
+		0B2BEE11149EFF180071BF9F /* flashOptionsViewOnButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "flashOptionsViewOnButton@2x.png"; sourceTree = "<group>"; };
+		0B2BEE21149EFF260071BF9F /* SelfCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SelfCamera.png; sourceTree = "<group>"; };
+		0B2BEE22149EFF260071BF9F /* SelfCamera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SelfCamera@2x.png"; sourceTree = "<group>"; };
+		0B2BEE25149F01480071BF9F /* CancelBlackBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelBlackBtn.png; sourceTree = "<group>"; };
+		0B2BEE26149F01480071BF9F /* CancelBlackBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelBlackBtn@2x.png"; sourceTree = "<group>"; };
+		0B2BEE27149F01480071BF9F /* CancelBlackBtnKR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CancelBlackBtnKR.png; sourceTree = "<group>"; };
+		0B2BEE28149F01480071BF9F /* CancelBlackBtnKR@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CancelBlackBtnKR@2x.png"; sourceTree = "<group>"; };
+		0B2BEE29149F01480071BF9F /* DoneBlueBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneBlueBtn.png; sourceTree = "<group>"; };
+		0B2BEE2A149F01480071BF9F /* DoneBlueBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DoneBlueBtn@2x.png"; sourceTree = "<group>"; };
+		0B2BEE2B149F01480071BF9F /* DoneBlueBtnKR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DoneBlueBtnKR.png; sourceTree = "<group>"; };
+		0B2BEE2C149F01480071BF9F /* DoneBlueBtnKR@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DoneBlueBtnKR@2x.png"; sourceTree = "<group>"; };
 		0B2EF2601423063100A68FAE /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBConnect.h; path = src/FBConnect.h; sourceTree = "<group>"; };
 		0B2EF2611423063100A68FAE /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = src/FBRequest.h; sourceTree = "<group>"; };
 		0B2EF2621423063100A68FAE /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = src/FBRequest.m; sourceTree = "<group>"; };
@@ -882,6 +930,14 @@
 				0B90FDE013F5385400B890DC /* SignUpBtn@2x.png */,
 				0BF4012313F8E5F60094C51C /* Default.png */,
 				0BF4012413F8E5F60094C51C /* Default@2x.png */,
+				0B2BEE25149F01480071BF9F /* CancelBlackBtn.png */,
+				0B2BEE26149F01480071BF9F /* CancelBlackBtn@2x.png */,
+				0B2BEE27149F01480071BF9F /* CancelBlackBtnKR.png */,
+				0B2BEE28149F01480071BF9F /* CancelBlackBtnKR@2x.png */,
+				0B2BEE29149F01480071BF9F /* DoneBlueBtn.png */,
+				0B2BEE2A149F01480071BF9F /* DoneBlueBtn@2x.png */,
+				0B2BEE2B149F01480071BF9F /* DoneBlueBtnKR.png */,
+				0B2BEE2C149F01480071BF9F /* DoneBlueBtnKR@2x.png */,
 				0B90FDD813F5385400B890DC /* NavBack.png */,
 				0B90FDD913F5385400B890DC /* NavBack@2x.png */,
 				0BDFDC07145A41E900CFA32E /* NavBackForTabBar.png */,
@@ -1055,6 +1111,22 @@
 		0BFBBB7213973B3D00A3A0E4 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				0B2BEE21149EFF260071BF9F /* SelfCamera.png */,
+				0B2BEE22149EFF260071BF9F /* SelfCamera@2x.png */,
+				0B2BEE04149EFF170071BF9F /* Flash.png */,
+				0B2BEE05149EFF170071BF9F /* Flash@2x.png */,
+				0B2BEE06149EFF170071BF9F /* FlashAuto.png */,
+				0B2BEE07149EFF170071BF9F /* FlashAuto@2x.png */,
+				0B2BEE08149EFF170071BF9F /* FlashOff.png */,
+				0B2BEE09149EFF170071BF9F /* FlashOff@2x.png */,
+				0B2BEE0A149EFF170071BF9F /* FlashOn.png */,
+				0B2BEE0B149EFF180071BF9F /* FlashOn@2x.png */,
+				0B2BEE0C149EFF180071BF9F /* flashOptionsViewAutoButton.png */,
+				0B2BEE0D149EFF180071BF9F /* flashOptionsViewAutoButton@2x.png */,
+				0B2BEE0E149EFF180071BF9F /* flashOptionsViewOffButton.png */,
+				0B2BEE0F149EFF180071BF9F /* flashOptionsViewOffButton@2x.png */,
+				0B2BEE10149EFF180071BF9F /* flashOptionsViewOnButton.png */,
+				0B2BEE11149EFF180071BF9F /* flashOptionsViewOnButton@2x.png */,
 				0BE46F261495DD7A00D73780 /* FilterGradient.png */,
 				0BE46F271495DD7A00D73780 /* FilterGradient@2x.png */,
 				0B8EFA7513A8DF5E00F5F517 /* croppedCameraOverlay.png */,
@@ -1497,6 +1569,30 @@
 				0BF673D7147B502900B45D20 /* OverlayForSettingsTab@2x.png in Resources */,
 				0BE46F281495DD7A00D73780 /* FilterGradient.png in Resources */,
 				0BE46F291495DD7A00D73780 /* FilterGradient@2x.png in Resources */,
+				0B2BEE12149EFF190071BF9F /* Flash.png in Resources */,
+				0B2BEE13149EFF190071BF9F /* Flash@2x.png in Resources */,
+				0B2BEE14149EFF190071BF9F /* FlashAuto.png in Resources */,
+				0B2BEE15149EFF190071BF9F /* FlashAuto@2x.png in Resources */,
+				0B2BEE16149EFF190071BF9F /* FlashOff.png in Resources */,
+				0B2BEE17149EFF190071BF9F /* FlashOff@2x.png in Resources */,
+				0B2BEE18149EFF190071BF9F /* FlashOn.png in Resources */,
+				0B2BEE19149EFF190071BF9F /* FlashOn@2x.png in Resources */,
+				0B2BEE1A149EFF190071BF9F /* flashOptionsViewAutoButton.png in Resources */,
+				0B2BEE1B149EFF190071BF9F /* flashOptionsViewAutoButton@2x.png in Resources */,
+				0B2BEE1C149EFF190071BF9F /* flashOptionsViewOffButton.png in Resources */,
+				0B2BEE1D149EFF190071BF9F /* flashOptionsViewOffButton@2x.png in Resources */,
+				0B2BEE1E149EFF190071BF9F /* flashOptionsViewOnButton.png in Resources */,
+				0B2BEE1F149EFF190071BF9F /* flashOptionsViewOnButton@2x.png in Resources */,
+				0B2BEE23149EFF260071BF9F /* SelfCamera.png in Resources */,
+				0B2BEE24149EFF260071BF9F /* SelfCamera@2x.png in Resources */,
+				0B2BEE2D149F01480071BF9F /* CancelBlackBtn.png in Resources */,
+				0B2BEE2E149F01480071BF9F /* CancelBlackBtn@2x.png in Resources */,
+				0B2BEE2F149F01480071BF9F /* CancelBlackBtnKR.png in Resources */,
+				0B2BEE30149F01480071BF9F /* CancelBlackBtnKR@2x.png in Resources */,
+				0B2BEE31149F01480071BF9F /* DoneBlueBtn.png in Resources */,
+				0B2BEE32149F01480071BF9F /* DoneBlueBtn@2x.png in Resources */,
+				0B2BEE33149F01480071BF9F /* DoneBlueBtnKR.png in Resources */,
+				0B2BEE34149F01480071BF9F /* DoneBlueBtnKR@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
