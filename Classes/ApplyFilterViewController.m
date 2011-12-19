@@ -66,6 +66,7 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 @synthesize fullImageForBackUp;
 @synthesize squareImageForBackUp;
 @synthesize originalImage;
+@synthesize imageTakenFromCamera;
 @synthesize render;
 
 // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
@@ -748,6 +749,19 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 		_contentModeToBeApplied = UIViewContentModeScaleAspectFit;
 	}
 	 
+    
+#ifndef TARGET_IPHONE_SIMULATOR
+    
+#else
+    if(imageTakenFromCamera)
+    {
+        UIImageWriteToSavedPhotosAlbum(selectedImage, nil, nil, nil);
+    }
+#endif
+    
+    
+    
+    
     [renderView setFramebuffer];
     self.render = [[[RenderTexture alloc] initWithImage:selectedImage] autorelease];
     [self drawFilter:kFilterTagNormal];
@@ -767,8 +781,16 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
 
 - (void)done:(id)sender
 {	
+    UIImage *processedImage = [self getImageProcessedWithFilter:_filterApplied];
+    
+    if(_wasFilterSelected)
+	{
+		UIImageWriteToSavedPhotosAlbum(processedImage, nil, nil, nil);
+	}
+    
+    
 	SelectedPhotoViewController *viewController = [[SelectedPhotoViewController alloc] initWithNibName:@"SelectedPhotoViewController" bundle:nil];
-	viewController.mSelectedImage = [self getImageProcessedWithFilter:_filterApplied];
+	viewController.mSelectedImage = processedImage;
 	viewController.wasFilterSelected = _wasFilterSelected;
 	viewController.filterApplied = _filterApplied;
 	[self.navigationController pushViewController:viewController animated:YES];

@@ -723,10 +723,6 @@
 {
 	[self hideFreezeScreen];
 	
-	if(wasFilterSelected)
-	{
-		UIImageWriteToSavedPhotosAlbum(mSelectedImage, nil, nil, nil);
-	}
 	
 	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:NSLocalizedString(@"YourPhotoHasBeenSuccessfullyUploadedKey", @"") delegate:self cancelButtonTitle:NSLocalizedString(@"OkKey", @"") otherButtonTitles:nil];
 	alertView.tag = 1;

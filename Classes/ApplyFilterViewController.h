@@ -28,6 +28,7 @@
 	BOOL _wasFilterSelected;
 	BOOL imageClickedInSquareMode;
 	NSInteger _filterApplied;
+    BOOL imageTakenFromCamera;
 	
 	UIViewContentMode _contentModeToBeApplied;
     
@@ -41,6 +42,7 @@
 @property (nonatomic, retain) UIImage *squareImageForBackUp;
 @property (nonatomic, retain) UIImage *originalImage;
 @property (nonatomic, assign) BOOL imageClickedInSquareMode;
+@property (nonatomic, assign) BOOL imageTakenFromCamera;
 @property (nonatomic, retain) RenderTexture* render;
 
 + (UIImage *)resizeImage:(UIImage *)image forImageQuality:(NSInteger)imageQuality;

@@ -622,25 +622,25 @@
         CGSize  temp = imagePicked.size;
         NSLog(@"image size - %@", NSStringFromCGSize(temp));
 		
-        
-#ifndef TARGET_IPHONE_SIMULATOR
-		
-#else
-        if(_selectedPhotoSource == kSelectedPhotoSourceCamera)
-		{
-			UIImageWriteToSavedPhotosAlbum(imagePicked, nil, nil, nil);
-		}
-#endif
+
+
         
 		if(imagePicked)
 		{
 			
 			ApplyFilterViewController *viewController = [[ApplyFilterViewController alloc] initWithNibName:@"ApplyFilterViewController" bundle:nil];
+                
             
+            BOOL wasImageTakenFromCamera = NO;
+            if(_selectedPhotoSource == kSelectedPhotoSourceCamera)
+            {
+                wasImageTakenFromCamera = YES;
+            }
 
             viewController.wantsFullScreenLayout = YES;
 			viewController.hidesBottomBarWhenPushed = YES;
 			viewController.originalImage = imagePicked;
+            viewController.imageTakenFromCamera = wasImageTakenFromCamera;
 			viewController.imageClickedInSquareMode = _cropButton.tag;
 			[self.navigationController pushViewController:viewController animated:YES];
 			[viewController release];
