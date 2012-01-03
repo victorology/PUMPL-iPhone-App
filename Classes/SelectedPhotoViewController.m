@@ -158,9 +158,9 @@
     
     
     
-    UIImage *doneButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonDoneButtonKey", @"") ofType:@"png"]];
+    UIImage *doneButtonImage = [[UIImage alloc] initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NSLocalizedString(@"ImageBarButtonDoneBlueButtonKey", @"") ofType:@"png"]];
     self.navigationItem.rightBarButtonItem = [UITabBarController tabBarButtonWithImage:doneButtonImage
-                                                                               target:self action:@selector(save:)];
+                                                                                target:self action:@selector(save:)];
     [doneButtonImage release];
     
 
