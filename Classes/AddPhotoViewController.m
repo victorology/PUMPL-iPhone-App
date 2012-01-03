@@ -619,11 +619,7 @@
 	if([[info valueForKey:@"UIImagePickerControllerMediaType"] isEqualToString:(NSString *)kUTTypeImage])
 	{
 		UIImage *imagePicked = [info valueForKey:@"UIImagePickerControllerOriginalImage"];
-        CGSize  temp = imagePicked.size;
-        NSLog(@"image size - %@", NSStringFromCGSize(temp));
-		
-
-
+       
         
 		if(imagePicked)
 		{
@@ -644,14 +640,21 @@
 			viewController.imageClickedInSquareMode = _cropButton.tag;
 			[self.navigationController pushViewController:viewController animated:YES];
 			[viewController release];
-			 
-			
+            
+            
+            [_libraryImagePickerController dismissModalViewControllerAnimated:YES];
+            [_cameraImagePickerController dismissModalViewControllerAnimated:YES];
 		}
+        else
+        {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"Unable to capture the photo. Please try again" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            [alertView show];
+            [alertView release];
+        }
 	}
 	
     
-	[_libraryImagePickerController dismissModalViewControllerAnimated:YES];
-    [_cameraImagePickerController dismissModalViewControllerAnimated:YES];
+	
 }
 
 
